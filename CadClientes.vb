@@ -29,30 +29,55 @@ Public Class frmCadClientes
         lstgrade.Tag = 0
     End Sub
     Private Sub carregaclientes()
-        Dim frmCadClientes As ADODB.Recordset, x As Integer, sql As String
-        sql = "select * from tbClientes where codigo=" & txtNome.Text
+        Dim dtCadClientes As DataTable
+        Dim x As Integer = 0
+        Dim sql As String
+
+        sql = "SELECT * FROM tbClientes WHERE codigo = " & txtNome.Text
         If Not IsNumeric(txtNome.Text) Then
-            sql = "select * from tbClientes  where nome like '" & txtNome.Text & "%'"
+            sql = "SELECT * FROM tbClientes WHERE nome LIKE '" & txtNome.Text & "%'"
         End If
+
         limpar()
         lstgrade.Items.Clear()
-        frmCadClientes = RecebeTabela(sql)
-        If frmCadClientes.RecordCount > 0 Then
-            frmCadClientes.MoveFirst()
-            Do Until frmCadClientes.EOF
-                lstgrade.Items.Add(frmCadClientes("codigo").Value)
-                lstgrade.Items(x).SubItems.Add(frmCadClientes("nome").Value)
-                lstgrade.Items(x).SubItems.Add(frmCadClientes("dtnasc").Value)
-                lstgrade.Items(x).SubItems.Add(frmCadClientes("telefone1").Value)
-                lstgrade.Items(x).SubItems.Add(frmCadClientes("email").Value)
-                lstgrade.Items(x).SubItems.Add(frmCadClientes("rg").Value)
-                lstgrade.Items(x).SubItems.Add(frmCadClientes("cpf").Value)
-                x += 1
-                frmCadClientes.MoveNext()
-            Loop
-            frmCadClientes.Close()
 
-        End If
+        ' Receber os dados em um DataTable
+        dtCadClientes = RecebeTabela(sql)
+
+        For Each row As DataRow In dtCadClientes.Rows
+            lstgrade.Items.Add(row("codigo").ToString())
+            lstgrade.Items(x).SubItems.Add(row("nome").ToString())
+            lstgrade.Items(x).SubItems.Add(row("dtnasc").ToString())
+            lstgrade.Items(x).SubItems.Add(row("telefone1").ToString())
+            lstgrade.Items(x).SubItems.Add(row("email").ToString())
+            lstgrade.Items(x).SubItems.Add(row("rg").ToString())
+            lstgrade.Items(x).SubItems.Add(row("cpf").ToString())
+            x += 1
+        Next
+        ''Dim frmCadClientes As ADODB.Recordset, x As Integer, sql As String
+        'Sql = "select * from tbClientes where codigo=" & txtNome.Text
+        'If Not IsNumeric(txtNome.Text) Then
+        '    sql = "select * from tbClientes  where nome like '" & txtNome.Text & "%'"
+        'End If
+        'limpar()
+        'lstgrade.Items.Clear()
+        'frmCadClientes = RecebeTabela(sql)
+        'If frmCadClientes.RecordCount > 0 Then
+        '    frmCadClientes.MoveFirst()
+        '    Do Until frmCadClientes.EOF
+        '        lstgrade.Items.Add(frmCadClientes("codigo").Value)
+        '        lstgrade.Items(x).SubItems.Add(frmCadClientes("nome").Value)
+        '        lstgrade.Items(x).SubItems.Add(frmCadClientes("dtnasc").Value)
+        '        lstgrade.Items(x).SubItems.Add(frmCadClientes("telefone1").Value)
+        '        lstgrade.Items(x).SubItems.Add(frmCadClientes("email").Value)
+        '        lstgrade.Items(x).SubItems.Add(frmCadClientes("rg").Value)
+        '        lstgrade.Items(x).SubItems.Add(frmCadClientes("cpf").Value)
+        '        x += 1
+        '        frmCadClientes.MoveNext()
+        '    Loop
+        '    frmCadClientes.Close()
+
+        'End If
     End Sub
     Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
         carregaclientes()

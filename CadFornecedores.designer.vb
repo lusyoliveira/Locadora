@@ -23,51 +23,51 @@ Partial Class frmCadFornecedores
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCadFornecedores))
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.lblCodigo = New System.Windows.Forms.Label
-        Me.lblFornecedor = New System.Windows.Forms.Label
-        Me.txtCodigo = New System.Windows.Forms.TextBox
-        Me.txtFornecedor = New System.Windows.Forms.TextBox
-        Me.lblEndereco = New System.Windows.Forms.Label
-        Me.lblEmpresa = New System.Windows.Forms.Label
-        Me.lblComplemento = New System.Windows.Forms.Label
-        Me.lblCnpj = New System.Windows.Forms.Label
-        Me.txtEmpresa = New System.Windows.Forms.TextBox
-        Me.lblBairro = New System.Windows.Forms.Label
-        Me.lblCidade = New System.Windows.Forms.Label
-        Me.lblUf = New System.Windows.Forms.Label
-        Me.txtEndereco = New System.Windows.Forms.TextBox
-        Me.txtComplemento = New System.Windows.Forms.TextBox
-        Me.txtBairro = New System.Windows.Forms.TextBox
-        Me.txtCidade = New System.Windows.Forms.TextBox
-        Me.lblCep = New System.Windows.Forms.Label
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.mskcel = New System.Windows.Forms.MaskedTextBox
-        Me.msktel = New System.Windows.Forms.MaskedTextBox
-        Me.lblCelular = New System.Windows.Forms.Label
-        Me.lblTelefone = New System.Windows.Forms.Label
-        Me.txtSite = New System.Windows.Forms.TextBox
-        Me.txtEmail = New System.Windows.Forms.TextBox
-        Me.lblEmail = New System.Windows.Forms.Label
-        Me.lblSite = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.btnSair = New System.Windows.Forms.Button
-        Me.btnExcluir = New System.Windows.Forms.Button
-        Me.btnConsultar = New System.Windows.Forms.Button
-        Me.btnSalvar = New System.Windows.Forms.Button
-        Me.btnNovo = New System.Windows.Forms.Button
-        Me.mskcnpj = New System.Windows.Forms.MaskedTextBox
-        Me.mskcpf = New System.Windows.Forms.MaskedTextBox
-        Me.cbouf = New System.Windows.Forms.ComboBox
-        Me.lstgrade = New System.Windows.Forms.ListView
-        Me.clmcodigo = New System.Windows.Forms.ColumnHeader
-        Me.clmfornecedor = New System.Windows.Forms.ColumnHeader
-        Me.clmempresa = New System.Windows.Forms.ColumnHeader
-        Me.clmcnpj = New System.Windows.Forms.ColumnHeader
-        Me.clmuf = New System.Windows.Forms.ColumnHeader
-        Me.clmcpf = New System.Windows.Forms.ColumnHeader
-        Me.clmtelefone = New System.Windows.Forms.ColumnHeader
-        Me.clmcelular = New System.Windows.Forms.ColumnHeader
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblCodigo = New System.Windows.Forms.Label()
+        Me.lblFornecedor = New System.Windows.Forms.Label()
+        Me.txtCodigo = New System.Windows.Forms.TextBox()
+        Me.txtFornecedor = New System.Windows.Forms.TextBox()
+        Me.lblEndereco = New System.Windows.Forms.Label()
+        Me.lblEmpresa = New System.Windows.Forms.Label()
+        Me.lblComplemento = New System.Windows.Forms.Label()
+        Me.lblCnpj = New System.Windows.Forms.Label()
+        Me.txtEmpresa = New System.Windows.Forms.TextBox()
+        Me.lblBairro = New System.Windows.Forms.Label()
+        Me.lblCidade = New System.Windows.Forms.Label()
+        Me.lblUf = New System.Windows.Forms.Label()
+        Me.txtEndereco = New System.Windows.Forms.TextBox()
+        Me.txtComplemento = New System.Windows.Forms.TextBox()
+        Me.txtBairro = New System.Windows.Forms.TextBox()
+        Me.txtCidade = New System.Windows.Forms.TextBox()
+        Me.lblCep = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.mskcel = New System.Windows.Forms.MaskedTextBox()
+        Me.msktel = New System.Windows.Forms.MaskedTextBox()
+        Me.lblCelular = New System.Windows.Forms.Label()
+        Me.lblTelefone = New System.Windows.Forms.Label()
+        Me.txtSite = New System.Windows.Forms.TextBox()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.lblEmail = New System.Windows.Forms.Label()
+        Me.lblSite = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnSair = New System.Windows.Forms.Button()
+        Me.btnExcluir = New System.Windows.Forms.Button()
+        Me.btnConsultar = New System.Windows.Forms.Button()
+        Me.btnSalvar = New System.Windows.Forms.Button()
+        Me.btnNovo = New System.Windows.Forms.Button()
+        Me.mskcnpj = New System.Windows.Forms.MaskedTextBox()
+        Me.mskcpf = New System.Windows.Forms.MaskedTextBox()
+        Me.cbouf = New System.Windows.Forms.ComboBox()
+        Me.lstgrade = New System.Windows.Forms.ListView()
+        Me.clmcodigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.clmfornecedor = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.clmempresa = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.clmcnpj = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.clmuf = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.clmcpf = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.clmtelefone = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.clmcelular = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -77,16 +77,18 @@ Partial Class frmCadFornecedores
         Me.Panel1.BackColor = System.Drawing.Color.DarkRed
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(887, 75)
+        Me.Panel1.Size = New System.Drawing.Size(1071, 92)
         Me.Panel1.TabIndex = 1
         '
         'lblCodigo
         '
         Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(774, 90)
+        Me.lblCodigo.Location = New System.Drawing.Point(14, 111)
+        Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(40, 13)
+        Me.lblCodigo.Size = New System.Drawing.Size(51, 16)
         Me.lblCodigo.TabIndex = 2
         Me.lblCodigo.Text = "Código"
         Me.lblCodigo.Visible = False
@@ -94,131 +96,147 @@ Partial Class frmCadFornecedores
         'lblFornecedor
         '
         Me.lblFornecedor.AutoSize = True
-        Me.lblFornecedor.Location = New System.Drawing.Point(11, 90)
+        Me.lblFornecedor.Location = New System.Drawing.Point(119, 111)
+        Me.lblFornecedor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFornecedor.Name = "lblFornecedor"
-        Me.lblFornecedor.Size = New System.Drawing.Size(61, 13)
+        Me.lblFornecedor.Size = New System.Drawing.Size(77, 16)
         Me.lblFornecedor.TabIndex = 3
         Me.lblFornecedor.Text = "Fornecedor"
         '
         'txtCodigo
         '
-        Me.txtCodigo.Location = New System.Drawing.Point(777, 106)
+        Me.txtCodigo.Location = New System.Drawing.Point(18, 130)
+        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCodigo.Name = "txtCodigo"
-        Me.txtCodigo.Size = New System.Drawing.Size(74, 20)
+        Me.txtCodigo.Size = New System.Drawing.Size(97, 22)
         Me.txtCodigo.TabIndex = 0
         Me.txtCodigo.Visible = False
         '
         'txtFornecedor
         '
-        Me.txtFornecedor.Location = New System.Drawing.Point(14, 106)
+        Me.txtFornecedor.Location = New System.Drawing.Point(123, 130)
+        Me.txtFornecedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFornecedor.Name = "txtFornecedor"
-        Me.txtFornecedor.Size = New System.Drawing.Size(286, 20)
+        Me.txtFornecedor.Size = New System.Drawing.Size(380, 22)
         Me.txtFornecedor.TabIndex = 1
         '
         'lblEndereco
         '
         Me.lblEndereco.AutoSize = True
-        Me.lblEndereco.Location = New System.Drawing.Point(11, 158)
+        Me.lblEndereco.Location = New System.Drawing.Point(13, 169)
+        Me.lblEndereco.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblEndereco.Name = "lblEndereco"
-        Me.lblEndereco.Size = New System.Drawing.Size(53, 13)
+        Me.lblEndereco.Size = New System.Drawing.Size(66, 16)
         Me.lblEndereco.TabIndex = 6
         Me.lblEndereco.Text = "Endereço"
         '
         'lblEmpresa
         '
         Me.lblEmpresa.AutoSize = True
-        Me.lblEmpresa.Location = New System.Drawing.Point(319, 90)
+        Me.lblEmpresa.Location = New System.Drawing.Point(507, 111)
+        Me.lblEmpresa.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblEmpresa.Name = "lblEmpresa"
-        Me.lblEmpresa.Size = New System.Drawing.Size(48, 13)
+        Me.lblEmpresa.Size = New System.Drawing.Size(62, 16)
         Me.lblEmpresa.TabIndex = 7
         Me.lblEmpresa.Text = "Empresa"
         '
         'lblComplemento
         '
         Me.lblComplemento.AutoSize = True
-        Me.lblComplemento.Location = New System.Drawing.Point(319, 158)
+        Me.lblComplemento.Location = New System.Drawing.Point(423, 169)
+        Me.lblComplemento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblComplemento.Name = "lblComplemento"
-        Me.lblComplemento.Size = New System.Drawing.Size(71, 13)
+        Me.lblComplemento.Size = New System.Drawing.Size(91, 16)
         Me.lblComplemento.TabIndex = 8
         Me.lblComplemento.Text = "Complemento"
         '
         'lblCnpj
         '
         Me.lblCnpj.AutoSize = True
-        Me.lblCnpj.Location = New System.Drawing.Point(586, 90)
+        Me.lblCnpj.Location = New System.Drawing.Point(863, 111)
+        Me.lblCnpj.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCnpj.Name = "lblCnpj"
-        Me.lblCnpj.Size = New System.Drawing.Size(34, 13)
+        Me.lblCnpj.Size = New System.Drawing.Size(42, 16)
         Me.lblCnpj.TabIndex = 9
         Me.lblCnpj.Text = "CNPJ"
         '
         'txtEmpresa
         '
-        Me.txtEmpresa.Location = New System.Drawing.Point(322, 106)
+        Me.txtEmpresa.Location = New System.Drawing.Point(511, 130)
+        Me.txtEmpresa.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEmpresa.Name = "txtEmpresa"
-        Me.txtEmpresa.Size = New System.Drawing.Size(255, 20)
+        Me.txtEmpresa.Size = New System.Drawing.Size(339, 22)
         Me.txtEmpresa.TabIndex = 2
         '
         'lblBairro
         '
         Me.lblBairro.AutoSize = True
-        Me.lblBairro.Location = New System.Drawing.Point(11, 203)
+        Me.lblBairro.Location = New System.Drawing.Point(13, 225)
+        Me.lblBairro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblBairro.Name = "lblBairro"
-        Me.lblBairro.Size = New System.Drawing.Size(34, 13)
+        Me.lblBairro.Size = New System.Drawing.Size(43, 16)
         Me.lblBairro.TabIndex = 12
         Me.lblBairro.Text = "Bairro"
         '
         'lblCidade
         '
         Me.lblCidade.AutoSize = True
-        Me.lblCidade.Location = New System.Drawing.Point(11, 253)
+        Me.lblCidade.Location = New System.Drawing.Point(13, 286)
+        Me.lblCidade.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCidade.Name = "lblCidade"
-        Me.lblCidade.Size = New System.Drawing.Size(40, 13)
+        Me.lblCidade.Size = New System.Drawing.Size(51, 16)
         Me.lblCidade.TabIndex = 13
         Me.lblCidade.Text = "Cidade"
         '
         'lblUf
         '
         Me.lblUf.AutoSize = True
-        Me.lblUf.Location = New System.Drawing.Point(319, 253)
+        Me.lblUf.Location = New System.Drawing.Point(423, 286)
+        Me.lblUf.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUf.Name = "lblUf"
-        Me.lblUf.Size = New System.Drawing.Size(21, 13)
+        Me.lblUf.Size = New System.Drawing.Size(25, 16)
         Me.lblUf.TabIndex = 14
         Me.lblUf.Text = "UF"
         '
         'txtEndereco
         '
-        Me.txtEndereco.Location = New System.Drawing.Point(14, 174)
+        Me.txtEndereco.Location = New System.Drawing.Point(17, 189)
+        Me.txtEndereco.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEndereco.Name = "txtEndereco"
-        Me.txtEndereco.Size = New System.Drawing.Size(285, 20)
+        Me.txtEndereco.Size = New System.Drawing.Size(379, 22)
         Me.txtEndereco.TabIndex = 15
         '
         'txtComplemento
         '
-        Me.txtComplemento.Location = New System.Drawing.Point(322, 174)
+        Me.txtComplemento.Location = New System.Drawing.Point(427, 189)
+        Me.txtComplemento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtComplemento.Name = "txtComplemento"
-        Me.txtComplemento.Size = New System.Drawing.Size(81, 20)
+        Me.txtComplemento.Size = New System.Drawing.Size(107, 22)
         Me.txtComplemento.TabIndex = 5
         '
         'txtBairro
         '
-        Me.txtBairro.Location = New System.Drawing.Point(14, 219)
+        Me.txtBairro.Location = New System.Drawing.Point(17, 245)
+        Me.txtBairro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtBairro.Name = "txtBairro"
-        Me.txtBairro.Size = New System.Drawing.Size(286, 20)
+        Me.txtBairro.Size = New System.Drawing.Size(380, 22)
         Me.txtBairro.TabIndex = 6
         '
         'txtCidade
         '
-        Me.txtCidade.Location = New System.Drawing.Point(14, 269)
+        Me.txtCidade.Location = New System.Drawing.Point(17, 306)
+        Me.txtCidade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCidade.Name = "txtCidade"
-        Me.txtCidade.Size = New System.Drawing.Size(286, 20)
+        Me.txtCidade.Size = New System.Drawing.Size(380, 22)
         Me.txtCidade.TabIndex = 8
         '
         'lblCep
         '
         Me.lblCep.AutoSize = True
-        Me.lblCep.Location = New System.Drawing.Point(319, 203)
+        Me.lblCep.Location = New System.Drawing.Point(423, 225)
+        Me.lblCep.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCep.Name = "lblCep"
-        Me.lblCep.Size = New System.Drawing.Size(26, 13)
+        Me.lblCep.Size = New System.Drawing.Size(32, 16)
         Me.lblCep.TabIndex = 20
         Me.lblCep.Text = "Cep"
         '
@@ -232,76 +250,86 @@ Partial Class frmCadFornecedores
         Me.GroupBox1.Controls.Add(Me.txtEmail)
         Me.GroupBox1.Controls.Add(Me.lblEmail)
         Me.GroupBox1.Controls.Add(Me.lblSite)
-        Me.GroupBox1.Location = New System.Drawing.Point(431, 138)
+        Me.GroupBox1.Location = New System.Drawing.Point(575, 170)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(360, 167)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(480, 206)
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Contatos"
         '
         'mskcel
         '
-        Me.mskcel.Location = New System.Drawing.Point(158, 131)
+        Me.mskcel.Location = New System.Drawing.Point(211, 161)
+        Me.mskcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.mskcel.Mask = "(00)0000-0000"
         Me.mskcel.Name = "mskcel"
-        Me.mskcel.Size = New System.Drawing.Size(100, 20)
+        Me.mskcel.Size = New System.Drawing.Size(132, 22)
         Me.mskcel.TabIndex = 13
         '
         'msktel
         '
-        Me.msktel.Location = New System.Drawing.Point(19, 132)
+        Me.msktel.Location = New System.Drawing.Point(25, 162)
+        Me.msktel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.msktel.Mask = "(00)0000-0000"
         Me.msktel.Name = "msktel"
-        Me.msktel.Size = New System.Drawing.Size(100, 20)
+        Me.msktel.Size = New System.Drawing.Size(132, 22)
         Me.msktel.TabIndex = 12
         '
         'lblCelular
         '
         Me.lblCelular.AutoSize = True
-        Me.lblCelular.Location = New System.Drawing.Point(155, 115)
+        Me.lblCelular.Location = New System.Drawing.Point(207, 142)
+        Me.lblCelular.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCelular.Name = "lblCelular"
-        Me.lblCelular.Size = New System.Drawing.Size(39, 13)
+        Me.lblCelular.Size = New System.Drawing.Size(49, 16)
         Me.lblCelular.TabIndex = 28
         Me.lblCelular.Text = "Celular"
         '
         'lblTelefone
         '
         Me.lblTelefone.AutoSize = True
-        Me.lblTelefone.Location = New System.Drawing.Point(16, 115)
+        Me.lblTelefone.Location = New System.Drawing.Point(21, 142)
+        Me.lblTelefone.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTelefone.Name = "lblTelefone"
-        Me.lblTelefone.Size = New System.Drawing.Size(49, 13)
+        Me.lblTelefone.Size = New System.Drawing.Size(61, 16)
         Me.lblTelefone.TabIndex = 27
         Me.lblTelefone.Text = "Telefone"
         '
         'txtSite
         '
-        Me.txtSite.Location = New System.Drawing.Point(19, 36)
+        Me.txtSite.Location = New System.Drawing.Point(25, 44)
+        Me.txtSite.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSite.Name = "txtSite"
-        Me.txtSite.Size = New System.Drawing.Size(300, 20)
+        Me.txtSite.Size = New System.Drawing.Size(399, 22)
         Me.txtSite.TabIndex = 10
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(19, 81)
+        Me.txtEmail.Location = New System.Drawing.Point(25, 100)
+        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(300, 20)
+        Me.txtEmail.Size = New System.Drawing.Size(399, 22)
         Me.txtEmail.TabIndex = 11
         '
         'lblEmail
         '
         Me.lblEmail.AutoSize = True
-        Me.lblEmail.Location = New System.Drawing.Point(16, 64)
+        Me.lblEmail.Location = New System.Drawing.Point(21, 79)
+        Me.lblEmail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(36, 13)
+        Me.lblEmail.Size = New System.Drawing.Size(45, 16)
         Me.lblEmail.TabIndex = 24
         Me.lblEmail.Text = "E-Mail"
         '
         'lblSite
         '
         Me.lblSite.AutoSize = True
-        Me.lblSite.Location = New System.Drawing.Point(16, 20)
+        Me.lblSite.Location = New System.Drawing.Point(21, 25)
+        Me.lblSite.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSite.Name = "lblSite"
-        Me.lblSite.Size = New System.Drawing.Size(25, 13)
+        Me.lblSite.Size = New System.Drawing.Size(30, 16)
         Me.lblSite.TabIndex = 23
         Me.lblSite.Text = "Site"
         '
@@ -312,9 +340,11 @@ Partial Class frmCadFornecedores
         Me.GroupBox2.Controls.Add(Me.btnConsultar)
         Me.GroupBox2.Controls.Add(Me.btnSalvar)
         Me.GroupBox2.Controls.Add(Me.btnNovo)
-        Me.GroupBox2.Location = New System.Drawing.Point(15, 498)
+        Me.GroupBox2.Location = New System.Drawing.Point(156, 613)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(562, 80)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(749, 98)
         Me.GroupBox2.TabIndex = 32
         Me.GroupBox2.TabStop = False
         '
@@ -322,9 +352,10 @@ Partial Class frmCadFornecedores
         '
         Me.btnSair.Image = Global.Projeto_Locadora.My.Resources.Resources.ball_stop
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSair.Location = New System.Drawing.Point(450, 19)
+        Me.btnSair.Location = New System.Drawing.Point(600, 23)
+        Me.btnSair.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSair.Name = "btnSair"
-        Me.btnSair.Size = New System.Drawing.Size(106, 45)
+        Me.btnSair.Size = New System.Drawing.Size(141, 55)
         Me.btnSair.TabIndex = 6
         Me.btnSair.Text = "&Sair"
         Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -334,9 +365,10 @@ Partial Class frmCadFornecedores
         '
         Me.btnExcluir.Image = Global.Projeto_Locadora.My.Resources.Resources.trash
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.Location = New System.Drawing.Point(337, 19)
+        Me.btnExcluir.Location = New System.Drawing.Point(449, 23)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnExcluir.Name = "btnExcluir"
-        Me.btnExcluir.Size = New System.Drawing.Size(106, 45)
+        Me.btnExcluir.Size = New System.Drawing.Size(141, 55)
         Me.btnExcluir.TabIndex = 3
         Me.btnExcluir.Text = "&Excluir"
         Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -347,9 +379,10 @@ Partial Class frmCadFornecedores
         '
         Me.btnConsultar.Image = Global.Projeto_Locadora.My.Resources.Resources.binoculars
         Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnConsultar.Location = New System.Drawing.Point(6, 19)
+        Me.btnConsultar.Location = New System.Drawing.Point(8, 23)
+        Me.btnConsultar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnConsultar.Name = "btnConsultar"
-        Me.btnConsultar.Size = New System.Drawing.Size(106, 45)
+        Me.btnConsultar.Size = New System.Drawing.Size(141, 55)
         Me.btnConsultar.TabIndex = 2
         Me.btnConsultar.Text = "C&onsultar"
         Me.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -359,9 +392,10 @@ Partial Class frmCadFornecedores
         '
         Me.btnSalvar.Image = Global.Projeto_Locadora.My.Resources.Resources.external_hd
         Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSalvar.Location = New System.Drawing.Point(227, 19)
+        Me.btnSalvar.Location = New System.Drawing.Point(303, 23)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSalvar.Name = "btnSalvar"
-        Me.btnSalvar.Size = New System.Drawing.Size(106, 45)
+        Me.btnSalvar.Size = New System.Drawing.Size(141, 55)
         Me.btnSalvar.TabIndex = 1
         Me.btnSalvar.Text = "S&alvar"
         Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -371,9 +405,10 @@ Partial Class frmCadFornecedores
         '
         Me.btnNovo.Image = Global.Projeto_Locadora.My.Resources.Resources.document
         Me.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNovo.Location = New System.Drawing.Point(116, 19)
+        Me.btnNovo.Location = New System.Drawing.Point(155, 23)
+        Me.btnNovo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnNovo.Name = "btnNovo"
-        Me.btnNovo.Size = New System.Drawing.Size(106, 45)
+        Me.btnNovo.Size = New System.Drawing.Size(141, 55)
         Me.btnNovo.TabIndex = 0
         Me.btnNovo.Text = "&Novo"
         Me.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -381,35 +416,40 @@ Partial Class frmCadFornecedores
         '
         'mskcnpj
         '
-        Me.mskcnpj.Location = New System.Drawing.Point(589, 106)
+        Me.mskcnpj.Location = New System.Drawing.Point(867, 130)
+        Me.mskcnpj.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.mskcnpj.Mask = "000.000.000/0000-00"
         Me.mskcnpj.Name = "mskcnpj"
-        Me.mskcnpj.Size = New System.Drawing.Size(145, 20)
+        Me.mskcnpj.Size = New System.Drawing.Size(192, 22)
         Me.mskcnpj.TabIndex = 3
         '
         'mskcpf
         '
-        Me.mskcpf.Location = New System.Drawing.Point(322, 219)
+        Me.mskcpf.Location = New System.Drawing.Point(427, 245)
+        Me.mskcpf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.mskcpf.Mask = "00000-000"
         Me.mskcpf.Name = "mskcpf"
-        Me.mskcpf.Size = New System.Drawing.Size(81, 20)
+        Me.mskcpf.Size = New System.Drawing.Size(107, 22)
         Me.mskcpf.TabIndex = 7
         '
         'cbouf
         '
         Me.cbouf.FormattingEnabled = True
         Me.cbouf.Items.AddRange(New Object() {" AC", " AL", " AP", " AM", " BA", " CE", " DF", " ES", " GO", " MA", " MT", " MS", " MG", " PA", " PB", " PR", " PE", " PI", " RJ", " RN", " RS", " RO", " RR", " SC", " SP", " SE", " TO"})
-        Me.cbouf.Location = New System.Drawing.Point(322, 269)
+        Me.cbouf.Location = New System.Drawing.Point(427, 306)
+        Me.cbouf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cbouf.Name = "cbouf"
-        Me.cbouf.Size = New System.Drawing.Size(81, 21)
+        Me.cbouf.Size = New System.Drawing.Size(107, 24)
         Me.cbouf.TabIndex = 9
         '
         'lstgrade
         '
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmcodigo, Me.clmfornecedor, Me.clmempresa, Me.clmcnpj, Me.clmuf, Me.clmcpf, Me.clmtelefone, Me.clmcelular})
-        Me.lstgrade.Location = New System.Drawing.Point(17, 311)
+        Me.lstgrade.HideSelection = False
+        Me.lstgrade.Location = New System.Drawing.Point(16, 383)
+        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.lstgrade.Name = "lstgrade"
-        Me.lstgrade.Size = New System.Drawing.Size(855, 181)
+        Me.lstgrade.Size = New System.Drawing.Size(1039, 222)
         Me.lstgrade.TabIndex = 37
         Me.lstgrade.UseCompatibleStateImageBehavior = False
         Me.lstgrade.View = System.Windows.Forms.View.Details
@@ -456,9 +496,9 @@ Partial Class frmCadFornecedores
         '
         'frmCadFornecedores
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(887, 585)
+        Me.ClientSize = New System.Drawing.Size(1071, 720)
         Me.Controls.Add(Me.lstgrade)
         Me.Controls.Add(Me.cbouf)
         Me.Controls.Add(Me.mskcpf)
@@ -483,7 +523,9 @@ Partial Class frmCadFornecedores
         Me.Controls.Add(Me.lblFornecedor)
         Me.Controls.Add(Me.lblCodigo)
         Me.Controls.Add(Me.Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmCadFornecedores"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cadastro de Fonecedores"
