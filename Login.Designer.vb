@@ -45,7 +45,6 @@ Partial Class frmLogin
         'btnEntrar
         '
         Me.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnEntrar.Image = Global.Projeto_Locadora.My.Resources.Resources.ok
         Me.btnEntrar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnEntrar.Location = New System.Drawing.Point(185, 534)
         Me.btnEntrar.Name = "btnEntrar"
@@ -122,7 +121,6 @@ Partial Class frmLogin
         '
         Me.btnacesso.BackColor = System.Drawing.SystemColors.ControlText
         Me.btnacesso.ForeColor = System.Drawing.Color.White
-        Me.btnacesso.Image = Global.Projeto_Locadora.My.Resources.Resources.halfencrypted
         Me.btnacesso.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnacesso.Location = New System.Drawing.Point(2, 2)
         Me.btnacesso.Name = "btnacesso"
@@ -136,7 +134,6 @@ Partial Class frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Projeto_Locadora.My.Resources.Resources.TRABALHO2
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1271, 746)
         Me.Controls.Add(Me.btnacesso)

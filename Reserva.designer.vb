@@ -98,7 +98,6 @@ Partial Class frmReserva
         '
         'btnSair
         '
-        Me.btnSair.Image = Global.Projeto_Locadora.My.Resources.Resources.doc_info
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.Location = New System.Drawing.Point(640, 324)
         Me.btnSair.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -111,7 +110,6 @@ Partial Class frmReserva
         '
         'Button1
         '
-        Me.Button1.Image = Global.Projeto_Locadora.My.Resources.Resources.trash
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.Location = New System.Drawing.Point(643, 95)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -159,7 +157,6 @@ Partial Class frmReserva
         '
         'btnReservar
         '
-        Me.btnReservar.Image = Global.Projeto_Locadora.My.Resources.Resources.external_hd
         Me.btnReservar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnReservar.Location = New System.Drawing.Point(465, 324)
         Me.btnReservar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -172,7 +169,6 @@ Partial Class frmReserva
         '
         'btnok
         '
-        Me.btnok.Image = Global.Projeto_Locadora.My.Resources.Resources.add
         Me.btnok.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnok.Location = New System.Drawing.Point(640, 32)
         Me.btnok.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)

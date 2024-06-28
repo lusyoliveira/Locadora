@@ -172,7 +172,6 @@ Partial Class frmCadUsuarios
         '
         'btnConsultar
         '
-        Me.btnConsultar.Image = Global.Projeto_Locadora.My.Resources.Resources.binoculars
         Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnConsultar.Location = New System.Drawing.Point(12, 18)
         Me.btnConsultar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -185,7 +184,6 @@ Partial Class frmCadUsuarios
         '
         'btnSalvar
         '
-        Me.btnSalvar.Image = Global.Projeto_Locadora.My.Resources.Resources.external_hd
         Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.Location = New System.Drawing.Point(12, 144)
         Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -198,7 +196,6 @@ Partial Class frmCadUsuarios
         '
         'btnNovo
         '
-        Me.btnNovo.Image = Global.Projeto_Locadora.My.Resources.Resources.document
         Me.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnNovo.Location = New System.Drawing.Point(12, 81)
         Me.btnNovo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -211,7 +208,6 @@ Partial Class frmCadUsuarios
         '
         'btnExcluir
         '
-        Me.btnExcluir.Image = Global.Projeto_Locadora.My.Resources.Resources.trash
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.Location = New System.Drawing.Point(12, 207)
         Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -264,7 +260,6 @@ Partial Class frmCadUsuarios
         '
         'btnSair
         '
-        Me.btnSair.Image = Global.Projeto_Locadora.My.Resources.Resources.ball_stop
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.Location = New System.Drawing.Point(12, 16)
         Me.btnSair.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)

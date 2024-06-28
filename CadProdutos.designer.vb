@@ -217,7 +217,6 @@ Partial Class frmCadProdutos
         '
         'btnSair
         '
-        Me.btnSair.Image = Global.Projeto_Locadora.My.Resources.Resources.ball_stop
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.Location = New System.Drawing.Point(459, 19)
         Me.btnSair.Name = "btnSair"
@@ -229,7 +228,6 @@ Partial Class frmCadProdutos
         '
         'btnConsultar
         '
-        Me.btnConsultar.Image = Global.Projeto_Locadora.My.Resources.Resources.binoculars
         Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnConsultar.Location = New System.Drawing.Point(6, 19)
         Me.btnConsultar.Name = "btnConsultar"
@@ -241,7 +239,6 @@ Partial Class frmCadProdutos
         '
         'btnExcluir
         '
-        Me.btnExcluir.Image = Global.Projeto_Locadora.My.Resources.Resources.trash
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.Location = New System.Drawing.Point(347, 19)
         Me.btnExcluir.Name = "btnExcluir"
@@ -254,7 +251,6 @@ Partial Class frmCadProdutos
         '
         'btnSalvar
         '
-        Me.btnSalvar.Image = Global.Projeto_Locadora.My.Resources.Resources.external_hd
         Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.Location = New System.Drawing.Point(232, 19)
         Me.btnSalvar.Name = "btnSalvar"
@@ -266,7 +262,6 @@ Partial Class frmCadProdutos
         '
         'btnNovo
         '
-        Me.btnNovo.Image = Global.Projeto_Locadora.My.Resources.Resources.document
         Me.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnNovo.Location = New System.Drawing.Point(120, 19)
         Me.btnNovo.Name = "btnNovo"

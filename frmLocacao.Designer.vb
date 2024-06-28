@@ -171,7 +171,6 @@ Partial Class frmLocacao
         '
         'Button6
         '
-        Me.Button6.Image = Global.Projeto_Locadora.My.Resources.Resources.ball_stop
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button6.Location = New System.Drawing.Point(345, 23)
         Me.Button6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -184,7 +183,6 @@ Partial Class frmLocacao
         '
         'Button3
         '
-        Me.Button3.Image = Global.Projeto_Locadora.My.Resources.Resources.doc_info
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.Location = New System.Drawing.Point(16, 23)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -197,7 +195,6 @@ Partial Class frmLocacao
         '
         'BTNSALVAR
         '
-        Me.BTNSALVAR.Image = Global.Projeto_Locadora.My.Resources.Resources.external_hd
         Me.BTNSALVAR.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.BTNSALVAR.Location = New System.Drawing.Point(183, 23)
         Me.BTNSALVAR.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -358,7 +355,6 @@ Partial Class frmLocacao
         '
         'btnremove
         '
-        Me.btnremove.Image = Global.Projeto_Locadora.My.Resources.Resources.trash
         Me.btnremove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnremove.Location = New System.Drawing.Point(636, 140)
         Me.btnremove.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -371,7 +367,6 @@ Partial Class frmLocacao
         '
         'btnok
         '
-        Me.btnok.Image = Global.Projeto_Locadora.My.Resources.Resources.add
         Me.btnok.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnok.Location = New System.Drawing.Point(636, 79)
         Me.btnok.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -488,7 +483,6 @@ Partial Class frmLocacao
         'PictureBox1
         '
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox1.Image = Global.Projeto_Locadora.My.Resources.Resources.Filmadora_rolo_de_filmes_e_claquete_01
         Me.PictureBox1.Location = New System.Drawing.Point(869, 111)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox1.Name = "PictureBox1"

@@ -121,7 +121,6 @@ Partial Class frmLocalizar
         '
         'btnSalvar
         '
-        Me.btnSalvar.Image = Global.Projeto_Locadora.My.Resources.Resources.external_hd
         Me.btnSalvar.Location = New System.Drawing.Point(145, 16)
         Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSalvar.Name = "btnSalvar"
@@ -132,7 +131,6 @@ Partial Class frmLocalizar
         '
         'btnLocalizar
         '
-        Me.btnLocalizar.Image = Global.Projeto_Locadora.My.Resources.Resources.binoculars
         Me.btnLocalizar.Location = New System.Drawing.Point(27, 16)
         Me.btnLocalizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnLocalizar.Name = "btnLocalizar"
@@ -143,7 +141,6 @@ Partial Class frmLocalizar
         '
         'btnExcluir
         '
-        Me.btnExcluir.Image = Global.Projeto_Locadora.My.Resources.Resources.trash
         Me.btnExcluir.Location = New System.Drawing.Point(396, 16)
         Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnExcluir.Name = "btnExcluir"
@@ -154,7 +151,6 @@ Partial Class frmLocalizar
         '
         'btnFechar
         '
-        Me.btnFechar.Image = Global.Projeto_Locadora.My.Resources.Resources.ball_stop
         Me.btnFechar.Location = New System.Drawing.Point(527, 16)
         Me.btnFechar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnFechar.Name = "btnFechar"
@@ -165,7 +161,6 @@ Partial Class frmLocalizar
         '
         'btnAlterar
         '
-        Me.btnAlterar.Image = Global.Projeto_Locadora.My.Resources.Resources.paste1
         Me.btnAlterar.Location = New System.Drawing.Point(272, 16)
         Me.btnAlterar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAlterar.Name = "btnAlterar"

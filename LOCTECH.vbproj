@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6FB93766-862C-4159-A1CD-7CA064794552}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Projeto_Locadora.My.MyApplication</StartupObject>
-    <RootNamespace>Projeto_Locadora</RootNamespace>
+    <StartupObject>ProjetoLocadora.My.MyApplication</StartupObject>
+    <RootNamespace>ProjetoLocadora</RootNamespace>
     <AssemblyName>Projeto Locadora</AssemblyName>
     <MyType>WindowsForms</MyType>
     <FileUpgradeFlags>
