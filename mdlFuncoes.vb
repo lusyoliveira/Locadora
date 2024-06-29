@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports Microsoft.Office.Interop
 
 Module mdlFuncoes
     'Public meuServidor As String = "SJFPA008\DEV"
