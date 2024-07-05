@@ -48,6 +48,11 @@ Public Class frmLocalizar
                 End If
         End Select
     End Sub
+
+    Private Sub frmLocalizar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
     Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
         Select Case cboItens.Text
             Case Is = "Clientes"

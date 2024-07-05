@@ -138,6 +138,10 @@ Public Class frmLocacao
         lblvalunit.Tag = row("codigo").ToString()
     End Sub
 
+    Private Sub frmLocacao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNSALVAR.Click
         On Error Resume Next
         CAMPOZERO()

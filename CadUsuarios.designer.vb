@@ -55,7 +55,7 @@ Partial Class frmCadUsuarios
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(852, 92)
         Me.Panel1.TabIndex = 2
@@ -74,7 +74,7 @@ Partial Class frmCadUsuarios
         'txtCodigo
         '
         Me.txtCodigo.Location = New System.Drawing.Point(25, 119)
-        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigo.Name = "txtCodigo"
         Me.txtCodigo.Size = New System.Drawing.Size(97, 22)
         Me.txtCodigo.TabIndex = 4
@@ -93,7 +93,7 @@ Partial Class frmCadUsuarios
         'txtNome
         '
         Me.txtNome.Location = New System.Drawing.Point(130, 119)
-        Me.txtNome.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNome.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNome.Name = "txtNome"
         Me.txtNome.Size = New System.Drawing.Size(523, 22)
         Me.txtNome.TabIndex = 6
@@ -113,7 +113,7 @@ Partial Class frmCadUsuarios
         Me.cboPermissao.FormattingEnabled = True
         Me.cboPermissao.Items.AddRange(New Object() {"Atendente", "Fiscal", "Gerente", "Master", "top"})
         Me.cboPermissao.Location = New System.Drawing.Point(476, 185)
-        Me.cboPermissao.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboPermissao.Margin = New System.Windows.Forms.Padding(4)
         Me.cboPermissao.Name = "cboPermissao"
         Me.cboPermissao.Size = New System.Drawing.Size(177, 24)
         Me.cboPermissao.TabIndex = 8
@@ -131,7 +131,7 @@ Partial Class frmCadUsuarios
         'txtSenha
         '
         Me.txtSenha.Location = New System.Drawing.Point(25, 185)
-        Me.txtSenha.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSenha.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSenha.Name = "txtSenha"
         Me.txtSenha.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtSenha.Size = New System.Drawing.Size(179, 22)
@@ -150,7 +150,7 @@ Partial Class frmCadUsuarios
         'txtConfSenha
         '
         Me.txtConfSenha.Location = New System.Drawing.Point(252, 185)
-        Me.txtConfSenha.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtConfSenha.Margin = New System.Windows.Forms.Padding(4)
         Me.txtConfSenha.Name = "txtConfSenha"
         Me.txtConfSenha.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtConfSenha.Size = New System.Drawing.Size(181, 22)
@@ -163,9 +163,9 @@ Partial Class frmCadUsuarios
         Me.GroupBox2.Controls.Add(Me.btnNovo)
         Me.GroupBox2.Controls.Add(Me.btnExcluir)
         Me.GroupBox2.Location = New System.Drawing.Point(672, 205)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(161, 274)
         Me.GroupBox2.TabIndex = 33
         Me.GroupBox2.TabStop = False
@@ -174,7 +174,7 @@ Partial Class frmCadUsuarios
         '
         Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnConsultar.Location = New System.Drawing.Point(12, 18)
-        Me.btnConsultar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnConsultar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnConsultar.Name = "btnConsultar"
         Me.btnConsultar.Size = New System.Drawing.Size(141, 55)
         Me.btnConsultar.TabIndex = 2
@@ -186,7 +186,7 @@ Partial Class frmCadUsuarios
         '
         Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.Location = New System.Drawing.Point(12, 144)
-        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(141, 55)
         Me.btnSalvar.TabIndex = 1
@@ -198,7 +198,7 @@ Partial Class frmCadUsuarios
         '
         Me.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnNovo.Location = New System.Drawing.Point(12, 81)
-        Me.btnNovo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnNovo.Margin = New System.Windows.Forms.Padding(4)
         Me.btnNovo.Name = "btnNovo"
         Me.btnNovo.Size = New System.Drawing.Size(141, 55)
         Me.btnNovo.TabIndex = 0
@@ -210,7 +210,7 @@ Partial Class frmCadUsuarios
         '
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.Location = New System.Drawing.Point(12, 207)
-        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(141, 55)
         Me.btnExcluir.TabIndex = 3
@@ -224,7 +224,7 @@ Partial Class frmCadUsuarios
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(25, 245)
-        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
         Me.lstgrade.Size = New System.Drawing.Size(628, 374)
         Me.lstgrade.TabIndex = 7
@@ -251,9 +251,9 @@ Partial Class frmCadUsuarios
         '
         Me.GroupBox3.Controls.Add(Me.btnSair)
         Me.GroupBox3.Location = New System.Drawing.Point(672, 487)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Size = New System.Drawing.Size(161, 82)
         Me.GroupBox3.TabIndex = 35
         Me.GroupBox3.TabStop = False
@@ -262,7 +262,7 @@ Partial Class frmCadUsuarios
         '
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.Location = New System.Drawing.Point(12, 16)
-        Me.btnSair.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSair.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSair.Name = "btnSair"
         Me.btnSair.Size = New System.Drawing.Size(141, 55)
         Me.btnSair.TabIndex = 6
@@ -291,7 +291,7 @@ Partial Class frmCadUsuarios
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmCadUsuarios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cadastro de Usuários"

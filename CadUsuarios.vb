@@ -153,4 +153,8 @@ Public Class frmCadUsuarios
             MsgBox("Senha Inválida,favor corrigir!", MsgBoxStyle.Exclamation)
         End If
     End Sub
+
+    Private Sub frmCadUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

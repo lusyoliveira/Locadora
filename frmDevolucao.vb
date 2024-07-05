@@ -26,5 +26,7 @@ Public Class frmDevolucao
         Next
     End Sub
 
+    Private Sub frmDevolucao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
 End Class

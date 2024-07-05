@@ -71,6 +71,10 @@ Public Class frmReserva
         lblvalunit.Tag = row("codigo").ToString()
     End Sub
 
+    Private Sub frmReserva_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
     Private Sub btnReservar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReservar.Click
         On Error Resume Next
         CAMPOZERO()
