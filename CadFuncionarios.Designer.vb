@@ -112,6 +112,8 @@ Partial Class frmCadFuncionarios
         '
         'btnSair
         '
+        Me.btnSair.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.Location = New System.Drawing.Point(616, 23)
         Me.btnSair.Margin = New System.Windows.Forms.Padding(4)
@@ -119,11 +121,13 @@ Partial Class frmCadFuncionarios
         Me.btnSair.Size = New System.Drawing.Size(141, 55)
         Me.btnSair.TabIndex = 6
         Me.btnSair.Text = "&Sair"
-        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.UseVisualStyleBackColor = True
         '
         'btnExcluir
         '
+        Me.btnExcluir.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.shell32_033
+        Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.Location = New System.Drawing.Point(463, 23)
         Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
@@ -131,12 +135,14 @@ Partial Class frmCadFuncionarios
         Me.btnExcluir.Size = New System.Drawing.Size(141, 55)
         Me.btnExcluir.TabIndex = 3
         Me.btnExcluir.Text = "&Excluir"
-        Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.UseVisualStyleBackColor = True
         Me.btnExcluir.Visible = False
         '
         'btnConsultar
         '
+        Me.btnConsultar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.binoculars
+        Me.btnConsultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnConsultar.Location = New System.Drawing.Point(8, 23)
         Me.btnConsultar.Margin = New System.Windows.Forms.Padding(4)
@@ -144,11 +150,13 @@ Partial Class frmCadFuncionarios
         Me.btnConsultar.Size = New System.Drawing.Size(141, 55)
         Me.btnConsultar.TabIndex = 2
         Me.btnConsultar.Text = "C&onsultar"
-        Me.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnConsultar.UseVisualStyleBackColor = True
         '
         'btnSalvar
         '
+        Me.btnSalvar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.external_hd
+        Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.Location = New System.Drawing.Point(309, 23)
         Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
@@ -156,11 +164,13 @@ Partial Class frmCadFuncionarios
         Me.btnSalvar.Size = New System.Drawing.Size(141, 55)
         Me.btnSalvar.TabIndex = 1
         Me.btnSalvar.Text = "S&alvar"
-        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.UseVisualStyleBackColor = True
         '
         'btnNovo
         '
+        Me.btnNovo.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.document
+        Me.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnNovo.Location = New System.Drawing.Point(159, 25)
         Me.btnNovo.Margin = New System.Windows.Forms.Padding(4)
@@ -168,7 +178,7 @@ Partial Class frmCadFuncionarios
         Me.btnNovo.Size = New System.Drawing.Size(141, 55)
         Me.btnNovo.TabIndex = 0
         Me.btnNovo.Text = "&Novo"
-        Me.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnNovo.UseVisualStyleBackColor = True
         '
         'Panel1
@@ -186,10 +196,10 @@ Partial Class frmCadFuncionarios
         '
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmcodfunc, Me.clmmatricula, Me.clmnome, Me.clmdtnasc, Me.clmsexo, Me.clmtelefone1, Me.clmcelular, Me.clmrg, Me.clmcpf, Me.clmcargo})
         Me.lstgrade.HideSelection = False
-        Me.lstgrade.Location = New System.Drawing.Point(33, 460)
+        Me.lstgrade.Location = New System.Drawing.Point(26, 460)
         Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
-        Me.lstgrade.Size = New System.Drawing.Size(1073, 176)
+        Me.lstgrade.Size = New System.Drawing.Size(1077, 176)
         Me.lstgrade.TabIndex = 63
         Me.lstgrade.UseCompatibleStateImageBehavior = False
         Me.lstgrade.View = System.Windows.Forms.View.Details
@@ -247,7 +257,7 @@ Partial Class frmCadFuncionarios
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(29, 112)
+        Me.TabControl1.Location = New System.Drawing.Point(26, 112)
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0

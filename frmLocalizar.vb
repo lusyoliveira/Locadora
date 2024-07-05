@@ -1,44 +1,7 @@
 Public Class frmLocalizar
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLocalizar.Click
-        Dim tbClientes, tbProdutos As ADODB.Recordset, sql As String, x As Integer
-
-        Select Case cboItens.Text
-            Case Is = "Clientes"
-                lstLocalizar.Items.Clear()
-                sql = "select * from tbClientes where nome like '%" & txtLocalizar.Text & "%'"
-                If IsNumeric(txtLocalizar.Text) Then
-                    sql = "select * from tbClientes where codigo = " & txtLocalizar.Text
-                End If
-                tbClientes = RecebeTabela(sql)
-                If tbClientes.RecordCount > 0 Then
-                    tbClientes.MoveFirst()
-                    Do Until tbClientes.EOF
-                        lstLocalizar.Items.Add(tbClientes("codigo").Value)
-                        lstLocalizar.Items(x).SubItems.Add(tbClientes("nome").Value)
-                        x += 1
-                        tbClientes.MoveNext()
-                    Loop
-                End If
-            Case Is = "Produtos"
-                lstLocalizar.Items.Clear()
-                sql = "select * from tbProdutos where titulo like '%" & txtLocalizar.Text & "%'"
-                If IsNumeric(txtLocalizar.Text) Then
-                    sql = "select * from tbProdutos where codigo = " & txtLocalizar.Text
-                End If
-                tbProdutos = RecebeTabela(sql)
-                If tbProdutos.RecordCount > 0 Then
-                    tbProdutos.MoveFirst()
-                    Do Until tbProdutos.EOF
-                        lstLocalizar.Items.Add(tbProdutos("codigo").Value)
-                        lstLocalizar.Items(x).SubItems.Add(tbProdutos("titulo").Value)
-                        x += 1
-                        tbProdutos.MoveNext()
-                    Loop
-                End If
+    Dim tbClientes, tbProdutos As DataTable, sql As String, x As Integer
 
 
-        End Select
-    End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFechar.Click
         Me.Close()
@@ -49,6 +12,42 @@ Public Class frmLocalizar
         txtLocalizar.Focus()
     End Sub
 
+    Private Sub btnLocalizar_Click(sender As Object, e As EventArgs) Handles btnLocalizar.Click
+        Dim sql As String = ""
+        Dim x As Integer = 0
+
+        Select Case cboItens.Text
+            Case "Clientes"
+                lstLocalizar.Items.Clear()
+                sql = "SELECT * FROM tbClientes WHERE nome LIKE '%" & txtLocalizar.Text & "%'"
+                If IsNumeric(txtLocalizar.Text) Then
+                    sql = "SELECT * FROM tbClientes WHERE codigo = " & txtLocalizar.Text
+                End If
+                tbClientes = RecebeTabela(sql)
+                If tbClientes.Rows.Count > 0 Then
+                    For Each row As DataRow In tbClientes.Rows
+                        lstLocalizar.Items.Add(row("codigo").ToString())
+                        lstLocalizar.Items(x).SubItems.Add(row("nome").ToString())
+                        x += 1
+                    Next
+                End If
+
+            Case "Produtos"
+                lstLocalizar.Items.Clear()
+                sql = "SELECT * FROM tbProdutos WHERE titulo LIKE '%" & txtLocalizar.Text & "%'"
+                If IsNumeric(txtLocalizar.Text) Then
+                    sql = "SELECT * FROM tbProdutos WHERE codigo = " & txtLocalizar.Text
+                End If
+                tbProdutos = RecebeTabela(sql)
+                If tbProdutos.Rows.Count > 0 Then
+                    For Each row As DataRow In tbProdutos.Rows
+                        lstLocalizar.Items.Add(row("codigo").ToString())
+                        lstLocalizar.Items(x).SubItems.Add(row("titulo").ToString())
+                        x += 1
+                    Next
+                End If
+        End Select
+    End Sub
     Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
         Select Case cboItens.Text
             Case Is = "Clientes"

@@ -1,5 +1,5 @@
 Public Class frmPrincipal
-   
+
     Private Sub FuncionáriosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FuncionáriosToolStripMenuItem.Click
         ''frmCadFuncionarios.Show()
         Dim frmPrincipal As New frmCadFuncionarios()
@@ -17,7 +17,6 @@ Public Class frmPrincipal
         Dim frmPrincipal As New frmLocacao()
         frmPrincipal.MdiParent = Me
         frmPrincipal.Show()
-        
     End Sub
     Private Sub FornecedoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FornecedoresToolStripMenuItem.Click
         ''frmCadFornecedores.Show()
@@ -53,7 +52,6 @@ Public Class frmPrincipal
         frmPrincipal.MdiParent = Me
         frmPrincipal.Show()
     End Sub
-   
     Private Sub ToolStripStatusLabel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripStatusLabel2.Click
         Dim tbLogin As ADODB.Recordset, sql As String
 
@@ -63,11 +61,8 @@ Public Class frmPrincipal
             MsgBox("Não existem usuário !")
             Exit Sub
         End If
-
-
     End Sub
 
-   
     Private Sub ClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClientesToolStripMenuItem.Click
         ''frmCadClientes.Show()
         Dim frmPrincipal As New frmCadClientes()
@@ -75,20 +70,4 @@ Public Class frmPrincipal
         frmPrincipal.Show()
     End Sub
 
-    
-    Private Sub frmPrincipal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub SairToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SairToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub PermissõesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PermissõesToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ConfiguraçõesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConfiguraçõesToolStripMenuItem.Click
-
-    End Sub
 End Class

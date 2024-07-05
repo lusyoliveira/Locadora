@@ -77,7 +77,7 @@ Partial Class frmCadFornecedores
         Me.Panel1.BackColor = System.Drawing.Color.DarkRed
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1071, 92)
         Me.Panel1.TabIndex = 1
@@ -106,7 +106,7 @@ Partial Class frmCadFornecedores
         'txtCodigo
         '
         Me.txtCodigo.Location = New System.Drawing.Point(18, 130)
-        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodigo.Name = "txtCodigo"
         Me.txtCodigo.Size = New System.Drawing.Size(97, 22)
         Me.txtCodigo.TabIndex = 0
@@ -115,7 +115,7 @@ Partial Class frmCadFornecedores
         'txtFornecedor
         '
         Me.txtFornecedor.Location = New System.Drawing.Point(123, 130)
-        Me.txtFornecedor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtFornecedor.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFornecedor.Name = "txtFornecedor"
         Me.txtFornecedor.Size = New System.Drawing.Size(380, 22)
         Me.txtFornecedor.TabIndex = 1
@@ -163,7 +163,7 @@ Partial Class frmCadFornecedores
         'txtEmpresa
         '
         Me.txtEmpresa.Location = New System.Drawing.Point(511, 130)
-        Me.txtEmpresa.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtEmpresa.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEmpresa.Name = "txtEmpresa"
         Me.txtEmpresa.Size = New System.Drawing.Size(339, 22)
         Me.txtEmpresa.TabIndex = 2
@@ -201,7 +201,7 @@ Partial Class frmCadFornecedores
         'txtEndereco
         '
         Me.txtEndereco.Location = New System.Drawing.Point(17, 189)
-        Me.txtEndereco.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtEndereco.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEndereco.Name = "txtEndereco"
         Me.txtEndereco.Size = New System.Drawing.Size(379, 22)
         Me.txtEndereco.TabIndex = 15
@@ -209,7 +209,7 @@ Partial Class frmCadFornecedores
         'txtComplemento
         '
         Me.txtComplemento.Location = New System.Drawing.Point(427, 189)
-        Me.txtComplemento.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtComplemento.Margin = New System.Windows.Forms.Padding(4)
         Me.txtComplemento.Name = "txtComplemento"
         Me.txtComplemento.Size = New System.Drawing.Size(107, 22)
         Me.txtComplemento.TabIndex = 5
@@ -217,7 +217,7 @@ Partial Class frmCadFornecedores
         'txtBairro
         '
         Me.txtBairro.Location = New System.Drawing.Point(17, 245)
-        Me.txtBairro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBairro.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBairro.Name = "txtBairro"
         Me.txtBairro.Size = New System.Drawing.Size(380, 22)
         Me.txtBairro.TabIndex = 6
@@ -225,7 +225,7 @@ Partial Class frmCadFornecedores
         'txtCidade
         '
         Me.txtCidade.Location = New System.Drawing.Point(17, 306)
-        Me.txtCidade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCidade.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCidade.Name = "txtCidade"
         Me.txtCidade.Size = New System.Drawing.Size(380, 22)
         Me.txtCidade.TabIndex = 8
@@ -251,9 +251,9 @@ Partial Class frmCadFornecedores
         Me.GroupBox1.Controls.Add(Me.lblEmail)
         Me.GroupBox1.Controls.Add(Me.lblSite)
         Me.GroupBox1.Location = New System.Drawing.Point(575, 170)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(480, 206)
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
@@ -262,7 +262,7 @@ Partial Class frmCadFornecedores
         'mskcel
         '
         Me.mskcel.Location = New System.Drawing.Point(211, 161)
-        Me.mskcel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.mskcel.Margin = New System.Windows.Forms.Padding(4)
         Me.mskcel.Mask = "(00)0000-0000"
         Me.mskcel.Name = "mskcel"
         Me.mskcel.Size = New System.Drawing.Size(132, 22)
@@ -271,7 +271,7 @@ Partial Class frmCadFornecedores
         'msktel
         '
         Me.msktel.Location = New System.Drawing.Point(25, 162)
-        Me.msktel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.msktel.Margin = New System.Windows.Forms.Padding(4)
         Me.msktel.Mask = "(00)0000-0000"
         Me.msktel.Name = "msktel"
         Me.msktel.Size = New System.Drawing.Size(132, 22)
@@ -300,7 +300,7 @@ Partial Class frmCadFornecedores
         'txtSite
         '
         Me.txtSite.Location = New System.Drawing.Point(25, 44)
-        Me.txtSite.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSite.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSite.Name = "txtSite"
         Me.txtSite.Size = New System.Drawing.Size(399, 22)
         Me.txtSite.TabIndex = 10
@@ -308,7 +308,7 @@ Partial Class frmCadFornecedores
         'txtEmail
         '
         Me.txtEmail.Location = New System.Drawing.Point(25, 100)
-        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtEmail.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(399, 22)
         Me.txtEmail.TabIndex = 11
@@ -341,78 +341,88 @@ Partial Class frmCadFornecedores
         Me.GroupBox2.Controls.Add(Me.btnSalvar)
         Me.GroupBox2.Controls.Add(Me.btnNovo)
         Me.GroupBox2.Location = New System.Drawing.Point(156, 613)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(749, 98)
         Me.GroupBox2.TabIndex = 32
         Me.GroupBox2.TabStop = False
         '
         'btnSair
         '
+        Me.btnSair.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.Location = New System.Drawing.Point(600, 23)
-        Me.btnSair.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSair.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSair.Name = "btnSair"
         Me.btnSair.Size = New System.Drawing.Size(141, 55)
         Me.btnSair.TabIndex = 6
         Me.btnSair.Text = "&Sair"
-        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.UseVisualStyleBackColor = True
         '
         'btnExcluir
         '
+        Me.btnExcluir.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.shell32_033
+        Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.Location = New System.Drawing.Point(449, 23)
-        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(141, 55)
         Me.btnExcluir.TabIndex = 3
         Me.btnExcluir.Text = "&Excluir"
-        Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.UseVisualStyleBackColor = True
         Me.btnExcluir.Visible = False
         '
         'btnConsultar
         '
-        Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnConsultar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.binoculars
+        Me.btnConsultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnConsultar.Location = New System.Drawing.Point(8, 23)
-        Me.btnConsultar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnConsultar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnConsultar.Name = "btnConsultar"
         Me.btnConsultar.Size = New System.Drawing.Size(141, 55)
         Me.btnConsultar.TabIndex = 2
         Me.btnConsultar.Text = "C&onsultar"
-        Me.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnConsultar.UseVisualStyleBackColor = True
         '
         'btnSalvar
         '
+        Me.btnSalvar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.external_hd
+        Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.Location = New System.Drawing.Point(303, 23)
-        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(141, 55)
         Me.btnSalvar.TabIndex = 1
         Me.btnSalvar.Text = "S&alvar"
-        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.UseVisualStyleBackColor = True
         '
         'btnNovo
         '
+        Me.btnNovo.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.document
+        Me.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnNovo.Location = New System.Drawing.Point(155, 23)
-        Me.btnNovo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnNovo.Margin = New System.Windows.Forms.Padding(4)
         Me.btnNovo.Name = "btnNovo"
         Me.btnNovo.Size = New System.Drawing.Size(141, 55)
         Me.btnNovo.TabIndex = 0
         Me.btnNovo.Text = "&Novo"
-        Me.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnNovo.UseVisualStyleBackColor = True
         '
         'mskcnpj
         '
         Me.mskcnpj.Location = New System.Drawing.Point(867, 130)
-        Me.mskcnpj.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.mskcnpj.Margin = New System.Windows.Forms.Padding(4)
         Me.mskcnpj.Mask = "000.000.000/0000-00"
         Me.mskcnpj.Name = "mskcnpj"
         Me.mskcnpj.Size = New System.Drawing.Size(192, 22)
@@ -421,7 +431,7 @@ Partial Class frmCadFornecedores
         'mskcpf
         '
         Me.mskcpf.Location = New System.Drawing.Point(427, 245)
-        Me.mskcpf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.mskcpf.Margin = New System.Windows.Forms.Padding(4)
         Me.mskcpf.Mask = "00000-000"
         Me.mskcpf.Name = "mskcpf"
         Me.mskcpf.Size = New System.Drawing.Size(107, 22)
@@ -432,7 +442,7 @@ Partial Class frmCadFornecedores
         Me.cbouf.FormattingEnabled = True
         Me.cbouf.Items.AddRange(New Object() {" AC", " AL", " AP", " AM", " BA", " CE", " DF", " ES", " GO", " MA", " MT", " MS", " MG", " PA", " PB", " PR", " PE", " PI", " RJ", " RN", " RS", " RO", " RR", " SC", " SP", " SE", " TO"})
         Me.cbouf.Location = New System.Drawing.Point(427, 306)
-        Me.cbouf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbouf.Margin = New System.Windows.Forms.Padding(4)
         Me.cbouf.Name = "cbouf"
         Me.cbouf.Size = New System.Drawing.Size(107, 24)
         Me.cbouf.TabIndex = 9
@@ -442,7 +452,7 @@ Partial Class frmCadFornecedores
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmcodigo, Me.clmfornecedor, Me.clmempresa, Me.clmcnpj, Me.clmuf, Me.clmcpf, Me.clmtelefone, Me.clmcelular})
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(16, 383)
-        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
         Me.lstgrade.Size = New System.Drawing.Size(1039, 222)
         Me.lstgrade.TabIndex = 37
@@ -520,7 +530,7 @@ Partial Class frmCadFornecedores
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmCadFornecedores"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cadastro de Fonecedores"

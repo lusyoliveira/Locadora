@@ -1,8 +1,15 @@
+Imports System.Data.SqlClient
+
 Public Class frmReserva
-    Dim tbClientes As ADODB.Recordset
-    Dim tbProdutos As ADODB.Recordset
-    Dim TBRESERVA As ADODB.Recordset
+    Dim tbClientes, tbProdutos, TBRESERVA As DataTable
     Dim SQL As String
+    Private Sub LIMPAR()
+        CBO_CLIENTE.Text = ""
+        CBO_PRODUTO.Text = ""
+        lbltotal.Text = ""
+        lblValorTotal.Text = ""
+        lstgrade.Clear()
+    End Sub
     Private Sub CAMPOZERO()
         If CBO_CLIENTE.Text = "" Then
             CBO_CLIENTE.Text = 0
@@ -13,44 +20,10 @@ Public Class frmReserva
     End Sub
     Private Sub cboCliente_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBO_CLIENTE.GotFocus
         CarregaCombo(CBO_CLIENTE, "Select codigo ,nome from tbClientes order by nome")
-        'Dim tbClientes As ADODB.Recordset
-        'cboCliente.Items.Clear()
-        'tbClientes = RecebeTabela("Select * from tbClientes order by nome")
-        'If tbClientes.RecordCount <> 0 Then
-        '    tbClientes.MoveFirst()
-        '    While tbClientes.EOF = False
-        '        cboCliente.Items.Add(tbClientes.Fields("nome").Value.ToString)
-        '        tbClientes.MoveNext()
-        '    End While
-        'End If
     End Sub
     Private Sub CBO_PORDUTO_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBO_PRODUTO.GotFocus
 
         CarregaCombo(CBO_PRODUTO, "Select codigo ,titulo from tbProdutos order by titulo")
-        'Dim tbProdutos As ADODB.Recordset
-        'CBO_PRODUTO.Items.Clear()
-        'tbProdutos = RecebeTabela("Select * from tbProdutos order by titulo")
-        'If tbProdutos.RecordCount <> 0 Then
-        '    tbProdutos.MoveFirst()
-        '    Do Until tbProdutos.EOF
-        '        CBO_PRODUTO.Items.Add(tbProdutos.Fields("titulo").Value.ToString)
-        '        tbProdutos.MoveNext()
-        '    Loop
-        'End If
-    End Sub
-    Private Sub btnok_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnok.Click
-        '' Dim tbReserva As ADODB.Record
-        If lblvalunit.Tag = "" Then Exit Sub
-        Dim tbProdutos As ADODB.Recordset
-        tbProdutos = RecebeTabela("Select * from tbProdutos where codigo = " & lblvalunit.Tag)
-        If tbProdutos.RecordCount = 0 Then Exit Sub
-        tbProdutos.MoveFirst()
-        lstgrade.Items.Add(tbProdutos("Titulo").Value.ToString)
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(tbProdutos("valor").Value.ToString))
-        lstgrade.Items(lstgrade.Items.Count - 1).Tag = tbProdutos("codigo").Value.ToString
-
-
-        atualizaValor()
     End Sub
     Private Sub atualizaValor()
         Dim x As Integer, total As Decimal = 0
@@ -63,16 +36,6 @@ Public Class frmReserva
             lbltotal.Text = 0
         End If
     End Sub
-    Private Sub CBO_PRODUTO_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBO_PRODUTO.SelectedIndexChanged
-
-        Dim tbProdutos As ADODB.Recordset
-        tbProdutos = RecebeTabela("Select * from tbProdutos where titulo like '" & CBO_PRODUTO.Text & "'")
-        lblvalunit.Text = FormatCurrency(0)
-        If tbProdutos.RecordCount = 0 Then Exit Sub
-        tbProdutos.MoveFirst()
-        lblvalunit.Text = FormatCurrency(tbProdutos("valor").Value.ToString)
-        lblvalunit.Tag = tbProdutos("codigo").Value.ToString
-    End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         If lstgrade.SelectedItems.Count = 0 Then Exit Sub
         lstgrade.SelectedItems(0).Remove()
@@ -84,38 +47,62 @@ Public Class frmReserva
         Me.Close()
     End Sub
 
+    Private Sub btnok_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnok.Click
+        If lblvalunit.Tag = "" Then Exit Sub
+
+        Dim tbProdutos As DataTable = RecebeTabela("SELECT * FROM tbProdutos WHERE codigo = " & lblvalunit.Tag)
+        If tbProdutos.Rows.Count = 0 Then Exit Sub
+
+        Dim row As DataRow = tbProdutos.Rows(0)
+        lstgrade.Items.Add(row("Titulo").ToString())
+        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(row("valor").ToString()))
+        lstgrade.Items(lstgrade.Items.Count - 1).Tag = row("codigo").ToString()
+
+        atualizaValor()
+    End Sub
+
+    Private Sub CBO_PRODUTO_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBO_PRODUTO.SelectedIndexChanged
+        Dim tbProdutos As DataTable = RecebeTabela("SELECT * FROM tbProdutos WHERE titulo LIKE '" & CBO_PRODUTO.Text & "'")
+        lblvalunit.Text = FormatCurrency(0)
+        If tbProdutos.Rows.Count = 0 Then Exit Sub
+
+        Dim row As DataRow = tbProdutos.Rows(0)
+        lblvalunit.Text = FormatCurrency(row("valor").ToString())
+        lblvalunit.Tag = row("codigo").ToString()
+    End Sub
+
     Private Sub btnReservar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReservar.Click
         On Error Resume Next
         CAMPOZERO()
-        SQL = "select * from TBRESERVA "
-        TBRESERVA = RecebeTabela(Sql)
-        TBRESERVA.AddNew()
-        TBRESERVA("CLIENTE").Value = LerCombo(CBO_CLIENTE)
-        TBRESERVA("PRODUTO").Value = LerCombo(CBO_PRODUTO)
-        TBRESERVA("DT_RESERVA").Value = DTP_RESERVA.Text
-        TBRESERVA("DT_DEVOLUCAO").Value = DTP_DEVOLUCAO.Text
-        TBRESERVA("VALOR").Value = lbltotal.Text
-        TBRESERVA.Update()
+
+        Dim TBRESERVA As DataTable = RecebeTabela("SELECT * FROM TBRESERVA")
+        Dim newRow As DataRow = TBRESERVA.NewRow()
+        newRow("CLIENTE").Value = LerCombo(CBO_CLIENTE)
+        newRow("PRODUTO").Value = LerCombo(CBO_PRODUTO)
+        newRow("DT_RESERVA").Value = DTP_RESERVA.Text
+        newRow("DT_DEVOLUCAO").Value = DTP_DEVOLUCAO.Text
+        newRow("VALOR").Value = lbltotal.Text
+
+        TBRESERVA.Rows.Add(newRow)
+        AtualizaBancoDados(TBRESERVA) ' Este método deve ser responsável por enviar as mudanças para o banco de dados.
+
         LIMPAR()
     End Sub
-    Private Sub LIMPAR()
-        CBO_CLIENTE.Text = ""
-        CBO_PRODUTO.Text = ""
-        lbltotal.Text = ""
-        lblValorTotal.Text = ""
-        lstgrade.Clear()
+    Public Sub AtualizaBancoDados(ByVal tabela As DataTable)
+        Dim connectionString As String = "sua_string_de_conexao_aqui" ' Substitua pela sua string de conexão
+        Using connection As New SqlConnection(connectionString)
+            Dim sql As String = "SELECT * FROM " & tabela.TableName
+            Dim adapter As New SqlDataAdapter(sql, connection)
+            Dim commandBuilder As New SqlCommandBuilder(adapter)
 
-
-    End Sub
-    Private Sub cboCliente_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CBO_CLIENTE.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub frmReserva_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub lblvalunit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblvalunit.Click
-
+            Try
+                connection.Open()
+                adapter.Update(tabela)
+            Catch ex As Exception
+                MsgBox("Erro ao atualizar o banco de dados: " & ex.Message)
+            Finally
+                connection.Close()
+            End Try
+        End Using
     End Sub
 End Class

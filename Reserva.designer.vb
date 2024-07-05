@@ -56,7 +56,7 @@ Partial Class frmReserva
         Me.Panel1.BackColor = System.Drawing.Color.DarkRed
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(867, 94)
         Me.Panel1.TabIndex = 2
@@ -76,9 +76,9 @@ Partial Class frmReserva
         Me.GroupBox1.Controls.Add(Me.lblTitulo)
         Me.GroupBox1.Controls.Add(Me.lblValorTotal)
         Me.GroupBox1.Location = New System.Drawing.Point(36, 176)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(799, 389)
         Me.GroupBox1.TabIndex = 12
         Me.GroupBox1.TabStop = False
@@ -98,36 +98,40 @@ Partial Class frmReserva
         '
         'btnSair
         '
+        Me.btnSair.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSair.Location = New System.Drawing.Point(640, 324)
-        Me.btnSair.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSair.Location = New System.Drawing.Point(379, 318)
+        Me.btnSair.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSair.Name = "btnSair"
         Me.btnSair.Size = New System.Drawing.Size(141, 55)
         Me.btnSair.TabIndex = 6
         Me.btnSair.Text = "&Cancelar"
-        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSair.UseVisualStyleBackColor = True
         '
         'Button1
         '
+        Me.Button1.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(643, 95)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Location = New System.Drawing.Point(644, 131)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(141, 55)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "R&emover"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = True
         '
         'GroupBox9
         '
         Me.GroupBox9.Controls.Add(Me.lbltotal)
         Me.GroupBox9.Controls.Add(Me.Label1)
-        Me.GroupBox9.Location = New System.Drawing.Point(619, 158)
-        Me.GroupBox9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox9.Location = New System.Drawing.Point(619, 299)
+        Me.GroupBox9.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox9.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox9.Size = New System.Drawing.Size(165, 82)
         Me.GroupBox9.TabIndex = 47
         Me.GroupBox9.TabStop = False
@@ -157,33 +161,37 @@ Partial Class frmReserva
         '
         'btnReservar
         '
+        Me.btnReservar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ok
+        Me.btnReservar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnReservar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnReservar.Location = New System.Drawing.Point(465, 324)
-        Me.btnReservar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnReservar.Location = New System.Drawing.Point(204, 318)
+        Me.btnReservar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnReservar.Name = "btnReservar"
         Me.btnReservar.Size = New System.Drawing.Size(141, 55)
         Me.btnReservar.TabIndex = 8
         Me.btnReservar.Text = "&Reservar"
-        Me.btnReservar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnReservar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnReservar.UseVisualStyleBackColor = True
         '
         'btnok
         '
+        Me.btnok.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
+        Me.btnok.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnok.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnok.Location = New System.Drawing.Point(640, 32)
-        Me.btnok.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnok.Location = New System.Drawing.Point(644, 68)
+        Me.btnok.Margin = New System.Windows.Forms.Padding(4)
         Me.btnok.Name = "btnok"
         Me.btnok.Size = New System.Drawing.Size(141, 55)
         Me.btnok.TabIndex = 9
         Me.btnok.Text = "&Adicionar"
-        Me.btnok.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnok.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnok.UseVisualStyleBackColor = True
         '
         'CBO_PRODUTO
         '
         Me.CBO_PRODUTO.FormattingEnabled = True
         Me.CBO_PRODUTO.Location = New System.Drawing.Point(20, 32)
-        Me.CBO_PRODUTO.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CBO_PRODUTO.Margin = New System.Windows.Forms.Padding(4)
         Me.CBO_PRODUTO.Name = "CBO_PRODUTO"
         Me.CBO_PRODUTO.Size = New System.Drawing.Size(452, 24)
         Me.CBO_PRODUTO.TabIndex = 42
@@ -193,7 +201,7 @@ Partial Class frmReserva
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(20, 68)
-        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
         Me.lstgrade.Size = New System.Drawing.Size(585, 228)
         Me.lstgrade.TabIndex = 41
@@ -240,9 +248,9 @@ Partial Class frmReserva
         Me.GroupBox8.Controls.Add(Me.lblCliente)
         Me.GroupBox8.Controls.Add(Me.lblDtReserva)
         Me.GroupBox8.Location = New System.Drawing.Point(36, 101)
-        Me.GroupBox8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox8.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox8.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox8.Size = New System.Drawing.Size(799, 68)
         Me.GroupBox8.TabIndex = 46
         Me.GroupBox8.TabStop = False
@@ -252,7 +260,7 @@ Partial Class frmReserva
         Me.DTP_DEVOLUCAO.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.DTP_DEVOLUCAO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DTP_DEVOLUCAO.Location = New System.Drawing.Point(644, 33)
-        Me.DTP_DEVOLUCAO.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DTP_DEVOLUCAO.Margin = New System.Windows.Forms.Padding(4)
         Me.DTP_DEVOLUCAO.Name = "DTP_DEVOLUCAO"
         Me.DTP_DEVOLUCAO.Size = New System.Drawing.Size(115, 22)
         Me.DTP_DEVOLUCAO.TabIndex = 40
@@ -262,7 +270,7 @@ Partial Class frmReserva
         Me.DTP_RESERVA.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.DTP_RESERVA.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DTP_RESERVA.Location = New System.Drawing.Point(493, 34)
-        Me.DTP_RESERVA.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DTP_RESERVA.Margin = New System.Windows.Forms.Padding(4)
         Me.DTP_RESERVA.Name = "DTP_RESERVA"
         Me.DTP_RESERVA.Size = New System.Drawing.Size(115, 22)
         Me.DTP_RESERVA.TabIndex = 0
@@ -281,7 +289,7 @@ Partial Class frmReserva
         '
         Me.CBO_CLIENTE.FormattingEnabled = True
         Me.CBO_CLIENTE.Location = New System.Drawing.Point(19, 34)
-        Me.CBO_CLIENTE.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CBO_CLIENTE.Margin = New System.Windows.Forms.Padding(4)
         Me.CBO_CLIENTE.Name = "CBO_CLIENTE"
         Me.CBO_CLIENTE.Size = New System.Drawing.Size(453, 24)
         Me.CBO_CLIENTE.TabIndex = 36
@@ -315,7 +323,7 @@ Partial Class frmReserva
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmReserva"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Reserva"

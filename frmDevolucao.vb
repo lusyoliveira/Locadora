@@ -1,25 +1,30 @@
 Public Class frmDevolucao
-    Dim TBLOCACAO As ADODB.Recordset
+    Dim TBLOCACAO As DataTable
 
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-
-    End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        'If lblvalunit.Tag = "" Then Exit Sub
-        'Dim tbProdutos As ADODB.Recordset
-        TBLOCACAO = RecebeTabela("Select * from TBLOCACAO where CODIGO = " & TXT_CODIGO.Text)
-        If TBLOCACAO.RecordCount = 0 Then Exit Sub
-        TBLOCACAO.MoveFirst()
-        'lstgrade.Items(lstgrade.Items.Count - 1).Tag = tbProdutos("codigo").Value.ToString
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(TBLOCACAO("CODIGO").Value.ToString)
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(TBLOCACAO("CLIENTE").Value.ToString)
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(TBLOCACAO("TOTAL").Value.ToString)
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(TBLOCACAO("MULTA").Value.ToString)
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(TBLOCACAO("DT_LOCACAO").Value.ToString)
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(TBLOCACAO("DT_DEVOLUCAO").Value.ToString)
-
-
-        ''atualizaValor()
+        carregalocacao()
     End Sub
+    Private Sub carregalocacao()
+
+        lstgrade.Items.Clear()
+
+        Dim sql As String = "Select * from TBLOCACAO where CODIGO = " & TXT_CODIGO.Text
+        ' Recebe o DataTable preenchido com os dados das locações
+        TBLOCACAO = RecebeTabela(sql)
+
+        If TBLOCACAO.Rows.Count = 0 Then Exit Sub
+
+        For Each row As DataRow In TBLOCACAO.Rows
+            Dim item As New ListViewItem(row("CODIGO").ToString())
+            item.SubItems.Add(row("CLIENTE").ToString())
+            item.SubItems.Add(row("TOTAL").ToString())
+            item.SubItems.Add(row("MULTA").ToString())
+            item.SubItems.Add(row("DT_LOCACAO").ToString())
+            item.SubItems.Add(row("DT_DEVOLUCAO").ToString())
+            lstgrade.Items.Add(item)
+        Next
+    End Sub
+
+
 End Class

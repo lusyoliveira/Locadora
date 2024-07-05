@@ -45,7 +45,7 @@ Partial Class frmLocalizar
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(235, 97)
+        Me.Label1.Location = New System.Drawing.Point(201, 98)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(226, 16)
@@ -67,11 +67,11 @@ Partial Class frmLocalizar
         Me.lstLocalizar.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.codigo, Me.nome})
         Me.lstLocalizar.FullRowSelect = True
         Me.lstLocalizar.HideSelection = False
-        Me.lstLocalizar.Location = New System.Drawing.Point(36, 166)
-        Me.lstLocalizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstLocalizar.Location = New System.Drawing.Point(30, 150)
+        Me.lstLocalizar.Margin = New System.Windows.Forms.Padding(4)
         Me.lstLocalizar.MultiSelect = False
         Me.lstLocalizar.Name = "lstLocalizar"
-        Me.lstLocalizar.Size = New System.Drawing.Size(645, 144)
+        Me.lstLocalizar.Size = New System.Drawing.Size(676, 160)
         Me.lstLocalizar.TabIndex = 10
         Me.lstLocalizar.UseCompatibleStateImageBehavior = False
         Me.lstLocalizar.View = System.Windows.Forms.View.Details
@@ -88,10 +88,10 @@ Partial Class frmLocalizar
         '
         'txtLocalizar
         '
-        Me.txtLocalizar.Location = New System.Drawing.Point(239, 118)
-        Me.txtLocalizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtLocalizar.Location = New System.Drawing.Point(204, 118)
+        Me.txtLocalizar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtLocalizar.Name = "txtLocalizar"
-        Me.txtLocalizar.Size = New System.Drawing.Size(388, 22)
+        Me.txtLocalizar.Size = New System.Drawing.Size(502, 22)
         Me.txtLocalizar.TabIndex = 1
         '
         'cboItens
@@ -99,7 +99,7 @@ Partial Class frmLocalizar
         Me.cboItens.FormattingEnabled = True
         Me.cboItens.Items.AddRange(New Object() {"Clientes", "Produtos"})
         Me.cboItens.Location = New System.Drawing.Point(36, 118)
-        Me.cboItens.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboItens.Margin = New System.Windows.Forms.Padding(4)
         Me.cboItens.Name = "cboItens"
         Me.cboItens.Size = New System.Drawing.Size(160, 24)
         Me.cboItens.TabIndex = 0
@@ -121,8 +121,10 @@ Partial Class frmLocalizar
         '
         'btnSalvar
         '
+        Me.btnSalvar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.external_hd
+        Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnSalvar.Location = New System.Drawing.Point(145, 16)
-        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(95, 69)
         Me.btnSalvar.TabIndex = 3
@@ -131,8 +133,10 @@ Partial Class frmLocalizar
         '
         'btnLocalizar
         '
+        Me.btnLocalizar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.binoculars
+        Me.btnLocalizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnLocalizar.Location = New System.Drawing.Point(27, 16)
-        Me.btnLocalizar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnLocalizar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnLocalizar.Name = "btnLocalizar"
         Me.btnLocalizar.Size = New System.Drawing.Size(95, 69)
         Me.btnLocalizar.TabIndex = 2
@@ -141,8 +145,10 @@ Partial Class frmLocalizar
         '
         'btnExcluir
         '
+        Me.btnExcluir.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.shell32_033
+        Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnExcluir.Location = New System.Drawing.Point(396, 16)
-        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnExcluir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnExcluir.Name = "btnExcluir"
         Me.btnExcluir.Size = New System.Drawing.Size(95, 69)
         Me.btnExcluir.TabIndex = 5
@@ -151,8 +157,10 @@ Partial Class frmLocalizar
         '
         'btnFechar
         '
+        Me.btnFechar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnFechar.Location = New System.Drawing.Point(527, 16)
-        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnFechar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnFechar.Name = "btnFechar"
         Me.btnFechar.Size = New System.Drawing.Size(95, 69)
         Me.btnFechar.TabIndex = 7
@@ -161,8 +169,10 @@ Partial Class frmLocalizar
         '
         'btnAlterar
         '
+        Me.btnAlterar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.paste
+        Me.btnAlterar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnAlterar.Location = New System.Drawing.Point(272, 16)
-        Me.btnAlterar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAlterar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAlterar.Name = "btnAlterar"
         Me.btnAlterar.Size = New System.Drawing.Size(95, 69)
         Me.btnAlterar.TabIndex = 4
@@ -174,7 +184,7 @@ Partial Class frmLocalizar
         Me.Panel1.BackColor = System.Drawing.Color.DarkRed
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(733, 79)
         Me.Panel1.TabIndex = 11
@@ -186,10 +196,10 @@ Partial Class frmLocalizar
         Me.GroupBox1.Controls.Add(Me.btnExcluir)
         Me.GroupBox1.Controls.Add(Me.btnFechar)
         Me.GroupBox1.Controls.Add(Me.btnAlterar)
-        Me.GroupBox1.Location = New System.Drawing.Point(36, 319)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(36, 318)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(647, 92)
         Me.GroupBox1.TabIndex = 12
         Me.GroupBox1.TabStop = False
@@ -208,7 +218,7 @@ Partial Class frmLocalizar
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLocalizar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Localizar"

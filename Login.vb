@@ -1,5 +1,5 @@
 Public Class frmLogin
-    Dim tbaux, tbUsuarios As ADODB.Recordset, sql, Tentativas As String
+    Dim tbaux, tbUsuarios As DataTable, sql, Tentativas As String
     Private Sub btnacesso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnacesso.Click
         txtLogin.Visible = True
         txtSenha.Visible = True
@@ -9,29 +9,28 @@ Public Class frmLogin
         btnacesso.Visible = False
     End Sub
     Private Sub frmLogin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        tbaux = RecebeTabela("Select * from tbUsuarios order by nome")
-        If tbaux.RecordCount <> 0 Then
-            tbaux.MoveFirst()
-            While tbaux.EOF = False
-                txtLogin.AutoCompleteCustomSource.Add(tbaux.Fields("nome").Value.ToString)
-                tbaux.MoveNext()
-            End While
+        tbaux = RecebeTabela("SELECT * FROM tbUsuarios ORDER BY nome")
+        If tbaux.Rows.Count <> 0 Then
+            For Each row As DataRow In tbaux.Rows
+                txtLogin.AutoCompleteCustomSource.Add(row("nome").ToString())
+            Next
             txtLogin.Focus()
         End If
     End Sub
+
     Private Sub btnEntrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEntrar.Click
-        sql = "Select * from tbUsuarios where nome = '" & txtLogin.Text & "'"
+        Dim sql As String = "SELECT * FROM tbUsuarios WHERE nome = '" & txtLogin.Text & "'"
         tbUsuarios = RecebeTabela(sql)
-        If tbUsuarios.RecordCount = 0 Then
-            MsgBox("Usuário não existe !", MsgBoxStyle.Information)
+        If tbUsuarios.Rows.Count = 0 Then
+            MsgBox("Usuário não existe!", MsgBoxStyle.Information)
             Exit Sub
         End If
-        If txtSenha.Text.ToUpper = tbUsuarios("senha").Value.ToString.ToUpper Then
+        If txtSenha.Text.ToUpper = tbUsuarios.Rows(0)("senha").ToString().ToUpper() Then
             frmPrincipal.Show()
             MsgBox("Seja Bem-Vindo a Loctech sistema")
-            tbUsuarios = RecebeTabela("select * from tbUsuarios")
+            tbUsuarios = RecebeTabela("SELECT * FROM tbUsuarios")
         Else
-            MsgBox("Senha inválida !")
+            MsgBox("Senha inválida!")
             Beep()
             txtSenha.Text = ""
             txtSenha.Focus()

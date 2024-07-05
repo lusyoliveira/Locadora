@@ -50,7 +50,7 @@ Partial Class frmDevolucao
         'TXT_CODIGO
         '
         Me.TXT_CODIGO.Location = New System.Drawing.Point(21, 49)
-        Me.TXT_CODIGO.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TXT_CODIGO.Margin = New System.Windows.Forms.Padding(4)
         Me.TXT_CODIGO.Name = "TXT_CODIGO"
         Me.TXT_CODIGO.Size = New System.Drawing.Size(163, 22)
         Me.TXT_CODIGO.TabIndex = 0
@@ -67,12 +67,15 @@ Partial Class frmDevolucao
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(212, 30)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.binoculars
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Button1.Location = New System.Drawing.Point(207, 22)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(120, 44)
+        Me.Button1.Size = New System.Drawing.Size(131, 58)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Pesquisar"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Panel1
@@ -81,7 +84,7 @@ Partial Class frmDevolucao
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.ForeColor = System.Drawing.Color.DarkRed
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1081, 92)
         Me.Panel1.TabIndex = 3
@@ -91,7 +94,7 @@ Partial Class frmDevolucao
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader5, Me.ColumnHeader4, Me.ColumnHeader6})
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(36, 204)
-        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
         Me.lstgrade.Size = New System.Drawing.Size(777, 322)
         Me.lstgrade.TabIndex = 4
@@ -129,7 +132,7 @@ Partial Class frmDevolucao
         'TextBox2
         '
         Me.TextBox2.Location = New System.Drawing.Point(32, 178)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(115, 22)
         Me.TextBox2.TabIndex = 66
@@ -194,7 +197,7 @@ Partial Class frmDevolucao
         '
         Me.TextBox3.Enabled = False
         Me.TextBox3.Location = New System.Drawing.Point(32, 117)
-        Me.TextBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(115, 22)
         Me.TextBox3.TabIndex = 68
@@ -212,22 +215,28 @@ Partial Class frmDevolucao
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(603, 138)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Button2.Location = New System.Drawing.Point(585, 122)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(120, 44)
+        Me.Button2.Size = New System.Drawing.Size(100, 58)
         Me.Button2.TabIndex = 69
         Me.Button2.Text = "Sair"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(445, 138)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button3.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.folder_open
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Button3.Location = New System.Drawing.Point(425, 122)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(120, 44)
+        Me.Button3.Size = New System.Drawing.Size(129, 58)
         Me.Button3.TabIndex = 70
         Me.Button3.Text = "Devolução"
+        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = True
         '
         'dtReserva
@@ -235,7 +244,7 @@ Partial Class frmDevolucao
         Me.dtReserva.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.dtReserva.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtReserva.Location = New System.Drawing.Point(889, 147)
-        Me.dtReserva.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtReserva.Margin = New System.Windows.Forms.Padding(4)
         Me.dtReserva.Name = "dtReserva"
         Me.dtReserva.Size = New System.Drawing.Size(115, 22)
         Me.dtReserva.TabIndex = 71
@@ -246,10 +255,10 @@ Partial Class frmDevolucao
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Location = New System.Drawing.Point(36, 100)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(383, 96)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(361, 96)
         Me.GroupBox1.TabIndex = 72
         Me.GroupBox1.TabStop = False
         '
@@ -264,9 +273,9 @@ Partial Class frmDevolucao
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.TextBox2)
         Me.GroupBox2.Location = New System.Drawing.Point(856, 204)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(192, 325)
         Me.GroupBox2.TabIndex = 73
         Me.GroupBox2.TabStop = False
@@ -284,7 +293,7 @@ Partial Class frmDevolucao
         Me.Controls.Add(Me.lstgrade)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmDevolucao"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Devolução"
