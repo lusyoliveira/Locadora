@@ -1,22 +1,20 @@
-﻿Module MDL_COMBO_BOX
-
+﻿Module mdlCombo
     Public Sub CarregaCombo(ByVal ComboRec As ComboBox, ByVal Sql As String)
-        ' Carrega o combox
+        ' Carrega o combobox
         Dim Lista As New ArrayList()
-        Dim Tabela As ADODB.Recordset
+        Dim Tabela As DataTable
 
         Lista.Clear()
-        ''ComboRec.Items.Clear()
         ComboRec.AutoCompleteCustomSource.Clear()
         Tabela = RecebeTabela(Sql)
-        If Tabela.RecordCount <> 0 Then
-            Tabela.MoveFirst()
-            While Tabela.EOF = False
-                Lista.Add(New CLS_CONTEUDO_COMBO(Tabela.Fields(0).Value, Tabela.Fields(1).Value.ToString))
-                ComboRec.AutoCompleteCustomSource.Add(Tabela.Fields(1).Value.ToString)
-                Tabela.MoveNext()
-            End While
+
+        If Tabela.Rows.Count <> 0 Then
+            For Each row As DataRow In Tabela.Rows
+                Lista.Add(New clsCombo(row(0), row(1).ToString()))
+                ComboRec.AutoCompleteCustomSource.Add(row(1).ToString())
+            Next
         End If
+
         ComboRec.DisplayMember = "Descricao"
         ComboRec.ValueMember = "Valor"
         ComboRec.DataSource = Lista
@@ -27,7 +25,7 @@
     Public Function LerCombo(ByVal ComboRec As ComboBox) As String
         Dim Selecionado As String
         Try
-            Selecionado = CType(ComboRec.SelectedItem, CLS_CONTEUDO_COMBO).Valor.ToString
+            Selecionado = CType(ComboRec.SelectedItem, clsCombo).Valor.ToString
         Catch ex As Exception
             Selecionado = ""
         End Try
@@ -38,7 +36,7 @@
         Dim Selecionado As String, x As Integer
         Try
             For x = 0 To ComboRec.Items.Count - 1
-                If CType(ComboRec.Items(x), CLS_CONTEUDO_COMBO).Valor.ToString = Valor Then
+                If CType(ComboRec.Items(x), clsCombo).Valor.ToString = Valor Then
                     ComboRec.SelectedIndex = x
                     Exit For
                 End If

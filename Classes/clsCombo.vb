@@ -1,4 +1,4 @@
-﻿Public Class CLS_CONTEUDO_COMBO
+﻿Public Class clsCombo
     Public Valor As Object
     Public Descricao As String
 

@@ -1,14 +1,11 @@
 Public Class frmLocalizar
     Dim tbClientes, tbProdutos As DataTable, sql As String, x As Integer
 
-
-
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFechar.Click
         Me.Close()
     End Sub
 
     Private Sub grpLocalizar_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        MdiParent = frmPrincipal
         txtLocalizar.Focus()
     End Sub
 
@@ -57,7 +54,7 @@ Public Class frmLocalizar
         Select Case cboItens.Text
             Case Is = "Clientes"
                 frmCadClientes.Show()
-                frmCadClientes.btnExcluir.Enabled = False
+                frmCadClientes.btnAlterar.Enabled = False
             Case Is = "Produtos"
                 frmCadProdutos.Show()
                 frmCadProdutos.btnExcluir.Enabled = False
@@ -69,7 +66,7 @@ Public Class frmLocalizar
             Case Is = "Clientes"
                 frmCadClientes.Show()
                 frmCadClientes.btnSalvar.Enabled = False
-                frmCadClientes.btnExcluir.Enabled = False
+                frmCadClientes.btnAlterar.Enabled = False
             Case Is = "Produtos"
                 frmCadProdutos.Show()
                 frmCadProdutos.btnSalvar.Enabled = False

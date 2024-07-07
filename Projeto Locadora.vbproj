@@ -78,63 +78,64 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CadProdutos.designer.vb">
+    <Compile Include="Forms\CadProdutos.designer.vb">
       <DependentUpon>CadProdutos.vb</DependentUpon>
     </Compile>
-    <Compile Include="CadProdutos.vb">
+    <Compile Include="Forms\CadProdutos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadFornecedores.designer.vb">
+    <Compile Include="Forms\CadFornecedores.designer.vb">
       <DependentUpon>CadFornecedores.vb</DependentUpon>
     </Compile>
-    <Compile Include="CadFornecedores.vb">
+    <Compile Include="Forms\CadFornecedores.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadUsuarios.designer.vb">
+    <Compile Include="Forms\CadUsuarios.designer.vb">
       <DependentUpon>CadUsuarios.vb</DependentUpon>
     </Compile>
-    <Compile Include="CadUsuarios.vb">
+    <Compile Include="Forms\CadUsuarios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CLS_CONTEUDO_COMBO.vb" />
-    <Compile Include="frmLocalizar.designer.vb">
+    <Compile Include="Classes\clsCombo.vb" />
+    <Compile Include="Classes\clsClientes.vb" />
+    <Compile Include="Forms\frmLocalizar.designer.vb">
       <DependentUpon>frmLocalizar.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLocalizar.vb">
+    <Compile Include="Forms\frmLocalizar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.vb">
+    <Compile Include="Forms\Login.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.vb">
+    <Compile Include="Forms\Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadClientes.Designer.vb">
+    <Compile Include="Forms\CadClientes.Designer.vb">
       <DependentUpon>CadClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="CadClientes.vb">
+    <Compile Include="Forms\CadClientes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadFuncionarios.Designer.vb">
+    <Compile Include="Forms\CadFuncionarios.Designer.vb">
       <DependentUpon>CadFuncionarios.vb</DependentUpon>
     </Compile>
-    <Compile Include="CadFuncionarios.vb">
+    <Compile Include="Forms\CadFuncionarios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLocacao.Designer.vb">
+    <Compile Include="Forms\frmLocacao.Designer.vb">
       <DependentUpon>frmLocacao.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLocacao.vb">
+    <Compile Include="Forms\frmLocacao.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mdlConexao.vb" />
-    <Compile Include="mdlFuncoes.vb" />
-    <Compile Include="MDL_COMBO_BOX.vb" />
-    <Compile Include="frmPrincipal.Designer.vb">
+    <Compile Include="Modulos\mdlConexao.vb" />
+    <Compile Include="Modulos\mdlFuncoes.vb" />
+    <Compile Include="Modulos\mdlCombo.vb" />
+    <Compile Include="Forms\frmPrincipal.Designer.vb">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.vb">
+    <Compile Include="Forms\frmPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -153,68 +154,68 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Reserva.designer.vb">
-      <DependentUpon>Reserva.vb</DependentUpon>
+    <Compile Include="Forms\frmReserva.designer.vb">
+      <DependentUpon>frmReserva.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reserva.vb">
+    <Compile Include="Forms\frmReserva.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDevolucao.Designer.vb">
+    <Compile Include="Forms\frmDevolucao.Designer.vb">
       <DependentUpon>frmDevolucao.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmDevolucao.vb">
+    <Compile Include="Forms\frmDevolucao.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CadProdutos.resx">
+    <EmbeddedResource Include="Forms\CadProdutos.resx">
       <DependentUpon>CadProdutos.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadFornecedores.resx">
+    <EmbeddedResource Include="Forms\CadFornecedores.resx">
       <DependentUpon>CadFornecedores.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadUsuarios.resx">
+    <EmbeddedResource Include="Forms\CadUsuarios.resx">
       <DependentUpon>CadUsuarios.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDevolucao.resx">
+    <EmbeddedResource Include="Forms\frmDevolucao.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmDevolucao.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLocalizar.resx">
+    <EmbeddedResource Include="Forms\frmLocalizar.resx">
       <DependentUpon>frmLocalizar.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Forms\Login.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadClientes.resx">
+    <EmbeddedResource Include="Forms\CadClientes.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CadClientes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadFuncionarios.resx">
+    <EmbeddedResource Include="Forms\CadFuncionarios.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CadFuncionarios.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLocacao.resx">
+    <EmbeddedResource Include="Forms\frmLocacao.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmLocacao.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.resx">
+    <EmbeddedResource Include="Forms\frmPrincipal.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reserva.resx">
-      <DependentUpon>Reserva.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\frmReserva.resx">
+      <DependentUpon>frmReserva.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -229,15 +230,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\c5e278175b66.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TRABALHO.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TRABALHO2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">
@@ -330,9 +322,6 @@
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
@@ -342,13 +331,7 @@
     <None Include="Resources\shell32.033.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\paste1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\card machine.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Filmadora-rolo-de-filmes-e-claquete_01.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FIND.ICO" />

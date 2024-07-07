@@ -1,12 +1,12 @@
 Imports System.Data.SqlClient
 
 Public Class frmLocacao
-    Dim wcpagina As Integer, imagem As Image, tbCliente As ADODB.Recordset
+    Dim wcpagina As Integer, imagem As Image
     Dim X As Integer
     Dim Y As Integer
     Dim z As Integer
     Dim SQL As String
-    Dim tbclientes, tbProdutos, TBLOCACAO, tbFuncionarios As DataTable
+    Dim tbclientes, tbProdutos, TBLOCACAO, tbFuncionarios, DataTable
     Private Sub cboClientes_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboclientes.GotFocus
         CarregaCombo(cboclientes, "Select codigo ,nome from tbClientes order by nome")
 
@@ -34,15 +34,18 @@ Public Class frmLocacao
         lbltotalpg.Text = lbltotalpg.Text + X
 
         If lblvalunit.Tag = "" Then Exit Sub
-        Dim tbProdutos As ADODB.Recordset
-        tbProdutos = RecebeTabela("Select * from tbProdutos where codigo = " & lblvalunit.Tag)
-        If tbProdutos.RecordCount = 0 Then Exit Sub
-        tbProdutos.MoveFirst()
-        lstgrade.Items.Add(tbProdutos("titulo").Value.ToString)
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(tbProdutos("valor").Value.ToString))
+
+        Dim tbProdutos As DataTable = RecebeTabela("Select * from tbProdutos where codigo = " & lblvalunit.Tag)
+
+        If tbProdutos.Rows.Count = 0 Then Exit Sub
+
+        Dim row As DataRow = tbProdutos.Rows(0)
+        lstgrade.Items.Add(row("titulo").ToString())
+        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(row("valor").ToString()))
         lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(txtQuantidade.Text)
         ''lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(lbltotal1.Text))
-        lstgrade.Items(lstgrade.Items.Count - 1).Tag = tbProdutos("codigo").Value.ToString
+        lstgrade.Items(lstgrade.Items.Count - 1).Tag = row("codigo").ToString()
+
     End Sub
     Private Sub btnremove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnremove.Click
         'X = 0
