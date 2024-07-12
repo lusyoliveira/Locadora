@@ -1,5 +1,5 @@
 Public Class frmPrincipal
-
+    Dim ClasseCombo As New clsCombo
     Private Sub FuncionáriosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FuncionáriosToolStripMenuItem.Click
         ''frmCadFuncionarios.Show()
         Dim frmPrincipal As New frmCadFuncionarios()
@@ -20,17 +20,17 @@ Public Class frmPrincipal
     End Sub
     Private Sub FornecedoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FornecedoresToolStripMenuItem.Click
         ''frmCadFornecedores.Show()
-        Dim frmPrincipal As New frmCadFuncionarios()
+        Dim frmPrincipal As New frmCadFornecedores()
         frmPrincipal.MdiParent = Me
         frmPrincipal.Show()
     End Sub
     Private Sub SairToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SairToolStripMenuItem1.Click
-        If (MsgBox("Deseja realmente sair do sistema ? ", MsgBoxStyle.YesNo)) = MsgBoxResult.Yes Then
+        If (MsgBox("Deseja realmente sair do sistema?", MsgBoxStyle.YesNo)) = MsgBoxResult.Yes Then
             Me.Close()
         End If
     End Sub
     Private Sub SairToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SairToolStripMenuItem2.Click
-        If (MsgBox("Deseja realmente sair do sistema ? ", MsgBoxStyle.YesNo)) = MsgBoxResult.Yes Then
+        If (MsgBox("Deseja realmente sair do sistema?", MsgBoxStyle.YesNo)) = MsgBoxResult.Yes Then
             Me.Close()
         End If
     End Sub
@@ -52,17 +52,6 @@ Public Class frmPrincipal
         frmPrincipal.MdiParent = Me
         frmPrincipal.Show()
     End Sub
-    Private Sub ToolStripStatusLabel2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripStatusLabel2.Click
-        Dim tbLogin As ADODB.Recordset, sql As String
-
-        sql = "Select * from tbLogin where nome <> '' order by nome"
-        tbLogin = RecebeTabela(sql)
-        If tbLogin.RecordCount = 0 Then
-            MsgBox("Não existem usuário !")
-            Exit Sub
-        End If
-    End Sub
-
     Private Sub ClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClientesToolStripMenuItem.Click
         ''frmCadClientes.Show()
         Dim frmPrincipal As New frmCadClientes()

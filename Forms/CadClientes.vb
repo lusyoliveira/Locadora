@@ -1,6 +1,6 @@
 Public Class frmCadClientes
-    Dim tbClientes As DataTable
-    Dim ClasseClientes As New clsClientes
+    Dim ClasseClientes As New clsClientes, tbClientes As DataTable
+
     Private Sub limpar()
         txtNome.Text = ""
         mskDnascimento.Text = ""
@@ -30,14 +30,33 @@ Public Class frmCadClientes
         txtEmail.Text = ""
         lstgrade.Tag = 0
     End Sub
+    Private Sub PreencheListaClientes()
+        Dim x As Integer = 0
+
+        For Each row As DataRow In tbClientes.Rows
+            lstgrade.Items.Add(row("codigo").ToString())
+            lstgrade.Items(x).SubItems.Add(row("nome").ToString())
+            lstgrade.Items(x).SubItems.Add(row("dtnasc").ToString())
+            lstgrade.Items(x).SubItems.Add(row("telefone1").ToString())
+            lstgrade.Items(x).SubItems.Add(row("email").ToString())
+            lstgrade.Items(x).SubItems.Add(row("rg").ToString())
+            lstgrade.Items(x).SubItems.Add(row("cpf").ToString())
+            x += 1
+        Next
+    End Sub
     Private Sub frmCadClientes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ClasseClientes.CarregaClientes(lstgrade, txtNome.Text, 0)
+        tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
+        PreencheListaClientes()
     End Sub
     Private Sub txtNome_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        If e.KeyCode = Keys.Enter Then ClasseClientes.CarregaClientes(lstgrade, txtNome.Text, 0)
+        If e.KeyCode = Keys.Enter Then
+            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaClientes()
+        End If
     End Sub
     Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
-        ClasseClientes.CarregaClientes(lstgrade, txtNome.Text, 0)
+        tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
+        PreencheListaClientes()
     End Sub
     Private Sub btnNovo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNovo.Click
         limpar()
@@ -45,55 +64,36 @@ Public Class frmCadClientes
         rbdMasculino.Visible = True
         txtNome.Focus()
     End Sub
-
     Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
             ClasseClientes.SalvarCliente(txtNome.Text, mskDnascimento.Text, mskTel1.Text, txtEmail.Text, mskrg.Text, mskcpf.Text)
-
-            ClasseClientes.CarregaClientes(lstgrade, txtNome.Text, 0)
+            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaClientes()
         Else
             Exit Sub
         End If
-
-        'txtEndereco.Text,
-        'txtComplemento.Text,
-        'txtBairro.Text,
-        'txtCidade.Text,
-        'cboUf.Text,
-        'mskCep.Text,
-        'rbdMasculino.Checked,
-        'mskTel1.Text,
-        'mskTel2.Text,
-        'mskCel.Text,
-        'txtEmail.Text,
-        'mskrg.Text,
-        'mskcpf.Text,
-        'txtnome_dep.Text,
-        'mskdtdatadep.Text,
-        'mskcpf_dep.Text,
-        'cbopzrentesco.Text,
-        'txtObs.Text,
-        'txtextra.Text)
     End Sub
-
     Private Sub lstgrade_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstgrade.SelectedIndexChanged
         If lstgrade.SelectedItems.Count = 0 Then
             limpar()
             Exit Sub
         End If
 
-        tbClientes = RecebeTabela("SELECT * FROM tbClientes")
-        Dim rows() As DataRow = tbClientes.Select("codigo = " & CInt(lstgrade.SelectedItems(0).Text))
+        ' Obtém o código do produto selecionado na lstgrade
+        Dim Codigo As Integer = CInt(lstgrade.SelectedItems(0).Text)
 
-        If rows.Length = 0 Then
+        ' Chama o método para obter os dados do produto por código
+        tbClientes = ClasseClientes.ConsultaCliente(Codigo, txtNome.Text)
+
+        ' Verifica se encontrou algum registro
+        If tbClientes.Rows.Count = 0 Then
             limpar()
-            MessageBox.Show("Registro não localizado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Produto não encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End If
-
-        Dim row As DataRow = rows(0)
+        Dim row As DataRow = tbClientes.Rows(0)
         lblCodigo.Text = row("Codigo").ToString
         txtNome.Text = row("nome").ToString
         mskDnascimento.Text = Format(CDate(row("dtnasc")), "dd/MM/yyyy")
@@ -123,26 +123,25 @@ Public Class frmCadClientes
         txtextra.Text = row("dep_extras").ToString
         btnAlterar.Visible = True
     End Sub
-
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
             ClasseClientes.ExcluirCliente(Val(lblCodigo.Text))
-
-            ClasseClientes.CarregaClientes(lstgrade, txtNome.Text, 0)
+            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaClientes()
         Else
             Exit Sub
         End If
     End Sub
-
     Private Sub btnAlterar_Click(sender As Object, e As EventArgs) Handles btnAlterar.Click
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a slteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
             ClasseClientes.AlterarCliente(Val(lblCodigo.Text), txtNome.Text, mskDnascimento.Text, mskTel1.Text, txtEmail.Text, mskrg.Text, mskcpf.Text)
-
-            ClasseClientes.CarregaClientes(lstgrade, txtNome.Text, 0)
+            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaClientes()
         Else
             Exit Sub
         End If

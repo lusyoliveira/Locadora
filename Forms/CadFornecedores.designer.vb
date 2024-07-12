@@ -24,9 +24,7 @@ Partial Class frmCadFornecedores
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCadFornecedores))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblCodigo = New System.Windows.Forms.Label()
         Me.lblFornecedor = New System.Windows.Forms.Label()
-        Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.txtFornecedor = New System.Windows.Forms.TextBox()
         Me.lblEndereco = New System.Windows.Forms.Label()
         Me.lblEmpresa = New System.Windows.Forms.Label()
@@ -68,6 +66,8 @@ Partial Class frmCadFornecedores
         Me.clmcpf = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.clmtelefone = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.clmcelular = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblCodigo = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -82,17 +82,6 @@ Partial Class frmCadFornecedores
         Me.Panel1.Size = New System.Drawing.Size(1071, 92)
         Me.Panel1.TabIndex = 1
         '
-        'lblCodigo
-        '
-        Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(14, 111)
-        Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(51, 16)
-        Me.lblCodigo.TabIndex = 2
-        Me.lblCodigo.Text = "Código"
-        Me.lblCodigo.Visible = False
-        '
         'lblFornecedor
         '
         Me.lblFornecedor.AutoSize = True
@@ -102,15 +91,6 @@ Partial Class frmCadFornecedores
         Me.lblFornecedor.Size = New System.Drawing.Size(77, 16)
         Me.lblFornecedor.TabIndex = 3
         Me.lblFornecedor.Text = "Fornecedor"
-        '
-        'txtCodigo
-        '
-        Me.txtCodigo.Location = New System.Drawing.Point(18, 130)
-        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtCodigo.Name = "txtCodigo"
-        Me.txtCodigo.Size = New System.Drawing.Size(97, 22)
-        Me.txtCodigo.TabIndex = 0
-        Me.txtCodigo.Visible = False
         '
         'txtFornecedor
         '
@@ -375,7 +355,6 @@ Partial Class frmCadFornecedores
         Me.btnExcluir.Text = "&Excluir"
         Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.UseVisualStyleBackColor = True
-        Me.btnExcluir.Visible = False
         '
         'btnConsultar
         '
@@ -450,12 +429,15 @@ Partial Class frmCadFornecedores
         'lstgrade
         '
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmcodigo, Me.clmfornecedor, Me.clmempresa, Me.clmcnpj, Me.clmuf, Me.clmcpf, Me.clmtelefone, Me.clmcelular})
+        Me.lstgrade.FullRowSelect = True
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(16, 383)
         Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
+        Me.lstgrade.MultiSelect = False
         Me.lstgrade.Name = "lstgrade"
         Me.lstgrade.Size = New System.Drawing.Size(1039, 222)
         Me.lstgrade.TabIndex = 37
+        Me.lstgrade.Tag = "0"
         Me.lstgrade.UseCompatibleStateImageBehavior = False
         Me.lstgrade.View = System.Windows.Forms.View.Details
         '
@@ -499,11 +481,32 @@ Partial Class frmCadFornecedores
         Me.clmcelular.Text = "Celular"
         Me.clmcelular.Width = 84
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(14, 108)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(51, 16)
+        Me.Label7.TabIndex = 57
+        Me.Label7.Text = "Código"
+        '
+        'lblCodigo
+        '
+        Me.lblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblCodigo.Location = New System.Drawing.Point(17, 130)
+        Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCodigo.Name = "lblCodigo"
+        Me.lblCodigo.Size = New System.Drawing.Size(98, 22)
+        Me.lblCodigo.TabIndex = 56
+        '
         'frmCadFornecedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 720)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.lblCodigo)
         Me.Controls.Add(Me.lstgrade)
         Me.Controls.Add(Me.cbouf)
         Me.Controls.Add(Me.mskcpf)
@@ -524,9 +527,7 @@ Partial Class frmCadFornecedores
         Me.Controls.Add(Me.lblEmpresa)
         Me.Controls.Add(Me.lblEndereco)
         Me.Controls.Add(Me.txtFornecedor)
-        Me.Controls.Add(Me.txtCodigo)
         Me.Controls.Add(Me.lblFornecedor)
-        Me.Controls.Add(Me.lblCodigo)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -542,9 +543,7 @@ Partial Class frmCadFornecedores
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents lblCodigo As System.Windows.Forms.Label
     Friend WithEvents lblFornecedor As System.Windows.Forms.Label
-    Friend WithEvents txtCodigo As System.Windows.Forms.TextBox
     Friend WithEvents txtFornecedor As System.Windows.Forms.TextBox
     Friend WithEvents lblEndereco As System.Windows.Forms.Label
     Friend WithEvents lblEmpresa As System.Windows.Forms.Label
@@ -586,4 +585,6 @@ Partial Class frmCadFornecedores
     Friend WithEvents clmuf As System.Windows.Forms.ColumnHeader
     Friend WithEvents clmtelefone As System.Windows.Forms.ColumnHeader
     Friend WithEvents clmcelular As System.Windows.Forms.ColumnHeader
+    Friend WithEvents Label7 As Label
+    Friend WithEvents lblCodigo As Label
 End Class

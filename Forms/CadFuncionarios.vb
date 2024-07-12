@@ -1,9 +1,7 @@
 Imports System.Data.SqlClient
-
 Public Class frmCadFuncionarios
-    Dim dtCadFuncionarios As DataTable
+    Dim tbFuncionarios As DataTable, ClasseFuncionario As New clsFuncionarios
     Private Sub limpar()
-        txtCodigo.Text = ""
         txtMatricula.Text = ""
         txtNome.Text = ""
         mskDnascimento.Text = ""
@@ -29,23 +27,10 @@ Public Class frmCadFuncionarios
         txtObs.Text = ""
         lstgrade.Tag = 0
     End Sub
-    Private Sub carregafuncionarios()
+    Private Sub PreencheListaFuncionarios()
         Dim x As Integer = 0
-        Dim sql As String
 
-        sql = "SELECT * FROM tbFuncionarios where codfunc = " & txtNome.Text
-        If Not IsNumeric(txtNome.Text) Then
-            sql = "SELECT * FROM tbFuncionarios  where matricula like '" & txtNome.Text & "%'"
-        End If
-
-        limpar()
-        lstgrade.Items.Clear()
-
-
-        ' Receber os dados em um DataTable
-        dtCadFuncionarios = RecebeTabela(sql)
-
-        For Each row As DataRow In dtCadFuncionarios.Rows
+        For Each row As DataRow In tbFuncionarios.Rows
             lstgrade.Items.Add(row("codfunc").ToString())
             lstgrade.Items(x).SubItems.Add(row("matricula").ToString())
             lstgrade.Items(x).SubItems.Add(row("nome").ToString())
@@ -73,7 +58,8 @@ Public Class frmCadFuncionarios
         Next
     End Sub
     Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
-        carregafuncionarios()
+        tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
+        PreencheListaFuncionarios()
     End Sub
     Private Sub btnNovo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNovo.Click
         limpar()
@@ -82,131 +68,41 @@ Public Class frmCadFuncionarios
         txtMatricula.Focus()
     End Sub
     Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
-        ' Recebe o DataTable preenchido com os dados do funcionário correspondente
-        dtCadFuncionarios = RecebeTabela("select * from tbFuncionarios where codfunc=" & lstgrade.Tag)
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do funcionario?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        Dim row As DataRow
-        If dtCadFuncionarios.Rows.Count = 0 Then
-            row = dtCadFuncionarios.NewRow()
-            dtCadFuncionarios.Rows.Add(row)
+        If MsgResult = DialogResult.Yes Then
+            ClasseFuncionario.SalvarFuncionario(txtMatricula.Text, txtNome.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text,
+txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, rbdMasculino.Checked, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text, mskRG.Text,
+mskCpf.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, cboExpediente.Text, txtObs.Text)
+            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaFuncionarios()
         Else
-            row = dtCadFuncionarios.Rows(0)
+            Exit Sub
         End If
-
-        ' Atualiza os campos do DataRow com os valores dos controles do formulário
-        ' row("matricula") = txtMatricula.Text
-        row("nome") = txtNome.Text
-        ' row("dtnasc") = mskDnascimento.Text
-        row("estadocivil") = cboEstadoCivil.Text
-        row("endereco") = txtEndereco.Text
-        row("complemento") = txtComplemento.Text
-        row("bairro") = txtBairro.Text
-        row("cidade") = txtCidade.Text
-        row("uf") = cboUf.Text
-        row("cep") = mskCep.Text
-        row("sexo") = rbdMasculino.Checked
-        row("telefone1") = mskTel1.Text
-        row("telefone2") = mskTel2.Text
-        row("celular") = mskCel.Text
-        row("email") = txtEmail.Text
-        row("rg") = mskRG.Text
-        row("cpf") = mskCpf.Text
-        row("carteiraprofissional") = mskCartprof.Text
-        row("cargo") = cboCargo.Text
-        ' row("salario") = txtSalario.Text
-        row("expediente") = cboExpediente.Text
-        row("obs") = txtObs.Text
-
-        ' Atualiza o banco de dados com as mudanças no DataTable
-        AtualizaBancoDados(dtCadFuncionarios)
-
-        ' Recarrega os funcionários na lista
-        carregafuncionarios()
     End Sub
 
     Private Sub btnExcluir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExcluir.Click
-        If (MsgBox("Confirma a Exclusão ? ", MsgBoxStyle.YesNo)) = MsgBoxResult.Yes Then
-            ' Recebe o DataTable preenchido com os dados do funcionário correspondente
-            dtCadFuncionarios = RecebeTabela("select * from tbFuncionarios where codfunc=" & lstgrade.Tag)
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            If dtCadFuncionarios.Rows.Count > 0 Then
-                ' Marca a linha para exclusão
-                dtCadFuncionarios.Rows(0).Delete()
-
-                ' Atualiza o banco de dados com as mudanças no DataTable
-                AtualizaBancoDados(dtCadFuncionarios)
-
-                ' Recarrega os funcionários na lista
-                carregafuncionarios()
-            End If
+        If MsgResult = DialogResult.Yes Then
+            ClasseFuncionario.ExcluirFuncionario(Val(lblCodigo.Text))
+            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaFuncionarios()
+        Else
+            Exit Sub
         End If
     End Sub
-
-    ' Método para atualizar o banco de dados com as mudanças no DataTable
     Private Sub AtualizaBancoDados(ByVal dt As DataTable)
-        ' Conexão com o banco de dados via RecebeTabela
-        dtCadFuncionarios = RecebeTabela("SELECT * FROM tbFuncionarios WHERE 1=0")
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do fornecedor?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        ' Configura o adaptador
-        Dim adapter As New SqlDataAdapter()
-
-        ' Configura o comando de inserção
-        Dim insertCommand As New SqlCommand("INSERT INTO tbFuncionarios (nome, estadocivil, endereco, complemento, bairro, cidade, uf, cep, sexo, telefone1, telefone2, celular, email, rg, cpf, carteiraprofissional, cargo, expediente, obs) VALUES (@nome, @estadocivil, @endereco, @complemento, @bairro, @cidade, @uf, @cep, @sexo, @telefone1, @telefone2, @celular, @email, @rg, @cpf, @carteiraprofissional, @cargo, @expediente, @obs)")
-        insertCommand.Parameters.Add("@nome", SqlDbType.NVarChar, 50, "nome")
-        insertCommand.Parameters.Add("@estadocivil", SqlDbType.NVarChar, 50, "estadocivil")
-        insertCommand.Parameters.Add("@endereco", SqlDbType.NVarChar, 100, "endereco")
-        insertCommand.Parameters.Add("@complemento", SqlDbType.NVarChar, 100, "complemento")
-        insertCommand.Parameters.Add("@bairro", SqlDbType.NVarChar, 50, "bairro")
-        insertCommand.Parameters.Add("@cidade", SqlDbType.NVarChar, 50, "cidade")
-        insertCommand.Parameters.Add("@uf", SqlDbType.NVarChar, 2, "uf")
-        insertCommand.Parameters.Add("@cep", SqlDbType.NVarChar, 10, "cep")
-        insertCommand.Parameters.Add("@sexo", SqlDbType.Bit, 1, "sexo")
-        insertCommand.Parameters.Add("@telefone1", SqlDbType.NVarChar, 15, "telefone1")
-        insertCommand.Parameters.Add("@telefone2", SqlDbType.NVarChar, 15, "telefone2")
-        insertCommand.Parameters.Add("@celular", SqlDbType.NVarChar, 15, "celular")
-        insertCommand.Parameters.Add("@email", SqlDbType.NVarChar, 100, "email")
-        insertCommand.Parameters.Add("@rg", SqlDbType.NVarChar, 20, "rg")
-        insertCommand.Parameters.Add("@cpf", SqlDbType.NVarChar, 20, "cpf")
-        insertCommand.Parameters.Add("@carteiraprofissional", SqlDbType.NVarChar, 20, "carteiraprofissional")
-        insertCommand.Parameters.Add("@cargo", SqlDbType.NVarChar, 50, "cargo")
-        insertCommand.Parameters.Add("@expediente", SqlDbType.NVarChar, 50, "expediente")
-        insertCommand.Parameters.Add("@obs", SqlDbType.NVarChar, 200, "obs")
-        adapter.InsertCommand = insertCommand
-
-        ' Configura o comando de atualização
-        Dim updateCommand As New SqlCommand("UPDATE tbFuncionarios SET nome=@nome, estadocivil=@estadocivil, endereco=@endereco, complemento=@complemento, bairro=@bairro, cidade=@cidade, uf=@uf, cep=@cep, sexo=@sexo, telefone1=@telefone1, telefone2=@telefone2, celular=@celular, email=@email, rg=@rg, cpf=@cpf, carteiraprofissional=@carteiraprofissional, cargo=@cargo, expediente=@expediente, obs=@obs WHERE codfunc=@codfunc")
-        updateCommand.Parameters.Add("@codfunc", SqlDbType.Int, 0, "codfunc")
-        updateCommand.Parameters.Add("@nome", SqlDbType.NVarChar, 50, "nome")
-        updateCommand.Parameters.Add("@estadocivil", SqlDbType.NVarChar, 50, "estadocivil")
-        updateCommand.Parameters.Add("@endereco", SqlDbType.NVarChar, 100, "endereco")
-        updateCommand.Parameters.Add("@complemento", SqlDbType.NVarChar, 100, "complemento")
-        updateCommand.Parameters.Add("@bairro", SqlDbType.NVarChar, 50, "bairro")
-        updateCommand.Parameters.Add("@cidade", SqlDbType.NVarChar, 50, "cidade")
-        updateCommand.Parameters.Add("@uf", SqlDbType.NVarChar, 2, "uf")
-        updateCommand.Parameters.Add("@cep", SqlDbType.NVarChar, 10, "cep")
-        updateCommand.Parameters.Add("@sexo", SqlDbType.Bit, 1, "sexo")
-        updateCommand.Parameters.Add("@telefone1", SqlDbType.NVarChar, 15, "telefone1")
-        updateCommand.Parameters.Add("@telefone2", SqlDbType.NVarChar, 15, "telefone2")
-        updateCommand.Parameters.Add("@celular", SqlDbType.NVarChar, 15, "celular")
-        updateCommand.Parameters.Add("@email", SqlDbType.NVarChar, 100, "email")
-        updateCommand.Parameters.Add("@rg", SqlDbType.NVarChar, 20, "rg")
-        updateCommand.Parameters.Add("@cpf", SqlDbType.NVarChar, 20, "cpf")
-        updateCommand.Parameters.Add("@carteiraprofissional", SqlDbType.NVarChar, 20, "carteiraprofissional")
-        updateCommand.Parameters.Add("@cargo", SqlDbType.NVarChar, 50, "cargo")
-        updateCommand.Parameters.Add("@expediente", SqlDbType.NVarChar, 50, "expediente")
-        updateCommand.Parameters.Add("@obs", SqlDbType.NVarChar, 200, "obs")
-        adapter.UpdateCommand = updateCommand
-
-        '' Configura o comando de exclusão
-        'Dim deleteCommand As New SqlCommand("DELETE FROM tbFuncionarios WHERE codfunc=@codfunc")
-        'deleteCommand.Parameters.Add("@codfunc", SqlDbType.Int, 0, "codfunc")
-        'adapter.DeleteCommand = deleteCommand
-
-        ' Atualiza o banco de dados com as mudanças no DataTable
-        dtCadFuncionarios = dt.GetChanges()
-        If dtCadFuncionarios IsNot Nothing Then
-            adapter.Update(dtCadFuncionarios)
-            dt.AcceptChanges()
+        If MsgResult = DialogResult.Yes Then
+            ClasseFuncionario.AlterarFuncionario(Val(lblCodigo.Text), txtMatricula.Text, txtNome.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text,
+txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, rbdMasculino.Checked, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text, mskRG.Text,
+mskCpf.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, cboExpediente.Text, txtObs.Text)
+            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaFuncionarios()
+        Else
+            Exit Sub
         End If
     End Sub
     Private Sub btnSair_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSair.Click
@@ -218,6 +114,19 @@ Public Class frmCadFuncionarios
             Exit Sub
         End If
 
+        ' Obtém o código do produto selecionado na lstgrade
+        Dim Codigo As Integer = CInt(lstgrade.SelectedItems(0).Text)
+
+        ' Chama o método para obter os dados do produto por código
+        tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Codigo, txtNome.Text)
+
+        ' Verifica se encontrou algum registro
+        If tbFuncionarios.Rows.Count = 0 Then
+            limpar()
+            MessageBox.Show("Produto não encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+        Dim row As DataRow = tbFuncionarios.Rows(0)
         txtMatricula.Text = lstgrade.SelectedItems(0).SubItems(1).Text
         txtNome.Text = lstgrade.SelectedItems(0).SubItems(2).Text
         mskDnascimento.Text = Format(CDate(lstgrade.SelectedItems(0).SubItems(3).Text), "dd/MM/yyyy")
@@ -248,9 +157,13 @@ Public Class frmCadFuncionarios
         btnExcluir.Visible = True
     End Sub
     Private Sub frmCadFuncionarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        carregafuncionarios()
+        tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
+        PreencheListaFuncionarios()
     End Sub
     Private Sub txtMatricula_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtMatricula.KeyUp
-        If e.KeyCode = Keys.Enter Then carregafuncionarios()
+        If e.KeyCode = Keys.Enter Then
+            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
+            PreencheListaFuncionarios()
+        End If
     End Sub
 End Class

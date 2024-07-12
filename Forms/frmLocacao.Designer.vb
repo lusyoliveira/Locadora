@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLocacao
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmLocacao
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLocacao))
@@ -29,44 +29,42 @@ Partial Class frmLocacao
         Me.lblDtLocacao = New System.Windows.Forms.Label()
         Me.lblDtDevolucao = New System.Windows.Forms.Label()
         Me.txtQuantidade = New System.Windows.Forms.TextBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.BTNSALVAR = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnSalvar = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cboclientes = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.cboproduto = New System.Windows.Forms.ComboBox()
-        Me.DTP_LOCACAO = New System.Windows.Forms.DateTimePicker()
-        Me.DTP_DEVOLUCAO = New System.Windows.Forms.DateTimePicker()
+        Me.cboProduto = New System.Windows.Forms.ComboBox()
+        Me.dtpLocacao = New System.Windows.Forms.DateTimePicker()
+        Me.dtpDevolucao = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.lstgrade = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.lbltotal1 = New System.Windows.Forms.TextBox()
-        Me.lblvalunit = New System.Windows.Forms.TextBox()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.txtValorUnit = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnremove = New System.Windows.Forms.Button()
-        Me.btnok = New System.Windows.Forms.Button()
+        Me.btnAdicionar = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.lblpagar = New System.Windows.Forms.Label()
         Me.lbldinheiro = New System.Windows.Forms.Label()
-        Me.txtdinheiro = New System.Windows.Forms.TextBox()
-        Me.LBLTROCO = New System.Windows.Forms.Label()
+        Me.txtDinheiro = New System.Windows.Forms.TextBox()
+        Me.lblTroco = New System.Windows.Forms.Label()
         Me.lbltotalpg = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.cbopagar = New System.Windows.Forms.ComboBox()
+        Me.cboPagar = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CBO_FUNCIONARIO = New System.Windows.Forms.ComboBox()
-        Me.TXT_NSEQ = New System.Windows.Forms.TextBox()
+        Me.cboFuncionario = New System.Windows.Forms.ComboBox()
+        Me.txtCodLocacao = New System.Windows.Forms.TextBox()
         Me.ER = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.BTN_IMPRIMIR = New System.Windows.Forms.Button()
+        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -82,13 +80,13 @@ Partial Class frmLocacao
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1167, 92)
+        Me.Panel1.Size = New System.Drawing.Size(1033, 92)
         Me.Panel1.TabIndex = 0
         '
         'lblCodigo
         '
         Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(43, 111)
+        Me.lblCodigo.Location = New System.Drawing.Point(9, 103)
         Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCodigo.Name = "lblCodigo"
         Me.lblCodigo.Size = New System.Drawing.Size(93, 16)
@@ -98,7 +96,7 @@ Partial Class frmLocacao
         'lblValor
         '
         Me.lblValor.AutoSize = True
-        Me.lblValor.Location = New System.Drawing.Point(404, 18)
+        Me.lblValor.Location = New System.Drawing.Point(441, 19)
         Me.lblValor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblValor.Name = "lblValor"
         Me.lblValor.Size = New System.Drawing.Size(39, 16)
@@ -108,7 +106,7 @@ Partial Class frmLocacao
         'lblQuantidade
         '
         Me.lblQuantidade.AutoSize = True
-        Me.lblQuantidade.Location = New System.Drawing.Point(563, 193)
+        Me.lblQuantidade.Location = New System.Drawing.Point(488, 146)
         Me.lblQuantidade.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblQuantidade.Name = "lblQuantidade"
         Me.lblQuantidade.Size = New System.Drawing.Size(77, 16)
@@ -130,7 +128,7 @@ Partial Class frmLocacao
         'lblDtLocacao
         '
         Me.lblDtLocacao.AutoSize = True
-        Me.lblDtLocacao.Location = New System.Drawing.Point(525, 111)
+        Me.lblDtLocacao.Location = New System.Drawing.Point(491, 103)
         Me.lblDtLocacao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDtLocacao.Name = "lblDtLocacao"
         Me.lblDtLocacao.Size = New System.Drawing.Size(111, 16)
@@ -140,7 +138,7 @@ Partial Class frmLocacao
         'lblDtDevolucao
         '
         Me.lblDtDevolucao.AutoSize = True
-        Me.lblDtDevolucao.Location = New System.Drawing.Point(683, 107)
+        Me.lblDtDevolucao.Location = New System.Drawing.Point(649, 99)
         Me.lblDtDevolucao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDtDevolucao.Name = "lblDtDevolucao"
         Me.lblDtDevolucao.Size = New System.Drawing.Size(124, 16)
@@ -149,67 +147,40 @@ Partial Class frmLocacao
         '
         'txtQuantidade
         '
-        Me.txtQuantidade.Location = New System.Drawing.Point(567, 215)
+        Me.txtQuantidade.Location = New System.Drawing.Point(491, 167)
         Me.txtQuantidade.Margin = New System.Windows.Forms.Padding(4)
         Me.txtQuantidade.Name = "txtQuantidade"
-        Me.txtQuantidade.Size = New System.Drawing.Size(79, 22)
+        Me.txtQuantidade.Size = New System.Drawing.Size(74, 22)
         Me.txtQuantidade.TabIndex = 17
         Me.txtQuantidade.Visible = False
         '
-        'GroupBox2
+        'btnCancelar
         '
-        Me.GroupBox2.Controls.Add(Me.Button6)
-        Me.GroupBox2.Controls.Add(Me.Button3)
-        Me.GroupBox2.Controls.Add(Me.BTNSALVAR)
-        Me.GroupBox2.Location = New System.Drawing.Point(32, 582)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(647, 98)
-        Me.GroupBox2.TabIndex = 33
-        Me.GroupBox2.TabStop = False
+        Me.btnCancelar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCancelar.Location = New System.Drawing.Point(415, 554)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(141, 55)
+        Me.btnCancelar.TabIndex = 2
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCancelar.UseVisualStyleBackColor = True
         '
-        'Button6
+        'btnSalvar
         '
-        Me.Button6.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
-        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.Location = New System.Drawing.Point(345, 23)
-        Me.Button6.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(141, 55)
-        Me.Button6.TabIndex = 4
-        Me.Button6.Text = "&Sair"
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
-        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.Location = New System.Drawing.Point(16, 23)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(141, 55)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Cancelar"
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'BTNSALVAR
-        '
-        Me.BTNSALVAR.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.external_hd
-        Me.BTNSALVAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.BTNSALVAR.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTNSALVAR.Location = New System.Drawing.Point(183, 23)
-        Me.BTNSALVAR.Margin = New System.Windows.Forms.Padding(4)
-        Me.BTNSALVAR.Name = "BTNSALVAR"
-        Me.BTNSALVAR.Size = New System.Drawing.Size(141, 55)
-        Me.BTNSALVAR.TabIndex = 1
-        Me.BTNSALVAR.Text = "S&alvar"
-        Me.BTNSALVAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTNSALVAR.UseVisualStyleBackColor = True
+        Me.btnSalvar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.external_hd
+        Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSalvar.Location = New System.Drawing.Point(266, 554)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSalvar.Name = "btnSalvar"
+        Me.btnSalvar.Size = New System.Drawing.Size(141, 55)
+        Me.btnSalvar.TabIndex = 1
+        Me.btnSalvar.Text = "S&alvar"
+        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSalvar.UseVisualStyleBackColor = True
         '
         'Button7
         '
@@ -224,7 +195,7 @@ Partial Class frmLocacao
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(44, 174)
+        Me.Label2.Location = New System.Drawing.Point(9, 146)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(48, 16)
@@ -234,7 +205,7 @@ Partial Class frmLocacao
         'cboclientes
         '
         Me.cboclientes.FormattingEnabled = True
-        Me.cboclientes.Location = New System.Drawing.Point(47, 193)
+        Me.cboclientes.Location = New System.Drawing.Point(12, 165)
         Me.cboclientes.Margin = New System.Windows.Forms.Padding(4)
         Me.cboclientes.Name = "cboclientes"
         Me.cboclientes.Size = New System.Drawing.Size(471, 24)
@@ -250,39 +221,39 @@ Partial Class frmLocacao
         Me.Label3.TabIndex = 40
         Me.Label3.Text = "Titulo"
         '
-        'cboproduto
+        'cboProduto
         '
-        Me.cboproduto.FormattingEnabled = True
-        Me.cboproduto.Location = New System.Drawing.Point(17, 39)
-        Me.cboproduto.Margin = New System.Windows.Forms.Padding(4)
-        Me.cboproduto.Name = "cboproduto"
-        Me.cboproduto.Size = New System.Drawing.Size(373, 24)
-        Me.cboproduto.TabIndex = 41
+        Me.cboProduto.FormattingEnabled = True
+        Me.cboProduto.Location = New System.Drawing.Point(17, 39)
+        Me.cboProduto.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboProduto.Name = "cboProduto"
+        Me.cboProduto.Size = New System.Drawing.Size(419, 24)
+        Me.cboProduto.TabIndex = 41
         '
-        'DTP_LOCACAO
+        'dtpLocacao
         '
-        Me.DTP_LOCACAO.CalendarTitleBackColor = System.Drawing.Color.DarkRed
-        Me.DTP_LOCACAO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTP_LOCACAO.Location = New System.Drawing.Point(529, 127)
-        Me.DTP_LOCACAO.Margin = New System.Windows.Forms.Padding(4)
-        Me.DTP_LOCACAO.Name = "DTP_LOCACAO"
-        Me.DTP_LOCACAO.Size = New System.Drawing.Size(131, 22)
-        Me.DTP_LOCACAO.TabIndex = 45
+        Me.dtpLocacao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpLocacao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpLocacao.Location = New System.Drawing.Point(495, 119)
+        Me.dtpLocacao.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpLocacao.Name = "dtpLocacao"
+        Me.dtpLocacao.Size = New System.Drawing.Size(131, 22)
+        Me.dtpLocacao.TabIndex = 45
         '
-        'DTP_DEVOLUCAO
+        'dtpDevolucao
         '
-        Me.DTP_DEVOLUCAO.CalendarTitleBackColor = System.Drawing.Color.DarkRed
-        Me.DTP_DEVOLUCAO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTP_DEVOLUCAO.Location = New System.Drawing.Point(687, 128)
-        Me.DTP_DEVOLUCAO.Margin = New System.Windows.Forms.Padding(4)
-        Me.DTP_DEVOLUCAO.Name = "DTP_DEVOLUCAO"
-        Me.DTP_DEVOLUCAO.Size = New System.Drawing.Size(131, 22)
-        Me.DTP_DEVOLUCAO.TabIndex = 46
+        Me.dtpDevolucao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDevolucao.Location = New System.Drawing.Point(653, 120)
+        Me.dtpDevolucao.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpDevolucao.Name = "dtpDevolucao"
+        Me.dtpDevolucao.Size = New System.Drawing.Size(131, 22)
+        Me.dtpDevolucao.TabIndex = 46
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(152, 111)
+        Me.Label8.Location = New System.Drawing.Point(118, 103)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(77, 16)
@@ -291,62 +262,64 @@ Partial Class frmLocacao
         '
         'lstgrade
         '
-        Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
+        Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lstgrade.HideSelection = False
-        Me.lstgrade.Location = New System.Drawing.Point(17, 79)
+        Me.lstgrade.Location = New System.Drawing.Point(17, 69)
         Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
-        Me.lstgrade.Size = New System.Drawing.Size(597, 250)
+        Me.lstgrade.Size = New System.Drawing.Size(597, 260)
         Me.lstgrade.TabIndex = 51
         Me.lstgrade.UseCompatibleStateImageBehavior = False
         Me.lstgrade.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
         '
-        Me.ColumnHeader1.Text = "Titulo"
-        Me.ColumnHeader1.Width = 206
+        Me.ColumnHeader1.Text = "Codigo"
         '
         'ColumnHeader2
         '
-        Me.ColumnHeader2.Text = "Valor"
-        Me.ColumnHeader2.Width = 71
+        Me.ColumnHeader2.Text = "Titulo"
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Valor"
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.lbltotal1)
-        Me.GroupBox1.Controls.Add(Me.lblvalunit)
+        Me.GroupBox1.Controls.Add(Me.txtTotal)
+        Me.GroupBox1.Controls.Add(Me.txtValorUnit)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Controls.Add(Me.btnremove)
-        Me.GroupBox1.Controls.Add(Me.btnok)
+        Me.GroupBox1.Controls.Add(Me.btnAdicionar)
         Me.GroupBox1.Controls.Add(Me.lstgrade)
-        Me.GroupBox1.Controls.Add(Me.cboproduto)
+        Me.GroupBox1.Controls.Add(Me.cboProduto)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.lblTotal)
         Me.GroupBox1.Controls.Add(Me.lblValor)
-        Me.GroupBox1.Location = New System.Drawing.Point(31, 240)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(792, 336)
+        Me.GroupBox1.Size = New System.Drawing.Size(776, 336)
         Me.GroupBox1.TabIndex = 54
         Me.GroupBox1.TabStop = False
         '
-        'lbltotal1
+        'txtTotal
         '
-        Me.lbltotal1.Location = New System.Drawing.Point(536, 39)
-        Me.lbltotal1.Margin = New System.Windows.Forms.Padding(4)
-        Me.lbltotal1.Name = "lbltotal1"
-        Me.lbltotal1.Size = New System.Drawing.Size(140, 22)
-        Me.lbltotal1.TabIndex = 57
-        Me.lbltotal1.Visible = False
+        Me.txtTotal.Location = New System.Drawing.Point(536, 39)
+        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(79, 22)
+        Me.txtTotal.TabIndex = 57
+        Me.txtTotal.Visible = False
         '
-        'lblvalunit
+        'txtValorUnit
         '
-        Me.lblvalunit.Location = New System.Drawing.Point(403, 42)
-        Me.lblvalunit.Margin = New System.Windows.Forms.Padding(4)
-        Me.lblvalunit.Name = "lblvalunit"
-        Me.lblvalunit.Size = New System.Drawing.Size(120, 22)
-        Me.lblvalunit.TabIndex = 56
+        Me.txtValorUnit.Location = New System.Drawing.Point(444, 39)
+        Me.txtValorUnit.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtValorUnit.Name = "txtValorUnit"
+        Me.txtValorUnit.Size = New System.Drawing.Size(84, 22)
+        Me.txtValorUnit.TabIndex = 56
         '
         'GroupBox3
         '
@@ -364,7 +337,7 @@ Partial Class frmLocacao
         Me.btnremove.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
         Me.btnremove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnremove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnremove.Location = New System.Drawing.Point(636, 140)
+        Me.btnremove.Location = New System.Drawing.Point(622, 171)
         Me.btnremove.Margin = New System.Windows.Forms.Padding(4)
         Me.btnremove.Name = "btnremove"
         Me.btnremove.Size = New System.Drawing.Size(141, 53)
@@ -373,42 +346,42 @@ Partial Class frmLocacao
         Me.btnremove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnremove.UseVisualStyleBackColor = True
         '
-        'btnok
+        'btnAdicionar
         '
-        Me.btnok.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
-        Me.btnok.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnok.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnok.Location = New System.Drawing.Point(636, 79)
-        Me.btnok.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnok.Name = "btnok"
-        Me.btnok.Size = New System.Drawing.Size(141, 53)
-        Me.btnok.TabIndex = 52
-        Me.btnok.Text = "Adicionar"
-        Me.btnok.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnok.UseVisualStyleBackColor = True
+        Me.btnAdicionar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
+        Me.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnAdicionar.Location = New System.Drawing.Point(622, 109)
+        Me.btnAdicionar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAdicionar.Name = "btnAdicionar"
+        Me.btnAdicionar.Size = New System.Drawing.Size(141, 53)
+        Me.btnAdicionar.TabIndex = 52
+        Me.btnAdicionar.Text = "Adicionar"
+        Me.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAdicionar.UseVisualStyleBackColor = True
         '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.lblpagar)
         Me.GroupBox4.Controls.Add(Me.lbldinheiro)
-        Me.GroupBox4.Controls.Add(Me.txtdinheiro)
-        Me.GroupBox4.Controls.Add(Me.LBLTROCO)
+        Me.GroupBox4.Controls.Add(Me.txtDinheiro)
+        Me.GroupBox4.Controls.Add(Me.lblTroco)
         Me.GroupBox4.Controls.Add(Me.lbltotalpg)
         Me.GroupBox4.Controls.Add(Me.Label7)
-        Me.GroupBox4.Controls.Add(Me.cbopagar)
+        Me.GroupBox4.Controls.Add(Me.cboPagar)
         Me.GroupBox4.Controls.Add(Me.Label11)
-        Me.GroupBox4.Location = New System.Drawing.Point(869, 240)
+        Me.GroupBox4.Location = New System.Drawing.Point(797, 197)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox4.Size = New System.Drawing.Size(267, 336)
+        Me.GroupBox4.Size = New System.Drawing.Size(219, 336)
         Me.GroupBox4.TabIndex = 61
         Me.GroupBox4.TabStop = False
         '
         'lblpagar
         '
         Me.lblpagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblpagar.Location = New System.Drawing.Point(59, 238)
+        Me.lblpagar.Location = New System.Drawing.Point(20, 233)
         Me.lblpagar.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblpagar.Name = "lblpagar"
         Me.lblpagar.Size = New System.Drawing.Size(160, 25)
@@ -418,43 +391,43 @@ Partial Class frmLocacao
         'lbldinheiro
         '
         Me.lbldinheiro.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbldinheiro.Location = New System.Drawing.Point(59, 170)
+        Me.lbldinheiro.Location = New System.Drawing.Point(20, 163)
         Me.lbldinheiro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldinheiro.Name = "lbldinheiro"
         Me.lbldinheiro.Size = New System.Drawing.Size(120, 23)
         Me.lbldinheiro.TabIndex = 67
         Me.lbldinheiro.Text = "Dinheiro"
         '
-        'txtdinheiro
+        'txtDinheiro
         '
-        Me.txtdinheiro.Location = New System.Drawing.Point(63, 194)
-        Me.txtdinheiro.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtdinheiro.Name = "txtdinheiro"
-        Me.txtdinheiro.Size = New System.Drawing.Size(115, 22)
-        Me.txtdinheiro.TabIndex = 66
+        Me.txtDinheiro.Location = New System.Drawing.Point(24, 190)
+        Me.txtDinheiro.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtDinheiro.Name = "txtDinheiro"
+        Me.txtDinheiro.Size = New System.Drawing.Size(173, 22)
+        Me.txtDinheiro.TabIndex = 66
         '
-        'LBLTROCO
+        'lblTroco
         '
-        Me.LBLTROCO.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.LBLTROCO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLTROCO.ForeColor = System.Drawing.Color.Red
-        Me.LBLTROCO.Location = New System.Drawing.Point(63, 262)
-        Me.LBLTROCO.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.LBLTROCO.Name = "LBLTROCO"
-        Me.LBLTROCO.Size = New System.Drawing.Size(116, 38)
-        Me.LBLTROCO.TabIndex = 65
-        Me.LBLTROCO.Text = "0,00"
-        Me.LBLTROCO.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTroco.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblTroco.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTroco.ForeColor = System.Drawing.Color.Red
+        Me.lblTroco.Location = New System.Drawing.Point(24, 258)
+        Me.lblTroco.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTroco.Name = "lblTroco"
+        Me.lblTroco.Size = New System.Drawing.Size(173, 38)
+        Me.lblTroco.TabIndex = 65
+        Me.lblTroco.Text = "0,00"
+        Me.lblTroco.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lbltotalpg
         '
         Me.lbltotalpg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lbltotalpg.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltotalpg.ForeColor = System.Drawing.Color.Red
-        Me.lbltotalpg.Location = New System.Drawing.Point(63, 114)
+        Me.lbltotalpg.Location = New System.Drawing.Point(24, 110)
         Me.lbltotalpg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbltotalpg.Name = "lbltotalpg"
-        Me.lbltotalpg.Size = New System.Drawing.Size(116, 37)
+        Me.lbltotalpg.Size = New System.Drawing.Size(173, 37)
         Me.lbltotalpg.TabIndex = 64
         Me.lbltotalpg.Text = "0,00"
         Me.lbltotalpg.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -462,28 +435,28 @@ Partial Class frmLocacao
         'Label7
         '
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(56, 90)
+        Me.Label7.Location = New System.Drawing.Point(20, 85)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(167, 25)
         Me.Label7.TabIndex = 63
         Me.Label7.Text = "Total a pagar"
         '
-        'cbopagar
+        'cboPagar
         '
-        Me.cbopagar.FormattingEnabled = True
-        Me.cbopagar.Items.AddRange(New Object() {"Na Locação", "Na Entrega"})
-        Me.cbopagar.Location = New System.Drawing.Point(47, 46)
-        Me.cbopagar.Margin = New System.Windows.Forms.Padding(4)
-        Me.cbopagar.Name = "cbopagar"
-        Me.cbopagar.Size = New System.Drawing.Size(173, 24)
-        Me.cbopagar.TabIndex = 62
+        Me.cboPagar.FormattingEnabled = True
+        Me.cboPagar.Items.AddRange(New Object() {"Na Locação", "Na Entrega"})
+        Me.cboPagar.Location = New System.Drawing.Point(24, 42)
+        Me.cboPagar.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboPagar.Name = "cboPagar"
+        Me.cboPagar.Size = New System.Drawing.Size(173, 24)
+        Me.cboPagar.TabIndex = 62
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(43, 26)
+        Me.Label11.Location = New System.Drawing.Point(20, 22)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(58, 20)
@@ -493,47 +466,47 @@ Partial Class frmLocacao
         'PictureBox1
         '
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox1.Location = New System.Drawing.Point(869, 111)
+        Me.PictureBox1.Location = New System.Drawing.Point(797, 103)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(265, 112)
+        Me.PictureBox1.Size = New System.Drawing.Size(219, 86)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 62
         Me.PictureBox1.TabStop = False
         '
-        'CBO_FUNCIONARIO
+        'cboFuncionario
         '
-        Me.CBO_FUNCIONARIO.FormattingEnabled = True
-        Me.CBO_FUNCIONARIO.Location = New System.Drawing.Point(152, 126)
-        Me.CBO_FUNCIONARIO.Margin = New System.Windows.Forms.Padding(4)
-        Me.CBO_FUNCIONARIO.Name = "CBO_FUNCIONARIO"
-        Me.CBO_FUNCIONARIO.Size = New System.Drawing.Size(365, 24)
-        Me.CBO_FUNCIONARIO.TabIndex = 63
+        Me.cboFuncionario.FormattingEnabled = True
+        Me.cboFuncionario.Location = New System.Drawing.Point(118, 118)
+        Me.cboFuncionario.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboFuncionario.Name = "cboFuncionario"
+        Me.cboFuncionario.Size = New System.Drawing.Size(365, 24)
+        Me.cboFuncionario.TabIndex = 63
         '
-        'TXT_NSEQ
+        'txtCodLocacao
         '
-        Me.TXT_NSEQ.Location = New System.Drawing.Point(47, 128)
-        Me.TXT_NSEQ.Margin = New System.Windows.Forms.Padding(4)
-        Me.TXT_NSEQ.Name = "TXT_NSEQ"
-        Me.TXT_NSEQ.Size = New System.Drawing.Size(96, 22)
-        Me.TXT_NSEQ.TabIndex = 64
+        Me.txtCodLocacao.Location = New System.Drawing.Point(13, 120)
+        Me.txtCodLocacao.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCodLocacao.Name = "txtCodLocacao"
+        Me.txtCodLocacao.Size = New System.Drawing.Size(96, 22)
+        Me.txtCodLocacao.TabIndex = 64
         '
         'ER
         '
         Me.ER.ContainerControl = Me
         '
-        'BTN_IMPRIMIR
+        'btnImprimir
         '
-        Me.BTN_IMPRIMIR.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.print_view
-        Me.BTN_IMPRIMIR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.BTN_IMPRIMIR.Location = New System.Drawing.Point(529, 606)
-        Me.BTN_IMPRIMIR.Margin = New System.Windows.Forms.Padding(4)
-        Me.BTN_IMPRIMIR.Name = "BTN_IMPRIMIR"
-        Me.BTN_IMPRIMIR.Size = New System.Drawing.Size(139, 55)
-        Me.BTN_IMPRIMIR.TabIndex = 65
-        Me.BTN_IMPRIMIR.Text = "I&mprimir"
-        Me.BTN_IMPRIMIR.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.BTN_IMPRIMIR.UseVisualStyleBackColor = True
+        Me.btnImprimir.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.print_view
+        Me.btnImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnImprimir.Location = New System.Drawing.Point(564, 554)
+        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnImprimir.Name = "btnImprimir"
+        Me.btnImprimir.Size = New System.Drawing.Size(139, 55)
+        Me.btnImprimir.TabIndex = 65
+        Me.btnImprimir.Text = "I&mprimir"
+        Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnImprimir.UseVisualStyleBackColor = True
         '
         'PrintPreviewDialog1
         '
@@ -553,21 +526,22 @@ Partial Class frmLocacao
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1167, 698)
-        Me.Controls.Add(Me.BTN_IMPRIMIR)
-        Me.Controls.Add(Me.TXT_NSEQ)
-        Me.Controls.Add(Me.CBO_FUNCIONARIO)
+        Me.ClientSize = New System.Drawing.Size(1033, 635)
+        Me.Controls.Add(Me.btnCancelar)
+        Me.Controls.Add(Me.btnImprimir)
+        Me.Controls.Add(Me.btnSalvar)
+        Me.Controls.Add(Me.txtCodLocacao)
+        Me.Controls.Add(Me.cboFuncionario)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.DTP_DEVOLUCAO)
+        Me.Controls.Add(Me.dtpDevolucao)
         Me.Controls.Add(Me.txtQuantidade)
-        Me.Controls.Add(Me.DTP_LOCACAO)
+        Me.Controls.Add(Me.dtpLocacao)
         Me.Controls.Add(Me.cboclientes)
         Me.Controls.Add(Me.lblQuantidade)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lblDtDevolucao)
         Me.Controls.Add(Me.lblDtLocacao)
         Me.Controls.Add(Me.lblCodigo)
@@ -578,7 +552,6 @@ Partial Class frmLocacao
         Me.Name = "frmLocacao"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Locação"
-        Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -598,41 +571,40 @@ Partial Class frmLocacao
     Friend WithEvents lblDtLocacao As System.Windows.Forms.Label
     Friend WithEvents lblDtDevolucao As System.Windows.Forms.Label
     Friend WithEvents txtQuantidade As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents BTNSALVAR As System.Windows.Forms.Button
+    Friend WithEvents btnSalvar As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents cboclientes As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents cboproduto As System.Windows.Forms.ComboBox
-    Friend WithEvents DTP_LOCACAO As System.Windows.Forms.DateTimePicker
-    Friend WithEvents DTP_DEVOLUCAO As System.Windows.Forms.DateTimePicker
+    Friend WithEvents cboProduto As System.Windows.Forms.ComboBox
+    Friend WithEvents dtpLocacao As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpDevolucao As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents lstgrade As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents btnok As System.Windows.Forms.Button
+    Friend WithEvents btnAdicionar As System.Windows.Forms.Button
     Friend WithEvents btnremove As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btnCancelar As System.Windows.Forms.Button
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents lblpagar As System.Windows.Forms.Label
     Friend WithEvents lbldinheiro As System.Windows.Forms.Label
-    Friend WithEvents txtdinheiro As System.Windows.Forms.TextBox
-    Friend WithEvents LBLTROCO As System.Windows.Forms.Label
+    Friend WithEvents txtDinheiro As System.Windows.Forms.TextBox
+    Friend WithEvents lblTroco As System.Windows.Forms.Label
     Friend WithEvents lbltotalpg As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents cbopagar As System.Windows.Forms.ComboBox
+    Friend WithEvents cboPagar As System.Windows.Forms.ComboBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents CBO_FUNCIONARIO As System.Windows.Forms.ComboBox
-    Friend WithEvents lblvalunit As System.Windows.Forms.TextBox
-    Friend WithEvents lbltotal1 As System.Windows.Forms.TextBox
-    Friend WithEvents TXT_NSEQ As System.Windows.Forms.TextBox
+    Friend WithEvents cboFuncionario As System.Windows.Forms.ComboBox
+    Friend WithEvents txtValorUnit As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotal As System.Windows.Forms.TextBox
+    Friend WithEvents txtCodLocacao As System.Windows.Forms.TextBox
     Friend WithEvents ER As System.Windows.Forms.ErrorProvider
-    Friend WithEvents BTN_IMPRIMIR As System.Windows.Forms.Button
+    Friend WithEvents btnImprimir As System.Windows.Forms.Button
     Friend WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
 End Class

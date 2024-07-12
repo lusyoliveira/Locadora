@@ -1,29 +1,24 @@
 Public Class frmDevolucao
-    Dim TBLOCACAO As DataTable
-
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        carregalocacao()
-    End Sub
-    Private Sub carregalocacao()
-
+    Dim ClasseLocacao As New clsLocacao, tbLocacao As DataTable
+    Private Sub PreencheListaLocacao()
+        Dim x As Integer = 0
         lstgrade.Items.Clear()
 
-        Dim sql As String = "Select * from TBLOCACAO where CODIGO = " & TXT_CODIGO.Text
-        ' Recebe o DataTable preenchido com os dados das locações
-        TBLOCACAO = RecebeTabela(sql)
-
-        If TBLOCACAO.Rows.Count = 0 Then Exit Sub
-
-        For Each row As DataRow In TBLOCACAO.Rows
-            Dim item As New ListViewItem(row("CODIGO").ToString())
-            item.SubItems.Add(row("CLIENTE").ToString())
-            item.SubItems.Add(row("TOTAL").ToString())
-            item.SubItems.Add(row("MULTA").ToString())
-            item.SubItems.Add(row("DT_LOCACAO").ToString())
-            item.SubItems.Add(row("DT_DEVOLUCAO").ToString())
-            lstgrade.Items.Add(item)
+        If tbLocacao.Rows.Count = 0 Then Exit Sub
+        For Each row As DataRow In tbLocacao.Rows
+            lstgrade.Items.Add(row("codigo").ToString())
+            lstgrade.Items(x).SubItems.Add(row("Cliente").ToString())
+            lstgrade.Items(x).SubItems.Add(row("Total").ToString())
+            lstgrade.Items(x).SubItems.Add(row("Multa").ToString())
+            lstgrade.Items(x).SubItems.Add(row("Dt_Locacao").ToString())
+            lstgrade.Items(x).SubItems.Add(row("Dt_Devolucao").ToString())
+            x += 1
         Next
+    End Sub
+
+    Private Sub btnPesquisar_Click(sender As Object, e As EventArgs) Handles btnPesquisar.Click
+        tbLocacao = ClasseLocacao.ConsultaLocacao(Val(txtCodigo.Text))
+        PreencheListaLocacao()
     End Sub
 
     Private Sub frmDevolucao_Load(sender As Object, e As EventArgs) Handles MyBase.Load

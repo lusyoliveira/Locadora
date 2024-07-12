@@ -29,7 +29,6 @@ Partial Class frmCadProdutos
         Me.cboProduto = New System.Windows.Forms.ComboBox()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.lblAutor = New System.Windows.Forms.Label()
-        Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.lblGenero = New System.Windows.Forms.Label()
         Me.lblDuracao = New System.Windows.Forms.Label()
         Me.lblCensura = New System.Windows.Forms.Label()
@@ -54,7 +53,6 @@ Partial Class frmCadProdutos
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.cboGenerojogo = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cbolegenda = New System.Windows.Forms.ComboBox()
         Me.Valor = New System.Windows.Forms.Label()
@@ -63,6 +61,7 @@ Partial Class frmCadProdutos
         Me.txtoriginal = New System.Windows.Forms.TextBox()
         Me.lbloriginal = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -120,14 +119,6 @@ Partial Class frmCadProdutos
         Me.lblAutor.Size = New System.Drawing.Size(95, 16)
         Me.lblAutor.TabIndex = 8
         Me.lblAutor.Text = "Diretor/Criador"
-        '
-        'txtCodigo
-        '
-        Me.txtCodigo.Location = New System.Drawing.Point(22, 105)
-        Me.txtCodigo.Name = "txtCodigo"
-        Me.txtCodigo.Size = New System.Drawing.Size(58, 22)
-        Me.txtCodigo.TabIndex = 4
-        Me.txtCodigo.Visible = False
         '
         'lblGenero
         '
@@ -211,7 +202,7 @@ Partial Class frmCadProdutos
         Me.GroupBox2.Controls.Add(Me.btnNovo)
         Me.GroupBox2.Location = New System.Drawing.Point(167, 436)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(581, 80)
+        Me.GroupBox2.Size = New System.Drawing.Size(581, 86)
         Me.GroupBox2.TabIndex = 31
         Me.GroupBox2.TabStop = False
         '
@@ -253,7 +244,6 @@ Partial Class frmCadProdutos
         Me.btnExcluir.Text = "&Excluir"
         Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.UseVisualStyleBackColor = True
-        Me.btnExcluir.Visible = False
         '
         'btnSalvar
         '
@@ -294,7 +284,7 @@ Partial Class frmCadProdutos
         Me.cboGenero.Items.AddRange(New Object() {"Ação", "Adulto", "Aventura", "Comédia", "Desenho", "Ficção", "Musical", "Religioso", "Romantico", "Suspense", "Terror"})
         Me.cboGenero.Location = New System.Drawing.Point(24, 155)
         Me.cboGenero.Name = "cboGenero"
-        Me.cboGenero.Size = New System.Drawing.Size(121, 24)
+        Me.cboGenero.Size = New System.Drawing.Size(141, 24)
         Me.cboGenero.TabIndex = 36
         '
         'lstgrade
@@ -338,16 +328,6 @@ Partial Class frmCadProdutos
         '
         Me.ColumnHeader10.Text = "Data Cadastro"
         Me.ColumnHeader10.Width = 100
-        '
-        'cboGenerojogo
-        '
-        Me.cboGenerojogo.FormattingEnabled = True
-        Me.cboGenerojogo.Items.AddRange(New Object() {"Aventura", "Corrida", "Esporte", "Estrategia", "Guerra", "Luta", "RPG", "Simulador", "Tiro", "Vida Virtual"})
-        Me.cboGenerojogo.Location = New System.Drawing.Point(24, 155)
-        Me.cboGenerojogo.Name = "cboGenerojogo"
-        Me.cboGenerojogo.Size = New System.Drawing.Size(141, 24)
-        Me.cboGenerojogo.TabIndex = 39
-        Me.cboGenerojogo.Visible = False
         '
         'Label1
         '
@@ -422,10 +402,20 @@ Partial Class frmCadProdutos
         Me.Label2.Size = New System.Drawing.Size(0, 16)
         Me.Label2.TabIndex = 50
         '
+        'Label3
+        '
+        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label3.Location = New System.Drawing.Point(24, 105)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(55, 22)
+        Me.Label3.TabIndex = 90
+        '
         'frmCadProdutos
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(943, 526)
+        Me.ClientSize = New System.Drawing.Size(943, 545)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lbloriginal)
         Me.Controls.Add(Me.txtoriginal)
@@ -434,7 +424,6 @@ Partial Class frmCadProdutos
         Me.Controls.Add(Me.Valor)
         Me.Controls.Add(Me.cbolegenda)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cboGenerojogo)
         Me.Controls.Add(Me.lstgrade)
         Me.Controls.Add(Me.cboGenero)
         Me.Controls.Add(Me.txtDuracao)
@@ -451,7 +440,6 @@ Partial Class frmCadProdutos
         Me.Controls.Add(Me.lblAutor)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.cboProduto)
-        Me.Controls.Add(Me.txtCodigo)
         Me.Controls.Add(Me.lblProduto)
         Me.Controls.Add(Me.lblCodigo)
         Me.Controls.Add(Me.Panel1)
@@ -471,7 +459,6 @@ Partial Class frmCadProdutos
     Friend WithEvents cboProduto As System.Windows.Forms.ComboBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents lblAutor As System.Windows.Forms.Label
-    Friend WithEvents txtCodigo As System.Windows.Forms.TextBox
     Friend WithEvents lblGenero As System.Windows.Forms.Label
     Friend WithEvents lblDuracao As System.Windows.Forms.Label
     Friend WithEvents lblCensura As System.Windows.Forms.Label
@@ -490,7 +477,6 @@ Partial Class frmCadProdutos
     Friend WithEvents txtDuracao As System.Windows.Forms.TextBox
     Friend WithEvents cboGenero As System.Windows.Forms.ComboBox
     Friend WithEvents lstgrade As System.Windows.Forms.ListView
-    Friend WithEvents cboGenerojogo As System.Windows.Forms.ComboBox
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
@@ -505,5 +491,5 @@ Partial Class frmCadProdutos
     Friend WithEvents txtoriginal As System.Windows.Forms.TextBox
     Friend WithEvents lbloriginal As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-
+    Friend WithEvents Label3 As Label
 End Class

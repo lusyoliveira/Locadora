@@ -19,9 +19,9 @@ Partial Class frmDevolucao
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TXT_CODIGO = New System.Windows.Forms.TextBox()
+        Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnPesquisar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lstgrade = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -47,13 +47,13 @@ Partial Class frmDevolucao
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TXT_CODIGO
+        'txtCodigo
         '
-        Me.TXT_CODIGO.Location = New System.Drawing.Point(21, 49)
-        Me.TXT_CODIGO.Margin = New System.Windows.Forms.Padding(4)
-        Me.TXT_CODIGO.Name = "TXT_CODIGO"
-        Me.TXT_CODIGO.Size = New System.Drawing.Size(163, 22)
-        Me.TXT_CODIGO.TabIndex = 0
+        Me.txtCodigo.Location = New System.Drawing.Point(21, 49)
+        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCodigo.Name = "txtCodigo"
+        Me.txtCodigo.Size = New System.Drawing.Size(163, 22)
+        Me.txtCodigo.TabIndex = 0
         '
         'Label1
         '
@@ -65,18 +65,18 @@ Partial Class frmDevolucao
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "N° da Locação"
         '
-        'Button1
+        'btnPesquisar
         '
-        Me.Button1.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.binoculars
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button1.Location = New System.Drawing.Point(207, 22)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(131, 58)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Pesquisar"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnPesquisar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.binoculars
+        Me.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnPesquisar.Location = New System.Drawing.Point(207, 22)
+        Me.btnPesquisar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPesquisar.Name = "btnPesquisar"
+        Me.btnPesquisar.Size = New System.Drawing.Size(131, 58)
+        Me.btnPesquisar.TabIndex = 2
+        Me.btnPesquisar.Text = "Pesquisar"
+        Me.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPesquisar.UseVisualStyleBackColor = True
         '
         'Panel1
         '
@@ -251,9 +251,9 @@ Partial Class frmDevolucao
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.TXT_CODIGO)
+        Me.GroupBox1.Controls.Add(Me.txtCodigo)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.btnPesquisar)
         Me.GroupBox1.Location = New System.Drawing.Point(36, 100)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
@@ -304,9 +304,9 @@ Partial Class frmDevolucao
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TXT_CODIGO As System.Windows.Forms.TextBox
+    Friend WithEvents txtCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnPesquisar As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents lstgrade As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader

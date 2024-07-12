@@ -78,6 +78,10 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\clsConexao.vb" />
+    <Compile Include="Classes\clsFornecedores.vb" />
+    <Compile Include="Classes\clsProdutos.vb" />
+    <Compile Include="Classes\clsUsuario.vb" />
     <Compile Include="Forms\CadProdutos.designer.vb">
       <DependentUpon>CadProdutos.vb</DependentUpon>
     </Compile>
@@ -98,17 +102,19 @@
     </Compile>
     <Compile Include="Classes\clsCombo.vb" />
     <Compile Include="Classes\clsClientes.vb" />
+    <Compile Include="Classes\clsFuncionarios.vb" />
+    <Compile Include="Classes\clsLocacao.vb" />
     <Compile Include="Forms\frmLocalizar.designer.vb">
       <DependentUpon>frmLocalizar.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmLocalizar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Login.vb">
+    <Compile Include="Forms\frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Login.Designer.vb">
-      <DependentUpon>Login.vb</DependentUpon>
+    <Compile Include="Forms\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CadClientes.Designer.vb">
@@ -129,9 +135,7 @@
     <Compile Include="Forms\frmLocacao.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\mdlConexao.vb" />
     <Compile Include="Modulos\mdlFuncoes.vb" />
-    <Compile Include="Modulos\mdlCombo.vb" />
     <Compile Include="Forms\frmPrincipal.Designer.vb">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </Compile>
@@ -188,9 +192,9 @@
       <DependentUpon>frmLocalizar.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Login.resx">
+    <EmbeddedResource Include="Forms\frmLogin.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Login.vb</DependentUpon>
+      <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CadClientes.resx">
       <SubType>Designer</SubType>

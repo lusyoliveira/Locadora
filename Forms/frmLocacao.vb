@@ -1,21 +1,16 @@
 Imports System.Data.SqlClient
 
 Public Class frmLocacao
-    Dim wcpagina As Integer, imagem As Image
-    Dim X As Integer
-    Dim Y As Integer
-    Dim z As Integer
-    Dim SQL As String
-    Dim tbclientes, tbProdutos, TBLOCACAO, tbFuncionarios, DataTable
+    Dim imagem As Image, wcpagina, X, Y, z As Integer, sql As String, tbclientes, tbProdutos, tbLocacao, tbFuncionarios As DataTable,
+        ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo
     Private Sub cboClientes_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboclientes.GotFocus
-        CarregaCombo(cboclientes, "Select codigo ,nome from tbClientes order by nome")
+        ClasseCombo.CarregaCombo(cboclientes, "Select codigo ,nome from tbClientes order by nome")
 
     End Sub
-    Private Sub cboproduto_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboproduto.GotFocus
-        CarregaCombo(cboproduto, "Select codigo ,titulo from tbProdutos order by titulo")
+    Private Sub cboproduto_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboProduto.GotFocus
+        ClasseCombo.CarregaCombo(cboProduto, "Select codigo ,titulo from tbProdutos order by titulo")
     End Sub
-
-    Private Sub atualizaValor()
+    Private Sub AtualizaValor()
         Dim x As Integer, total As Decimal = 0
         If lstgrade.Items.Count > 0 Then
             For x = 0 To lstgrade.Items.Count - 1
@@ -26,170 +21,142 @@ Public Class frmLocacao
             lbltotalpg.Text = 0
         End If
     End Sub
-    Private Sub btnok_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnok.Click
-        On Error Resume Next
-        X = lblvalunit.Text
-        ''Y = lbltotal1.Text
-        ''z = txtQuantidade.Text
-        lbltotalpg.Text = lbltotalpg.Text + X
 
-        If lblvalunit.Tag = "" Then Exit Sub
-
-        Dim tbProdutos As DataTable = RecebeTabela("Select * from tbProdutos where codigo = " & lblvalunit.Tag)
-
-        If tbProdutos.Rows.Count = 0 Then Exit Sub
-
-        Dim row As DataRow = tbProdutos.Rows(0)
-        lstgrade.Items.Add(row("titulo").ToString())
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(row("valor").ToString()))
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(txtQuantidade.Text)
-        ''lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(lbltotal1.Text))
-        lstgrade.Items(lstgrade.Items.Count - 1).Tag = row("codigo").ToString()
-
-    End Sub
     Private Sub btnremove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnremove.Click
-        'X = 0
-        'Y = 0
-        'z = 0
-
         If lstgrade.SelectedItems.Count = 0 Then Exit Sub
         lstgrade.SelectedItems(0).Remove()
-        atualizaValor()
+        AtualizaValor()
     End Sub
     Private Sub txtQuantidade_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtQuantidade.TextChanged
         On Error Resume Next
-        lbltotal1.Text = FormatCurrency(lblvalunit.Text * txtQuantidade.Text)
-        lbltotalpg.Text = lbltotal1.Text
+        txtTotal.Text = FormatCurrency(txtValorUnit.Text * txtQuantidade.Text)
+        lbltotalpg.Text = txtTotal.Text
     End Sub
     Private Sub txtdinheiro_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LBLTROCO.Text = txtdinheiro.Text - lbltotalpg.Text
+        lblTroco.Text = txtDinheiro.Text - lbltotalpg.Text
     End Sub
-    Private Sub cbopagar_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbopagar.SelectedIndexChanged
-        If cbopagar.Text = "Na Entrega" Then
-            txtdinheiro.Enabled = False
+    Private Sub cbopagar_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboPagar.SelectedIndexChanged
+        If cboPagar.Text = "Na Entrega" Then
+            txtDinheiro.Enabled = False
             lbldinheiro.Enabled = False
-            LBLTROCO.Enabled = False
+            lblTroco.Enabled = False
             lblpagar.Enabled = False
         Else
-            txtdinheiro.Enabled = True
+            txtDinheiro.Enabled = True
             lbldinheiro.Enabled = True
-            LBLTROCO.Enabled = True
+            lblTroco.Enabled = True
             lblpagar.Enabled = True
         End If
     End Sub
-    Private Sub PAGAMETO()
-        If txtdinheiro.Text = "" Then
+
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        Dim sql As String = "SELECT * FROM TBLOCACAO"
+        tbLocacao = ClasseCombo.Listar(sql)
+        If tbLocacao.Rows.Count = 0 Then
+            MsgBox("Nenhuma Locação Selecionada!", MsgBoxStyle.Information)
+            Exit Sub
+        End If
+        PrintPreviewDialog1.ShowDialog()
+    End Sub
+
+    Private Sub Pagamento()
+        If txtDinheiro.Text = "" Then
             MsgBox("PAGAMENTO NAO EFETUADO!")
             Exit Sub
         End If
     End Sub
-    Private Sub LIMPAR()
-        CBO_FUNCIONARIO.Text = ""
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Limpar()
+    End Sub
+
+    Private Sub Limpar()
+        cboFuncionario.Text = ""
         cboclientes.Text = ""
-        cboproduto.Text = ""
-        lblvalunit.Text = ""
+        cboProduto.Text = ""
+        txtValorUnit.Text = ""
         lblTotal.Text = ""
-        lbltotal1.Text = ""
-        cbopagar.Text = ""
+        txtTotal.Text = ""
+        cboPagar.Text = ""
         lbltotalpg.Text = ""
-        txtdinheiro.Text = ""
-        LBLTROCO.Text = ""
+        txtDinheiro.Text = ""
+        lblTroco.Text = ""
         lblQuantidade.Text = ""
         lstgrade.Clear()
     End Sub
-    Private Sub CAMPOZERO()
-        If CBO_FUNCIONARIO.Text = "" Then
-            CBO_FUNCIONARIO.Text = 0
+
+    Private Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão ds locacao?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            For Each item As ListViewItem In lstgrade.Items
+                ClasseLocacao.SalvarDetLocacao(Val(txtCodLocacao.Text), item.SubItems(0).Text, item.SubItems(2).Text)
+            Next
+            ClasseLocacao.SalvarLocacao(cboFuncionario.SelectedValue, txtQuantidade.Text, dtpLocacao.Value, cboclientes.SelectedValue, txtTotal.Text)
+            Limpar()
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub txtDinheiro_TextChanged_1(sender As Object, e As EventArgs) Handles txtDinheiro.TextChanged
+        On Error Resume Next
+        lblTroco.Text = txtDinheiro.Text - lbltotalpg.Text
+    End Sub
+
+    Private Sub CampoZero()
+        If cboFuncionario.Text = "" Then
+            cboFuncionario.Text = 0
         End If
         If cboclientes.Text = "" Then
             cboclientes.Text = 0
         End If
-        If cboproduto.Text = "" Then
-            cboproduto.Text = 0
+        If cboProduto.Text = "" Then
+            cboProduto.Text = 0
         End If
     End Sub
-    Private Sub CBO_FUNCIONARIO_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CBO_FUNCIONARIO.GotFocus
+    Private Sub CBO_FUNCIONARIO_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboFuncionario.GotFocus
         On Error Resume Next
-        '' CarregaCombo(tbFuncionarios, "Select codfunc ,nome from tbFuncionarios order by nome")
-        CarregaCombo(CBO_FUNCIONARIO, "Select codfunc ,nome from tbFuncionarios order by nome")
+        ClasseCombo.CarregaCombo(cboFuncionario, "Select codfunc ,nome from tbFuncionarios order by nome")
     End Sub
+    Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
+        If cboProduto.SelectedItem Is Nothing OrElse txtValorUnit.Text.Trim() = "" OrElse txtTotal.Text.Trim() = "" Then
+            MessageBox.Show("Por favor, preencha todos os campos.")
+            Exit Sub
+        End If
 
-    Private Sub lbltotal1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lbltotal1.TextChanged
-        ''lbltotal1.Text = FormatCurrency(0)
-    End Sub
+        ' Captura os valores dos controles
+        Dim codigo As Integer = Integer.Parse(cboProduto.SelectedValue.ToString())
+        Dim titulo As String = cboProduto.SelectedItem.ToString()
+        Dim valorUnitario As Decimal = Decimal.Parse(txtValorUnit.Text)
+        Dim quantidade As Integer = Integer.Parse(txtTotal.Text)
 
-    Private Sub txtdinheiro_TextChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtdinheiro.TextChanged
-        On Error Resume Next
-        LBLTROCO.Text = txtdinheiro.Text - lbltotalpg.Text
-    End Sub
+        ' Cria um novo item para adicionar ao ListView
+        Dim novoItem As New ListViewItem(codigo)
+        novoItem.SubItems.Add(titulo.ToString())
+        novoItem.SubItems.Add(FormatCurrency(valorUnitario))
+        novoItem.SubItems.Add(quantidade.ToString())
+        novoItem.SubItems.Add(FormatCurrency(valorUnitario * quantidade)) ' Calcula o total
 
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
-        Me.Close()
+        ' Adiciona o item ao ListView
+        lstgrade.Items.Add(novoItem)
+
+        ' Limpa os campos após adicionar o produto
+        Limpar()
     End Sub
 
     Private Sub PrintPreviewDialog1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintPreviewDialog1.Load
         wcpagina = 1
     End Sub
-    Private Sub cboproduto_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboproduto.SelectedIndexChanged
-        tbProdutos = RecebeTabela("Select * from tbProdutos where titulo like '" & cboproduto.Text & "'")
+    Private Sub cboproduto_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboProduto.SelectedIndexChanged
+        tbProdutos = ClasseCombo.Listar("Select * from tbProdutos where titulo like '" & cboProduto.Text & "'")
 
-        lblvalunit.Text = FormatCurrency(0)
+        txtValorUnit.Text = FormatCurrency(0)
         If tbProdutos.Rows.Count = 0 Then Exit Sub
 
         Dim row As DataRow = tbProdutos.Rows(0)
-        lblvalunit.Text = FormatCurrency(row("valor").ToString())
-        lblvalunit.Tag = row("codigo").ToString()
-    End Sub
-
-    Private Sub frmLocacao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTNSALVAR.Click
-        On Error Resume Next
-        CAMPOZERO()
-        If txtdinheiro.Text = "" Then
-            MsgBox("PAGAMENTO NAO EFETUADO!")
-            Exit Sub
-        End If
-
-        SQL = "SELECT * FROM TBLOCACAO"
-        TBLOCACAO = RecebeTabela(SQL)
-        TBLOCACAO.Rows.Add()
-
-        Dim newRow As DataRow = TBLOCACAO.Rows(TBLOCACAO.Rows.Count - 1)
-        newRow("FUNCIONARIO") = LerCombo(CBO_FUNCIONARIO)
-        newRow("DT_LOCACAO") = DTP_LOCACAO.Text
-        newRow("DT_DEVOLUCAO") = DTP_DEVOLUCAO.Text
-        newRow("CLIENTE") = LerCombo(cboclientes)
-        newRow("FILME") = LerCombo(cboproduto)
-        newRow("VALOR") = moeda(lblvalunit.Text)
-        newRow("TOTAL") = lblTotal.Text
-        TBLOCACAO.AcceptChanges()
-
-        ' Atualiza no banco de dados
-        AtualizaBancoDados(TBLOCACAO, "TBLOCACAO")
-
-        LIMPAR()
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        If TXT_NSEQ.Text = "" Then
-            ER.SetError(TXT_NSEQ, "Digite um Código!")
-            Exit Sub
-        End If
-
-        SQL = "SELECT * FROM TBLOCACAO WHERE CODIGO=" & TXT_NSEQ.Text
-        TBLOCACAO = RecebeTabela(SQL)
-
-        If TBLOCACAO.Rows.Count = 0 Then
-            MsgBox("LOCACAO NAO EXISTE!")
-            Exit Sub
-        End If
-
-        SQL = "DELETE FROM TBLOCACAO WHERE CODIGO=" & TXT_NSEQ.Text
-        RecebeTabela(SQL)
-        AtualizaBancoDados(TBLOCACAO, "TBLOCACAO")
+        txtValorUnit.Text = FormatCurrency(row("valor").ToString())
+        txtValorUnit.Tag = row("codigo").ToString()
     End Sub
 
     Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
@@ -216,7 +183,7 @@ Public Class frmLocacao
         Y1 += Line
 
         ' Os dados que vão ser buscados no banco de dados
-        For Each row As DataRow In TBLOCACAO.Rows
+        For Each row As DataRow In tbLocacao.Rows
             e.Graphics.DrawLine(Pens.Black, X1, Y1, 700, Y1)
             e.Graphics.DrawString(row("codigo").ToString(), MYFONT, Brushes.Black, X1 + 10, Y1)
             e.Graphics.DrawString(row("funcionario").ToString(), MYFONT, Brushes.Black, X1 + 60, Y1)
@@ -239,42 +206,6 @@ Public Class frmLocacao
         End If
     End Sub
 
-    Private Sub BTN_IMPRIMIR_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_IMPRIMIR.Click
-        Dim sql As String = "SELECT * FROM TBLOCACAO"
-        TBLOCACAO = RecebeTabela(sql)
-        If TBLOCACAO.Rows.Count = 0 Then
-            MsgBox("Nenhuma Locação Selecionada!", MsgBoxStyle.Information)
-            Exit Sub
-        End If
-        PrintPreviewDialog1.ShowDialog()
-    End Sub
-    Private Sub AtualizaBancoDados(ByVal dt As DataTable, ByVal tableName As String)
-        Dim connectionString As String = "SuaConnectionString" ' Substitua com a sua string de conexão
-        Dim sql As String = $"SELECT * FROM {tableName} WHERE 1 = 0" ' Consulta SQL para obter a estrutura da tabela
 
-        Using connection As New SqlConnection(connectionString)
-            Using adapter As New SqlDataAdapter()
-                adapter.SelectCommand = New SqlCommand(sql, connection)
-
-                ' Define os comandos de atualização (INSERT, UPDATE, DELETE)
-                Dim builder As New SqlCommandBuilder(adapter)
-
-                Try
-                    connection.Open()
-
-                    ' Preenche o DataTable com os dados do banco de dados
-                    adapter.Fill(TBLOCACAO)
-
-                    ' Atualiza o banco de dados com as mudanças no DataTable
-                    adapter.Update(dt)
-                Catch ex As Exception
-                    ' Trate exceções aqui conforme necessário
-                    MessageBox.Show($"Erro ao atualizar banco de dados: {ex.Message}")
-                Finally
-                    connection.Close()
-                End Try
-            End Using
-        End Using
-    End Sub
 
 End Class

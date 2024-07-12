@@ -40,11 +40,11 @@ Partial Class frmCadFuncionarios
         Me.clmcargo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.lblCodigo = New System.Windows.Forms.Label()
         Me.cboUf = New System.Windows.Forms.ComboBox()
         Me.txtCidade = New System.Windows.Forms.TextBox()
         Me.lblUf = New System.Windows.Forms.Label()
         Me.lblCidade = New System.Windows.Forms.Label()
-        Me.txtCodigo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.mskCep = New System.Windows.Forms.MaskedTextBox()
         Me.cboEstadoCivil = New System.Windows.Forms.ComboBox()
@@ -137,7 +137,6 @@ Partial Class frmCadFuncionarios
         Me.btnExcluir.Text = "&Excluir"
         Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnExcluir.UseVisualStyleBackColor = True
-        Me.btnExcluir.Visible = False
         '
         'btnConsultar
         '
@@ -195,12 +194,15 @@ Partial Class frmCadFuncionarios
         'lstgrade
         '
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmcodfunc, Me.clmmatricula, Me.clmnome, Me.clmdtnasc, Me.clmsexo, Me.clmtelefone1, Me.clmcelular, Me.clmrg, Me.clmcpf, Me.clmcargo})
+        Me.lstgrade.FullRowSelect = True
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(26, 460)
         Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
+        Me.lstgrade.MultiSelect = False
         Me.lstgrade.Name = "lstgrade"
         Me.lstgrade.Size = New System.Drawing.Size(1077, 176)
         Me.lstgrade.TabIndex = 63
+        Me.lstgrade.Tag = "0"
         Me.lstgrade.UseCompatibleStateImageBehavior = False
         Me.lstgrade.View = System.Windows.Forms.View.Details
         '
@@ -267,11 +269,11 @@ Partial Class frmCadFuncionarios
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage1.Controls.Add(Me.lblCodigo)
         Me.TabPage1.Controls.Add(Me.cboUf)
         Me.TabPage1.Controls.Add(Me.txtCidade)
         Me.TabPage1.Controls.Add(Me.lblUf)
         Me.TabPage1.Controls.Add(Me.lblCidade)
-        Me.TabPage1.Controls.Add(Me.txtCodigo)
         Me.TabPage1.Controls.Add(Me.Label1)
         Me.TabPage1.Controls.Add(Me.mskCep)
         Me.TabPage1.Controls.Add(Me.cboEstadoCivil)
@@ -297,6 +299,15 @@ Partial Class frmCadFuncionarios
         Me.TabPage1.Size = New System.Drawing.Size(1069, 312)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Cadastro Pessoal"
+        '
+        'lblCodigo
+        '
+        Me.lblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblCodigo.Location = New System.Drawing.Point(26, 32)
+        Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCodigo.Name = "lblCodigo"
+        Me.lblCodigo.Size = New System.Drawing.Size(98, 22)
+        Me.lblCodigo.TabIndex = 89
         '
         'cboUf
         '
@@ -336,15 +347,6 @@ Partial Class frmCadFuncionarios
         Me.lblCidade.TabIndex = 85
         Me.lblCidade.Text = "Cidade"
         '
-        'txtCodigo
-        '
-        Me.txtCodigo.Location = New System.Drawing.Point(27, 32)
-        Me.txtCodigo.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtCodigo.Name = "txtCodigo"
-        Me.txtCodigo.Size = New System.Drawing.Size(104, 22)
-        Me.txtCodigo.TabIndex = 84
-        Me.txtCodigo.Visible = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -354,7 +356,6 @@ Partial Class frmCadFuncionarios
         Me.Label1.Size = New System.Drawing.Size(54, 16)
         Me.Label1.TabIndex = 83
         Me.Label1.Text = "Código "
-        Me.Label1.Visible = False
         '
         'mskCep
         '
@@ -836,7 +837,6 @@ Partial Class frmCadFuncionarios
     Friend WithEvents txtCidade As System.Windows.Forms.TextBox
     Friend WithEvents lblUf As System.Windows.Forms.Label
     Friend WithEvents lblCidade As System.Windows.Forms.Label
-    Friend WithEvents txtCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents mskCep As System.Windows.Forms.MaskedTextBox
     Friend WithEvents cboEstadoCivil As System.Windows.Forms.ComboBox
@@ -880,4 +880,5 @@ Partial Class frmCadFuncionarios
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lblCodigo As Label
 End Class

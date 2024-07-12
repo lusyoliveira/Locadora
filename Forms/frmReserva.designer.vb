@@ -25,25 +25,24 @@ Partial Class frmReserva
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReserva))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.lblvalunit = New System.Windows.Forms.Label()
-        Me.btnSair = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.lblValorUnit = New System.Windows.Forms.Label()
+        Me.btnRemover = New System.Windows.Forms.Button()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
-        Me.lbltotal = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReservar = New System.Windows.Forms.Button()
-        Me.btnok = New System.Windows.Forms.Button()
-        Me.CBO_PRODUTO = New System.Windows.Forms.ComboBox()
+        Me.btnAdicionar = New System.Windows.Forms.Button()
+        Me.cboProduto = New System.Windows.Forms.ComboBox()
         Me.lstgrade = New System.Windows.Forms.ListView()
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.lblValorTotal = New System.Windows.Forms.Label()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
-        Me.DTP_DEVOLUCAO = New System.Windows.Forms.DateTimePicker()
-        Me.DTP_RESERVA = New System.Windows.Forms.DateTimePicker()
+        Me.dtpDevolucao = New System.Windows.Forms.DateTimePicker()
+        Me.dtpReserva = New System.Windows.Forms.DateTimePicker()
         Me.lblDtDevolucao = New System.Windows.Forms.Label()
-        Me.CBO_CLIENTE = New System.Windows.Forms.ComboBox()
+        Me.cboCliente = New System.Windows.Forms.ComboBox()
         Me.lblCliente = New System.Windows.Forms.Label()
         Me.lblDtReserva = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
@@ -58,96 +57,81 @@ Partial Class frmReserva
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(867, 94)
+        Me.Panel1.Size = New System.Drawing.Size(825, 94)
         Me.Panel1.TabIndex = 2
         '
         'GroupBox1
         '
         Me.GroupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.lblvalunit)
-        Me.GroupBox1.Controls.Add(Me.btnSair)
-        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.lblValorUnit)
+        Me.GroupBox1.Controls.Add(Me.btnRemover)
         Me.GroupBox1.Controls.Add(Me.GroupBox9)
         Me.GroupBox1.Controls.Add(Me.btnReservar)
-        Me.GroupBox1.Controls.Add(Me.btnok)
-        Me.GroupBox1.Controls.Add(Me.CBO_PRODUTO)
+        Me.GroupBox1.Controls.Add(Me.btnAdicionar)
+        Me.GroupBox1.Controls.Add(Me.cboProduto)
         Me.GroupBox1.Controls.Add(Me.lstgrade)
         Me.GroupBox1.Controls.Add(Me.lblTitulo)
         Me.GroupBox1.Controls.Add(Me.lblValorTotal)
-        Me.GroupBox1.Location = New System.Drawing.Point(36, 176)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 177)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(799, 389)
+        Me.GroupBox1.Size = New System.Drawing.Size(799, 363)
         Me.GroupBox1.TabIndex = 12
         Me.GroupBox1.TabStop = False
         '
-        'lblvalunit
+        'lblValorUnit
         '
-        Me.lblvalunit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblvalunit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblvalunit.ForeColor = System.Drawing.Color.Blue
-        Me.lblvalunit.Location = New System.Drawing.Point(481, 32)
-        Me.lblvalunit.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblvalunit.Name = "lblvalunit"
-        Me.lblvalunit.Size = New System.Drawing.Size(125, 28)
-        Me.lblvalunit.TabIndex = 48
-        Me.lblvalunit.Text = "0,00"
-        Me.lblvalunit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblValorUnit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblValorUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValorUnit.ForeColor = System.Drawing.Color.Blue
+        Me.lblValorUnit.Location = New System.Drawing.Point(501, 32)
+        Me.lblValorUnit.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblValorUnit.Name = "lblValorUnit"
+        Me.lblValorUnit.Size = New System.Drawing.Size(125, 28)
+        Me.lblValorUnit.TabIndex = 48
+        Me.lblValorUnit.Text = "0,00"
+        Me.lblValorUnit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'btnSair
+        'btnRemover
         '
-        Me.btnSair.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
-        Me.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSair.Location = New System.Drawing.Point(379, 318)
-        Me.btnSair.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSair.Name = "btnSair"
-        Me.btnSair.Size = New System.Drawing.Size(141, 55)
-        Me.btnSair.TabIndex = 6
-        Me.btnSair.Text = "&Cancelar"
-        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSair.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(644, 131)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(141, 55)
-        Me.Button1.TabIndex = 10
-        Me.Button1.Text = "R&emover"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnRemover.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
+        Me.btnRemover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRemover.Location = New System.Drawing.Point(644, 131)
+        Me.btnRemover.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnRemover.Name = "btnRemover"
+        Me.btnRemover.Size = New System.Drawing.Size(141, 55)
+        Me.btnRemover.TabIndex = 10
+        Me.btnRemover.Text = "R&emover"
+        Me.btnRemover.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRemover.UseVisualStyleBackColor = True
         '
         'GroupBox9
         '
-        Me.GroupBox9.Controls.Add(Me.lbltotal)
+        Me.GroupBox9.Controls.Add(Me.lblTotal)
         Me.GroupBox9.Controls.Add(Me.Label1)
-        Me.GroupBox9.Location = New System.Drawing.Point(619, 299)
+        Me.GroupBox9.Location = New System.Drawing.Point(634, 257)
         Me.GroupBox9.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox9.Name = "GroupBox9"
         Me.GroupBox9.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox9.Size = New System.Drawing.Size(165, 82)
+        Me.GroupBox9.Size = New System.Drawing.Size(157, 82)
         Me.GroupBox9.TabIndex = 47
         Me.GroupBox9.TabStop = False
         '
-        'lbltotal
+        'lblTotal
         '
-        Me.lbltotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lbltotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbltotal.ForeColor = System.Drawing.Color.Red
-        Me.lbltotal.Location = New System.Drawing.Point(21, 46)
-        Me.lbltotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbltotal.Name = "lbltotal"
-        Me.lbltotal.Size = New System.Drawing.Size(133, 28)
-        Me.lbltotal.TabIndex = 46
-        Me.lbltotal.Text = "0,00"
-        Me.lbltotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotal.ForeColor = System.Drawing.Color.Red
+        Me.lblTotal.Location = New System.Drawing.Point(12, 46)
+        Me.lblTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(133, 28)
+        Me.lblTotal.TabIndex = 46
+        Me.lblTotal.Text = "0,00"
+        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label1
         '
@@ -164,7 +148,7 @@ Partial Class frmReserva
         Me.btnReservar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ok
         Me.btnReservar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnReservar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnReservar.Location = New System.Drawing.Point(204, 318)
+        Me.btnReservar.Location = New System.Drawing.Point(644, 194)
         Me.btnReservar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnReservar.Name = "btnReservar"
         Me.btnReservar.Size = New System.Drawing.Size(141, 55)
@@ -173,28 +157,28 @@ Partial Class frmReserva
         Me.btnReservar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnReservar.UseVisualStyleBackColor = True
         '
-        'btnok
+        'btnAdicionar
         '
-        Me.btnok.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
-        Me.btnok.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnok.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnok.Location = New System.Drawing.Point(644, 68)
-        Me.btnok.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnok.Name = "btnok"
-        Me.btnok.Size = New System.Drawing.Size(141, 55)
-        Me.btnok.TabIndex = 9
-        Me.btnok.Text = "&Adicionar"
-        Me.btnok.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnok.UseVisualStyleBackColor = True
+        Me.btnAdicionar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
+        Me.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAdicionar.Location = New System.Drawing.Point(644, 68)
+        Me.btnAdicionar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAdicionar.Name = "btnAdicionar"
+        Me.btnAdicionar.Size = New System.Drawing.Size(141, 55)
+        Me.btnAdicionar.TabIndex = 9
+        Me.btnAdicionar.Text = "&Adicionar"
+        Me.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAdicionar.UseVisualStyleBackColor = True
         '
-        'CBO_PRODUTO
+        'cboProduto
         '
-        Me.CBO_PRODUTO.FormattingEnabled = True
-        Me.CBO_PRODUTO.Location = New System.Drawing.Point(20, 32)
-        Me.CBO_PRODUTO.Margin = New System.Windows.Forms.Padding(4)
-        Me.CBO_PRODUTO.Name = "CBO_PRODUTO"
-        Me.CBO_PRODUTO.Size = New System.Drawing.Size(452, 24)
-        Me.CBO_PRODUTO.TabIndex = 42
+        Me.cboProduto.FormattingEnabled = True
+        Me.cboProduto.Location = New System.Drawing.Point(20, 32)
+        Me.cboProduto.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboProduto.Name = "cboProduto"
+        Me.cboProduto.Size = New System.Drawing.Size(473, 24)
+        Me.cboProduto.TabIndex = 42
         '
         'lstgrade
         '
@@ -203,7 +187,7 @@ Partial Class frmReserva
         Me.lstgrade.Location = New System.Drawing.Point(20, 68)
         Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
-        Me.lstgrade.Size = New System.Drawing.Size(585, 228)
+        Me.lstgrade.Size = New System.Drawing.Size(606, 271)
         Me.lstgrade.TabIndex = 41
         Me.lstgrade.Tag = "0"
         Me.lstgrade.UseCompatibleStateImageBehavior = False
@@ -232,7 +216,7 @@ Partial Class frmReserva
         'lblValorTotal
         '
         Me.lblValorTotal.AutoSize = True
-        Me.lblValorTotal.Location = New System.Drawing.Point(481, 12)
+        Me.lblValorTotal.Location = New System.Drawing.Point(498, 14)
         Me.lblValorTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblValorTotal.Name = "lblValorTotal"
         Me.lblValorTotal.Size = New System.Drawing.Size(88, 16)
@@ -241,13 +225,13 @@ Partial Class frmReserva
         '
         'GroupBox8
         '
-        Me.GroupBox8.Controls.Add(Me.DTP_DEVOLUCAO)
-        Me.GroupBox8.Controls.Add(Me.DTP_RESERVA)
+        Me.GroupBox8.Controls.Add(Me.dtpDevolucao)
+        Me.GroupBox8.Controls.Add(Me.dtpReserva)
         Me.GroupBox8.Controls.Add(Me.lblDtDevolucao)
-        Me.GroupBox8.Controls.Add(Me.CBO_CLIENTE)
+        Me.GroupBox8.Controls.Add(Me.cboCliente)
         Me.GroupBox8.Controls.Add(Me.lblCliente)
         Me.GroupBox8.Controls.Add(Me.lblDtReserva)
-        Me.GroupBox8.Location = New System.Drawing.Point(36, 101)
+        Me.GroupBox8.Location = New System.Drawing.Point(13, 102)
         Me.GroupBox8.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox8.Name = "GroupBox8"
         Me.GroupBox8.Padding = New System.Windows.Forms.Padding(4)
@@ -255,25 +239,25 @@ Partial Class frmReserva
         Me.GroupBox8.TabIndex = 46
         Me.GroupBox8.TabStop = False
         '
-        'DTP_DEVOLUCAO
+        'dtpDevolucao
         '
-        Me.DTP_DEVOLUCAO.CalendarTitleBackColor = System.Drawing.Color.DarkRed
-        Me.DTP_DEVOLUCAO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTP_DEVOLUCAO.Location = New System.Drawing.Point(644, 33)
-        Me.DTP_DEVOLUCAO.Margin = New System.Windows.Forms.Padding(4)
-        Me.DTP_DEVOLUCAO.Name = "DTP_DEVOLUCAO"
-        Me.DTP_DEVOLUCAO.Size = New System.Drawing.Size(115, 22)
-        Me.DTP_DEVOLUCAO.TabIndex = 40
+        Me.dtpDevolucao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDevolucao.Location = New System.Drawing.Point(644, 33)
+        Me.dtpDevolucao.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpDevolucao.Name = "dtpDevolucao"
+        Me.dtpDevolucao.Size = New System.Drawing.Size(115, 22)
+        Me.dtpDevolucao.TabIndex = 40
         '
-        'DTP_RESERVA
+        'dtpReserva
         '
-        Me.DTP_RESERVA.CalendarTitleBackColor = System.Drawing.Color.DarkRed
-        Me.DTP_RESERVA.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DTP_RESERVA.Location = New System.Drawing.Point(493, 34)
-        Me.DTP_RESERVA.Margin = New System.Windows.Forms.Padding(4)
-        Me.DTP_RESERVA.Name = "DTP_RESERVA"
-        Me.DTP_RESERVA.Size = New System.Drawing.Size(115, 22)
-        Me.DTP_RESERVA.TabIndex = 0
+        Me.dtpReserva.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpReserva.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpReserva.Location = New System.Drawing.Point(493, 34)
+        Me.dtpReserva.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpReserva.Name = "dtpReserva"
+        Me.dtpReserva.Size = New System.Drawing.Size(115, 22)
+        Me.dtpReserva.TabIndex = 0
         '
         'lblDtDevolucao
         '
@@ -285,14 +269,14 @@ Partial Class frmReserva
         Me.lblDtDevolucao.TabIndex = 7
         Me.lblDtDevolucao.Text = "Data da Devolução"
         '
-        'CBO_CLIENTE
+        'cboCliente
         '
-        Me.CBO_CLIENTE.FormattingEnabled = True
-        Me.CBO_CLIENTE.Location = New System.Drawing.Point(19, 34)
-        Me.CBO_CLIENTE.Margin = New System.Windows.Forms.Padding(4)
-        Me.CBO_CLIENTE.Name = "CBO_CLIENTE"
-        Me.CBO_CLIENTE.Size = New System.Drawing.Size(453, 24)
-        Me.CBO_CLIENTE.TabIndex = 36
+        Me.cboCliente.FormattingEnabled = True
+        Me.cboCliente.Location = New System.Drawing.Point(19, 34)
+        Me.cboCliente.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboCliente.Name = "cboCliente"
+        Me.cboCliente.Size = New System.Drawing.Size(453, 24)
+        Me.cboCliente.TabIndex = 36
         '
         'lblCliente
         '
@@ -318,7 +302,7 @@ Partial Class frmReserva
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(867, 586)
+        Me.ClientSize = New System.Drawing.Size(825, 566)
         Me.Controls.Add(Me.GroupBox8)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel1)
@@ -337,25 +321,24 @@ Partial Class frmReserva
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents lblvalunit As System.Windows.Forms.Label
-    Friend WithEvents btnSair As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents lblValorUnit As System.Windows.Forms.Label
+    Friend WithEvents btnRemover As System.Windows.Forms.Button
     Friend WithEvents GroupBox9 As System.Windows.Forms.GroupBox
-    Friend WithEvents lbltotal As System.Windows.Forms.Label
+    Friend WithEvents lblTotal As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnReservar As System.Windows.Forms.Button
-    Friend WithEvents btnok As System.Windows.Forms.Button
-    Friend WithEvents CBO_PRODUTO As System.Windows.Forms.ComboBox
+    Friend WithEvents btnAdicionar As System.Windows.Forms.Button
+    Friend WithEvents cboProduto As System.Windows.Forms.ComboBox
     Friend WithEvents lstgrade As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents lblValorTotal As System.Windows.Forms.Label
     Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
-    Friend WithEvents DTP_DEVOLUCAO As System.Windows.Forms.DateTimePicker
-    Friend WithEvents DTP_RESERVA As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpDevolucao As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpReserva As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblDtDevolucao As System.Windows.Forms.Label
-    Friend WithEvents CBO_CLIENTE As System.Windows.Forms.ComboBox
+    Friend WithEvents cboCliente As System.Windows.Forms.ComboBox
     Friend WithEvents lblCliente As System.Windows.Forms.Label
     Friend WithEvents lblDtReserva As System.Windows.Forms.Label
 End Class

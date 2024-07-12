@@ -1,14 +1,10 @@
-Imports System.Data.SqlClient
-
 Public Class frmCadProdutos
-    Dim dtCadProdutos As DataTable
+    Dim tbProdutos As DataTable, ClasseProdutos As New clsProdutos
     Private Sub limpar()
-        txtCodigo.Text = ""
         cboProduto.Text = ""
         txtTitulo.Text = ""
         txtAutor.Text = ""
         cboGenero.Text = ""
-        cboGenerojogo.Text = ""
         txtCensura.Text = ""
         txtDuracao.Text = ""
         txtQuantidade.Text = ""
@@ -18,22 +14,25 @@ Public Class frmCadProdutos
         'txtoriginal.Text = ""
         lstgrade.Tag = 0
     End Sub
-    Private Sub cboProduto_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboProduto.SelectedIndexChanged
-        If cboProduto.Text = "JOGO" Then
-            cboGenerojogo.Visible = True
-            txtDuracao.Enabled = False
-            lblDuracao.Enabled = False
-        Else
-            cboGenerojogo.Visible = False
-            txtDuracao.Enabled = True
-            lblDuracao.Enabled = True
-        End If
+    Private Sub PreencheListaProdutos()
+        Dim x As Integer = 0
+
+        For Each row As DataRow In tbProdutos.Rows
+            lstgrade.Items.Add(row("codigo").ToString())
+            lstgrade.Items(x).SubItems.Add(row("produto").ToString())
+            lstgrade.Items(x).SubItems.Add(row("titulo").ToString())
+            lstgrade.Items(x).SubItems.Add(row("genero").ToString())
+            lstgrade.Items(x).SubItems.Add(row("censura").ToString())
+            lstgrade.Items(x).SubItems.Add(row("dtcad").ToString())
+            x += 1
+        Next
     End Sub
     Private Sub btnSair_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSair.Click
         Close()
     End Sub
     Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
-        carregaproduto()
+        tbProdutos = ClasseProdutos.ConsultaProduto(Val(lblCodigo.Text), cboProduto.Text)
+        PreencheListaProdutos()
     End Sub
     Private Sub btnNovo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNovo.Click
         limpar()
@@ -52,94 +51,29 @@ Public Class frmCadProdutos
         End If
     End Sub
     Private Sub frmCadProdutos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        carregaproduto()
+        tbProdutos = ClasseProdutos.ConsultaProduto(Val(lblCodigo.Text), cboProduto.Text)
+        PreencheListaProdutos()
     End Sub
-    Private Sub carregaproduto()
-        limpar()
-        lstgrade.Items.Clear()
-
-        Dim x As Integer = 0
-        Dim sql As String
-
-        sql = "select * from tbProdutos where codigo=" & txtCodigo.Text
-        If Not IsNumeric(cboProduto.Text) Then
-            sql = "select * from tbProdutos where produto like '" & txtCodigo.Text & "%'"
-        End If
-
-        ' Recebe o DataTable preenchido com os dados dos produtos
-        dtCadProdutos = RecebeTabela(sql)
-
-        If dtCadProdutos.Rows.Count > 0 Then
-            For Each row As DataRow In dtCadProdutos.Rows
-                Dim item As New ListViewItem(row("codigo").ToString())
-                item.SubItems.Add(row("produto").ToString())
-                item.SubItems.Add(row("titulo").ToString())
-                item.SubItems.Add(row("genero").ToString())
-                item.SubItems.Add(row("censura").ToString())
-                item.SubItems.Add(row("dtcad").ToString())
-
-                lstgrade.Items.Add(item)
-                x += 1
-            Next
-        End If
-    End Sub
-
     Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
-        Dim codigo As Integer = 0
-        If lstgrade.SelectedItems.Count > 0 Then codigo = lstgrade.SelectedItems(0).Text
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        ' Recebe o DataTable preenchido com os dados do produto correspondente
-        dtCadProdutos = RecebeTabela("select * from tbProdutos where codigo=" & codigo)
-
-        Dim row As DataRow
-        If dtCadProdutos.Rows.Count = 0 Then
-            row = dtCadProdutos.NewRow()
-            dtCadProdutos.Rows.Add(row)
+        If MsgResult = DialogResult.Yes Then
+            ClasseProdutos.SalvarProduto(cboProduto.Text, txtTitulo.Text, txtAutor.Text, cboGenero.Text, txtCensura.Text, txtDuracao.Text, txtvalor.Text, mskDcad.Text, cbolegenda.Text)
+            tbProdutos = ClasseProdutos.ConsultaProduto(Val(lblCodigo.Text), cboProduto.Text)
+            PreencheListaProdutos()
         Else
-            row = dtCadProdutos.Rows(0)
+            Exit Sub
         End If
-
-        ' Atualiza os campos do DataRow com os valores dos controles do formulário
-        row("produto") = cboProduto.Text
-        row("titulo") = txtTitulo.Text
-        row("autor") = txtAutor.Text
-        If cboProduto.Text = "JOGO" Then
-            row("genero") = cboGenerojogo.Text
-        Else
-            row("genero") = cboGenero.Text
-        End If
-        row("censura") = txtCensura.Text
-        row("duracao") = txtDuracao.Text
-        ' row("original") = txtoriginal.Text
-        row("valor") = txtvalor.Text
-        row("dtcad") = mskDcad.Text
-        row("legenda") = cbolegenda.Text
-
-        ' Atualiza o banco de dados com as mudanças no DataTable
-        AtualizaBancoDados(dtCadProdutos)
-
-        ' Recarrega os produtos na lista
-        carregaproduto()
     End Sub
-
     Private Sub btnExcluir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExcluir.Click
-        Dim codigo As Integer = 0
-        If lstgrade.SelectedItems.Count > 0 Then codigo = lstgrade.SelectedItems(0).Text
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        If (MsgBox("Confirma a Exclusão ? ", MsgBoxStyle.YesNo)) = MsgBoxResult.Yes Then
-            ' Recebe o DataTable preenchido com os dados do produto correspondente
-            dtCadProdutos = RecebeTabela("select * from tbProdutos where codigo=" & codigo)
-
-            If dtCadProdutos.Rows.Count > 0 Then
-                ' Marca a linha para exclusão
-                dtCadProdutos.Rows(0).Delete()
-
-                ' Atualiza o banco de dados com as mudanças no DataTable
-                AtualizaBancoDados(dtCadProdutos)
-
-                ' Recarrega os produtos na lista
-                carregaproduto()
-            End If
+        If MsgResult = DialogResult.Yes Then
+            ClasseProdutos.ExcluirProduto(Val(lblCodigo.Text))
+            tbProdutos = ClasseProdutos.ConsultaProduto(Val(lblCodigo.Text), cboProduto.Text)
+            PreencheListaProdutos()
+        Else
+            Exit Sub
         End If
     End Sub
 
@@ -149,26 +83,25 @@ Public Class frmCadProdutos
             Exit Sub
         End If
 
-        ' Recebe o DataTable preenchido com os dados do produto correspondente
-        dtCadProdutos = RecebeTabela("select * from tbProdutos where codigo=" & lstgrade.SelectedItems(0).Text)
+        ' Obtém o código do produto selecionado na lstgrade
+        Dim Codigo As Integer = CInt(lstgrade.SelectedItems(0).Text)
 
-        If dtCadProdutos.Rows.Count = 0 Then
+        ' Chama o método para obter os dados do produto por código
+        tbProdutos = ClasseProdutos.ConsultaProduto(Codigo, cboProduto.Text)
+
+        ' Verifica se encontrou algum registro
+        If tbProdutos.Rows.Count = 0 Then
             limpar()
-            MsgBox("Registro não localizado!")
+            MessageBox.Show("Produto não encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Exit Sub
         End If
 
-        Dim row As DataRow = dtCadProdutos.Rows(0)
-
+        ' Preenche os controles da interface com os dados do produto encontrado
+        Dim row As DataRow = tbProdutos.Rows(0) ' Assumindo que há apenas um registro retornado
         cboProduto.Text = row("produto").ToString()
         txtTitulo.Text = row("titulo").ToString()
         txtAutor.Text = row("autor").ToString()
-        If cboProduto.Text = "JOGO" Then
-            cboGenerojogo.Text = row("genero").ToString()
-        Else
-            cboGenero.Text = row("genero").ToString()
-        End If
-
+        cboGenero.Text = row("genero").ToString()
         txtCensura.Text = row("censura").ToString()
         txtDuracao.Text = row("duracao").ToString()
         txtQuantidade.Text = row("quantidade").ToString()
@@ -178,54 +111,16 @@ Public Class frmCadProdutos
         cbolegenda.Text = row("legenda").ToString()
         btnExcluir.Visible = True
     End Sub
-
-    ' Método para atualizar o banco de dados com as mudanças no DataTable
     Private Sub AtualizaBancoDados(ByVal dt As DataTable)
-        ' Conexão com o banco de dados via RecebeTabela
-        dtCadProdutos = RecebeTabela("SELECT * FROM tbProdutos WHERE 1=0")
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-        ' Configura o adaptador
-        Dim adapter As New SqlDataAdapter()
+        If MsgResult = DialogResult.Yes Then
+            ClasseProdutos.AlterarProduto(Val(lblCodigo.Text), cboProduto.Text, txtTitulo.Text, txtAutor.Text, cboGenero.Text, txtCensura.Text, txtDuracao.Text, txtvalor.Text, mskDcad.Text, cbolegenda.Text)
 
-        ' Configura o comando de inserção
-        Dim insertCommand As New SqlCommand("INSERT INTO tbProdutos (produto, titulo, autor, genero, censura, duracao, valor, dtcad, legenda) VALUES (@produto, @titulo, @autor, @genero, @censura, @duracao, @valor, @dtcad, @legenda)")
-        insertCommand.Parameters.Add("@produto", SqlDbType.NVarChar, 50, "produto")
-        insertCommand.Parameters.Add("@titulo", SqlDbType.NVarChar, 100, "titulo")
-        insertCommand.Parameters.Add("@autor", SqlDbType.NVarChar, 100, "autor")
-        insertCommand.Parameters.Add("@genero", SqlDbType.NVarChar, 50, "genero")
-        insertCommand.Parameters.Add("@censura", SqlDbType.NVarChar, 10, "censura")
-        insertCommand.Parameters.Add("@duracao", SqlDbType.NVarChar, 10, "duracao")
-        insertCommand.Parameters.Add("@valor", SqlDbType.Decimal, 10, "valor")
-        insertCommand.Parameters.Add("@dtcad", SqlDbType.Date, 0, "dtcad")
-        insertCommand.Parameters.Add("@legenda", SqlDbType.NVarChar, 50, "legenda")
-        adapter.InsertCommand = insertCommand
-
-        ' Configura o comando de atualização
-        Dim updateCommand As New SqlCommand("UPDATE tbProdutos SET produto=@produto, titulo=@titulo, autor=@autor, genero=@genero, censura=@censura, duracao=@duracao, valor=@valor, dtcad=@dtcad, legenda=@legenda WHERE codigo=@codigo")
-        updateCommand.Parameters.Add("@codigo", SqlDbType.Int, 0, "codigo")
-        updateCommand.Parameters.Add("@produto", SqlDbType.NVarChar, 50, "produto")
-        updateCommand.Parameters.Add("@titulo", SqlDbType.NVarChar, 100, "titulo")
-        updateCommand.Parameters.Add("@autor", SqlDbType.NVarChar, 100, "autor")
-        updateCommand.Parameters.Add("@genero", SqlDbType.NVarChar, 50, "genero")
-        updateCommand.Parameters.Add("@censura", SqlDbType.NVarChar, 10, "censura")
-        updateCommand.Parameters.Add("@duracao", SqlDbType.NVarChar, 10, "duracao")
-        updateCommand.Parameters.Add("@valor", SqlDbType.Decimal, 10, "valor")
-        updateCommand.Parameters.Add("@dtcad", SqlDbType.Date, 0, "dtcad")
-        updateCommand.Parameters.Add("@legenda", SqlDbType.NVarChar, 50, "legenda")
-        adapter.UpdateCommand = updateCommand
-
-        '' Configura o comando de exclusão
-        'Dim deleteCommand As New SqlCommand("DELETE FROM tbProdutos WHERE codigo=@codigo")
-        'deleteCommand.Parameters.Add("@codigo", SqlDbType.Int, 0, "codigo")
-        'adapter.DeleteCommand = deleteCommand
-
-        ' Atualiza o banco de dados com as mudanças no DataTable
-        dtCadProdutos = dt.GetChanges()
-        If dtCadProdutos IsNot Nothing Then
-            adapter.Update(dtCadProdutos)
-            dt.AcceptChanges()
+            tbProdutos = ClasseProdutos.ConsultaProduto(Val(lblCodigo.Text), cboProduto.Text)
+            PreencheListaProdutos()
+        Else
+            Exit Sub
         End If
     End Sub
-
-
 End Class
