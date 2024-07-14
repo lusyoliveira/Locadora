@@ -1,4 +1,3 @@
-Imports System.Data.SqlClient
 
 Public Class frmLocacao
     Dim imagem As Image, wcpagina, X, Y, z As Integer, sql As String, tbclientes, tbProdutos, tbLocacao, tbFuncionarios As DataTable,
@@ -57,6 +56,10 @@ Public Class frmLocacao
             Exit Sub
         End If
         PrintPreviewDialog1.ShowDialog()
+    End Sub
+
+    Private Sub frmLocacao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 
     Private Sub Pagamento()

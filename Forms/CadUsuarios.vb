@@ -32,7 +32,7 @@ Public Class frmCadUsuarios
         limpar()
         txtNome.Focus()
     End Sub
-    Private Sub btnSair_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSair.Click
+    Private Sub btnSair_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Close()
     End Sub
     Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
