@@ -28,7 +28,7 @@ Public Class frmCadClientes
         txtObs.Text = ""
         txtextra.Text = ""
         txtEmail.Text = ""
-        lstgrade.Tag = 0
+        lstgrade.Items.Clear()
     End Sub
     Private Sub PreencheListaClientes()
         Dim x As Integer = 0
@@ -76,52 +76,36 @@ Public Class frmCadClientes
         End If
     End Sub
     Private Sub lstgrade_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstgrade.SelectedIndexChanged
-        If lstgrade.SelectedItems.Count = 0 Then
-            limpar()
-            Exit Sub
+        If lstgrade.SelectedItems.Count > 0 Then
+            lblCodigo.Text = Val(lstgrade.SelectedItems(0).SubItems(0).Text)
+            lblCodigo.Text = lstgrade.SelectedItems(0).SubItems(1).Text
+            txtNome.Text = lstgrade.SelectedItems(0).SubItems(2).Text
+            mskDnascimento.Text = Format(CDate(lstgrade.SelectedItems(0).SubItems(0).Text), "dd/MM/yyyy")
+            cboEstadoCivil.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtEndereco.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtComplemento.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtBairro.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtCidade.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            cboUf.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            mskCep.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            If lstgrade.SelectedItems(0).SubItems(0).Text Then
+                rbdMasculino.Checked = True
+            Else
+                rbdFeminino.Checked = True
+            End If
+            mskTel1.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            mskTel2.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            mskCel.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtEmail.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            mskrg.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            mskcpf.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtnome_dep.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            mskdtdatadep.Text = Format(CDate(lstgrade.SelectedItems(0).SubItems(0).Text), "dd/MM/yyyy")
+            mskcpf_dep.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            cbopzrentesco.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtObs.Text = lstgrade.SelectedItems(0).SubItems(0).Text
+            txtextra.Text = lstgrade.SelectedItems(0).SubItems(0).Text
         End If
-
-        ' Obtém o código do produto selecionado na lstgrade
-        Dim Codigo As Integer = CInt(lstgrade.SelectedItems(0).Text)
-
-        ' Chama o método para obter os dados do produto por código
-        tbClientes = ClasseClientes.ConsultaCliente(Codigo, txtNome.Text)
-
-        ' Verifica se encontrou algum registro
-        If tbClientes.Rows.Count = 0 Then
-            limpar()
-            MessageBox.Show("Produto não encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-        Dim row As DataRow = tbClientes.Rows(0)
-        lblCodigo.Text = row("Codigo").ToString
-        txtNome.Text = row("nome").ToString
-        mskDnascimento.Text = Format(CDate(row("dtnasc")), "dd/MM/yyyy")
-        cboEstadoCivil.Text = row("estadocivil").ToString
-        txtEndereco.Text = row("endereco").ToString
-        txtComplemento.Text = row("complemento").ToString
-        txtBairro.Text = row("bairro").ToString
-        txtCidade.Text = row("cidade").ToString
-        cboUf.Text = row("uf").ToString
-        mskCep.Text = row("cep").ToString
-        If CBool(row("sexo")) Then
-            rbdMasculino.Checked = True
-        Else
-            rbdFeminino.Checked = True
-        End If
-        mskTel1.Text = row("telefone1").ToString
-        mskTel2.Text = row("telefone2").ToString
-        mskCel.Text = row("celular").ToString
-        txtEmail.Text = row("email").ToString
-        mskrg.Text = row("rg").ToString
-        mskcpf.Text = row("cpf").ToString
-        txtnome_dep.Text = row("nomedependente").ToString
-        mskdtdatadep.Text = Format(CDate(row("dtnascdependente")), "dd/MM/yyyy")
-        mskcpf_dep.Text = row("cpfdependente").ToString
-        cbopzrentesco.Text = row("grauparentesco").ToString
-        txtObs.Text = row("obs").ToString
-        txtextra.Text = row("dep_extras").ToString
-        btnAlterar.Visible = True
     End Sub
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)

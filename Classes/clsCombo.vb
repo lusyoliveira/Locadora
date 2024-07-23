@@ -15,7 +15,6 @@ Public Class clsCombo
         Descricao = NovaDescricao
     End Sub
 #End Region
-
 #Region "METODOS"
     Public Function Listar(ByVal Sql As String)
         Dim dt As New DataTable()
@@ -32,6 +31,7 @@ Public Class clsCombo
     Public Overrides Function ToString() As String
         Return Descricao
     End Function
+
     Public Sub CarregaCombo(ByVal ComboRec As ComboBox, ByVal Sql As String)
         ' Carrega o combobox
         Dim Lista As New ArrayList()
