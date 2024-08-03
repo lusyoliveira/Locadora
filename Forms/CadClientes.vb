@@ -118,6 +118,11 @@ Public Class frmCadClientes
             Exit Sub
         End If
     End Sub
+
+    Private Sub cboUf_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboUf.SelectedIndexChanged
+
+    End Sub
+
     Private Sub btnAlterar_Click(sender As Object, e As EventArgs) Handles btnAlterar.Click
 
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
