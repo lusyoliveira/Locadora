@@ -2,12 +2,8 @@
 Public Class frmLocacao
     Dim imagem As Image, wcpagina, X, Y, z As Integer, sql As String, tbclientes, tbProdutos, tbLocacao, tbFuncionarios As DataTable,
         ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo
-    Private Sub cboClientes_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboclientes.GotFocus
-        ClasseCombo.CarregaCombo(cboclientes, "Select codigo ,nome from tbClientes order by nome")
 
-    End Sub
     Private Sub cboproduto_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboProduto.GotFocus
-        ClasseCombo.CarregaCombo(cboProduto, "Select codigo ,titulo from tbProdutos order by titulo")
     End Sub
     Private Sub AtualizaValor()
         Dim x As Integer, total As Decimal = 0
@@ -56,6 +52,36 @@ Public Class frmLocacao
             Exit Sub
         End If
         PrintPreviewDialog1.ShowDialog()
+    End Sub
+
+    Private Sub cboFuncionario_Enter(sender As Object, e As EventArgs) Handles cboFuncionario.Enter
+        Dim ListaFuncionario = ClasseCombo.PreencherComboBox("SELECT * FROM tbEntidades WHERE Tipo = 'FU' ORDER BY NomeFantasia", "Codigo", "NomeFantasia")
+        With Me.cboFuncionario
+            .DataSource = ListaFuncionario
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
+    End Sub
+
+    Private Sub cboProduto_Enter(sender As Object, e As EventArgs) Handles cboProduto.Enter
+        Dim ListaProduto = ClasseCombo.PreencherComboBox("SELECT * FROM tbProdutos ORDER BY titulo", "codigo", "titulo")
+        With Me.cboProduto
+            .DataSource = ListaProduto
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
+    End Sub
+
+    Private Sub cboclientes_Enter(sender As Object, e As EventArgs) Handles cboclientes.Enter
+        Dim ListaClientes = ClasseCombo.PreencherComboBox("SELECT * FROM tbEntidades WHERE Tipo = 'C' ORDER BY NomeFantasia", "Codigo", "NomeFantasia")
+        With Me.cboclientes
+            .DataSource = ListaClientes
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
     End Sub
 
     Private Sub frmLocacao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -118,10 +144,7 @@ Public Class frmLocacao
             cboProduto.Text = 0
         End If
     End Sub
-    Private Sub CBO_FUNCIONARIO_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboFuncionario.GotFocus
-        On Error Resume Next
-        ClasseCombo.CarregaCombo(cboFuncionario, "Select codfunc ,nome from tbFuncionarios order by nome")
-    End Sub
+
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
         If cboProduto.SelectedItem Is Nothing OrElse txtValorUnit.Text.Trim() = "" OrElse txtTotal.Text.Trim() = "" Then
             MessageBox.Show("Por favor, preencha todos os campos.")

@@ -17,12 +17,7 @@ Public Class frmReserva
             cboProduto.Text = 0
         End If
     End Sub
-    Private Sub cboCliente_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboCliente.GotFocus
-        ClasseCombo.CarregaCombo(cboCliente, "Select codigo ,nome from tbClientes order by nome")
-    End Sub
-    Private Sub CBO_PORDUTO_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboProduto.GotFocus
-        ClasseCombo.CarregaCombo(cboProduto, "Select codigo ,titulo from tbProdutos order by titulo")
-    End Sub
+
     Private Sub AtualizaValor()
         Dim x As Integer, total As Decimal = 0
         If lstgrade.Items.Count > 0 Then
@@ -36,6 +31,7 @@ Public Class frmReserva
     End Sub
     Private Sub CBO_PRODUTO_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboProduto.SelectedIndexChanged
         tbProdutos = ClasseCombo.Listar("SELECT * FROM tbProdutos WHERE titulo LIKE '" & cboProduto.Text & "'")
+
         lblValorUnit.Text = FormatCurrency(0)
         If tbProdutos.Rows.Count = 0 Then Exit Sub
 
@@ -44,7 +40,25 @@ Public Class frmReserva
         lblValorUnit.Tag = row("codigo").ToString()
     End Sub
 
+    Private Sub cboCliente_Enter(sender As Object, e As EventArgs) Handles cboCliente.Enter
+        Dim ListaCLientes = ClasseCombo.PreencherComboBox("SELECT * FROM tbEntidades WHERE Tipo = 'C' ORDER BY NomeFantasia", "Codigo", "NomeFantasia")
+        With Me.cboCliente
+            .DataSource = ListaCLientes
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
+    End Sub
 
+    Private Sub cboProduto_Enter(sender As Object, e As EventArgs) Handles cboProduto.Enter
+        Dim ListaProdutos = ClasseCombo.PreencherComboBox("SELECT * FROM tbProdutos ORDER BY Titulo", "Codigo", "Titulo")
+        With Me.cboProduto
+            .DataSource = ListaProdutos
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
+    End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
         If lblValorUnit.Tag = "" Then Exit Sub

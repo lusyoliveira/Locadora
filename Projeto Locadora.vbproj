@@ -79,7 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\clsConexao.vb" />
-    <Compile Include="Classes\clsFornecedores.vb" />
+    <Compile Include="Classes\clsDependente.vb" />
+    <Compile Include="Classes\clsEntidades.vb" />
     <Compile Include="Classes\clsProdutos.vb" />
     <Compile Include="Classes\clsUsuario.vb" />
     <Compile Include="Forms\CadProdutos.designer.vb">
@@ -101,8 +102,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\clsCombo.vb" />
-    <Compile Include="Classes\clsClientes.vb" />
-    <Compile Include="Classes\clsFuncionarios.vb" />
     <Compile Include="Classes\clsLocacao.vb" />
     <Compile Include="Forms\frmLocalizar.designer.vb">
       <DependentUpon>frmLocalizar.vb</DependentUpon>

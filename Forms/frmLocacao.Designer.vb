@@ -78,15 +78,15 @@ Partial Class frmLocacao
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.ForeColor = System.Drawing.Color.DarkRed
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1033, 92)
+        Me.Panel1.Size = New System.Drawing.Size(1022, 92)
         Me.Panel1.TabIndex = 0
         '
         'lblCodigo
         '
         Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(9, 96)
+        Me.lblCodigo.Location = New System.Drawing.Point(10, 98)
         Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCodigo.Name = "lblCodigo"
         Me.lblCodigo.Size = New System.Drawing.Size(93, 16)
@@ -128,7 +128,7 @@ Partial Class frmLocacao
         'lblDtLocacao
         '
         Me.lblDtLocacao.AutoSize = True
-        Me.lblDtLocacao.Location = New System.Drawing.Point(491, 103)
+        Me.lblDtLocacao.Location = New System.Drawing.Point(492, 99)
         Me.lblDtLocacao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDtLocacao.Name = "lblDtLocacao"
         Me.lblDtLocacao.Size = New System.Drawing.Size(111, 16)
@@ -148,7 +148,7 @@ Partial Class frmLocacao
         'txtQuantidade
         '
         Me.txtQuantidade.Location = New System.Drawing.Point(491, 167)
-        Me.txtQuantidade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtQuantidade.Margin = New System.Windows.Forms.Padding(4)
         Me.txtQuantidade.Name = "txtQuantidade"
         Me.txtQuantidade.Size = New System.Drawing.Size(73, 22)
         Me.txtQuantidade.TabIndex = 17
@@ -160,7 +160,7 @@ Partial Class frmLocacao
         Me.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCancelar.Location = New System.Drawing.Point(415, 554)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(141, 66)
         Me.btnCancelar.TabIndex = 2
@@ -174,7 +174,7 @@ Partial Class frmLocacao
         Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSalvar.Location = New System.Drawing.Point(267, 554)
-        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSalvar.Name = "btnSalvar"
         Me.btnSalvar.Size = New System.Drawing.Size(141, 66)
         Me.btnSalvar.TabIndex = 1
@@ -185,7 +185,7 @@ Partial Class frmLocacao
         'Button7
         '
         Me.Button7.Location = New System.Drawing.Point(11, 12)
-        Me.Button7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button7.Margin = New System.Windows.Forms.Padding(4)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(141, 55)
         Me.Button7.TabIndex = 6
@@ -206,7 +206,7 @@ Partial Class frmLocacao
         '
         Me.cboclientes.FormattingEnabled = True
         Me.cboclientes.Location = New System.Drawing.Point(12, 165)
-        Me.cboclientes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboclientes.Margin = New System.Windows.Forms.Padding(4)
         Me.cboclientes.Name = "cboclientes"
         Me.cboclientes.Size = New System.Drawing.Size(471, 24)
         Me.cboclientes.TabIndex = 39
@@ -225,7 +225,7 @@ Partial Class frmLocacao
         '
         Me.cboProduto.FormattingEnabled = True
         Me.cboProduto.Location = New System.Drawing.Point(17, 39)
-        Me.cboProduto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboProduto.Margin = New System.Windows.Forms.Padding(4)
         Me.cboProduto.Name = "cboProduto"
         Me.cboProduto.Size = New System.Drawing.Size(419, 24)
         Me.cboProduto.TabIndex = 41
@@ -235,7 +235,7 @@ Partial Class frmLocacao
         Me.dtpLocacao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.dtpLocacao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpLocacao.Location = New System.Drawing.Point(495, 119)
-        Me.dtpLocacao.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpLocacao.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpLocacao.Name = "dtpLocacao"
         Me.dtpLocacao.Size = New System.Drawing.Size(131, 22)
         Me.dtpLocacao.TabIndex = 45
@@ -245,7 +245,7 @@ Partial Class frmLocacao
         Me.dtpDevolucao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.dtpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpDevolucao.Location = New System.Drawing.Point(653, 121)
-        Me.dtpDevolucao.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpDevolucao.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpDevolucao.Name = "dtpDevolucao"
         Me.dtpDevolucao.Size = New System.Drawing.Size(131, 22)
         Me.dtpDevolucao.TabIndex = 46
@@ -265,7 +265,7 @@ Partial Class frmLocacao
         Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(17, 69)
-        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
         Me.lstgrade.Name = "lstgrade"
         Me.lstgrade.Size = New System.Drawing.Size(597, 260)
         Me.lstgrade.TabIndex = 51
@@ -297,17 +297,17 @@ Partial Class frmLocacao
         Me.GroupBox1.Controls.Add(Me.lblTotal)
         Me.GroupBox1.Controls.Add(Me.lblValor)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(776, 336)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(760, 336)
         Me.GroupBox1.TabIndex = 54
         Me.GroupBox1.TabStop = False
         '
         'txtTotal
         '
         Me.txtTotal.Location = New System.Drawing.Point(536, 39)
-        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(79, 22)
         Me.txtTotal.TabIndex = 57
@@ -316,7 +316,7 @@ Partial Class frmLocacao
         'txtValorUnit
         '
         Me.txtValorUnit.Location = New System.Drawing.Point(444, 39)
-        Me.txtValorUnit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtValorUnit.Margin = New System.Windows.Forms.Padding(4)
         Me.txtValorUnit.Name = "txtValorUnit"
         Me.txtValorUnit.Size = New System.Drawing.Size(84, 22)
         Me.txtValorUnit.TabIndex = 56
@@ -325,9 +325,9 @@ Partial Class frmLocacao
         '
         Me.GroupBox3.Controls.Add(Me.Button7)
         Me.GroupBox3.Location = New System.Drawing.Point(645, 336)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Size = New System.Drawing.Size(161, 97)
         Me.GroupBox3.TabIndex = 55
         Me.GroupBox3.TabStop = False
@@ -337,10 +337,10 @@ Partial Class frmLocacao
         Me.btnremove.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
         Me.btnremove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnremove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnremove.Location = New System.Drawing.Point(640, 186)
-        Me.btnremove.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnremove.Location = New System.Drawing.Point(622, 131)
+        Me.btnremove.Margin = New System.Windows.Forms.Padding(4)
         Me.btnremove.Name = "btnremove"
-        Me.btnremove.Size = New System.Drawing.Size(125, 54)
+        Me.btnremove.Size = New System.Drawing.Size(123, 54)
         Me.btnremove.TabIndex = 53
         Me.btnremove.Text = "Remover"
         Me.btnremove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -351,8 +351,8 @@ Partial Class frmLocacao
         Me.btnAdicionar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
         Me.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnAdicionar.Location = New System.Drawing.Point(639, 110)
-        Me.btnAdicionar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAdicionar.Location = New System.Drawing.Point(622, 72)
+        Me.btnAdicionar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnAdicionar.Name = "btnAdicionar"
         Me.btnAdicionar.Size = New System.Drawing.Size(123, 54)
         Me.btnAdicionar.TabIndex = 52
@@ -370,10 +370,10 @@ Partial Class frmLocacao
         Me.GroupBox4.Controls.Add(Me.Label7)
         Me.GroupBox4.Controls.Add(Me.cboPagar)
         Me.GroupBox4.Controls.Add(Me.Label11)
-        Me.GroupBox4.Location = New System.Drawing.Point(797, 197)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Location = New System.Drawing.Point(781, 201)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Size = New System.Drawing.Size(219, 336)
         Me.GroupBox4.TabIndex = 61
         Me.GroupBox4.TabStop = False
@@ -401,7 +401,7 @@ Partial Class frmLocacao
         'txtDinheiro
         '
         Me.txtDinheiro.Location = New System.Drawing.Point(24, 190)
-        Me.txtDinheiro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtDinheiro.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDinheiro.Name = "txtDinheiro"
         Me.txtDinheiro.Size = New System.Drawing.Size(173, 22)
         Me.txtDinheiro.TabIndex = 66
@@ -447,7 +447,7 @@ Partial Class frmLocacao
         Me.cboPagar.FormattingEnabled = True
         Me.cboPagar.Items.AddRange(New Object() {"Na Locação", "Na Entrega"})
         Me.cboPagar.Location = New System.Drawing.Point(24, 42)
-        Me.cboPagar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboPagar.Margin = New System.Windows.Forms.Padding(4)
         Me.cboPagar.Name = "cboPagar"
         Me.cboPagar.Size = New System.Drawing.Size(173, 24)
         Me.cboPagar.TabIndex = 62
@@ -467,9 +467,9 @@ Partial Class frmLocacao
         '
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.PictureBox1.Location = New System.Drawing.Point(797, 103)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(219, 86)
+        Me.PictureBox1.Size = New System.Drawing.Size(203, 86)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 62
         Me.PictureBox1.TabStop = False
@@ -478,7 +478,7 @@ Partial Class frmLocacao
         '
         Me.cboFuncionario.FormattingEnabled = True
         Me.cboFuncionario.Location = New System.Drawing.Point(117, 118)
-        Me.cboFuncionario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cboFuncionario.Margin = New System.Windows.Forms.Padding(4)
         Me.cboFuncionario.Name = "cboFuncionario"
         Me.cboFuncionario.Size = New System.Drawing.Size(365, 24)
         Me.cboFuncionario.TabIndex = 63
@@ -486,7 +486,7 @@ Partial Class frmLocacao
         'txtCodLocacao
         '
         Me.txtCodLocacao.Location = New System.Drawing.Point(12, 118)
-        Me.txtCodLocacao.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtCodLocacao.Margin = New System.Windows.Forms.Padding(4)
         Me.txtCodLocacao.Name = "txtCodLocacao"
         Me.txtCodLocacao.Size = New System.Drawing.Size(96, 22)
         Me.txtCodLocacao.TabIndex = 64
@@ -500,7 +500,7 @@ Partial Class frmLocacao
         Me.btnImprimir.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.print_view
         Me.btnImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.btnImprimir.Location = New System.Drawing.Point(564, 554)
-        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(4)
         Me.btnImprimir.Name = "btnImprimir"
         Me.btnImprimir.Size = New System.Drawing.Size(139, 66)
         Me.btnImprimir.TabIndex = 65
@@ -526,7 +526,7 @@ Partial Class frmLocacao
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1033, 635)
+        Me.ClientSize = New System.Drawing.Size(1022, 635)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnImprimir)
         Me.Controls.Add(Me.btnSalvar)
@@ -548,7 +548,7 @@ Partial Class frmLocacao
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLocacao"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Locação"

@@ -1,5 +1,5 @@
 Public Class frmCadClientes
-    Dim ClasseClientes As New clsClientes, tbClientes As DataTable
+    Dim ClasseClientes As New clsEntidades, ClasseDependentes As New clsDependente, ClasseCombo As New clsCombo, tbClientes As DataTable
 
     Private Sub limpar()
         txtNome.Text = ""
@@ -28,35 +28,19 @@ Public Class frmCadClientes
         txtObs.Text = ""
         txtextra.Text = ""
         txtEmail.Text = ""
-        lstgrade.Items.Clear()
+        lstEntidade.Items.Clear()
     End Sub
-    Private Sub PreencheListaClientes()
-        Dim x As Integer = 0
 
-        For Each row As DataRow In tbClientes.Rows
-            lstgrade.Items.Add(row("codigo").ToString())
-            lstgrade.Items(x).SubItems.Add(row("nome").ToString())
-            lstgrade.Items(x).SubItems.Add(row("dtnasc").ToString())
-            lstgrade.Items(x).SubItems.Add(row("telefone1").ToString())
-            lstgrade.Items(x).SubItems.Add(row("email").ToString())
-            lstgrade.Items(x).SubItems.Add(row("rg").ToString())
-            lstgrade.Items(x).SubItems.Add(row("cpf").ToString())
-            x += 1
-        Next
-    End Sub
     Private Sub frmCadClientes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
-        PreencheListaClientes()
+        ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
     End Sub
     Private Sub txtNome_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
-            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaClientes()
+            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
         End If
     End Sub
     Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
-        tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
-        PreencheListaClientes()
+        ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
     End Sub
     Private Sub btnNovo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNovo.Click
         limpar()
@@ -68,69 +52,80 @@ Public Class frmCadClientes
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseClientes.SalvarCliente(txtNome.Text, mskDnascimento.Text, mskTel1.Text, txtEmail.Text, mskrg.Text, mskcpf.Text)
-            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaClientes()
+            ClasseClientes.SalvarEntidade(txtNome.Text, "", mskDnascimento.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text, "C")
+            ClasseClientes.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
         Else
             Exit Sub
         End If
     End Sub
-    Private Sub lstgrade_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstgrade.SelectedIndexChanged
-        If lstgrade.SelectedItems.Count > 0 Then
-            lblCodigo.Text = Val(lstgrade.SelectedItems(0).SubItems(0).Text)
-            lblCodigo.Text = lstgrade.SelectedItems(0).SubItems(1).Text
-            txtNome.Text = lstgrade.SelectedItems(0).SubItems(2).Text
-            mskDnascimento.Text = Format(CDate(lstgrade.SelectedItems(0).SubItems(0).Text), "dd/MM/yyyy")
-            cboEstadoCivil.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtEndereco.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtComplemento.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtBairro.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtCidade.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            cboUf.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            mskCep.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            If lstgrade.SelectedItems(0).SubItems(0).Text Then
+
+    Private Sub lstEntidade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEntidade.SelectedIndexChanged
+        If lstEntidade.SelectedItems.Count > 0 Then
+            lblCodigo.Text = Val(lstEntidade.SelectedItems(0).SubItems(0).Text)
+            txtNome.Text = lstEntidade.SelectedItems(0).SubItems(1).Text
+            mskDnascimento.Text = Format(CDate(lstEntidade.SelectedItems(0).SubItems(3).Text), "dd/MM/yyyy")
+            cboEstadoCivil.Text = lstEntidade.SelectedItems(0).SubItems(4).Text
+            txtEndereco.Text = lstEntidade.SelectedItems(0).SubItems(5).Text
+            txtComplemento.Text = lstEntidade.SelectedItems(0).SubItems(6).Text
+            txtBairro.Text = lstEntidade.SelectedItems(0).SubItems(7).Text
+            txtCidade.Text = lstEntidade.SelectedItems(0).SubItems(8).Text
+            cboUf.Text = lstEntidade.SelectedItems(0).SubItems(9).Text
+            mskCep.Text = lstEntidade.SelectedItems(0).SubItems(10).Text
+            If lstEntidade.SelectedItems(0).SubItems(11).Text Then
                 rbdMasculino.Checked = True
             Else
                 rbdFeminino.Checked = True
             End If
-            mskTel1.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            mskTel2.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            mskCel.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtEmail.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            mskrg.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            mskcpf.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtnome_dep.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            mskdtdatadep.Text = Format(CDate(lstgrade.SelectedItems(0).SubItems(0).Text), "dd/MM/yyyy")
-            mskcpf_dep.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            cbopzrentesco.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtObs.Text = lstgrade.SelectedItems(0).SubItems(0).Text
-            txtextra.Text = lstgrade.SelectedItems(0).SubItems(0).Text
         End If
+        ClasseDependentes.ConsultaDependente(lstDependente, Val(lblCodigo.Text))
+        ClasseClientes.ObterContato(Val(lblCodigo.Text), ClasseClientes)
+        mskTel1.Text = ClasseClientes.Telefone1
+        mskTel2.Text = ClasseClientes.Telefone2
+        mskCel.Text = ClasseClientes.Celular
+        txtEmail.Text = ClasseClientes.Email
+
     End Sub
+
+    Private Sub cboEstadoCivil_Enter(sender As Object, e As EventArgs) Handles cboEstadoCivil.Enter
+        Dim ListaCivil = ClasseCombo.PreencherComboBox("SELECT * FROM tbEstadoCivil ORDER BY Descricao", "Codigo", "Descricao")
+        With Me.cboEstadoCivil
+            .DataSource = ListaCivil
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
+    End Sub
+
+    Private Sub cbopzrentesco_Enter(sender As Object, e As EventArgs) Handles cbopzrentesco.Enter
+        Dim ListaParentesco = ClasseCombo.PreencherComboBox("SELECT * FROM tbParentesco ORDER BY Parentesco", "Codigo", "Parentesco")
+        With Me.cbopzrentesco
+            .DataSource = ListaParentesco
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
+    End Sub
+
     Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseClientes.ExcluirCliente(Val(lblCodigo.Text))
-            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaClientes()
+            ClasseClientes.ExcluirContato(Val(lblCodigo.Text))
+            ClasseClientes.ExcluirEntidade(Val(lblCodigo.Text))
+            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
         Else
             Exit Sub
         End If
     End Sub
-
-    Private Sub cboUf_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboUf.SelectedIndexChanged
-
-    End Sub
-
     Private Sub btnAlterar_Click(sender As Object, e As EventArgs) Handles btnAlterar.Click
 
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseClientes.AlterarCliente(Val(lblCodigo.Text), txtNome.Text, mskDnascimento.Text, mskTel1.Text, txtEmail.Text, mskrg.Text, mskcpf.Text)
-            tbClientes = ClasseClientes.ConsultaCliente(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaClientes()
+            ClasseClientes.AlterarEntidade(Val(lblCodigo.Text), txtNome.Text, "", mskDnascimento.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text)
+            ClasseClientes.AlterarContato(Val(lblCodigo.Text), ClasseClientes.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
         Else
             Exit Sub
         End If

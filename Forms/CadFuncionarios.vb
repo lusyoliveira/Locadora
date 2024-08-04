@@ -1,6 +1,6 @@
 Imports System.Data.SqlClient
 Public Class frmCadFuncionarios
-    Dim tbFuncionarios As DataTable, ClasseFuncionario As New clsFuncionarios
+    Dim tbFuncionarios As DataTable, ClasseFuncionario As New clsEntidades, ClasseCombo As New clsCombo
     Private Sub limpar()
         txtMatricula.Text = ""
         txtNome.Text = ""
@@ -25,41 +25,11 @@ Public Class frmCadFuncionarios
         txtSalario.Text = ""
         cboExpediente.Text = ""
         txtObs.Text = ""
-        lstgrade.Tag = 0
+        lstEntidade.Tag = 0
     End Sub
-    Private Sub PreencheListaFuncionarios()
-        Dim x As Integer = 0
 
-        For Each row As DataRow In tbFuncionarios.Rows
-            lstgrade.Items.Add(row("codfunc").ToString())
-            lstgrade.Items(x).SubItems.Add(row("matricula").ToString())
-            lstgrade.Items(x).SubItems.Add(row("nome").ToString())
-            ''lstgrade.Items(x).SubItems.Add(row("dtnasc").ToString())
-            lstgrade.Items(x).SubItems.Add(row("estadocivil").ToString())
-            lstgrade.Items(x).SubItems.Add(row("endereco").ToString())
-            lstgrade.Items(x).SubItems.Add(row("complemento").ToString())
-            lstgrade.Items(x).SubItems.Add(row("bairro").ToString())
-            lstgrade.Items(x).SubItems.Add(row("cidade").ToString())
-            lstgrade.Items(x).SubItems.Add(row("uf").ToString())
-            lstgrade.Items(x).SubItems.Add(row("cep").ToString())
-            lstgrade.Items(x).SubItems.Add(IIf(row("sexo").ToString(), "Masculino", "Feminino"))
-            lstgrade.Items(x).SubItems.Add(row("telefone1").ToString())
-            lstgrade.Items(x).SubItems.Add(row("telefone2").ToString())
-            lstgrade.Items(x).SubItems.Add(row("celular").ToString())
-            lstgrade.Items(x).SubItems.Add(row("email").ToString())
-            lstgrade.Items(x).SubItems.Add(row("rg").ToString())
-            lstgrade.Items(x).SubItems.Add(row("cpf").ToString())
-            lstgrade.Items(x).SubItems.Add(row("carteiraprofissional").ToString())
-            lstgrade.Items(x).SubItems.Add(row("cargo").ToString())
-            lstgrade.Items(x).SubItems.Add(row("salario").ToString())
-            lstgrade.Items(x).SubItems.Add(row("expediente").ToString())
-            lstgrade.Items(x).SubItems.Add(row("obs").ToString())
-            x += 1
-        Next
-    End Sub
     Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
-        tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
-        PreencheListaFuncionarios()
+        ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
     End Sub
     Private Sub btnNovo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNovo.Click
         limpar()
@@ -71,11 +41,12 @@ Public Class frmCadFuncionarios
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do funcionario?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseFuncionario.SalvarFuncionario(txtMatricula.Text, txtNome.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text,
-txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, rbdMasculino.Checked, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text, mskRG.Text,
-mskCpf.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, cboExpediente.Text, txtObs.Text)
-            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaFuncionarios()
+            ClasseFuncionario.SalvarEntidade(txtNome.Text, txtNome.Text, "", "", txtEndereco.Text, "", txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskRG.Text, mskCpf.Text, "", "FU")
+            ClasseFuncionario.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            ClasseFuncionario.SalvarCargo(Val(lblCodigo.Text), txtMatricula.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, "")
+            limpar()
+            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+
         Else
             Exit Sub
         End If
@@ -85,9 +56,11 @@ mskCpf.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, cboExpediente.Tex
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseFuncionario.ExcluirFuncionario(Val(lblCodigo.Text))
-            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaFuncionarios()
+            ClasseFuncionario.ExcluirCargo(Val(lblCodigo.Text))
+            ClasseFuncionario.ExcluirContato(Val(lblCodigo.Text))
+            ClasseFuncionario.ExcluirEntidade(Val(lblCodigo.Text))
+            limpar()
+            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
         Else
             Exit Sub
         End If
@@ -96,11 +69,11 @@ mskCpf.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, cboExpediente.Tex
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do fornecedor?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseFuncionario.AlterarFuncionario(Val(lblCodigo.Text), txtMatricula.Text, txtNome.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text,
-txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, rbdMasculino.Checked, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text, mskRG.Text,
-mskCpf.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, cboExpediente.Text, txtObs.Text)
-            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaFuncionarios()
+            ClasseFuncionario.AlterarCargo(Val(lblCodigo.Text), ClasseFuncionario.CodCargo, txtMatricula.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, "")
+            ClasseFuncionario.AlterarContato(Val(lblCodigo.Text), ClasseFuncionario.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            ClasseFuncionario.AlterarEntidade(Val(lblCodigo.Text), txtNome.Text, txtNome.Text, "", "", txtEndereco.Text, "", txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskRG.Text, mskCpf.Text, "")
+            limpar()
+            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
         Else
             Exit Sub
         End If
@@ -108,62 +81,48 @@ mskCpf.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, cboExpediente.Tex
     Private Sub btnSair_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSair.Click
         Close()
     End Sub
-    Private Sub lstgrade_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstgrade.SelectedIndexChanged
-        If lstgrade.SelectedItems.Count = 0 Then
-            limpar()
-            Exit Sub
-        End If
-
-        ' Obtém o código do produto selecionado na lstgrade
-        Dim Codigo As Integer = CInt(lstgrade.SelectedItems(0).Text)
-
-        ' Chama o método para obter os dados do produto por código
-        tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Codigo, txtNome.Text)
-
-        ' Verifica se encontrou algum registro
-        If tbFuncionarios.Rows.Count = 0 Then
-            limpar()
-            MessageBox.Show("Produto não encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Exit Sub
-        End If
-        Dim row As DataRow = tbFuncionarios.Rows(0)
-        txtMatricula.Text = lstgrade.SelectedItems(0).SubItems(1).Text
-        txtNome.Text = lstgrade.SelectedItems(0).SubItems(2).Text
-        mskDnascimento.Text = Format(CDate(lstgrade.SelectedItems(0).SubItems(3).Text), "dd/MM/yyyy")
-        cboEstadoCivil.Text = lstgrade.SelectedItems(0).SubItems(4).Text
-        txtEndereco.Text = lstgrade.SelectedItems(0).SubItems(5).Text
-        txtComplemento.Text = lstgrade.SelectedItems(0).SubItems(6).Text
-        txtBairro.Text = lstgrade.SelectedItems(0).SubItems(7).Text
-        txtCidade.Text = lstgrade.SelectedItems(0).SubItems(8).Text
-        cboUf.Text = lstgrade.SelectedItems(0).SubItems(9).Text
-        mskCep.Text = lstgrade.SelectedItems(0).SubItems(10).Text
-        If lstgrade.SelectedItems(0).SubItems(11).Text = "Masculino" Then
-            rbdMasculino.Checked = True
-        Else
-            rbdFeminino.Checked = True
-        End If
-        mskTel1.Text = lstgrade.SelectedItems(0).SubItems(12).Text
-        mskTel2.Text = lstgrade.SelectedItems(0).SubItems(13).Text
-        mskCel.Text = lstgrade.SelectedItems(0).SubItems(14).Text
-        txtEmail.Text = lstgrade.SelectedItems(0).SubItems(15).Text
-        mskRG.Text = lstgrade.SelectedItems(0).SubItems(16).Text
-        mskCpf.Text = lstgrade.SelectedItems(0).SubItems(17).Text
-        mskCartprof.Text = lstgrade.SelectedItems(0).SubItems(18).Text
-        cboCargo.Text = lstgrade.SelectedItems(0).SubItems(19).Text
-        txtSalario.Text = lstgrade.SelectedItems(0).SubItems(20).Text
-        cboExpediente.Text = lstgrade.SelectedItems(0).SubItems(21).Text
-        txtObs.Text = lstgrade.SelectedItems(0).SubItems(22).Text
-        lstgrade.Tag = lstgrade.SelectedItems(0).Text
-        btnExcluir.Visible = True
-    End Sub
     Private Sub frmCadFuncionarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
-        PreencheListaFuncionarios()
+        ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
     End Sub
-    Private Sub txtMatricula_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtMatricula.KeyUp
+
+    Private Sub lstEntidade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEntidade.SelectedIndexChanged
+        If lstEntidade.SelectedItems.Count > 0 Then
+            lblCodigo.Text = Val(lstEntidade.SelectedItems(0).SubItems(0).Text)
+            txtNome.Text = lstEntidade.SelectedItems(0).SubItems(1).Text
+            txtEndereco.Text = lstEntidade.SelectedItems(0).SubItems(5).Text
+            txtBairro.Text = lstEntidade.SelectedItems(0).SubItems(7).Text
+            txtCidade.Text = lstEntidade.SelectedItems(0).SubItems(8).Text
+            cboUf.Text = lstEntidade.SelectedItems(0).SubItems(9).Text
+            mskCep.Text = lstEntidade.SelectedItems(0).SubItems(10).Text
+            mskRG.Text = lstEntidade.SelectedItems(0).SubItems(12).Text
+            mskCpf.Text = lstEntidade.SelectedItems(0).SubItems(13).Text
+            ClasseFuncionario.ObterContato(Val(lblCodigo.Text), ClasseFuncionario)
+            mskTel1.Text = ClasseFuncionario.Telefone1
+            mskTel2.Text = ClasseFuncionario.Telefone2
+            mskCel.Text = ClasseFuncionario.Celular
+            txtEmail.Text = ClasseFuncionario.Email
+            ClasseFuncionario.ObterCargo(Val(lblCodigo.Text), ClasseFuncionario)
+            txtMatricula.Text = ClasseFuncionario.Matricula
+            mskCartprof.Text = ClasseFuncionario.CarteiraProfissional
+            cboCargo.Text = ClasseFuncionario.Cargo
+            txtSalario.Text = ClasseFuncionario.Salario
+        End If
+    End Sub
+
+    Private Sub cboEstadoCivil_Enter(sender As Object, e As EventArgs) Handles cboEstadoCivil.Enter
+        Dim ListaCivil = ClasseCombo.PreencherComboBox("SELECT * FROM tbEstadoCivil ORDER BY Descricao", "Codigo", "Descricao")
+        With Me.cboEstadoCivil
+            .DataSource = ListaCivil
+            .ValueMember = "Codigo"
+            .DisplayMember = "Descricao"
+            .SelectedIndex = "0"
+        End With
+    End Sub
+
+    Private Sub txtMatricula_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
-            tbFuncionarios = ClasseFuncionario.ConsultaFuncionario(Val(lblCodigo.Text), txtNome.Text)
-            PreencheListaFuncionarios()
+            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+
         End If
     End Sub
 End Class

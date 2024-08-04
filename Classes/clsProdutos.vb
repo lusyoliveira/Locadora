@@ -9,7 +9,7 @@ Public Class clsProdutos
 
 #End Region
 #Region "METODOS"
-    Public Function ConsultaProduto(Codigo As Integer, Produto As String) As DataTable
+    Public Function ConsultaProduto(lstgrade As ListView, Codigo As Integer, Produto As String) As DataTable
         Try
             Using connection As New SqlConnection(ClasseConexao.connectionString)
                 connection.Open()
@@ -35,6 +35,20 @@ Public Class clsProdutos
                     End If
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(tbProdutos)
+                    Dim x As Integer = 0
+                    If tbProdutos.Rows.Count > 0 Then
+                        For Each row As DataRow In tbProdutos.Rows
+                            lstgrade.Items.Add(row("codigo").ToString())
+                            lstgrade.Items(x).SubItems.Add(row("produto").ToString())
+                            lstgrade.Items(x).SubItems.Add(row("titulo").ToString())
+                            lstgrade.Items(x).SubItems.Add(row("genero").ToString())
+                            lstgrade.Items(x).SubItems.Add(row("censura").ToString())
+                            lstgrade.Items(x).SubItems.Add(row("dtcad").ToString())
+                            x += 1
+                        Next
+                    Else
+                        MessageBox.Show("Esse produto não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End Using
                 connection.Close()
             End Using

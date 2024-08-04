@@ -89,7 +89,7 @@ Partial Class frmReserva
         Me.lblValorUnit.Location = New System.Drawing.Point(501, 32)
         Me.lblValorUnit.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblValorUnit.Name = "lblValorUnit"
-        Me.lblValorUnit.Size = New System.Drawing.Size(125, 28)
+        Me.lblValorUnit.Size = New System.Drawing.Size(125, 24)
         Me.lblValorUnit.TabIndex = 48
         Me.lblValorUnit.Text = "0,00"
         Me.lblValorUnit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -243,7 +243,7 @@ Partial Class frmReserva
         '
         Me.dtpDevolucao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.dtpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDevolucao.Location = New System.Drawing.Point(644, 33)
+        Me.dtpDevolucao.Location = New System.Drawing.Point(624, 36)
         Me.dtpDevolucao.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpDevolucao.Name = "dtpDevolucao"
         Me.dtpDevolucao.Size = New System.Drawing.Size(115, 22)
@@ -253,7 +253,7 @@ Partial Class frmReserva
         '
         Me.dtpReserva.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.dtpReserva.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpReserva.Location = New System.Drawing.Point(493, 34)
+        Me.dtpReserva.Location = New System.Drawing.Point(501, 35)
         Me.dtpReserva.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpReserva.Name = "dtpReserva"
         Me.dtpReserva.Size = New System.Drawing.Size(115, 22)
@@ -262,7 +262,7 @@ Partial Class frmReserva
         'lblDtDevolucao
         '
         Me.lblDtDevolucao.AutoSize = True
-        Me.lblDtDevolucao.Location = New System.Drawing.Point(640, 15)
+        Me.lblDtDevolucao.Location = New System.Drawing.Point(621, 15)
         Me.lblDtDevolucao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDtDevolucao.Name = "lblDtDevolucao"
         Me.lblDtDevolucao.Size = New System.Drawing.Size(124, 16)
@@ -275,7 +275,7 @@ Partial Class frmReserva
         Me.cboCliente.Location = New System.Drawing.Point(19, 34)
         Me.cboCliente.Margin = New System.Windows.Forms.Padding(4)
         Me.cboCliente.Name = "cboCliente"
-        Me.cboCliente.Size = New System.Drawing.Size(453, 24)
+        Me.cboCliente.Size = New System.Drawing.Size(474, 24)
         Me.cboCliente.TabIndex = 36
         '
         'lblCliente
@@ -291,7 +291,7 @@ Partial Class frmReserva
         'lblDtReserva
         '
         Me.lblDtReserva.AutoSize = True
-        Me.lblDtReserva.Location = New System.Drawing.Point(489, 15)
+        Me.lblDtReserva.Location = New System.Drawing.Point(498, 15)
         Me.lblDtReserva.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblDtReserva.Name = "lblDtReserva"
         Me.lblDtReserva.Size = New System.Drawing.Size(110, 16)

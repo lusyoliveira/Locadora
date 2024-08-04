@@ -46,7 +46,7 @@ Partial Class frmCadProdutos
         Me.btnNovo = New System.Windows.Forms.Button()
         Me.txtDuracao = New System.Windows.Forms.TextBox()
         Me.cboGenero = New System.Windows.Forms.ComboBox()
-        Me.lstgrade = New System.Windows.Forms.ListView()
+        Me.lstFilmes = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -281,23 +281,22 @@ Partial Class frmCadProdutos
         'cboGenero
         '
         Me.cboGenero.FormattingEnabled = True
-        Me.cboGenero.Items.AddRange(New Object() {"Ação", "Adulto", "Aventura", "Comédia", "Desenho", "Ficção", "Musical", "Religioso", "Romantico", "Suspense", "Terror"})
         Me.cboGenero.Location = New System.Drawing.Point(24, 155)
         Me.cboGenero.Name = "cboGenero"
         Me.cboGenero.Size = New System.Drawing.Size(141, 24)
         Me.cboGenero.TabIndex = 36
         '
-        'lstgrade
+        'lstFilmes
         '
-        Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader10})
-        Me.lstgrade.HideSelection = False
-        Me.lstgrade.Location = New System.Drawing.Point(24, 185)
-        Me.lstgrade.Name = "lstgrade"
-        Me.lstgrade.Size = New System.Drawing.Size(898, 245)
-        Me.lstgrade.TabIndex = 37
-        Me.lstgrade.Tag = "0"
-        Me.lstgrade.UseCompatibleStateImageBehavior = False
-        Me.lstgrade.View = System.Windows.Forms.View.Details
+        Me.lstFilmes.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader10})
+        Me.lstFilmes.HideSelection = False
+        Me.lstFilmes.Location = New System.Drawing.Point(24, 185)
+        Me.lstFilmes.Name = "lstFilmes"
+        Me.lstFilmes.Size = New System.Drawing.Size(898, 245)
+        Me.lstFilmes.TabIndex = 37
+        Me.lstFilmes.Tag = "0"
+        Me.lstFilmes.UseCompatibleStateImageBehavior = False
+        Me.lstFilmes.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
         '
@@ -341,7 +340,6 @@ Partial Class frmCadProdutos
         'cbolegenda
         '
         Me.cbolegenda.FormattingEnabled = True
-        Me.cbolegenda.Items.AddRange(New Object() {"Dublado", "Legendado"})
         Me.cbolegenda.Location = New System.Drawing.Point(697, 152)
         Me.cbolegenda.Name = "cbolegenda"
         Me.cbolegenda.Size = New System.Drawing.Size(225, 24)
@@ -424,7 +422,7 @@ Partial Class frmCadProdutos
         Me.Controls.Add(Me.Valor)
         Me.Controls.Add(Me.cbolegenda)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.lstgrade)
+        Me.Controls.Add(Me.lstFilmes)
         Me.Controls.Add(Me.cboGenero)
         Me.Controls.Add(Me.txtDuracao)
         Me.Controls.Add(Me.GroupBox2)
@@ -476,7 +474,7 @@ Partial Class frmCadProdutos
     Friend WithEvents btnSalvar As System.Windows.Forms.Button
     Friend WithEvents txtDuracao As System.Windows.Forms.TextBox
     Friend WithEvents cboGenero As System.Windows.Forms.ComboBox
-    Friend WithEvents lstgrade As System.Windows.Forms.ListView
+    Friend WithEvents lstFilmes As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
