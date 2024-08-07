@@ -172,7 +172,6 @@ Public Class clsEntidades
                     End If
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(tbClientes)
-
                     Dim x As Integer = 0
                     If tbClientes.Rows.Count > 0 Then
                         For Each row As DataRow In tbClientes.Rows
@@ -197,7 +196,7 @@ Public Class clsEntidades
                             x += 1
                         Next
                     Else
-                        MessageBox.Show("Esse Cliente não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("Essa entidade não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 End Using
                 connection.Close()

@@ -78,9 +78,6 @@ Public Class frmCadFuncionarios
             Exit Sub
         End If
     End Sub
-    Private Sub btnSair_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSair.Click
-        Close()
-    End Sub
     Private Sub frmCadFuncionarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
     End Sub
