@@ -1,4 +1,5 @@
 Imports System.Data.SqlClient
+Imports System.Net.Sockets
 Public Class frmCadFuncionarios
     Dim tbFuncionarios As DataTable, ClasseFuncionario As New clsEntidades, ClasseCombo As New clsCombo
     Private Sub limpar()
@@ -25,58 +26,7 @@ Public Class frmCadFuncionarios
         txtSalario.Text = ""
         cboExpediente.Text = ""
         txtObs.Text = ""
-        lstEntidade.Tag = 0
-    End Sub
-
-    Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
-        ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
-    End Sub
-    Private Sub btnNovo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNovo.Click
-        limpar()
-        rbdFeminino.Visible = True
-        rbdMasculino.Visible = True
-        txtMatricula.Focus()
-    End Sub
-    Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do funcionario?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If MsgResult = DialogResult.Yes Then
-            ClasseFuncionario.SalvarEntidade(txtNome.Text, txtNome.Text, "", "", txtEndereco.Text, "", txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskRG.Text, mskCpf.Text, "", "FU")
-            ClasseFuncionario.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
-            ClasseFuncionario.SalvarCargo(Val(lblCodigo.Text), txtMatricula.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, "")
-            limpar()
-            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
-
-        Else
-            Exit Sub
-        End If
-    End Sub
-
-    Private Sub btnExcluir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExcluir.Click
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If MsgResult = DialogResult.Yes Then
-            ClasseFuncionario.ExcluirCargo(Val(lblCodigo.Text))
-            ClasseFuncionario.ExcluirContato(Val(lblCodigo.Text))
-            ClasseFuncionario.ExcluirEntidade(Val(lblCodigo.Text))
-            limpar()
-            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
-        Else
-            Exit Sub
-        End If
-    End Sub
-    Private Sub AtualizaBancoDados(ByVal dt As DataTable)
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do fornecedor?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If MsgResult = DialogResult.Yes Then
-            ClasseFuncionario.AlterarCargo(Val(lblCodigo.Text), ClasseFuncionario.CodCargo, txtMatricula.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, "")
-            ClasseFuncionario.AlterarContato(Val(lblCodigo.Text), ClasseFuncionario.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
-            ClasseFuncionario.AlterarEntidade(Val(lblCodigo.Text), txtNome.Text, txtNome.Text, "", "", txtEndereco.Text, "", txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskRG.Text, mskCpf.Text, "")
-            limpar()
-            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
-        Else
-            Exit Sub
-        End If
+        lstEntidade.Items.Clear()
     End Sub
     Private Sub frmCadFuncionarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
@@ -103,7 +53,82 @@ Public Class frmCadFuncionarios
             mskCartprof.Text = ClasseFuncionario.CarteiraProfissional
             cboCargo.Text = ClasseFuncionario.Cargo
             txtSalario.Text = ClasseFuncionario.Salario
+            SalvarToolStripButton.Enabled = False
+            AlterarToolStripButton.Enabled = True
+            ExcluirToolStripButton.Enabled = True
+            NovoToolStripButton.Enabled = False
+            tcFuncionario.SelectTab(1)
         End If
+    End Sub
+
+    Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
+        rbdFeminino.Visible = True
+        rbdMasculino.Visible = True
+        txtMatricula.Focus()
+        SalvarToolStripButton.Enabled = True
+        AlterarToolStripButton.Enabled = False
+        ExcluirToolStripButton.Enabled = False
+        NovoToolStripButton.Enabled = False
+    End Sub
+
+    Private Sub SalvarToolStripButton_Click(sender As Object, e As EventArgs) Handles SalvarToolStripButton.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do funcionario?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            ClasseFuncionario.SalvarEntidade(txtNome.Text, txtNome.Text, "", "", txtEndereco.Text, "", txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskRG.Text, mskCpf.Text, "", "FU")
+            ClasseFuncionario.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            ClasseFuncionario.SalvarCargo(Val(lblCodigo.Text), txtMatricula.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, "")
+            limpar()
+            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+            SalvarToolStripButton.Enabled = False
+            AlterarToolStripButton.Enabled = False
+            ExcluirToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub AlterarToolStripButton_Click(sender As Object, e As EventArgs) Handles AlterarToolStripButton.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            ClasseFuncionario.AlterarEntidade(Val(lblCodigo.Text), txtNome.Text, txtRazaoSocial.Text, DateTime.Parse(mskDnascimento.Value).ToString("dd-MM-yyyy HH:mm:ss"), cboEstadoCivil.Text, txtEndereco.Text,
+                                           txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text,
+                                           mskCep.Text, "", mskRG.Text, mskCpf.Text, txtObs.Text)
+            ClasseFuncionario.AlterarContato(Val(lblCodigo.Text), ClasseFuncionario.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            limpar()
+            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            SalvarToolStripButton.Enabled = False
+            AlterarToolStripButton.Enabled = False
+            ExcluirToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub ExcluirToolStripButton_Click(sender As Object, e As EventArgs) Handles ExcluirToolStripButton.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            ClasseFuncionario.ExcluirCargo(Val(lblCodigo.Text))
+            ClasseFuncionario.ExcluirContato(Val(lblCodigo.Text))
+            ClasseFuncionario.ExcluirEntidade(Val(lblCodigo.Text))
+            limpar()
+            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+            SalvarToolStripButton.Enabled = False
+            AlterarToolStripButton.Enabled = False
+            ExcluirToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub ConsultarToolStripButton_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripButton.Click
+        ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+
     End Sub
 
     Private Sub cboEstadoCivil_Enter(sender As Object, e As EventArgs) Handles cboEstadoCivil.Enter

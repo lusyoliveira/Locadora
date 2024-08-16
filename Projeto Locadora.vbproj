@@ -81,6 +81,7 @@
     <Compile Include="Classes\clsConexao.vb" />
     <Compile Include="Classes\clsDependente.vb" />
     <Compile Include="Classes\clsEntidades.vb" />
+    <Compile Include="Classes\clsFinanceiro.vb" />
     <Compile Include="Classes\clsProdutos.vb" />
     <Compile Include="Classes\clsUsuario.vb" />
     <Compile Include="Forms\CadProdutos.designer.vb">
@@ -103,6 +104,12 @@
     </Compile>
     <Compile Include="Classes\clsCombo.vb" />
     <Compile Include="Classes\clsLocacao.vb" />
+    <Compile Include="Forms\frmGerarFinanceiro.Designer.vb">
+      <DependentUpon>frmGerarFinanceiro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGerarFinanceiro.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmLocalizar.designer.vb">
       <DependentUpon>frmLocalizar.vb</DependentUpon>
     </Compile>
@@ -186,6 +193,9 @@
     <EmbeddedResource Include="Forms\frmDevolucao.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmDevolucao.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGerarFinanceiro.resx">
+      <DependentUpon>frmGerarFinanceiro.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLocalizar.resx">
       <DependentUpon>frmLocalizar.vb</DependentUpon>
@@ -345,6 +355,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alterar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Consultar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Devolver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

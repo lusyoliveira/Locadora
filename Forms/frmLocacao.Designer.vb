@@ -29,9 +29,6 @@ Partial Class frmLocacao
         Me.lblDtLocacao = New System.Windows.Forms.Label()
         Me.lblDtDevolucao = New System.Windows.Forms.Label()
         Me.txtQuantidade = New System.Windows.Forms.TextBox()
-        Me.btnCancelar = New System.Windows.Forms.Button()
-        Me.btnSalvar = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.cboclientes = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -40,36 +37,49 @@ Partial Class frmLocacao
         Me.dtpDevolucao = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.lstgrade = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.chCodigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.chTitulo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.chValor = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.chTotal = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.txtValorUnit = New System.Windows.Forms.TextBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnremove = New System.Windows.Forms.Button()
         Me.btnAdicionar = New System.Windows.Forms.Button()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.lblpagar = New System.Windows.Forms.Label()
-        Me.lbldinheiro = New System.Windows.Forms.Label()
-        Me.txtDinheiro = New System.Windows.Forms.TextBox()
-        Me.lblTroco = New System.Windows.Forms.Label()
         Me.lbltotalpg = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.cboPagar = New System.Windows.Forms.ComboBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.cboFuncionario = New System.Windows.Forms.ComboBox()
         Me.txtCodLocacao = New System.Windows.Forms.TextBox()
         Me.ER = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.NovoToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.SalvarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.AlterarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ExcluirToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ConsultarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ImprimirToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.toolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.RecortarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.CopiarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ColarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.AjudaToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.tcLocacao = New System.Windows.Forms.TabControl()
+        Me.tpListagem = New System.Windows.Forms.TabPage()
+        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.tpLocacao = New System.Windows.Forms.TabPage()
         CType(Me.ER, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
+        Me.tcLocacao.SuspendLayout()
+        Me.tpListagem.SuspendLayout()
+        Me.tpLocacao.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -78,435 +88,240 @@ Partial Class frmLocacao
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.ForeColor = System.Drawing.Color.DarkRed
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1022, 92)
+        Me.Panel1.Size = New System.Drawing.Size(683, 75)
         Me.Panel1.TabIndex = 0
         '
         'lblCodigo
         '
         Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(10, 98)
-        Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCodigo.Location = New System.Drawing.Point(8, 6)
         Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(93, 16)
+        Me.lblCodigo.Size = New System.Drawing.Size(76, 13)
         Me.lblCodigo.TabIndex = 1
         Me.lblCodigo.Text = "N°da Locação"
         '
         'lblValor
         '
         Me.lblValor.AutoSize = True
-        Me.lblValor.Location = New System.Drawing.Point(441, 18)
-        Me.lblValor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblValor.Location = New System.Drawing.Point(458, 86)
         Me.lblValor.Name = "lblValor"
-        Me.lblValor.Size = New System.Drawing.Size(39, 16)
+        Me.lblValor.Size = New System.Drawing.Size(31, 13)
         Me.lblValor.TabIndex = 5
         Me.lblValor.Text = "Valor"
         '
         'lblQuantidade
         '
         Me.lblQuantidade.AutoSize = True
-        Me.lblQuantidade.Location = New System.Drawing.Point(488, 146)
-        Me.lblQuantidade.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblQuantidade.Location = New System.Drawing.Point(581, 46)
         Me.lblQuantidade.Name = "lblQuantidade"
-        Me.lblQuantidade.Size = New System.Drawing.Size(77, 16)
+        Me.lblQuantidade.Size = New System.Drawing.Size(62, 13)
         Me.lblQuantidade.TabIndex = 6
         Me.lblQuantidade.Text = "Quantidade"
-        Me.lblQuantidade.Visible = False
         '
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(532, 20)
-        Me.lblTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTotal.Location = New System.Drawing.Point(526, 87)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(38, 16)
+        Me.lblTotal.Size = New System.Drawing.Size(31, 13)
         Me.lblTotal.TabIndex = 7
         Me.lblTotal.Text = "Total"
-        Me.lblTotal.Visible = False
         '
         'lblDtLocacao
         '
         Me.lblDtLocacao.AutoSize = True
-        Me.lblDtLocacao.Location = New System.Drawing.Point(492, 99)
-        Me.lblDtLocacao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDtLocacao.Location = New System.Drawing.Point(434, 6)
         Me.lblDtLocacao.Name = "lblDtLocacao"
-        Me.lblDtLocacao.Size = New System.Drawing.Size(111, 16)
+        Me.lblDtLocacao.Size = New System.Drawing.Size(90, 13)
         Me.lblDtLocacao.TabIndex = 8
         Me.lblDtLocacao.Text = "Data da Locação"
         '
         'lblDtDevolucao
         '
         Me.lblDtDevolucao.AutoSize = True
-        Me.lblDtDevolucao.Location = New System.Drawing.Point(649, 98)
-        Me.lblDtDevolucao.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDtDevolucao.Location = New System.Drawing.Point(541, 6)
         Me.lblDtDevolucao.Name = "lblDtDevolucao"
-        Me.lblDtDevolucao.Size = New System.Drawing.Size(124, 16)
+        Me.lblDtDevolucao.Size = New System.Drawing.Size(102, 13)
         Me.lblDtDevolucao.TabIndex = 9
-        Me.lblDtDevolucao.Text = "Data da Devolução"
+        Me.lblDtDevolucao.Text = "Prev. de Devolução"
         '
         'txtQuantidade
         '
-        Me.txtQuantidade.Location = New System.Drawing.Point(491, 167)
-        Me.txtQuantidade.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtQuantidade.Enabled = False
+        Me.txtQuantidade.Location = New System.Drawing.Point(584, 61)
         Me.txtQuantidade.Name = "txtQuantidade"
-        Me.txtQuantidade.Size = New System.Drawing.Size(73, 22)
-        Me.txtQuantidade.TabIndex = 17
-        Me.txtQuantidade.Visible = False
-        '
-        'btnCancelar
-        '
-        Me.btnCancelar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
-        Me.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCancelar.Location = New System.Drawing.Point(415, 554)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(141, 66)
-        Me.btnCancelar.TabIndex = 2
-        Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnCancelar.UseVisualStyleBackColor = True
-        '
-        'btnSalvar
-        '
-        Me.btnSalvar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.external_hd
-        Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSalvar.Location = New System.Drawing.Point(267, 554)
-        Me.btnSalvar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnSalvar.Name = "btnSalvar"
-        Me.btnSalvar.Size = New System.Drawing.Size(141, 66)
-        Me.btnSalvar.TabIndex = 1
-        Me.btnSalvar.Text = "S&alvar"
-        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSalvar.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(11, 12)
-        Me.Button7.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(141, 55)
-        Me.Button7.TabIndex = 6
-        Me.Button7.Text = "&Sair"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.txtQuantidade.Size = New System.Drawing.Size(56, 20)
+        Me.txtQuantidade.TabIndex = 3
+        Me.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(9, 146)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(7, 45)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(48, 16)
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 38
         Me.Label2.Text = "Cliente"
         '
         'cboclientes
         '
+        Me.cboclientes.Enabled = False
         Me.cboclientes.FormattingEnabled = True
-        Me.cboclientes.Location = New System.Drawing.Point(12, 165)
-        Me.cboclientes.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboclientes.Location = New System.Drawing.Point(9, 60)
         Me.cboclientes.Name = "cboclientes"
-        Me.cboclientes.Size = New System.Drawing.Size(471, 24)
-        Me.cboclientes.TabIndex = 39
+        Me.cboclientes.Size = New System.Drawing.Size(569, 21)
+        Me.cboclientes.TabIndex = 2
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(13, 17)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(6, 84)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(40, 16)
+        Me.Label3.Size = New System.Drawing.Size(33, 13)
         Me.Label3.TabIndex = 40
         Me.Label3.Text = "Titulo"
         '
         'cboProduto
         '
+        Me.cboProduto.Enabled = False
         Me.cboProduto.FormattingEnabled = True
-        Me.cboProduto.Location = New System.Drawing.Point(17, 39)
-        Me.cboProduto.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboProduto.Location = New System.Drawing.Point(9, 102)
         Me.cboProduto.Name = "cboProduto"
-        Me.cboProduto.Size = New System.Drawing.Size(419, 24)
-        Me.cboProduto.TabIndex = 41
+        Me.cboProduto.Size = New System.Drawing.Size(445, 21)
+        Me.cboProduto.TabIndex = 4
         '
         'dtpLocacao
         '
         Me.dtpLocacao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpLocacao.Enabled = False
         Me.dtpLocacao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpLocacao.Location = New System.Drawing.Point(495, 119)
-        Me.dtpLocacao.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpLocacao.Location = New System.Drawing.Point(437, 23)
         Me.dtpLocacao.Name = "dtpLocacao"
-        Me.dtpLocacao.Size = New System.Drawing.Size(131, 22)
+        Me.dtpLocacao.Size = New System.Drawing.Size(99, 20)
         Me.dtpLocacao.TabIndex = 45
         '
         'dtpDevolucao
         '
         Me.dtpDevolucao.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpDevolucao.Enabled = False
         Me.dtpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDevolucao.Location = New System.Drawing.Point(653, 121)
-        Me.dtpDevolucao.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpDevolucao.Location = New System.Drawing.Point(542, 23)
         Me.dtpDevolucao.Name = "dtpDevolucao"
-        Me.dtpDevolucao.Size = New System.Drawing.Size(131, 22)
+        Me.dtpDevolucao.Size = New System.Drawing.Size(101, 20)
         Me.dtpDevolucao.TabIndex = 46
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(119, 98)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(85, 6)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(77, 16)
+        Me.Label8.Size = New System.Drawing.Size(62, 13)
         Me.Label8.TabIndex = 49
         Me.Label8.Text = "Funcionario"
         '
         'lstgrade
         '
-        Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.lstgrade.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chCodigo, Me.chTitulo, Me.chValor, Me.chTotal})
         Me.lstgrade.HideSelection = False
-        Me.lstgrade.Location = New System.Drawing.Point(17, 69)
-        Me.lstgrade.Margin = New System.Windows.Forms.Padding(4)
+        Me.lstgrade.Location = New System.Drawing.Point(9, 131)
         Me.lstgrade.Name = "lstgrade"
-        Me.lstgrade.Size = New System.Drawing.Size(597, 260)
+        Me.lstgrade.Size = New System.Drawing.Size(634, 235)
         Me.lstgrade.TabIndex = 51
         Me.lstgrade.UseCompatibleStateImageBehavior = False
         Me.lstgrade.View = System.Windows.Forms.View.Details
         '
-        'ColumnHeader1
+        'chCodigo
         '
-        Me.ColumnHeader1.Text = "Codigo"
+        Me.chCodigo.Text = "Codigo"
         '
-        'ColumnHeader2
+        'chTitulo
         '
-        Me.ColumnHeader2.Text = "Titulo"
+        Me.chTitulo.Text = "Titulo"
+        Me.chTitulo.Width = 400
         '
-        'ColumnHeader3
+        'chValor
         '
-        Me.ColumnHeader3.Text = "Valor"
+        Me.chValor.Text = "Valor"
         '
-        'GroupBox1
+        'chTotal
         '
-        Me.GroupBox1.Controls.Add(Me.txtTotal)
-        Me.GroupBox1.Controls.Add(Me.txtValorUnit)
-        Me.GroupBox1.Controls.Add(Me.GroupBox3)
-        Me.GroupBox1.Controls.Add(Me.btnremove)
-        Me.GroupBox1.Controls.Add(Me.btnAdicionar)
-        Me.GroupBox1.Controls.Add(Me.lstgrade)
-        Me.GroupBox1.Controls.Add(Me.cboProduto)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.lblTotal)
-        Me.GroupBox1.Controls.Add(Me.lblValor)
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 197)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(760, 336)
-        Me.GroupBox1.TabIndex = 54
-        Me.GroupBox1.TabStop = False
+        Me.chTotal.Text = "Total"
         '
         'txtTotal
         '
-        Me.txtTotal.Location = New System.Drawing.Point(536, 39)
-        Me.txtTotal.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtTotal.Enabled = False
+        Me.txtTotal.Location = New System.Drawing.Point(529, 103)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(79, 22)
-        Me.txtTotal.TabIndex = 57
-        Me.txtTotal.Visible = False
+        Me.txtTotal.Size = New System.Drawing.Size(60, 20)
+        Me.txtTotal.TabIndex = 6
         '
         'txtValorUnit
         '
-        Me.txtValorUnit.Location = New System.Drawing.Point(444, 39)
-        Me.txtValorUnit.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtValorUnit.Enabled = False
+        Me.txtValorUnit.Location = New System.Drawing.Point(460, 103)
         Me.txtValorUnit.Name = "txtValorUnit"
-        Me.txtValorUnit.Size = New System.Drawing.Size(84, 22)
-        Me.txtValorUnit.TabIndex = 56
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Button7)
-        Me.GroupBox3.Location = New System.Drawing.Point(645, 336)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(161, 97)
-        Me.GroupBox3.TabIndex = 55
-        Me.GroupBox3.TabStop = False
+        Me.txtValorUnit.Size = New System.Drawing.Size(64, 20)
+        Me.txtValorUnit.TabIndex = 5
         '
         'btnremove
         '
         Me.btnremove.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
-        Me.btnremove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnremove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnremove.Enabled = False
         Me.btnremove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnremove.Location = New System.Drawing.Point(622, 131)
-        Me.btnremove.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnremove.Location = New System.Drawing.Point(621, 103)
         Me.btnremove.Name = "btnremove"
-        Me.btnremove.Size = New System.Drawing.Size(123, 54)
+        Me.btnremove.Size = New System.Drawing.Size(20, 20)
         Me.btnremove.TabIndex = 53
-        Me.btnremove.Text = "Remover"
         Me.btnremove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnremove.UseVisualStyleBackColor = True
         '
         'btnAdicionar
         '
         Me.btnAdicionar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
-        Me.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnAdicionar.Enabled = False
         Me.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopRight
-        Me.btnAdicionar.Location = New System.Drawing.Point(622, 72)
-        Me.btnAdicionar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAdicionar.Location = New System.Drawing.Point(595, 103)
         Me.btnAdicionar.Name = "btnAdicionar"
-        Me.btnAdicionar.Size = New System.Drawing.Size(123, 54)
+        Me.btnAdicionar.Size = New System.Drawing.Size(20, 20)
         Me.btnAdicionar.TabIndex = 52
-        Me.btnAdicionar.Text = "Adicionar"
         Me.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAdicionar.UseVisualStyleBackColor = True
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.lblpagar)
-        Me.GroupBox4.Controls.Add(Me.lbldinheiro)
-        Me.GroupBox4.Controls.Add(Me.txtDinheiro)
-        Me.GroupBox4.Controls.Add(Me.lblTroco)
-        Me.GroupBox4.Controls.Add(Me.lbltotalpg)
-        Me.GroupBox4.Controls.Add(Me.Label7)
-        Me.GroupBox4.Controls.Add(Me.cboPagar)
-        Me.GroupBox4.Controls.Add(Me.Label11)
-        Me.GroupBox4.Location = New System.Drawing.Point(781, 201)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox4.Size = New System.Drawing.Size(219, 336)
-        Me.GroupBox4.TabIndex = 61
-        Me.GroupBox4.TabStop = False
-        '
-        'lblpagar
-        '
-        Me.lblpagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblpagar.Location = New System.Drawing.Point(20, 233)
-        Me.lblpagar.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblpagar.Name = "lblpagar"
-        Me.lblpagar.Size = New System.Drawing.Size(160, 25)
-        Me.lblpagar.TabIndex = 68
-        Me.lblpagar.Text = "Troco"
-        '
-        'lbldinheiro
-        '
-        Me.lbldinheiro.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbldinheiro.Location = New System.Drawing.Point(20, 162)
-        Me.lbldinheiro.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbldinheiro.Name = "lbldinheiro"
-        Me.lbldinheiro.Size = New System.Drawing.Size(120, 23)
-        Me.lbldinheiro.TabIndex = 67
-        Me.lbldinheiro.Text = "Dinheiro"
-        '
-        'txtDinheiro
-        '
-        Me.txtDinheiro.Location = New System.Drawing.Point(24, 190)
-        Me.txtDinheiro.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtDinheiro.Name = "txtDinheiro"
-        Me.txtDinheiro.Size = New System.Drawing.Size(173, 22)
-        Me.txtDinheiro.TabIndex = 66
-        '
-        'lblTroco
-        '
-        Me.lblTroco.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblTroco.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTroco.ForeColor = System.Drawing.Color.Red
-        Me.lblTroco.Location = New System.Drawing.Point(24, 258)
-        Me.lblTroco.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblTroco.Name = "lblTroco"
-        Me.lblTroco.Size = New System.Drawing.Size(173, 38)
-        Me.lblTroco.TabIndex = 65
-        Me.lblTroco.Text = "0,00"
-        Me.lblTroco.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lbltotalpg
         '
         Me.lbltotalpg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lbltotalpg.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbltotalpg.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbltotalpg.ForeColor = System.Drawing.Color.Red
-        Me.lbltotalpg.Location = New System.Drawing.Point(24, 110)
-        Me.lbltotalpg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbltotalpg.Location = New System.Drawing.Point(583, 512)
         Me.lbltotalpg.Name = "lbltotalpg"
-        Me.lbltotalpg.Size = New System.Drawing.Size(173, 37)
+        Me.lbltotalpg.Size = New System.Drawing.Size(79, 20)
         Me.lbltotalpg.TabIndex = 64
         Me.lbltotalpg.Text = "0,00"
         Me.lbltotalpg.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Label7
-        '
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(20, 85)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(167, 25)
-        Me.Label7.TabIndex = 63
-        Me.Label7.Text = "Total a pagar"
-        '
-        'cboPagar
-        '
-        Me.cboPagar.FormattingEnabled = True
-        Me.cboPagar.Items.AddRange(New Object() {"Na Locação", "Na Entrega"})
-        Me.cboPagar.Location = New System.Drawing.Point(24, 42)
-        Me.cboPagar.Margin = New System.Windows.Forms.Padding(4)
-        Me.cboPagar.Name = "cboPagar"
-        Me.cboPagar.Size = New System.Drawing.Size(173, 24)
-        Me.cboPagar.TabIndex = 62
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(20, 22)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(58, 20)
-        Me.Label11.TabIndex = 61
-        Me.Label11.Text = "Pagar"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.PictureBox1.Location = New System.Drawing.Point(797, 103)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(203, 86)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 62
-        Me.PictureBox1.TabStop = False
-        '
         'cboFuncionario
         '
+        Me.cboFuncionario.Enabled = False
         Me.cboFuncionario.FormattingEnabled = True
-        Me.cboFuncionario.Location = New System.Drawing.Point(117, 118)
-        Me.cboFuncionario.Margin = New System.Windows.Forms.Padding(4)
+        Me.cboFuncionario.Location = New System.Drawing.Point(88, 22)
         Me.cboFuncionario.Name = "cboFuncionario"
-        Me.cboFuncionario.Size = New System.Drawing.Size(365, 24)
-        Me.cboFuncionario.TabIndex = 63
+        Me.cboFuncionario.Size = New System.Drawing.Size(343, 21)
+        Me.cboFuncionario.TabIndex = 1
         '
         'txtCodLocacao
         '
-        Me.txtCodLocacao.Location = New System.Drawing.Point(12, 118)
-        Me.txtCodLocacao.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCodLocacao.Enabled = False
+        Me.txtCodLocacao.Location = New System.Drawing.Point(9, 22)
         Me.txtCodLocacao.Name = "txtCodLocacao"
-        Me.txtCodLocacao.Size = New System.Drawing.Size(96, 22)
+        Me.txtCodLocacao.Size = New System.Drawing.Size(73, 20)
         Me.txtCodLocacao.TabIndex = 64
         '
         'ER
         '
         Me.ER.ContainerControl = Me
-        '
-        'btnImprimir
-        '
-        Me.btnImprimir.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.print_view
-        Me.btnImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnImprimir.Location = New System.Drawing.Point(564, 554)
-        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(4)
-        Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(139, 66)
-        Me.btnImprimir.TabIndex = 65
-        Me.btnImprimir.Text = "I&mprimir"
-        Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnImprimir.UseVisualStyleBackColor = True
         '
         'PrintPreviewDialog1
         '
@@ -522,43 +337,240 @@ Partial Class frmLocacao
         'PrintDocument1
         '
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(511, 516)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(66, 13)
+        Me.Label4.TabIndex = 68
+        Me.Label4.Text = "Tot. a Pagar"
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NovoToolStripButton, Me.SalvarToolStripButton, Me.AlterarToolStripButton, Me.ExcluirToolStripButton, Me.ConsultarToolStripButton, Me.ImprimirToolStripButton, Me.toolStripSeparator, Me.RecortarToolStripButton, Me.CopiarToolStripButton, Me.ColarToolStripButton, Me.toolStripSeparator1, Me.AjudaToolStripButton})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 75)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(683, 25)
+        Me.ToolStrip1.TabIndex = 70
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'NovoToolStripButton
+        '
+        Me.NovoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.NovoToolStripButton.Image = CType(resources.GetObject("NovoToolStripButton.Image"), System.Drawing.Image)
+        Me.NovoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.NovoToolStripButton.Name = "NovoToolStripButton"
+        Me.NovoToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.NovoToolStripButton.Text = "&Novo"
+        '
+        'SalvarToolStripButton
+        '
+        Me.SalvarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.SalvarToolStripButton.Enabled = False
+        Me.SalvarToolStripButton.Image = CType(resources.GetObject("SalvarToolStripButton.Image"), System.Drawing.Image)
+        Me.SalvarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SalvarToolStripButton.Name = "SalvarToolStripButton"
+        Me.SalvarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.SalvarToolStripButton.Text = "&Salvar"
+        '
+        'AlterarToolStripButton
+        '
+        Me.AlterarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.AlterarToolStripButton.Enabled = False
+        Me.AlterarToolStripButton.Image = Global.ProjetoLocadora.My.Resources.Resources.Alterar
+        Me.AlterarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.AlterarToolStripButton.Name = "AlterarToolStripButton"
+        Me.AlterarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.AlterarToolStripButton.Text = "Alterar"
+        '
+        'ExcluirToolStripButton
+        '
+        Me.ExcluirToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ExcluirToolStripButton.Enabled = False
+        Me.ExcluirToolStripButton.Image = CType(resources.GetObject("ExcluirToolStripButton.Image"), System.Drawing.Image)
+        Me.ExcluirToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ExcluirToolStripButton.Name = "ExcluirToolStripButton"
+        Me.ExcluirToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ExcluirToolStripButton.Text = "Excluir"
+        '
+        'ConsultarToolStripButton
+        '
+        Me.ConsultarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ConsultarToolStripButton.Image = Global.ProjetoLocadora.My.Resources.Resources.Consultar
+        Me.ConsultarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ConsultarToolStripButton.Name = "ConsultarToolStripButton"
+        Me.ConsultarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ConsultarToolStripButton.Text = "Consultar"
+        '
+        'ImprimirToolStripButton
+        '
+        Me.ImprimirToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ImprimirToolStripButton.Image = CType(resources.GetObject("ImprimirToolStripButton.Image"), System.Drawing.Image)
+        Me.ImprimirToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ImprimirToolStripButton.Name = "ImprimirToolStripButton"
+        Me.ImprimirToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ImprimirToolStripButton.Text = "&Imprimir"
+        '
+        'toolStripSeparator
+        '
+        Me.toolStripSeparator.Name = "toolStripSeparator"
+        Me.toolStripSeparator.Size = New System.Drawing.Size(6, 25)
+        '
+        'RecortarToolStripButton
+        '
+        Me.RecortarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.RecortarToolStripButton.Image = CType(resources.GetObject("RecortarToolStripButton.Image"), System.Drawing.Image)
+        Me.RecortarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.RecortarToolStripButton.Name = "RecortarToolStripButton"
+        Me.RecortarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.RecortarToolStripButton.Text = "Recor&tar"
+        '
+        'CopiarToolStripButton
+        '
+        Me.CopiarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.CopiarToolStripButton.Image = CType(resources.GetObject("CopiarToolStripButton.Image"), System.Drawing.Image)
+        Me.CopiarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CopiarToolStripButton.Name = "CopiarToolStripButton"
+        Me.CopiarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.CopiarToolStripButton.Text = "&Copiar"
+        '
+        'ColarToolStripButton
+        '
+        Me.ColarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ColarToolStripButton.Image = CType(resources.GetObject("ColarToolStripButton.Image"), System.Drawing.Image)
+        Me.ColarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ColarToolStripButton.Name = "ColarToolStripButton"
+        Me.ColarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ColarToolStripButton.Text = "C&olar"
+        '
+        'toolStripSeparator1
+        '
+        Me.toolStripSeparator1.Name = "toolStripSeparator1"
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'AjudaToolStripButton
+        '
+        Me.AjudaToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.AjudaToolStripButton.Image = CType(resources.GetObject("AjudaToolStripButton.Image"), System.Drawing.Image)
+        Me.AjudaToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.AjudaToolStripButton.Name = "AjudaToolStripButton"
+        Me.AjudaToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.AjudaToolStripButton.Text = "&Ajuda"
+        '
+        'tcLocacao
+        '
+        Me.tcLocacao.Controls.Add(Me.tpListagem)
+        Me.tcLocacao.Controls.Add(Me.tpLocacao)
+        Me.tcLocacao.Location = New System.Drawing.Point(12, 103)
+        Me.tcLocacao.Name = "tcLocacao"
+        Me.tcLocacao.SelectedIndex = 0
+        Me.tcLocacao.Size = New System.Drawing.Size(660, 398)
+        Me.tcLocacao.TabIndex = 71
+        '
+        'tpListagem
+        '
+        Me.tpListagem.Controls.Add(Me.ListView1)
+        Me.tpListagem.Location = New System.Drawing.Point(4, 22)
+        Me.tpListagem.Name = "tpListagem"
+        Me.tpListagem.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpListagem.Size = New System.Drawing.Size(652, 372)
+        Me.tpListagem.TabIndex = 1
+        Me.tpListagem.Text = "Listagem"
+        Me.tpListagem.UseVisualStyleBackColor = True
+        '
+        'ListView1
+        '
+        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader5, Me.ColumnHeader4, Me.ColumnHeader6})
+        Me.ListView1.HideSelection = False
+        Me.ListView1.Location = New System.Drawing.Point(6, 6)
+        Me.ListView1.Name = "ListView1"
+        Me.ListView1.Size = New System.Drawing.Size(640, 360)
+        Me.ListView1.TabIndex = 5
+        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.ListView1.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "N° da Locação"
+        Me.ColumnHeader1.Width = 85
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Cliente"
+        Me.ColumnHeader2.Width = 169
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Total"
+        Me.ColumnHeader3.Width = 55
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Multa"
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Data da Locação"
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "Data Devolução"
+        Me.ColumnHeader6.Width = 97
+        '
+        'tpLocacao
+        '
+        Me.tpLocacao.Controls.Add(Me.lstgrade)
+        Me.tpLocacao.Controls.Add(Me.txtTotal)
+        Me.tpLocacao.Controls.Add(Me.txtCodLocacao)
+        Me.tpLocacao.Controls.Add(Me.lblCodigo)
+        Me.tpLocacao.Controls.Add(Me.txtValorUnit)
+        Me.tpLocacao.Controls.Add(Me.lblDtLocacao)
+        Me.tpLocacao.Controls.Add(Me.lblDtDevolucao)
+        Me.tpLocacao.Controls.Add(Me.btnAdicionar)
+        Me.tpLocacao.Controls.Add(Me.Label2)
+        Me.tpLocacao.Controls.Add(Me.cboProduto)
+        Me.tpLocacao.Controls.Add(Me.lblQuantidade)
+        Me.tpLocacao.Controls.Add(Me.Label3)
+        Me.tpLocacao.Controls.Add(Me.cboclientes)
+        Me.tpLocacao.Controls.Add(Me.btnremove)
+        Me.tpLocacao.Controls.Add(Me.dtpLocacao)
+        Me.tpLocacao.Controls.Add(Me.lblTotal)
+        Me.tpLocacao.Controls.Add(Me.txtQuantidade)
+        Me.tpLocacao.Controls.Add(Me.lblValor)
+        Me.tpLocacao.Controls.Add(Me.dtpDevolucao)
+        Me.tpLocacao.Controls.Add(Me.Label8)
+        Me.tpLocacao.Controls.Add(Me.cboFuncionario)
+        Me.tpLocacao.Location = New System.Drawing.Point(4, 22)
+        Me.tpLocacao.Name = "tpLocacao"
+        Me.tpLocacao.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpLocacao.Size = New System.Drawing.Size(652, 372)
+        Me.tpLocacao.TabIndex = 0
+        Me.tpLocacao.Text = "Locação"
+        Me.tpLocacao.UseVisualStyleBackColor = True
+        '
         'frmLocacao
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1022, 635)
-        Me.Controls.Add(Me.btnCancelar)
-        Me.Controls.Add(Me.btnImprimir)
-        Me.Controls.Add(Me.btnSalvar)
-        Me.Controls.Add(Me.txtCodLocacao)
-        Me.Controls.Add(Me.cboFuncionario)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.GroupBox4)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.dtpDevolucao)
-        Me.Controls.Add(Me.txtQuantidade)
-        Me.Controls.Add(Me.dtpLocacao)
-        Me.Controls.Add(Me.cboclientes)
-        Me.Controls.Add(Me.lblQuantidade)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.lblDtDevolucao)
-        Me.Controls.Add(Me.lblDtLocacao)
-        Me.Controls.Add(Me.lblCodigo)
+        Me.ClientSize = New System.Drawing.Size(683, 549)
+        Me.Controls.Add(Me.tcLocacao)
+        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lbltotalpg)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLocacao"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Locação"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ER, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
+        Me.tcLocacao.ResumeLayout(False)
+        Me.tpListagem.ResumeLayout(False)
+        Me.tpLocacao.ResumeLayout(False)
+        Me.tpLocacao.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -571,8 +583,6 @@ Partial Class frmLocacao
     Friend WithEvents lblDtLocacao As System.Windows.Forms.Label
     Friend WithEvents lblDtDevolucao As System.Windows.Forms.Label
     Friend WithEvents txtQuantidade As System.Windows.Forms.TextBox
-    Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents btnSalvar As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents cboclientes As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -583,28 +593,40 @@ Partial Class frmLocacao
     Friend WithEvents lstgrade As System.Windows.Forms.ListView
     Friend WithEvents btnAdicionar As System.Windows.Forms.Button
     Friend WithEvents btnremove As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnCancelar As System.Windows.Forms.Button
-    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents lblpagar As System.Windows.Forms.Label
-    Friend WithEvents lbldinheiro As System.Windows.Forms.Label
-    Friend WithEvents txtDinheiro As System.Windows.Forms.TextBox
-    Friend WithEvents lblTroco As System.Windows.Forms.Label
     Friend WithEvents lbltotalpg As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents cboPagar As System.Windows.Forms.ComboBox
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents cboFuncionario As System.Windows.Forms.ComboBox
     Friend WithEvents txtValorUnit As System.Windows.Forms.TextBox
     Friend WithEvents txtTotal As System.Windows.Forms.TextBox
     Friend WithEvents txtCodLocacao As System.Windows.Forms.TextBox
     Friend WithEvents ER As System.Windows.Forms.ErrorProvider
-    Friend WithEvents btnImprimir As System.Windows.Forms.Button
     Friend WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
+    Friend WithEvents chCodigo As ColumnHeader
+    Friend WithEvents chTitulo As ColumnHeader
+    Friend WithEvents chValor As ColumnHeader
+    Friend WithEvents Label4 As Label
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents NovoToolStripButton As ToolStripButton
+    Friend WithEvents SalvarToolStripButton As ToolStripButton
+    Friend WithEvents AlterarToolStripButton As ToolStripButton
+    Friend WithEvents ExcluirToolStripButton As ToolStripButton
+    Friend WithEvents ConsultarToolStripButton As ToolStripButton
+    Friend WithEvents ImprimirToolStripButton As ToolStripButton
+    Friend WithEvents toolStripSeparator As ToolStripSeparator
+    Friend WithEvents RecortarToolStripButton As ToolStripButton
+    Friend WithEvents CopiarToolStripButton As ToolStripButton
+    Friend WithEvents ColarToolStripButton As ToolStripButton
+    Friend WithEvents toolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents AjudaToolStripButton As ToolStripButton
+    Friend WithEvents chTotal As ColumnHeader
+    Friend WithEvents tcLocacao As TabControl
+    Friend WithEvents tpLocacao As TabPage
+    Friend WithEvents tpListagem As TabPage
+    Friend WithEvents ListView1 As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents ColumnHeader5 As ColumnHeader
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents ColumnHeader6 As ColumnHeader
 End Class

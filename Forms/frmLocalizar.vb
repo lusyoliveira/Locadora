@@ -16,39 +16,39 @@ Public Class frmLocalizar
         ClasseCombos.Localizar(cboItens.Text, lstLocalizar, txtLocalizar.Text)
     End Sub
 
-    Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
-        Select Case cboItens.Text
-            Case Is = "Clientes"
-                frmCadClientes.Show()
-                frmCadClientes.btnAlterar.Enabled = False
-            Case Is = "Produtos"
-                frmCadProdutos.Show()
-                frmCadProdutos.btnExcluir.Enabled = False
-        End Select
-    End Sub
+    'Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
+    '    Select Case cboItens.Text
+    '        Case Is = "Clientes"
+    '            frmCadClientes.Show()
+    '            frmCadClientes.btnAlterar.Enabled = False
+    '        Case Is = "Produtos"
+    '            frmCadProdutos.Show()
+    '            frmCadProdutos.btnExcluir.Enabled = False
+    '    End Select
+    'End Sub
 
-    Private Sub btnAlterar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAlterar.Click
-        Select Case cboItens.Text
-            Case Is = "Clientes"
-                frmCadClientes.Show()
-                frmCadClientes.btnSalvar.Enabled = False
-                frmCadClientes.btnAlterar.Enabled = False
-            Case Is = "Produtos"
-                frmCadProdutos.Show()
-                frmCadProdutos.btnSalvar.Enabled = False
-                frmCadProdutos.btnExcluir.Enabled = False
-        End Select
-    End Sub
+    'Private Sub btnAlterar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAlterar.Click
+    '    Select Case cboItens.Text
+    '        Case Is = "Clientes"
+    '            frmCadClientes.Show()
+    '            frmCadClientes.btnSalvar.Enabled = False
+    '            frmCadClientes.btnAlterar.Enabled = False
+    '        Case Is = "Produtos"
+    '            frmCadProdutos.Show()
+    '            frmCadProdutos.btnSalvar.Enabled = False
+    '            frmCadProdutos.btnExcluir.Enabled = False
+    '    End Select
+    'End Sub
 
-    Private Sub btnExcluir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExcluir.Click
-        Select Case cboItens.Text
-            Case Is = "Clientes"
-                frmCadClientes.Show()
-                frmCadClientes.btnSalvar.Enabled = False
-            Case Is = "Produtos"
-                frmCadProdutos.Show()
-                frmCadProdutos.btnSalvar.Enabled = False
+    'Private Sub btnExcluir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExcluir.Click
+    '    Select Case cboItens.Text
+    '        Case Is = "Clientes"
+    '            frmCadClientes.Show()
+    '            frmCadClientes.btnSalvar.Enabled = False
+    '        Case Is = "Produtos"
+    '            frmCadProdutos.Show()
+    '            frmCadProdutos.btnSalvar.Enabled = False
 
-        End Select
-    End Sub
+    '    End Select
+    'End Sub
 End Class

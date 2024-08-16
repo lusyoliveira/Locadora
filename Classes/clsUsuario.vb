@@ -1,6 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text
-Imports Microsoft.Office.Core
 Public Class clsUsuario
     Dim ClasseConexao As New clsConexao, tbUsuarios As New DataTable()
 #Region "PROPRIEDADES"
@@ -9,7 +8,7 @@ Public Class clsUsuario
 
 #End Region
 #Region "METODOS"
-    Public Function ConsultaUsuario(Codigo As Integer, Nome As String) As DataTable
+    Public Function PesquisaUsuario(lstGrade As ListView, Codigo As Integer, Nome As String) As DataTable
         Try
             Using connection As New SqlConnection(ClasseConexao.connectionString)
                 connection.Open()
@@ -36,6 +35,21 @@ Public Class clsUsuario
                     End If
                     Dim adapter As New SqlDataAdapter(command)
                     adapter.Fill(tbUsuarios)
+                    Dim x As Integer = 0
+                    If tbUsuarios.Rows.Count > 0 Then
+                        For Each row As DataRow In tbUsuarios.Rows
+                            Dim item As New ListViewItem(row("codigo").ToString())
+                            item.SubItems.Add(row("nome").ToString())
+                            item.SubItems.Add(row("permissao").ToString())
+                            item.SubItems.Add(row("senha").ToString())
+                            item.SubItems.Add(row("confsenha").ToString())
+
+                            lstGrade.Items.Add(item)
+                            x += 1
+                        Next
+                    Else
+                        MessageBox.Show("Essa entidade não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End Using
                 connection.Close()
             End Using

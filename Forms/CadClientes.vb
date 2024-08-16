@@ -1,7 +1,7 @@
 Public Class frmCadClientes
     Dim ClasseClientes As New clsEntidades, ClasseDependentes As New clsDependente, ClasseCombo As New clsCombo, tbClientes As DataTable
 
-    Private Sub limpar()
+    Private Sub Limpar()
         txtNome.Text = ""
         mskDnascimento.Text = ""
         cboEstadoCivil.Text = ""
@@ -26,38 +26,14 @@ Public Class frmCadClientes
         cbopzrentesco.Text = ""
         mskdtdatadep.Text = ""
         txtObs.Text = ""
-        txtextra.Text = ""
+        txtRazaoSocial.Text = ""
         txtEmail.Text = ""
         lstEntidade.Items.Clear()
+        lstDependente.Items.Clear()
     End Sub
 
     Private Sub frmCadClientes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
-    End Sub
-    Private Sub txtNome_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        If e.KeyCode = Keys.Enter Then
-            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
-        End If
-    End Sub
-    Private Sub btnConsultar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConsultar.Click
-        ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
-    End Sub
-    Private Sub btnNovo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNovo.Click
-        limpar()
-        rbdFeminino.Visible = True
-        rbdMasculino.Visible = True
-        txtNome.Focus()
-    End Sub
-    Private Sub btnSalvar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSalvar.Click
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If MsgResult = DialogResult.Yes Then
-            ClasseClientes.SalvarEntidade(txtNome.Text, "", mskDnascimento.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text, "C")
-            ClasseClientes.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
-            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
-        Else
-            Exit Sub
-        End If
     End Sub
 
     Private Sub lstEntidade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEntidade.SelectedIndexChanged
@@ -72,11 +48,11 @@ Public Class frmCadClientes
             txtCidade.Text = lstEntidade.SelectedItems(0).SubItems(8).Text
             cboUf.Text = lstEntidade.SelectedItems(0).SubItems(9).Text
             mskCep.Text = lstEntidade.SelectedItems(0).SubItems(10).Text
-            If lstEntidade.SelectedItems(0).SubItems(11).Text Then
-                rbdMasculino.Checked = True
-            Else
-                rbdFeminino.Checked = True
-            End If
+            'If lstEntidade.SelectedItems(0).SubItems(11).Text = False Then
+            '    rbdMasculino.Checked = True
+            'Else
+            '    rbdFeminino.Checked = True
+            'End If
         End If
         ClasseDependentes.ConsultaDependente(lstDependente, Val(lblCodigo.Text))
         ClasseClientes.ObterContato(Val(lblCodigo.Text), ClasseClientes)
@@ -84,7 +60,11 @@ Public Class frmCadClientes
         mskTel2.Text = ClasseClientes.Telefone2
         mskCel.Text = ClasseClientes.Celular
         txtEmail.Text = ClasseClientes.Email
-
+        SalvarToolStripButton.Enabled = False
+        AlterarToolStripButton.Enabled = True
+        ExcluirToolStripButton.Enabled = True
+        NovoToolStripButton.Enabled = False
+        tcCliente.SelectTab(1)
     End Sub
 
     Private Sub cboEstadoCivil_Enter(sender As Object, e As EventArgs) Handles cboEstadoCivil.Enter
@@ -97,6 +77,77 @@ Public Class frmCadClientes
         End With
     End Sub
 
+    Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
+        rbdFeminino.Visible = True
+        rbdMasculino.Visible = True
+        txtNome.Focus()
+        SalvarToolStripButton.Enabled = True
+        AlterarToolStripButton.Enabled = False
+        ExcluirToolStripButton.Enabled = False
+        NovoToolStripButton.Enabled = False
+    End Sub
+
+    Private Sub SalvarToolStripButton_Click(sender As Object, e As EventArgs) Handles SalvarToolStripButton.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            ClasseClientes.SalvarEntidade(txtNome.Text, txtRazaoSocial.Text, mskDnascimento.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text, "C")
+            ClasseClientes.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            Limpar()
+            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            SalvarToolStripButton.Enabled = False
+            AlterarToolStripButton.Enabled = False
+            ExcluirToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub ConsultarToolStripButton_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripButton.Click
+        ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+    End Sub
+
+    Private Sub DevolverToolStripButton_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ExcluirToolStripButton_Click(sender As Object, e As EventArgs) Handles ExcluirToolStripButton.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            ClasseClientes.ExcluirContato(Val(lblCodigo.Text))
+            ClasseClientes.ExcluirEntidade(Val(lblCodigo.Text))
+            Limpar()
+            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            SalvarToolStripButton.Enabled = False
+            AlterarToolStripButton.Enabled = False
+            ExcluirToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub AlterarToolStripButton_Click(sender As Object, e As EventArgs) Handles AlterarToolStripButton.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            ClasseClientes.AlterarEntidade(Val(lblCodigo.Text), txtNome.Text, txtRazaoSocial.Text, DateTime.Parse(mskDnascimento.Value).ToString("dd-MM-yyyy HH:mm:ss"), cboEstadoCivil.Text, txtEndereco.Text,
+                                           txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text,
+                                           mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text)
+            ClasseClientes.AlterarContato(Val(lblCodigo.Text), ClasseClientes.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
+            Limpar()
+            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            SalvarToolStripButton.Enabled = False
+            AlterarToolStripButton.Enabled = False
+            ExcluirToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
+        Else
+            Exit Sub
+        End If
+    End Sub
+
     Private Sub cbopzrentesco_Enter(sender As Object, e As EventArgs) Handles cbopzrentesco.Enter
         Dim ListaParentesco = ClasseCombo.PreencherComboBox("SELECT * FROM tbParentesco ORDER BY Parentesco", "Codigo", "Parentesco")
         With Me.cbopzrentesco
@@ -105,29 +156,5 @@ Public Class frmCadClientes
             .DisplayMember = "Descricao"
             .SelectedIndex = "0"
         End With
-    End Sub
-
-    Private Sub btnExcluir_Click(sender As Object, e As EventArgs) Handles btnExcluir.Click
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a Exclusão?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If MsgResult = DialogResult.Yes Then
-            ClasseClientes.ExcluirContato(Val(lblCodigo.Text))
-            ClasseClientes.ExcluirEntidade(Val(lblCodigo.Text))
-            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
-        Else
-            Exit Sub
-        End If
-    End Sub
-    Private Sub btnAlterar_Click(sender As Object, e As EventArgs) Handles btnAlterar.Click
-
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a alteração do cliente?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If MsgResult = DialogResult.Yes Then
-            ClasseClientes.AlterarEntidade(Val(lblCodigo.Text), txtNome.Text, "", mskDnascimento.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text)
-            ClasseClientes.AlterarContato(Val(lblCodigo.Text), ClasseClientes.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
-            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
-        Else
-            Exit Sub
-        End If
     End Sub
 End Class

@@ -1,13 +1,29 @@
 
 Public Class frmReserva
-    Dim ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo, tbClientes, tbProdutos, tbReserva As DataTable
+    Dim ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo, ClasseProdutos As New clsProdutos,
+        tbClientes, tbProdutos, tbReserva As DataTable
     Dim sql As String
     Private Sub Limpar()
         cboCliente.Text = ""
         cboProduto.Text = ""
+        txtCodReserva.Text = ""
         lblTotal.Text = ""
         lblValorTotal.Text = ""
-        lstgrade.Clear()
+        lstgrade.Items.Clear()
+    End Sub
+    Private Sub Habilitar()
+        cboCliente.Enabled = True
+        cboProduto.Enabled = True
+        txtCodReserva.Enabled = True
+        lblTotal.Enabled = True
+        lblValorTotal.Enabled = True
+    End Sub
+    Private Sub Desabilitar()
+        cboCliente.Enabled = False
+        cboProduto.Enabled = False
+        txtCodReserva.Enabled = False
+        lblTotal.Enabled = False
+        lblValorTotal.Enabled = False
     End Sub
     Private Sub CampoZero()
         If cboCliente.Text = "" Then
@@ -17,27 +33,28 @@ Public Class frmReserva
             cboProduto.Text = 0
         End If
     End Sub
+    Private Sub CalculaReserva()
+        Dim Dias As Double
+        If dtpInicio.Value = "" Or dtpFim.Value = "" Then
+            MessageBox.Show("Informe o período da reserva!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        Else
+            Dias = DateDiff(DateInterval.Day, dtpInicio.Value, dtpFim.Value)
 
+            lblTotal.Text = (Dias * lblValorUnit.Text)
+        End If
+    End Sub
     Private Sub AtualizaValor()
-        Dim x As Integer, total As Decimal = 0
-        If lstgrade.Items.Count > 0 Then
+        Dim x As Integer, Total As Decimal
+
+        If lstgrade.Items.Count >= 0 Then
             For x = 0 To lstgrade.Items.Count - 1
-                total += lstgrade.Items(x).SubItems(1).Text
+                Total += lstgrade.Items(x).SubItems(2).Text
             Next
-            lblTotal.Text = FormatCurrency(total)
+            lblTotal.Text = Total
         Else
             lblTotal.Text = 0
         End If
-    End Sub
-    Private Sub CBO_PRODUTO_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboProduto.SelectedIndexChanged
-        tbProdutos = ClasseCombo.Listar("SELECT * FROM tbProdutos WHERE titulo LIKE '" & cboProduto.Text & "'")
-
-        lblValorUnit.Text = FormatCurrency(0)
-        If tbProdutos.Rows.Count = 0 Then Exit Sub
-
-        Dim row As DataRow = tbProdutos.Rows(0)
-        lblValorUnit.Text = FormatCurrency(row("valor").ToString())
-        lblValorUnit.Tag = row("codigo").ToString()
     End Sub
 
     Private Sub cboCliente_Enter(sender As Object, e As EventArgs) Handles cboCliente.Enter
@@ -58,6 +75,19 @@ Public Class frmReserva
             .DisplayMember = "Descricao"
             .SelectedIndex = "0"
         End With
+    End Sub
+
+    Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
+        ClasseLocacao.ObterReserva(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbReserva') IS NULL THEN 1 ELSE IDENT_CURRENT('tbReserva')+1 END AS Codigo")
+        txtCodReserva.Text = ClasseLocacao.CodReserva
+        Habilitar()
+        SalvarToolStripButton.Enabled = True
+        NovoToolStripButton.Enabled = False
+    End Sub
+
+    Private Sub cboProduto_Leave(sender As Object, e As EventArgs) Handles cboProduto.Leave
+        ClasseProdutos.ObterProduto(ClasseProdutos, cboProduto.SelectedValue, cboProduto.Text)
+        lblValorUnit.Text = ClasseProdutos.ValorUnit
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
@@ -85,11 +115,11 @@ Public Class frmReserva
         lblValorUnit.Text = ""
     End Sub
 
-    Private Sub btnReservar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReservar.Click
+    Private Sub btnReservar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão da reserva?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseLocacao.IncluirReserva(cboCliente.Text, cboProduto.Text, dtpReserva.Text, dtpDevolucao.Text, lblTotal.Text)
+            ClasseLocacao.IncluirReserva(cboCliente.Text, cboProduto.Text, dtpInicio.Text, dtpFim.Text, lblTotal.Text)
         Else
             Exit Sub
         End If

@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmCadProdutos
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmCadProdutos
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCadProdutos))
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -38,12 +38,6 @@ Partial Class frmCadProdutos
         Me.txtAutor = New System.Windows.Forms.TextBox()
         Me.txtCensura = New System.Windows.Forms.TextBox()
         Me.txtQuantidade = New System.Windows.Forms.TextBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.btnSair = New System.Windows.Forms.Button()
-        Me.btnConsultar = New System.Windows.Forms.Button()
-        Me.btnExcluir = New System.Windows.Forms.Button()
-        Me.btnSalvar = New System.Windows.Forms.Button()
-        Me.btnNovo = New System.Windows.Forms.Button()
         Me.txtDuracao = New System.Windows.Forms.TextBox()
         Me.cboGenero = New System.Windows.Forms.ComboBox()
         Me.lstFilmes = New System.Windows.Forms.ListView()
@@ -52,6 +46,11 @@ Partial Class frmCadProdutos
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader11 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cbolegenda = New System.Windows.Forms.ComboBox()
@@ -62,7 +61,26 @@ Partial Class frmCadProdutos
         Me.lbloriginal = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.GroupBox2.SuspendLayout()
+        Me.tcProduto = New System.Windows.Forms.TabControl()
+        Me.tpListagem = New System.Windows.Forms.TabPage()
+        Me.tpCadastro = New System.Windows.Forms.TabPage()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.NovoToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.SalvarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.AlterarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ExcluirToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ConsultarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ImprimirToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.toolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.RecortarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.CopiarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ColarToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.AjudaToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.tcProduto.SuspendLayout()
+        Me.tpListagem.SuspendLayout()
+        Me.tpCadastro.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -77,9 +95,9 @@ Partial Class frmCadProdutos
         'lblCodigo
         '
         Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(21, 84)
+        Me.lblCodigo.Location = New System.Drawing.Point(6, 13)
         Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(51, 16)
+        Me.lblCodigo.Size = New System.Drawing.Size(40, 13)
         Me.lblCodigo.TabIndex = 1
         Me.lblCodigo.Text = "Codigo"
         Me.lblCodigo.Visible = False
@@ -87,212 +105,135 @@ Partial Class frmCadProdutos
         'lblProduto
         '
         Me.lblProduto.AutoSize = True
-        Me.lblProduto.Location = New System.Drawing.Point(447, 84)
+        Me.lblProduto.Location = New System.Drawing.Point(432, 13)
         Me.lblProduto.Name = "lblProduto"
-        Me.lblProduto.Size = New System.Drawing.Size(54, 16)
+        Me.lblProduto.Size = New System.Drawing.Size(28, 13)
         Me.lblProduto.TabIndex = 2
-        Me.lblProduto.Text = "Produto"
+        Me.lblProduto.Text = "Tipo"
         '
         'cboProduto
         '
         Me.cboProduto.FormattingEnabled = True
         Me.cboProduto.Items.AddRange(New Object() {"DVD", "JOGO", "VHS"})
-        Me.cboProduto.Location = New System.Drawing.Point(450, 103)
+        Me.cboProduto.Location = New System.Drawing.Point(435, 32)
         Me.cboProduto.Name = "cboProduto"
-        Me.cboProduto.Size = New System.Drawing.Size(193, 24)
+        Me.cboProduto.Size = New System.Drawing.Size(193, 21)
         Me.cboProduto.TabIndex = 5
         '
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Location = New System.Drawing.Point(83, 84)
+        Me.lblTitulo.Location = New System.Drawing.Point(68, 13)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(40, 16)
+        Me.lblTitulo.Size = New System.Drawing.Size(35, 13)
         Me.lblTitulo.TabIndex = 7
         Me.lblTitulo.Text = "Título"
         '
         'lblAutor
         '
         Me.lblAutor.AutoSize = True
-        Me.lblAutor.Location = New System.Drawing.Point(646, 84)
+        Me.lblAutor.Location = New System.Drawing.Point(631, 13)
         Me.lblAutor.Name = "lblAutor"
-        Me.lblAutor.Size = New System.Drawing.Size(95, 16)
+        Me.lblAutor.Size = New System.Drawing.Size(76, 13)
         Me.lblAutor.TabIndex = 8
         Me.lblAutor.Text = "Diretor/Criador"
         '
         'lblGenero
         '
         Me.lblGenero.AutoSize = True
-        Me.lblGenero.Location = New System.Drawing.Point(21, 136)
+        Me.lblGenero.Location = New System.Drawing.Point(6, 65)
         Me.lblGenero.Name = "lblGenero"
-        Me.lblGenero.Size = New System.Drawing.Size(52, 16)
+        Me.lblGenero.Size = New System.Drawing.Size(42, 13)
         Me.lblGenero.TabIndex = 9
         Me.lblGenero.Text = "Gênero"
         '
         'lblDuracao
         '
         Me.lblDuracao.AutoSize = True
-        Me.lblDuracao.Location = New System.Drawing.Point(346, 136)
+        Me.lblDuracao.Location = New System.Drawing.Point(331, 65)
         Me.lblDuracao.Name = "lblDuracao"
-        Me.lblDuracao.Size = New System.Drawing.Size(59, 16)
+        Me.lblDuracao.Size = New System.Drawing.Size(48, 13)
         Me.lblDuracao.TabIndex = 10
         Me.lblDuracao.Text = "Duração"
         '
         'lblCensura
         '
         Me.lblCensura.AutoSize = True
-        Me.lblCensura.Location = New System.Drawing.Point(168, 136)
+        Me.lblCensura.Location = New System.Drawing.Point(153, 65)
         Me.lblCensura.Name = "lblCensura"
-        Me.lblCensura.Size = New System.Drawing.Size(57, 16)
+        Me.lblCensura.Size = New System.Drawing.Size(46, 13)
         Me.lblCensura.TabIndex = 11
         Me.lblCensura.Text = "Censura"
         '
         'lblDtCad
         '
         Me.lblDtCad.AutoSize = True
-        Me.lblDtCad.Location = New System.Drawing.Point(578, 136)
+        Me.lblDtCad.Location = New System.Drawing.Point(563, 65)
         Me.lblDtCad.Name = "lblDtCad"
-        Me.lblDtCad.Size = New System.Drawing.Size(113, 16)
+        Me.lblDtCad.Size = New System.Drawing.Size(90, 13)
         Me.lblDtCad.TabIndex = 12
         Me.lblDtCad.Text = "Data do Cadastro"
         '
         'lblQuantidade
         '
         Me.lblQuantidade.AutoSize = True
-        Me.lblQuantidade.Location = New System.Drawing.Point(425, 136)
+        Me.lblQuantidade.Location = New System.Drawing.Point(410, 65)
         Me.lblQuantidade.Name = "lblQuantidade"
-        Me.lblQuantidade.Size = New System.Drawing.Size(77, 16)
+        Me.lblQuantidade.Size = New System.Drawing.Size(62, 13)
         Me.lblQuantidade.TabIndex = 14
         Me.lblQuantidade.Text = "Quantidade"
         '
         'txtTitulo
         '
-        Me.txtTitulo.Location = New System.Drawing.Point(86, 105)
+        Me.txtTitulo.Location = New System.Drawing.Point(71, 34)
         Me.txtTitulo.Name = "txtTitulo"
-        Me.txtTitulo.Size = New System.Drawing.Size(358, 22)
+        Me.txtTitulo.Size = New System.Drawing.Size(358, 20)
         Me.txtTitulo.TabIndex = 15
         '
         'txtAutor
         '
-        Me.txtAutor.Location = New System.Drawing.Point(649, 105)
+        Me.txtAutor.Location = New System.Drawing.Point(634, 34)
         Me.txtAutor.Name = "txtAutor"
-        Me.txtAutor.Size = New System.Drawing.Size(273, 22)
+        Me.txtAutor.Size = New System.Drawing.Size(271, 20)
         Me.txtAutor.TabIndex = 16
         '
         'txtCensura
         '
-        Me.txtCensura.Location = New System.Drawing.Point(171, 156)
+        Me.txtCensura.Location = New System.Drawing.Point(156, 85)
         Me.txtCensura.Name = "txtCensura"
-        Me.txtCensura.Size = New System.Drawing.Size(105, 22)
+        Me.txtCensura.Size = New System.Drawing.Size(105, 20)
         Me.txtCensura.TabIndex = 19
         '
         'txtQuantidade
         '
-        Me.txtQuantidade.Location = New System.Drawing.Point(428, 155)
+        Me.txtQuantidade.Location = New System.Drawing.Point(413, 84)
         Me.txtQuantidade.Name = "txtQuantidade"
-        Me.txtQuantidade.Size = New System.Drawing.Size(74, 22)
+        Me.txtQuantidade.Size = New System.Drawing.Size(74, 20)
         Me.txtQuantidade.TabIndex = 22
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.btnSair)
-        Me.GroupBox2.Controls.Add(Me.btnConsultar)
-        Me.GroupBox2.Controls.Add(Me.btnExcluir)
-        Me.GroupBox2.Controls.Add(Me.btnSalvar)
-        Me.GroupBox2.Controls.Add(Me.btnNovo)
-        Me.GroupBox2.Location = New System.Drawing.Point(167, 436)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(581, 86)
-        Me.GroupBox2.TabIndex = 31
-        Me.GroupBox2.TabStop = False
-        '
-        'btnSair
-        '
-        Me.btnSair.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.ball_stop
-        Me.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSair.Location = New System.Drawing.Point(468, 19)
-        Me.btnSair.Name = "btnSair"
-        Me.btnSair.Size = New System.Drawing.Size(106, 55)
-        Me.btnSair.TabIndex = 6
-        Me.btnSair.Text = "&Sair"
-        Me.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSair.UseVisualStyleBackColor = True
-        '
-        'btnConsultar
-        '
-        Me.btnConsultar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.binoculars
-        Me.btnConsultar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnConsultar.Location = New System.Drawing.Point(6, 19)
-        Me.btnConsultar.Name = "btnConsultar"
-        Me.btnConsultar.Size = New System.Drawing.Size(120, 55)
-        Me.btnConsultar.TabIndex = 2
-        Me.btnConsultar.Text = "C&onsultar"
-        Me.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnConsultar.UseVisualStyleBackColor = True
-        '
-        'btnExcluir
-        '
-        Me.btnExcluir.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.shell32_033
-        Me.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.Location = New System.Drawing.Point(356, 19)
-        Me.btnExcluir.Name = "btnExcluir"
-        Me.btnExcluir.Size = New System.Drawing.Size(106, 55)
-        Me.btnExcluir.TabIndex = 3
-        Me.btnExcluir.Text = "&Excluir"
-        Me.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnExcluir.UseVisualStyleBackColor = True
-        '
-        'btnSalvar
-        '
-        Me.btnSalvar.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.add
-        Me.btnSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSalvar.Location = New System.Drawing.Point(244, 19)
-        Me.btnSalvar.Name = "btnSalvar"
-        Me.btnSalvar.Size = New System.Drawing.Size(106, 55)
-        Me.btnSalvar.TabIndex = 1
-        Me.btnSalvar.Text = "S&alvar"
-        Me.btnSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnSalvar.UseVisualStyleBackColor = True
-        '
-        'btnNovo
-        '
-        Me.btnNovo.BackgroundImage = Global.ProjetoLocadora.My.Resources.Resources.document
-        Me.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNovo.Location = New System.Drawing.Point(132, 19)
-        Me.btnNovo.Name = "btnNovo"
-        Me.btnNovo.Size = New System.Drawing.Size(106, 55)
-        Me.btnNovo.TabIndex = 0
-        Me.btnNovo.Text = "&Novo"
-        Me.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnNovo.UseVisualStyleBackColor = True
         '
         'txtDuracao
         '
-        Me.txtDuracao.Location = New System.Drawing.Point(347, 155)
+        Me.txtDuracao.Location = New System.Drawing.Point(332, 84)
         Me.txtDuracao.Name = "txtDuracao"
-        Me.txtDuracao.Size = New System.Drawing.Size(75, 22)
+        Me.txtDuracao.Size = New System.Drawing.Size(75, 20)
         Me.txtDuracao.TabIndex = 33
         '
         'cboGenero
         '
         Me.cboGenero.FormattingEnabled = True
-        Me.cboGenero.Location = New System.Drawing.Point(24, 155)
+        Me.cboGenero.Location = New System.Drawing.Point(9, 84)
         Me.cboGenero.Name = "cboGenero"
-        Me.cboGenero.Size = New System.Drawing.Size(141, 24)
+        Me.cboGenero.Size = New System.Drawing.Size(141, 21)
         Me.cboGenero.TabIndex = 36
         '
         'lstFilmes
         '
-        Me.lstFilmes.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader10})
+        Me.lstFilmes.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader4, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader11, Me.ColumnHeader10})
+        Me.lstFilmes.FullRowSelect = True
         Me.lstFilmes.HideSelection = False
-        Me.lstFilmes.Location = New System.Drawing.Point(24, 185)
+        Me.lstFilmes.Location = New System.Drawing.Point(6, 6)
         Me.lstFilmes.Name = "lstFilmes"
-        Me.lstFilmes.Size = New System.Drawing.Size(898, 245)
+        Me.lstFilmes.Size = New System.Drawing.Size(898, 392)
         Me.lstFilmes.TabIndex = 37
         Me.lstFilmes.Tag = "0"
         Me.lstFilmes.UseCompatibleStateImageBehavior = False
@@ -306,7 +247,7 @@ Partial Class frmCadProdutos
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "Produto"
-        Me.ColumnHeader2.Width = 70
+        Me.ColumnHeader2.Width = 77
         '
         'ColumnHeader3
         '
@@ -323,34 +264,60 @@ Partial Class frmCadProdutos
         Me.ColumnHeader6.Text = "Censura"
         Me.ColumnHeader6.Width = 65
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.DisplayIndex = 6
+        Me.ColumnHeader4.Text = "Legenda"
+        '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.DisplayIndex = 7
+        Me.ColumnHeader7.Text = "Autor"
+        '
+        'ColumnHeader8
+        '
+        Me.ColumnHeader8.DisplayIndex = 8
+        Me.ColumnHeader8.Text = "Duracao"
+        '
+        'ColumnHeader9
+        '
+        Me.ColumnHeader9.DisplayIndex = 9
+        Me.ColumnHeader9.Text = "Quantidade"
+        '
+        'ColumnHeader11
+        '
+        Me.ColumnHeader11.DisplayIndex = 10
+        Me.ColumnHeader11.Text = "Valor"
+        '
         'ColumnHeader10
         '
+        Me.ColumnHeader10.DisplayIndex = 5
         Me.ColumnHeader10.Text = "Data Cadastro"
         Me.ColumnHeader10.Width = 100
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(697, 136)
+        Me.Label1.Location = New System.Drawing.Point(682, 65)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(61, 16)
+        Me.Label1.Size = New System.Drawing.Size(49, 13)
         Me.Label1.TabIndex = 40
         Me.Label1.Text = "Legenda"
         '
         'cbolegenda
         '
         Me.cbolegenda.FormattingEnabled = True
-        Me.cbolegenda.Location = New System.Drawing.Point(697, 152)
+        Me.cbolegenda.Location = New System.Drawing.Point(682, 81)
         Me.cbolegenda.Name = "cbolegenda"
-        Me.cbolegenda.Size = New System.Drawing.Size(225, 24)
+        Me.cbolegenda.Size = New System.Drawing.Size(223, 21)
         Me.cbolegenda.TabIndex = 41
         '
         'Valor
         '
         Me.Valor.AutoSize = True
-        Me.Valor.Location = New System.Drawing.Point(508, 136)
+        Me.Valor.Location = New System.Drawing.Point(493, 65)
         Me.Valor.Name = "Valor"
-        Me.Valor.Size = New System.Drawing.Size(39, 16)
+        Me.Valor.Size = New System.Drawing.Size(31, 13)
         Me.Valor.TabIndex = 44
         Me.Valor.Text = "Valor"
         '
@@ -359,25 +326,25 @@ Partial Class frmCadProdutos
         Me.mskDcad.CalendarForeColor = System.Drawing.Color.Black
         Me.mskDcad.CalendarTitleBackColor = System.Drawing.Color.DarkRed
         Me.mskDcad.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.mskDcad.Location = New System.Drawing.Point(581, 154)
+        Me.mskDcad.Location = New System.Drawing.Point(566, 83)
         Me.mskDcad.Name = "mskDcad"
-        Me.mskDcad.Size = New System.Drawing.Size(110, 22)
+        Me.mskDcad.Size = New System.Drawing.Size(110, 20)
         Me.mskDcad.TabIndex = 45
         '
         'txtvalor
         '
-        Me.txtvalor.Location = New System.Drawing.Point(508, 154)
+        Me.txtvalor.Location = New System.Drawing.Point(493, 83)
         Me.txtvalor.Mask = "0,00"
         Me.txtvalor.Name = "txtvalor"
-        Me.txtvalor.Size = New System.Drawing.Size(67, 22)
+        Me.txtvalor.Size = New System.Drawing.Size(67, 20)
         Me.txtvalor.TabIndex = 46
         '
         'txtoriginal
         '
         Me.txtoriginal.Enabled = False
-        Me.txtoriginal.Location = New System.Drawing.Point(282, 155)
+        Me.txtoriginal.Location = New System.Drawing.Point(267, 84)
         Me.txtoriginal.Name = "txtoriginal"
-        Me.txtoriginal.Size = New System.Drawing.Size(59, 22)
+        Me.txtoriginal.Size = New System.Drawing.Size(59, 20)
         Me.txtoriginal.TabIndex = 48
         Me.txtoriginal.Visible = False
         '
@@ -385,9 +352,9 @@ Partial Class frmCadProdutos
         '
         Me.lbloriginal.AutoSize = True
         Me.lbloriginal.Enabled = False
-        Me.lbloriginal.Location = New System.Drawing.Point(282, 136)
+        Me.lbloriginal.Location = New System.Drawing.Point(267, 65)
         Me.lbloriginal.Name = "lbloriginal"
-        Me.lbloriginal.Size = New System.Drawing.Size(53, 16)
+        Me.lbloriginal.Size = New System.Drawing.Size(42, 13)
         Me.lbloriginal.TabIndex = 49
         Me.lbloriginal.Text = "Original"
         Me.lbloriginal.Visible = False
@@ -395,58 +362,206 @@ Partial Class frmCadProdutos
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(793, 92)
+        Me.Label2.Location = New System.Drawing.Point(778, 21)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(0, 16)
+        Me.Label2.Size = New System.Drawing.Size(0, 13)
         Me.Label2.TabIndex = 50
         '
         'Label3
         '
         Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label3.Location = New System.Drawing.Point(24, 105)
+        Me.Label3.Location = New System.Drawing.Point(9, 34)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(55, 22)
+        Me.Label3.Size = New System.Drawing.Size(55, 20)
         Me.Label3.TabIndex = 90
+        '
+        'tcProduto
+        '
+        Me.tcProduto.Controls.Add(Me.tpListagem)
+        Me.tcProduto.Controls.Add(Me.tpCadastro)
+        Me.tcProduto.Location = New System.Drawing.Point(12, 103)
+        Me.tcProduto.Name = "tcProduto"
+        Me.tcProduto.SelectedIndex = 0
+        Me.tcProduto.Size = New System.Drawing.Size(919, 430)
+        Me.tcProduto.TabIndex = 91
+        '
+        'tpListagem
+        '
+        Me.tpListagem.Controls.Add(Me.lstFilmes)
+        Me.tpListagem.Location = New System.Drawing.Point(4, 22)
+        Me.tpListagem.Name = "tpListagem"
+        Me.tpListagem.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpListagem.Size = New System.Drawing.Size(911, 404)
+        Me.tpListagem.TabIndex = 0
+        Me.tpListagem.Text = "Listagem"
+        Me.tpListagem.UseVisualStyleBackColor = True
+        '
+        'tpCadastro
+        '
+        Me.tpCadastro.Controls.Add(Me.lblCodigo)
+        Me.tpCadastro.Controls.Add(Me.Label3)
+        Me.tpCadastro.Controls.Add(Me.lblProduto)
+        Me.tpCadastro.Controls.Add(Me.Label2)
+        Me.tpCadastro.Controls.Add(Me.cboProduto)
+        Me.tpCadastro.Controls.Add(Me.lbloriginal)
+        Me.tpCadastro.Controls.Add(Me.lblTitulo)
+        Me.tpCadastro.Controls.Add(Me.txtoriginal)
+        Me.tpCadastro.Controls.Add(Me.lblAutor)
+        Me.tpCadastro.Controls.Add(Me.txtvalor)
+        Me.tpCadastro.Controls.Add(Me.lblGenero)
+        Me.tpCadastro.Controls.Add(Me.mskDcad)
+        Me.tpCadastro.Controls.Add(Me.lblDuracao)
+        Me.tpCadastro.Controls.Add(Me.Valor)
+        Me.tpCadastro.Controls.Add(Me.lblCensura)
+        Me.tpCadastro.Controls.Add(Me.cbolegenda)
+        Me.tpCadastro.Controls.Add(Me.lblDtCad)
+        Me.tpCadastro.Controls.Add(Me.Label1)
+        Me.tpCadastro.Controls.Add(Me.lblQuantidade)
+        Me.tpCadastro.Controls.Add(Me.cboGenero)
+        Me.tpCadastro.Controls.Add(Me.txtTitulo)
+        Me.tpCadastro.Controls.Add(Me.txtDuracao)
+        Me.tpCadastro.Controls.Add(Me.txtAutor)
+        Me.tpCadastro.Controls.Add(Me.txtQuantidade)
+        Me.tpCadastro.Controls.Add(Me.txtCensura)
+        Me.tpCadastro.Location = New System.Drawing.Point(4, 22)
+        Me.tpCadastro.Name = "tpCadastro"
+        Me.tpCadastro.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpCadastro.Size = New System.Drawing.Size(911, 404)
+        Me.tpCadastro.TabIndex = 1
+        Me.tpCadastro.Text = "Cadastro"
+        Me.tpCadastro.UseVisualStyleBackColor = True
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NovoToolStripButton, Me.SalvarToolStripButton, Me.AlterarToolStripButton, Me.ExcluirToolStripButton, Me.ConsultarToolStripButton, Me.ImprimirToolStripButton, Me.toolStripSeparator, Me.RecortarToolStripButton, Me.CopiarToolStripButton, Me.ColarToolStripButton, Me.toolStripSeparator1, Me.AjudaToolStripButton})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 75)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(943, 25)
+        Me.ToolStrip1.TabIndex = 92
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'NovoToolStripButton
+        '
+        Me.NovoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.NovoToolStripButton.Image = CType(resources.GetObject("NovoToolStripButton.Image"), System.Drawing.Image)
+        Me.NovoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.NovoToolStripButton.Name = "NovoToolStripButton"
+        Me.NovoToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.NovoToolStripButton.Text = "&Novo"
+        '
+        'SalvarToolStripButton
+        '
+        Me.SalvarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.SalvarToolStripButton.Enabled = False
+        Me.SalvarToolStripButton.Image = CType(resources.GetObject("SalvarToolStripButton.Image"), System.Drawing.Image)
+        Me.SalvarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SalvarToolStripButton.Name = "SalvarToolStripButton"
+        Me.SalvarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.SalvarToolStripButton.Text = "&Salvar"
+        '
+        'AlterarToolStripButton
+        '
+        Me.AlterarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.AlterarToolStripButton.Enabled = False
+        Me.AlterarToolStripButton.Image = Global.ProjetoLocadora.My.Resources.Resources.Alterar
+        Me.AlterarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.AlterarToolStripButton.Name = "AlterarToolStripButton"
+        Me.AlterarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.AlterarToolStripButton.Text = "Alterar"
+        '
+        'ExcluirToolStripButton
+        '
+        Me.ExcluirToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ExcluirToolStripButton.Enabled = False
+        Me.ExcluirToolStripButton.Image = CType(resources.GetObject("ExcluirToolStripButton.Image"), System.Drawing.Image)
+        Me.ExcluirToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ExcluirToolStripButton.Name = "ExcluirToolStripButton"
+        Me.ExcluirToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ExcluirToolStripButton.Text = "Excluir"
+        '
+        'ConsultarToolStripButton
+        '
+        Me.ConsultarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ConsultarToolStripButton.Image = Global.ProjetoLocadora.My.Resources.Resources.Consultar
+        Me.ConsultarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ConsultarToolStripButton.Name = "ConsultarToolStripButton"
+        Me.ConsultarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ConsultarToolStripButton.Text = "Consultar"
+        '
+        'ImprimirToolStripButton
+        '
+        Me.ImprimirToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ImprimirToolStripButton.Image = CType(resources.GetObject("ImprimirToolStripButton.Image"), System.Drawing.Image)
+        Me.ImprimirToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ImprimirToolStripButton.Name = "ImprimirToolStripButton"
+        Me.ImprimirToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ImprimirToolStripButton.Text = "&Imprimir"
+        '
+        'toolStripSeparator
+        '
+        Me.toolStripSeparator.Name = "toolStripSeparator"
+        Me.toolStripSeparator.Size = New System.Drawing.Size(6, 25)
+        '
+        'RecortarToolStripButton
+        '
+        Me.RecortarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.RecortarToolStripButton.Image = CType(resources.GetObject("RecortarToolStripButton.Image"), System.Drawing.Image)
+        Me.RecortarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.RecortarToolStripButton.Name = "RecortarToolStripButton"
+        Me.RecortarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.RecortarToolStripButton.Text = "Recor&tar"
+        '
+        'CopiarToolStripButton
+        '
+        Me.CopiarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.CopiarToolStripButton.Image = CType(resources.GetObject("CopiarToolStripButton.Image"), System.Drawing.Image)
+        Me.CopiarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CopiarToolStripButton.Name = "CopiarToolStripButton"
+        Me.CopiarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.CopiarToolStripButton.Text = "&Copiar"
+        '
+        'ColarToolStripButton
+        '
+        Me.ColarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ColarToolStripButton.Image = CType(resources.GetObject("ColarToolStripButton.Image"), System.Drawing.Image)
+        Me.ColarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ColarToolStripButton.Name = "ColarToolStripButton"
+        Me.ColarToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.ColarToolStripButton.Text = "C&olar"
+        '
+        'toolStripSeparator1
+        '
+        Me.toolStripSeparator1.Name = "toolStripSeparator1"
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'AjudaToolStripButton
+        '
+        Me.AjudaToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.AjudaToolStripButton.Image = CType(resources.GetObject("AjudaToolStripButton.Image"), System.Drawing.Image)
+        Me.AjudaToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.AjudaToolStripButton.Name = "AjudaToolStripButton"
+        Me.AjudaToolStripButton.Size = New System.Drawing.Size(23, 22)
+        Me.AjudaToolStripButton.Text = "&Ajuda"
         '
         'frmCadProdutos
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(943, 545)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.lbloriginal)
-        Me.Controls.Add(Me.txtoriginal)
-        Me.Controls.Add(Me.txtvalor)
-        Me.Controls.Add(Me.mskDcad)
-        Me.Controls.Add(Me.Valor)
-        Me.Controls.Add(Me.cbolegenda)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.lstFilmes)
-        Me.Controls.Add(Me.cboGenero)
-        Me.Controls.Add(Me.txtDuracao)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.txtQuantidade)
-        Me.Controls.Add(Me.txtCensura)
-        Me.Controls.Add(Me.txtAutor)
-        Me.Controls.Add(Me.txtTitulo)
-        Me.Controls.Add(Me.lblQuantidade)
-        Me.Controls.Add(Me.lblDtCad)
-        Me.Controls.Add(Me.lblCensura)
-        Me.Controls.Add(Me.lblDuracao)
-        Me.Controls.Add(Me.lblGenero)
-        Me.Controls.Add(Me.lblAutor)
-        Me.Controls.Add(Me.lblTitulo)
-        Me.Controls.Add(Me.cboProduto)
-        Me.Controls.Add(Me.lblProduto)
-        Me.Controls.Add(Me.lblCodigo)
+        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.tcProduto)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmCadProdutos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cadastro de Produtos"
-        Me.GroupBox2.ResumeLayout(False)
+        Me.tcProduto.ResumeLayout(False)
+        Me.tpListagem.ResumeLayout(False)
+        Me.tpCadastro.ResumeLayout(False)
+        Me.tpCadastro.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -466,12 +581,6 @@ Partial Class frmCadProdutos
     Friend WithEvents txtAutor As System.Windows.Forms.TextBox
     Friend WithEvents txtCensura As System.Windows.Forms.TextBox
     Friend WithEvents txtQuantidade As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnNovo As System.Windows.Forms.Button
-    Friend WithEvents btnSair As System.Windows.Forms.Button
-    Friend WithEvents btnExcluir As System.Windows.Forms.Button
-    Friend WithEvents btnConsultar As System.Windows.Forms.Button
-    Friend WithEvents btnSalvar As System.Windows.Forms.Button
     Friend WithEvents txtDuracao As System.Windows.Forms.TextBox
     Friend WithEvents cboGenero As System.Windows.Forms.ComboBox
     Friend WithEvents lstFilmes As System.Windows.Forms.ListView
@@ -490,4 +599,25 @@ Partial Class frmCadProdutos
     Friend WithEvents lbloriginal As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents ColumnHeader7 As ColumnHeader
+    Friend WithEvents ColumnHeader8 As ColumnHeader
+    Friend WithEvents ColumnHeader9 As ColumnHeader
+    Friend WithEvents ColumnHeader11 As ColumnHeader
+    Friend WithEvents tcProduto As TabControl
+    Friend WithEvents tpListagem As TabPage
+    Friend WithEvents tpCadastro As TabPage
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents NovoToolStripButton As ToolStripButton
+    Friend WithEvents SalvarToolStripButton As ToolStripButton
+    Friend WithEvents AlterarToolStripButton As ToolStripButton
+    Friend WithEvents ExcluirToolStripButton As ToolStripButton
+    Friend WithEvents ConsultarToolStripButton As ToolStripButton
+    Friend WithEvents ImprimirToolStripButton As ToolStripButton
+    Friend WithEvents toolStripSeparator As ToolStripSeparator
+    Friend WithEvents RecortarToolStripButton As ToolStripButton
+    Friend WithEvents CopiarToolStripButton As ToolStripButton
+    Friend WithEvents ColarToolStripButton As ToolStripButton
+    Friend WithEvents toolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents AjudaToolStripButton As ToolStripButton
 End Class

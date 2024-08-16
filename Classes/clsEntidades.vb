@@ -342,7 +342,7 @@ Public Class clsEntidades
             MessageBox.Show("Erro ao salvar a Entidade: " & ex.Message)
         End Try
     End Sub
-    Public Sub AlterarEntidade(codigo As Integer, NomeFantasia As String, RazaoSocial As String, Datanasc As Date, Estadocivil As String, Endereco As String, Complemento As String, Bairro As String, Cidade As String, Uf As String, Cep As String, sexo As String, Rg As String, Documento As String, Obs As String)
+    Public Sub AlterarEntidade(codigo As Integer, NomeFantasia As String, RazaoSocial As String, Datanasc As String, Estadocivil As String, Endereco As String, Complemento As String, Bairro As String, Cidade As String, Uf As String, Cep As String, sexo As String, Rg As String, Documento As String, Obs As String)
         Try
             Using connection As New SqlConnection(ClasseConexao.connectionString)
                 connection.Open()
@@ -465,7 +465,7 @@ Public Class clsEntidades
                                         Telefone1 = @Telefone1,
                                         Telefone2 = @Telefone2,
                                         Celular = @Celular,
-                                        Email = @Email,
+                                        Email = @Email
                                 WHERE   Codigo = @Codigo AND CodEntidade = @CodEntidade"
                 Using command As New SqlCommand(sql, connection)
                     command.Parameters.AddWithValue("@CodEntidade", CodEntidade)
