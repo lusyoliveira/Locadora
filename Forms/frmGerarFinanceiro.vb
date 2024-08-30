@@ -1,21 +1,31 @@
 ﻿Public Class frmGerarFinanceiro
-    Dim ClasseFinanceiro As New clsFinanceiro, ClasseEntidades As New clsEntidades, ClasseCombo As New clsCombo
+    Dim ClasseFinanceiro As New clsFinanceiro, ClasseEntidades As New clsEntidades, ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
         InitializeComponent()
 
     End Sub
+    Public Sub New(CodLocacao As Integer)
+
+        ' Esta chamada é requerida pelo designer.
+        InitializeComponent()
+        ClasseLocacao.ObterLocacao(ClasseLocacao, "SELECT * FROM cs_Locacao WHERE Codigo = '" & CodLocacao & "'")
+        lblCodigo.Text = ClasseLocacao.CodLocacao
+        lblAtraso.Text = ClasseLocacao.Dias
+        cboEntidade.Text = ClasseLocacao.Cliente
+        lblTotal.Text = ClasseLocacao.Total
+    End Sub
     Public Sub CarragaCombos()
-        Dim ListaEntidade = ClasseCombo.PreencherComboBox("SELECT * From tbl_Entidades WHERE TipoEntidade = 'C'", "Codigo", "NomeFantasia")
+        Dim ListaClientes = ClasseCombo.PreencherComboBox("SELECT * FROM tbEntidades WHERE Tipo = 'C' ORDER BY NomeFantasia", "Codigo", "NomeFantasia")
         With Me.cboEntidade
-            .DataSource = ListaEntidade
+            .DataSource = ListaClientes
             .ValueMember = "Codigo"
             .DisplayMember = "Descricao"
             .SelectedIndex = "0"
         End With
 
-        Dim ListaCobranca = ClasseCombo.PreencherComboBox("SELECT * FROM Tbl_Cobranca ORDER BY Cobranca", "Codigo", "Cobranca")
+        Dim ListaCobranca = ClasseCombo.PreencherComboBox("SELECT * FROM TbCobranca ORDER BY Cobranca", "Codigo", "Cobranca")
         With Me.cboCobranca
             .DataSource = ListaCobranca
             .ValueMember = "Codigo"
@@ -23,7 +33,7 @@
             .SelectedIndex = "0"
         End With
 
-        Dim ListaFormaPagto = ClasseCombo.PreencherComboBox("SELECT * FROM tbl_FormaPgto ORDER BY Forma_Pgto", "Cod_Pgto", "Forma_Pgto")
+        Dim ListaFormaPagto = ClasseCombo.PreencherComboBox("SELECT * FROM tbFormaPgto ORDER BY FormaPgto", "Codigo", "FormaPgto")
         With Me.cboFormaPgto
             .DataSource = ListaFormaPagto
             .ValueMember = "Codigo"
@@ -60,7 +70,7 @@
         If dgvParcelas.Rows.Count = lblNrPacelas.Text Then
             Exit Sub
         Else
-            ClasseFinanceiro.CalculaParcelas(lblTotal.Text, Date.Now.Date, lblNrPacelas.Text, ClasseFinanceiro)
+            ClasseFinanceiro.CalculaParcelas(lblTotal.Text, Date.Now.Date, lblNrPacelas.Text, Val(lblAtraso.Text), txtMulta.Text, ClasseFinanceiro)
             dgvParcelas.Rows.Add(ClasseFinanceiro.NParcelas, ClasseFinanceiro.DataVencto, ClasseFinanceiro.ValorParcela)
         End If
     End Sub
@@ -78,7 +88,7 @@
                                                         txtDesconto.Text,
                                                         txtFrete.Text,
                                                         txtTaxas.Text,
-                                                        txtAcrescimo.Text,
+                                                        txtMulta.Text,
                                                         cboEntidade.SelectedValue,
                                                         cboCobranca.SelectedValue,
                                                         cboFormaPgto.SelectedValue

@@ -1,4 +1,6 @@
 
+Imports System.Net.WebRequestMethods
+
 Public Class frmLocacao
     Dim imagem As Image, wcpagina, X, Y, z As Integer, sql As String, tbclientes, tbProdutos, tbLocacao, tbFuncionarios As DataTable,
         ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo, ClasseProdutos As New clsProdutos
@@ -13,9 +15,11 @@ Public Class frmLocacao
         cboProduto.Text = ""
         txtValorUnit.Text = ""
         txtTotal.Text = ""
-        lbltotalpg.Text = ""
-        lblQuantidade.Text = ""
+        lblTotalPg.Text = ""
+        txtQuantidade.Text = ""
+        txtCodLocacao.Text = ""
         lstgrade.Items.Clear()
+        lstConsulta.Items.Clear()
     End Sub
     Private Sub Habilitar()
         cboFuncionario.Enabled = True
@@ -59,9 +63,18 @@ Public Class frmLocacao
             For x = 0 To lstgrade.Items.Count - 1
                 Total += lstgrade.Items(x).SubItems(3).Text
             Next
-            lbltotalpg.Text = Total
+            lblTotalPg.Text = Total
         Else
-            lbltotalpg.Text = 0
+            lblTotalPg.Text = 0
+        End If
+
+    End Sub
+    Private Sub frmLocacao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If tbLocacao Is Nothing Then
+            ConsultaLocacao()
+        Else
+            tbLocacao.Clear()
+            ConsultaLocacao()
         End If
 
     End Sub
@@ -74,13 +87,57 @@ Public Class frmLocacao
     Private Sub txtValorUnit_Leave(sender As Object, e As EventArgs) Handles txtValorUnit.Leave
         txtTotal.Text = Val(txtQuantidade.Text * txtValorUnit.Text)
     End Sub
+    Private Sub ConsultaLocacao()
+        Dim DevolucaoIni, DevolucaoFim As String
 
+        'Valida data de cadastro
+        If dtpDevolucaoIni.Checked = True And dtpDevolucaoFim.Checked = True Then
+            DevolucaoIni = dtpDevolucaoFim.Value.ToString("yyyy-MM-dd")
+            DevolucaoFim = dtpDevolucaoFim.Value.ToString("yyyy-MM-dd")
+        ElseIf dtpDevolucaoIni.Checked = True And dtpDevolucaoFim.Checked = False Then
+            DevolucaoIni = dtpDevolucaoIni.Value.ToString("yyyy-MM-dd")
+        ElseIf dtpDevolucaoIni.Checked = False And dtpDevolucaoFim.Checked = True Then
+            DevolucaoFim = dtpDevolucaoFim.Value.ToString("yyyy-MM-dd")
+        Else
+            DevolucaoIni = ""
+            DevolucaoFim = ""
+        End If
+
+        tbLocacao = ClasseLocacao.PesquisaLocacao(Val(lblCodigo.Text), "TODOS", DevolucaoIni, DevolucaoFim)
+        ' Limpar ListView
+        lstConsulta.Items.Clear()
+
+        ' Verificar se tbPreco contém linhas
+        If tbLocacao.Rows.Count > 0 Then
+            For Each row As DataRow In tbLocacao.Rows
+                ' Criar um novo item do ListView
+                Dim listViewItem As New ListViewItem(If(IsDBNull(row("Codigo")), String.Empty, row("Codigo").ToString()))
+                ' Adicionar subitens
+                listViewItem.SubItems.Add(If(IsDBNull(row("Funcionario")), String.Empty, row("Funcionario").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("Cliente")), String.Empty, row("Cliente").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("Quantidade")), String.Empty, row("Quantidade").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("Total")), String.Empty, row("Total").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("Multa")), String.Empty, row("Multa").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("Pago")), String.Empty, row("Pago").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("Dt_Locacao")), String.Empty, row("Dt_Locacao").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("Dt_Devolucao")), String.Empty, row("Dt_Devolucao").ToString()))
+
+                ' Adicionar o item ao ListView
+                lstConsulta.Items.Add(listViewItem)
+            Next
+        Else
+            MessageBox.Show("Essa locação não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+    End Sub
     Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
         ClasseLocacao.ObterLocacao(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbLocacao') IS NULL THEN 1 ELSE IDENT_CURRENT('tbLocacao')+1 END AS Codigo")
+        CalculaDevolucao(Val(txtQuantidade.Text))
         txtCodLocacao.Text = ClasseLocacao.CodLocacao
         Habilitar()
         SalvarToolStripButton.Enabled = True
         NovoToolStripButton.Enabled = False
+        tcLocacao.SelectTab(1)
     End Sub
 
     Private Sub AlterarToolStripButton_Click(sender As Object, e As EventArgs) Handles AlterarToolStripButton.Click
@@ -97,28 +154,51 @@ Public Class frmLocacao
         ExcluirToolStripButton.Enabled = True
     End Sub
 
+    Private Sub lstConsulta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstConsulta.SelectedIndexChanged
+
+        If lstConsulta.SelectedItems.Count > 0 Then
+            txtCodLocacao.Text = Val(lstConsulta.SelectedItems(0).SubItems(0).Text)
+            cboFuncionario.Text = lstConsulta.SelectedItems(0).SubItems(1).Text
+            cboclientes.Text = lstConsulta.SelectedItems(0).SubItems(2).Text
+            txtQuantidade.Text = lstConsulta.SelectedItems(0).SubItems(3).Text
+            lblTotalPg.Text = lstConsulta.SelectedItems(0).SubItems(4).Text
+            dtpLocacao.Text = lstConsulta.SelectedItems(0).SubItems(7).Text
+            dtpDevolucao.Text = lstConsulta.SelectedItems(0).SubItems(8).Text
+        End If
+        lstgrade.Items.Clear()
+        ClasseLocacao.ObterLocacaoProd(lstgrade, Val(txtCodLocacao.Text))
+        tcLocacao.SelectTab(1)
+        Habilitar()
+    End Sub
+
     Private Sub ConsultarToolStripButton_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripButton.Click
-        ClasseLocacao.PesquisaLocacao(lstgrade, Val(lblCodigo.Text))
+        lstConsulta.Items.Clear()
+        If tbLocacao Is Nothing Then
+            ConsultaLocacao()
+        Else
+            tbLocacao.Clear()
+            ConsultaLocacao()
+        End If
     End Sub
 
     Private Sub SalvarToolStripButton_Click(sender As Object, e As EventArgs) Handles SalvarToolStripButton.Click
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão ds locação?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão da locação?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If MsgResult = DialogResult.Yes Then
-            ClasseLocacao.SalvarLocacao(cboFuncionario.SelectedValue, txtQuantidade.Text, dtpLocacao.Value, cboclientes.SelectedValue, txtTotal.Text)
+            ClasseLocacao.SalvarLocacao(cboFuncionario.SelectedValue, Val(txtQuantidade.Text), cboclientes.SelectedValue, lblTotalPg.Text, dtpLocacao.Value, dtpDevolucao.Value)
             For Each item As ListViewItem In lstgrade.Items
-                ClasseLocacao.SalvarDetLocacao(Val(txtCodLocacao.Text), item.SubItems(0).Text, item.SubItems(2).Text)
+                ClasseLocacao.SalvarDetLocacao(Val(txtCodLocacao.Text), item.SubItems(0).Text, item.SubItems(2).Text, item.SubItems(3).Text)
             Next
-            'Peguntar se deseja pagar agora se sim abrir pagamento
-            Using frmAbreContasPagar As New frmGerarFinanceiro()
-                frmAbreContasPagar.CarragaCombos()
-                frmAbreContasPagar.cboEntidade.Text = cboclientes.Text
-                frmAbreContasPagar.lblCodigo.Text = txtCodLocacao.Text
-                frmAbreContasPagar.lblTotal.Text = txtTotal.Text
-                frmAbreContasPagar.lblDescEntidade.Text = "Cliente"
-                frmAbreContasPagar.Text = "Geração do Contas a Pagar"
-                frmAbreContasPagar.ShowDialog()
-            End Using
+            ''Peguntar se deseja pagar agora se sim abrir pagamento
+            'Using frmAbreContasPagar As New frmGerarFinanceiro()
+            '    frmAbreContasPagar.CarragaCombos()
+            '    frmAbreContasPagar.cboEntidade.Text = cboclientes.Text
+            '    frmAbreContasPagar.lblCodigo.Text = txtCodLocacao.Text
+            '    frmAbreContasPagar.lblTotal.Text = txtTotal.Text
+            '    frmAbreContasPagar.lblDescEntidade.Text = "Cliente"
+            '    frmAbreContasPagar.Text = "Geração do Contas a Pagar"
+            '    frmAbreContasPagar.ShowDialog()
+            'End Using
             Limpar()
             Desabilitar()
             SalvarToolStripButton.Enabled = True
@@ -175,10 +255,6 @@ Public Class frmLocacao
             .SelectedIndex = "0"
         End With
     End Sub
-
-    Private Sub frmLocacao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    End Sub
-
     Private Sub CampoZero()
         If cboFuncionario.Text = "" Then
             cboFuncionario.Text = 0

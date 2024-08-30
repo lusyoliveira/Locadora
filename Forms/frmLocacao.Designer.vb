@@ -45,7 +45,7 @@ Partial Class frmLocacao
         Me.txtValorUnit = New System.Windows.Forms.TextBox()
         Me.btnremove = New System.Windows.Forms.Button()
         Me.btnAdicionar = New System.Windows.Forms.Button()
-        Me.lbltotalpg = New System.Windows.Forms.Label()
+        Me.lblTotalPg = New System.Windows.Forms.Label()
         Me.cboFuncionario = New System.Windows.Forms.ComboBox()
         Me.txtCodLocacao = New System.Windows.Forms.TextBox()
         Me.ER = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -67,19 +67,26 @@ Partial Class frmLocacao
         Me.AjudaToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.tcLocacao = New System.Windows.Forms.TabControl()
         Me.tpListagem = New System.Windows.Forms.TabPage()
-        Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.lstConsulta = New System.Windows.Forms.ListView()
+        Me.Codigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Funcionario = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Cliente = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Quantidade = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Total = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Multa = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Pago = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Locacao = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Devolucao = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.tpLocacao = New System.Windows.Forms.TabPage()
+        Me.dtpDevolucaoIni = New System.Windows.Forms.DateTimePicker()
+        Me.dtpDevolucaoFim = New System.Windows.Forms.DateTimePicker()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.ER, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.tcLocacao.SuspendLayout()
         Me.tpListagem.SuspendLayout()
         Me.tpLocacao.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -226,7 +233,7 @@ Partial Class frmLocacao
         Me.lstgrade.HideSelection = False
         Me.lstgrade.Location = New System.Drawing.Point(9, 131)
         Me.lstgrade.Name = "lstgrade"
-        Me.lstgrade.Size = New System.Drawing.Size(634, 235)
+        Me.lstgrade.Size = New System.Drawing.Size(634, 251)
         Me.lstgrade.TabIndex = 51
         Me.lstgrade.UseCompatibleStateImageBehavior = False
         Me.lstgrade.View = System.Windows.Forms.View.Details
@@ -290,17 +297,17 @@ Partial Class frmLocacao
         Me.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAdicionar.UseVisualStyleBackColor = True
         '
-        'lbltotalpg
+        'lblTotalPg
         '
-        Me.lbltotalpg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lbltotalpg.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbltotalpg.ForeColor = System.Drawing.Color.Red
-        Me.lbltotalpg.Location = New System.Drawing.Point(583, 512)
-        Me.lbltotalpg.Name = "lbltotalpg"
-        Me.lbltotalpg.Size = New System.Drawing.Size(79, 20)
-        Me.lbltotalpg.TabIndex = 64
-        Me.lbltotalpg.Text = "0,00"
-        Me.lbltotalpg.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.lblTotalPg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblTotalPg.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalPg.ForeColor = System.Drawing.Color.Red
+        Me.lblTotalPg.Location = New System.Drawing.Point(564, 385)
+        Me.lblTotalPg.Name = "lblTotalPg"
+        Me.lblTotalPg.Size = New System.Drawing.Size(79, 20)
+        Me.lblTotalPg.TabIndex = 64
+        Me.lblTotalPg.Text = "0,00"
+        Me.lblTotalPg.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'cboFuncionario
         '
@@ -316,7 +323,7 @@ Partial Class frmLocacao
         Me.txtCodLocacao.Enabled = False
         Me.txtCodLocacao.Location = New System.Drawing.Point(9, 22)
         Me.txtCodLocacao.Name = "txtCodLocacao"
-        Me.txtCodLocacao.Size = New System.Drawing.Size(73, 20)
+        Me.txtCodLocacao.Size = New System.Drawing.Size(75, 20)
         Me.txtCodLocacao.TabIndex = 64
         '
         'ER
@@ -340,7 +347,7 @@ Partial Class frmLocacao
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(511, 516)
+        Me.Label4.Location = New System.Drawing.Point(492, 389)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(66, 13)
         Me.Label4.TabIndex = 68
@@ -465,64 +472,81 @@ Partial Class frmLocacao
         Me.tcLocacao.Location = New System.Drawing.Point(12, 103)
         Me.tcLocacao.Name = "tcLocacao"
         Me.tcLocacao.SelectedIndex = 0
-        Me.tcLocacao.Size = New System.Drawing.Size(660, 398)
+        Me.tcLocacao.Size = New System.Drawing.Size(660, 434)
         Me.tcLocacao.TabIndex = 71
         '
         'tpListagem
         '
-        Me.tpListagem.Controls.Add(Me.ListView1)
+        Me.tpListagem.Controls.Add(Me.GroupBox1)
+        Me.tpListagem.Controls.Add(Me.lstConsulta)
         Me.tpListagem.Location = New System.Drawing.Point(4, 22)
         Me.tpListagem.Name = "tpListagem"
         Me.tpListagem.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpListagem.Size = New System.Drawing.Size(652, 372)
+        Me.tpListagem.Size = New System.Drawing.Size(652, 408)
         Me.tpListagem.TabIndex = 1
         Me.tpListagem.Text = "Listagem"
         Me.tpListagem.UseVisualStyleBackColor = True
         '
-        'ListView1
+        'lstConsulta
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader5, Me.ColumnHeader4, Me.ColumnHeader6})
-        Me.ListView1.HideSelection = False
-        Me.ListView1.Location = New System.Drawing.Point(6, 6)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(640, 360)
-        Me.ListView1.TabIndex = 5
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.lstConsulta.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Codigo, Me.Funcionario, Me.Cliente, Me.Quantidade, Me.Total, Me.Multa, Me.Pago, Me.Locacao, Me.Devolucao})
+        Me.lstConsulta.FullRowSelect = True
+        Me.lstConsulta.HideSelection = False
+        Me.lstConsulta.Location = New System.Drawing.Point(6, 63)
+        Me.lstConsulta.Name = "lstConsulta"
+        Me.lstConsulta.Size = New System.Drawing.Size(640, 342)
+        Me.lstConsulta.TabIndex = 5
+        Me.lstConsulta.UseCompatibleStateImageBehavior = False
+        Me.lstConsulta.View = System.Windows.Forms.View.Details
         '
-        'ColumnHeader1
+        'Codigo
         '
-        Me.ColumnHeader1.Text = "N° da Locação"
-        Me.ColumnHeader1.Width = 85
+        Me.Codigo.Text = "N° da Locação"
+        Me.Codigo.Width = 85
         '
-        'ColumnHeader2
+        'Funcionario
         '
-        Me.ColumnHeader2.Text = "Cliente"
-        Me.ColumnHeader2.Width = 169
+        Me.Funcionario.Text = "Funcionário"
+        Me.Funcionario.Width = 120
         '
-        'ColumnHeader3
+        'Cliente
         '
-        Me.ColumnHeader3.Text = "Total"
-        Me.ColumnHeader3.Width = 55
+        Me.Cliente.Text = "Cliente"
+        Me.Cliente.Width = 169
         '
-        'ColumnHeader5
+        'Quantidade
         '
-        Me.ColumnHeader5.Text = "Multa"
+        Me.Quantidade.Text = "Quantidade"
         '
-        'ColumnHeader4
+        'Total
         '
-        Me.ColumnHeader4.Text = "Data da Locação"
+        Me.Total.Text = "Total"
+        Me.Total.Width = 55
         '
-        'ColumnHeader6
+        'Multa
         '
-        Me.ColumnHeader6.Text = "Data Devolução"
-        Me.ColumnHeader6.Width = 97
+        Me.Multa.Text = "Multa"
+        '
+        'Pago
+        '
+        Me.Pago.Text = "Pago"
+        '
+        'Locacao
+        '
+        Me.Locacao.Text = "Data da Locação"
+        '
+        'Devolucao
+        '
+        Me.Devolucao.Text = "Data Devolução"
+        Me.Devolucao.Width = 97
         '
         'tpLocacao
         '
         Me.tpLocacao.Controls.Add(Me.lstgrade)
         Me.tpLocacao.Controls.Add(Me.txtTotal)
+        Me.tpLocacao.Controls.Add(Me.Label4)
         Me.tpLocacao.Controls.Add(Me.txtCodLocacao)
+        Me.tpLocacao.Controls.Add(Me.lblTotalPg)
         Me.tpLocacao.Controls.Add(Me.lblCodigo)
         Me.tpLocacao.Controls.Add(Me.txtValorUnit)
         Me.tpLocacao.Controls.Add(Me.lblDtLocacao)
@@ -544,10 +568,43 @@ Partial Class frmLocacao
         Me.tpLocacao.Location = New System.Drawing.Point(4, 22)
         Me.tpLocacao.Name = "tpLocacao"
         Me.tpLocacao.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpLocacao.Size = New System.Drawing.Size(652, 372)
+        Me.tpLocacao.Size = New System.Drawing.Size(652, 408)
         Me.tpLocacao.TabIndex = 0
         Me.tpLocacao.Text = "Locação"
         Me.tpLocacao.UseVisualStyleBackColor = True
+        '
+        'dtpDevolucaoIni
+        '
+        Me.dtpDevolucaoIni.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpDevolucaoIni.Checked = False
+        Me.dtpDevolucaoIni.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDevolucaoIni.Location = New System.Drawing.Point(6, 19)
+        Me.dtpDevolucaoIni.Name = "dtpDevolucaoIni"
+        Me.dtpDevolucaoIni.ShowCheckBox = True
+        Me.dtpDevolucaoIni.Size = New System.Drawing.Size(98, 20)
+        Me.dtpDevolucaoIni.TabIndex = 78
+        '
+        'dtpDevolucaoFim
+        '
+        Me.dtpDevolucaoFim.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpDevolucaoFim.Checked = False
+        Me.dtpDevolucaoFim.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDevolucaoFim.Location = New System.Drawing.Point(110, 19)
+        Me.dtpDevolucaoFim.Name = "dtpDevolucaoFim"
+        Me.dtpDevolucaoFim.ShowCheckBox = True
+        Me.dtpDevolucaoFim.Size = New System.Drawing.Size(98, 20)
+        Me.dtpDevolucaoFim.TabIndex = 77
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.dtpDevolucaoIni)
+        Me.GroupBox1.Controls.Add(Me.dtpDevolucaoFim)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(219, 51)
+        Me.GroupBox1.TabIndex = 79
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Devolução"
         '
         'frmLocacao
         '
@@ -556,8 +613,6 @@ Partial Class frmLocacao
         Me.ClientSize = New System.Drawing.Size(683, 549)
         Me.Controls.Add(Me.tcLocacao)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.lbltotalpg)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -571,6 +626,7 @@ Partial Class frmLocacao
         Me.tpListagem.ResumeLayout(False)
         Me.tpLocacao.ResumeLayout(False)
         Me.tpLocacao.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -593,7 +649,7 @@ Partial Class frmLocacao
     Friend WithEvents lstgrade As System.Windows.Forms.ListView
     Friend WithEvents btnAdicionar As System.Windows.Forms.Button
     Friend WithEvents btnremove As System.Windows.Forms.Button
-    Friend WithEvents lbltotalpg As System.Windows.Forms.Label
+    Friend WithEvents lblTotalPg As System.Windows.Forms.Label
     Friend WithEvents cboFuncionario As System.Windows.Forms.ComboBox
     Friend WithEvents txtValorUnit As System.Windows.Forms.TextBox
     Friend WithEvents txtTotal As System.Windows.Forms.TextBox
@@ -622,11 +678,17 @@ Partial Class frmLocacao
     Friend WithEvents tcLocacao As TabControl
     Friend WithEvents tpLocacao As TabPage
     Friend WithEvents tpListagem As TabPage
-    Friend WithEvents ListView1 As ListView
-    Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
-    Friend WithEvents ColumnHeader3 As ColumnHeader
-    Friend WithEvents ColumnHeader5 As ColumnHeader
-    Friend WithEvents ColumnHeader4 As ColumnHeader
-    Friend WithEvents ColumnHeader6 As ColumnHeader
+    Friend WithEvents lstConsulta As ListView
+    Friend WithEvents Codigo As ColumnHeader
+    Friend WithEvents Cliente As ColumnHeader
+    Friend WithEvents Total As ColumnHeader
+    Friend WithEvents Multa As ColumnHeader
+    Friend WithEvents Locacao As ColumnHeader
+    Friend WithEvents Devolucao As ColumnHeader
+    Friend WithEvents Funcionario As ColumnHeader
+    Friend WithEvents Quantidade As ColumnHeader
+    Friend WithEvents Pago As ColumnHeader
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents dtpDevolucaoIni As DateTimePicker
+    Friend WithEvents dtpDevolucaoFim As DateTimePicker
 End Class

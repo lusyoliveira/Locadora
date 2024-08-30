@@ -3,29 +3,35 @@
 Public Class clsFinanceiro
     Dim ClasseConexao As New clsConexao
 #Region "PROPRIEDADES"
-    Public Property CodReceber As Integer
-    Public Property CodPagar As Integer
-    Public Property CodFormaPagto As Integer
-    Public Property CodCobranca As Integer
-    Public Property CodConta As Integer
-    Public Property FormaPagto As String
-    Public Property Cobranca As String
-    Public Property NomeConta As String
-    Public Property NomeBanco As String
-    Public Property Dias As Integer
     Public Property NParcelas As Integer
     Public Property DataVencto As Date
-    Public Property DataPagto As Date
-    Public Property ValorPago As Decimal
     Public Property ValorParcela As Decimal
-
+    Private Property _Multa As Decimal
+    Public Property Multa As Decimal
+        Get
+            Return _Multa
+        End Get
+        Set(value As Decimal)
+            _Multa = value
+        End Set
+    End Property
+    Private Property _Dias As Integer
+    Public Property Dias As Integer
+        Get
+            Return _Dias
+        End Get
+        Set(value As Integer)
+            _Dias = value
+        End Set
+    End Property
 #End Region
 #Region "METODOS"
-    Public Sub CalculaParcelas(ValorTotal As Decimal, Data As DateTime, NumeroParcelas As Integer, ByRef DadosParcela As clsFinanceiro)
-        Dim valorParcela As Decimal = FormatCurrency(ValorTotal / NumeroParcelas)
-        Dim ListaParcela = New List(Of clsFinanceiro)
-        Dim i As Integer
+    Public Sub CalculaParcelas(ValorTotal As Decimal, Data As DateTime, NumeroParcelas As Integer, Atraso As Integer, Multa As Decimal, ByRef DadosParcela As clsFinanceiro)
         Try
+            Dim ValorMulta As Decimal = Multa * Atraso
+            Dim valorParcela As Decimal = FormatCurrency((ValorTotal + ValorMulta) / NumeroParcelas)
+            Dim i As Integer
+
             For i = 0 To Val(NumeroParcelas) - 1
                 Dim novaParcela As DateTime
                 novaParcela = Data.AddDays(i * 30)
@@ -46,7 +52,7 @@ Public Class clsFinanceiro
         Try
             Using cn = New SqlConnection(ClasseConexao.connectionString)
                 cn.Open()
-                Dim sql = "SELECT NParcelas  FROM Tbl_FormaPgto  WHERE Forma_Pgto = @FORMAPAGTO"
+                Dim sql = "SELECT NParcelas  FROM tbFormaPgto  WHERE FormaPgto = @FORMAPAGTO"
                 Using CMD = New SqlCommand(sql, cn)
                     CMD.Parameters.AddWithValue("@FORMAPAGTO", FormaPagto)
                     Dim RDR As SqlClient.SqlDataReader
@@ -154,7 +160,7 @@ Public Class clsFinanceiro
         End Try
     End Sub
 #End Region
-#Region "FUNÇÕES"
+#Region "FUNCOES"
 
 #End Region
 End Class
