@@ -28,6 +28,7 @@ Partial Class frmDevolucao
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtAtraso = New System.Windows.Forms.TextBox()
@@ -36,7 +37,6 @@ Partial Class frmDevolucao
         Me.Label7 = New System.Windows.Forms.Label()
         Me.dtpDevolvido = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ConsultarToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.ImprimirToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.toolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.RecortarToolStripButton = New System.Windows.Forms.ToolStripButton()
@@ -48,7 +48,6 @@ Partial Class frmDevolucao
         Me.DevolverToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.dtpDevolver = New System.Windows.Forms.DateTimePicker()
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblPago = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
@@ -111,6 +110,10 @@ Partial Class frmDevolucao
         '
         Me.ColumnHeader4.Text = "Data da Locação"
         Me.ColumnHeader4.Width = 97
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Pago"
         '
         'ColumnHeader6
         '
@@ -179,15 +182,6 @@ Partial Class frmDevolucao
         Me.Label3.TabIndex = 74
         Me.Label3.Text = "Devolvido em:"
         '
-        'ConsultarToolStripButton
-        '
-        Me.ConsultarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ConsultarToolStripButton.Image = Global.ProjetoLocadora.My.Resources.Resources.Consultar
-        Me.ConsultarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ConsultarToolStripButton.Name = "ConsultarToolStripButton"
-        Me.ConsultarToolStripButton.Size = New System.Drawing.Size(23, 22)
-        Me.ConsultarToolStripButton.Text = "Consultar"
-        '
         'ImprimirToolStripButton
         '
         Me.ImprimirToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -245,7 +239,7 @@ Partial Class frmDevolucao
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DevolverToolStripButton, Me.ConsultarToolStripButton, Me.ImprimirToolStripButton, Me.toolStripSeparator, Me.RecortarToolStripButton, Me.CopiarToolStripButton, Me.ColarToolStripButton, Me.toolStripSeparator1, Me.AjudaToolStripButton})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DevolverToolStripButton, Me.ImprimirToolStripButton, Me.toolStripSeparator, Me.RecortarToolStripButton, Me.CopiarToolStripButton, Me.ColarToolStripButton, Me.toolStripSeparator1, Me.AjudaToolStripButton})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 75)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(641, 25)
@@ -280,10 +274,6 @@ Partial Class frmDevolucao
         Me.dtpDevolver.ShowCheckBox = True
         Me.dtpDevolver.Size = New System.Drawing.Size(116, 20)
         Me.dtpDevolver.TabIndex = 76
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "Pago"
         '
         'Label2
         '
@@ -350,7 +340,6 @@ Partial Class frmDevolucao
     Friend WithEvents dtpDevolvido As System.Windows.Forms.DateTimePicker
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents Label3 As Label
-    Friend WithEvents ConsultarToolStripButton As ToolStripButton
     Friend WithEvents ImprimirToolStripButton As ToolStripButton
     Friend WithEvents toolStripSeparator As ToolStripSeparator
     Friend WithEvents RecortarToolStripButton As ToolStripButton

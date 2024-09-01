@@ -7,23 +7,17 @@ Public Class frmReserva
         cboCliente.Text = ""
         cboProduto.Text = ""
         txtCodReserva.Text = ""
-        lblTotal.Text = ""
-        lblValorTotal.Text = ""
         lstgrade.Items.Clear()
     End Sub
     Private Sub Habilitar()
         cboCliente.Enabled = True
         cboProduto.Enabled = True
         txtCodReserva.Enabled = True
-        lblTotal.Enabled = True
-        lblValorTotal.Enabled = True
     End Sub
     Private Sub Desabilitar()
         cboCliente.Enabled = False
         cboProduto.Enabled = False
         txtCodReserva.Enabled = False
-        lblTotal.Enabled = False
-        lblValorTotal.Enabled = False
     End Sub
     Private Sub CampoZero()
         If cboCliente.Text = "" Then
@@ -33,30 +27,43 @@ Public Class frmReserva
             cboProduto.Text = 0
         End If
     End Sub
-    Private Sub CalculaReserva()
-        Dim Dias As Double
-        If dtpInicio.Value = "" Or dtpFim.Value = "" Then
-            MessageBox.Show("Informe o período da reserva!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Exit Sub
+    Private Sub ConsultaReserva()
+        Dim ReservaIni As String = "", ReservaFim As String = ""
+
+        'Valida data de cadastro
+        If dtpReservaIni.Checked = True And dtpReservaFim.Checked = True Then
+            ReservaIni = dtpReservaIni.Value.ToString("yyyy-MM-dd")
+            ReservaFim = dtpReservaFim.Value.ToString("yyyy-MM-dd")
+        ElseIf dtpReservaIni.Checked = True And dtpReservaFim.Checked = False Then
+            ReservaIni = dtpReservaIni.Value.ToString("yyyy-MM-dd")
+        ElseIf dtpReservaIni.Checked = False And dtpReservaFim.Checked = True Then
+            ReservaFim = dtpReservaFim.Value.ToString("yyyy-MM-dd")
         Else
-            Dias = DateDiff(DateInterval.Day, dtpInicio.Value, dtpFim.Value)
-
-            lblTotal.Text = (Dias * lblValorUnit.Text)
+            ReservaIni = ""
+            ReservaFim = ""
         End If
-    End Sub
-    Private Sub AtualizaValor()
-        Dim x As Integer, Total As Decimal
 
-        If lstgrade.Items.Count >= 0 Then
-            For x = 0 To lstgrade.Items.Count - 1
-                Total += lstgrade.Items(x).SubItems(2).Text
+        tbReserva = ClasseLocacao.PesquisaReserva(Val(lblCodigo.Text), ReservaIni, ReservaFim)
+        ' Limpar ListView
+        lstConsulta.Items.Clear()
+
+        ' Verificar se tbPreco contém linhas
+        If tbReserva.Rows.Count > 0 Then
+            For Each row As DataRow In tbReserva.Rows
+                ' Criar um novo item do ListView
+                Dim listViewItem As New ListViewItem(If(IsDBNull(row("Codigo")), String.Empty, row("Codigo").ToString()))
+                ' Adicionar subitens
+                listViewItem.SubItems.Add(If(IsDBNull(row("Cliente")), String.Empty, row("Cliente").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("DataInicial")), String.Empty, row("DataInicial").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("DataFinal")), String.Empty, row("DataFinal").ToString()))
+                listViewItem.SubItems.Add(If(IsDBNull(row("DataReserva")), String.Empty, row("DataReserva").ToString()))
+                ' Adicionar o item ao ListView
+                lstConsulta.Items.Add(listViewItem)
             Next
-            lblTotal.Text = Total
         Else
-            lblTotal.Text = 0
+            MessageBox.Show("Essa reserva não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
-
     Private Sub cboCliente_Enter(sender As Object, e As EventArgs) Handles cboCliente.Enter
         Dim ListaCLientes = ClasseCombo.PreencherComboBox("SELECT * FROM tbEntidades WHERE Tipo = 'C' ORDER BY NomeFantasia", "Codigo", "NomeFantasia")
         With Me.cboCliente
@@ -77,31 +84,70 @@ Public Class frmReserva
         End With
     End Sub
 
+    Private Sub lstConsulta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstConsulta.SelectedIndexChanged
+        If lstConsulta.SelectedItems.Count > 0 Then
+            txtCodReserva.Text = Val(lstConsulta.SelectedItems(0).SubItems(0).Text)
+            cboCliente.Text = lstConsulta.SelectedItems(0).SubItems(1).Text
+            dtpReservaIni.Text = lstConsulta.SelectedItems(0).SubItems(2).Text
+            dtpReservaFim.Text = lstConsulta.SelectedItems(0).SubItems(3).Text
+        End If
+        lstgrade.Items.Clear()
+        ClasseLocacao.ObterReservaProd(lstgrade, Val(txtCodReserva.Text))
+        tcReserva.SelectTab(1)
+        AlterarToolStripButton.Enabled = True
+        ExcluirToolStripButton.Enabled = True
+        Habilitar()
+    End Sub
+
+    Private Sub ConsultarToolStripButton_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripButton.Click
+        ConsultaReserva()
+    End Sub
+
+    Private Sub SalvarToolStripButton_Click(sender As Object, e As EventArgs) Handles SalvarToolStripButton.Click
+        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão da reserva?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If MsgResult = DialogResult.Yes Then
+            ClasseLocacao.IncluirReserva(cboCliente.SelectedValue, dtpInicio.Value, dtpFim.Value)
+            For Each item As ListViewItem In lstgrade.Items
+                ClasseLocacao.IncluirReservaProd(Val(txtCodReserva.Text), item.SubItems(0).Text)
+            Next
+            Limpar()
+            Desabilitar()
+            SalvarToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
+            AlterarToolStripButton.Enabled = False
+            ExcluirToolStripButton.Enabled = False
+        Else
+            Exit Sub
+        End If
+    End Sub
+
     Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
-        ClasseLocacao.ObterReserva(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbReserva') IS NULL THEN 1 ELSE IDENT_CURRENT('tbReserva')+1 END AS Codigo")
-        txtCodReserva.Text = ClasseLocacao.CodReserva
+        ClasseLocacao.ObterCodigo(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbReservas') IS NULL THEN 1 ELSE IDENT_CURRENT('tbReservas')+1 END AS Codigo")
+        txtCodReserva.Text = ClasseLocacao.Codigo
         Habilitar()
         SalvarToolStripButton.Enabled = True
         NovoToolStripButton.Enabled = False
-    End Sub
-
-    Private Sub cboProduto_Leave(sender As Object, e As EventArgs) Handles cboProduto.Leave
-        ClasseProdutos.ObterProduto(ClasseProdutos, cboProduto.SelectedValue, cboProduto.Text)
-        lblValorUnit.Text = ClasseProdutos.ValorUnit
+        tcReserva.SelectTab(1)
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
-        If lblValorUnit.Tag = "" Then Exit Sub
 
-        tbProdutos = ClasseCombo.Listar("SELECT * FROM tbProdutos WHERE codigo = " & lblValorUnit.Tag)
-        If tbProdutos.Rows.Count = 0 Then Exit Sub
+        If cboProduto.SelectedValue = 0 Then
+            MessageBox.Show("Por favor, preencha todos os campos.")
+            Exit Sub
+            'fazer if para verificar se o título já foi reservado pelo mesmo cliente ou por outro cliente
+        Else
+            ' Cria um novo item para o ListView com o código do produto.
+            Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
 
-        Dim row As DataRow = tbProdutos.Rows(0)
-        lstgrade.Items.Add(row("Titulo").ToString())
-        lstgrade.Items(lstgrade.Items.Count - 1).SubItems.Add(FormatCurrency(row("valor").ToString()))
-        lstgrade.Items(lstgrade.Items.Count - 1).Tag = row("codigo").ToString()
+            ' Adiciona o nome do produto como subitem na segunda coluna.
+            item.SubItems.Add(cboProduto.Text)
 
-        AtualizaValor()
+            ' Adiciona o item ao ListView.
+            lstgrade.Items.Add(item)
+        End If
+        cboProduto.Text = ""
     End Sub
     Private Sub frmReserva_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -110,18 +156,5 @@ Public Class frmReserva
     Private Sub btnRemover_Click(sender As Object, e As EventArgs) Handles btnRemover.Click
         If lstgrade.SelectedItems.Count = 0 Then Exit Sub
         lstgrade.SelectedItems(0).Remove()
-        AtualizaValor()
-        cboProduto.Text = ""
-        lblValorUnit.Text = ""
-    End Sub
-
-    Private Sub btnReservar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim MsgResult As DialogResult = MessageBox.Show("Confirma a inclusão da reserva?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If MsgResult = DialogResult.Yes Then
-            ClasseLocacao.IncluirReserva(cboCliente.Text, cboProduto.Text, dtpInicio.Text, dtpFim.Text, lblTotal.Text)
-        Else
-            Exit Sub
-        End If
     End Sub
 End Class

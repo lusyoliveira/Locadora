@@ -81,17 +81,15 @@ Public Class frmDevolucao
         If MsgResult = DialogResult.Yes Then
             ''Peguntar se deseja pagar agora se sim abrir pagamento
 
-            If lblPago.Text = "NÃO" Then
+            If lblPago.Text = "NÃO" Or lblPago.Text = "SIM" And Val(txtAtraso.Text) > 0 Then
                 Using frmAbreContasPagar As New frmGerarFinanceiro(Val(txtCodigo.Text))
                     frmAbreContasPagar.CarragaCombos()
                     frmAbreContasPagar.ShowDialog()
                 End Using
             End If
             ClasseLocacao.DevolverLocacao(Val(txtCodigo.Text))
-            Else
-                Exit Sub
+        Else
+            Exit Sub
         End If
     End Sub
-
-
 End Class

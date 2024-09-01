@@ -88,11 +88,11 @@ Public Class frmLocacao
         txtTotal.Text = Val(txtQuantidade.Text * txtValorUnit.Text)
     End Sub
     Private Sub ConsultaLocacao()
-        Dim DevolucaoIni, DevolucaoFim As String
+        Dim DevolucaoIni As String = "", DevolucaoFim As String = ""
 
         'Valida data de cadastro
         If dtpDevolucaoIni.Checked = True And dtpDevolucaoFim.Checked = True Then
-            DevolucaoIni = dtpDevolucaoFim.Value.ToString("yyyy-MM-dd")
+            DevolucaoIni = dtpDevolucaoIni.Value.ToString("yyyy-MM-dd")
             DevolucaoFim = dtpDevolucaoFim.Value.ToString("yyyy-MM-dd")
         ElseIf dtpDevolucaoIni.Checked = True And dtpDevolucaoFim.Checked = False Then
             DevolucaoIni = dtpDevolucaoIni.Value.ToString("yyyy-MM-dd")
@@ -131,9 +131,9 @@ Public Class frmLocacao
 
     End Sub
     Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
-        ClasseLocacao.ObterLocacao(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbLocacao') IS NULL THEN 1 ELSE IDENT_CURRENT('tbLocacao')+1 END AS Codigo")
+        ClasseLocacao.ObterCodigo(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbLocacao') IS NULL THEN 1 ELSE IDENT_CURRENT('tbLocacao')+1 END AS Codigo")
         CalculaDevolucao(Val(txtQuantidade.Text))
-        txtCodLocacao.Text = ClasseLocacao.CodLocacao
+        txtCodLocacao.Text = ClasseLocacao.Codigo
         Habilitar()
         SalvarToolStripButton.Enabled = True
         NovoToolStripButton.Enabled = False
@@ -168,6 +168,8 @@ Public Class frmLocacao
         lstgrade.Items.Clear()
         ClasseLocacao.ObterLocacaoProd(lstgrade, Val(txtCodLocacao.Text))
         tcLocacao.SelectTab(1)
+        AlterarToolStripButton.Enabled = True
+        ExcluirToolStripButton.Enabled = True
         Habilitar()
     End Sub
 
@@ -201,8 +203,8 @@ Public Class frmLocacao
             'End Using
             Limpar()
             Desabilitar()
-            SalvarToolStripButton.Enabled = True
-            NovoToolStripButton.Enabled = False
+            SalvarToolStripButton.Enabled = False
+            NovoToolStripButton.Enabled = True
             AlterarToolStripButton.Enabled = False
             ExcluirToolStripButton.Enabled = False
         Else
@@ -268,27 +270,33 @@ Public Class frmLocacao
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
-
+        Dim CodProd As Integer = cboProduto.SelectedValue
         If cboProduto.SelectedValue = 0 OrElse txtValorUnit.Text.Trim() = "" Then
             MessageBox.Show("Por favor, preencha todos os campos.")
             Exit Sub
-            'fazer if para verificar se o título já foi reservado pelo mesmo cliente ou por outro cliente
         Else
-            ' Cria um novo item para o ListView com o código do produto.
-            Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
+            'fazer if para verificar se o título já foi reservado pelo mesmo cliente ou por outro cliente
+            ClasseLocacao.ObterReserva(ClasseLocacao, "SELECT * FROM CS_ReservasDetalhes WHERE CodProd = '" & CodProd & "'")
+            If ClasseLocacao.CodProd > 0 Then
+                MessageBox.Show("O título informado já está reservado!")
+                Exit Sub
+            Else
+                ' Cria um novo item para o ListView com o código do produto.
+                Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
 
-            ' Adiciona o nome do produto como subitem na segunda coluna.
-            item.SubItems.Add(cboProduto.Text)
-            item.SubItems.Add(txtValorUnit.Text)
-            item.SubItems.Add(txtTotal.Text)
+                ' Adiciona o nome do produto como subitem na segunda coluna.
+                item.SubItems.Add(cboProduto.Text)
+                item.SubItems.Add(txtValorUnit.Text)
+                item.SubItems.Add(txtTotal.Text)
 
-            ' Adiciona o item ao ListView.
-            lstgrade.Items.Add(item)
+                ' Adiciona o item ao ListView.
+                lstgrade.Items.Add(item)
+            End If
+            cboProduto.Text = ""
+            txtValorUnit.Text = ""
+            txtTotal.Text = ""
+            AtualizaValor()
         End If
-        cboProduto.Text = ""
-        txtValorUnit.Text = ""
-        txtTotal.Text = ""
-        AtualizaValor()
     End Sub
 
     Private Sub PrintPreviewDialog1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintPreviewDialog1.Load

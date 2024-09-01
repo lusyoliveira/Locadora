@@ -1,8 +1,17 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text
 Public Class clsLocacao
-    Dim ClasseConexao As New clsConexao, tbLocacao, tbLocacaoProd As New DataTable()
+    Dim ClasseConexao As New clsConexao, tbLocacao, tbLocacaoProd, tbReservas, tbReservaProd As New DataTable()
 #Region "PROPRIEDADES"
+    Private Property _Codigo As Integer
+    Public Property Codigo As Integer
+        Get
+            Return _Codigo
+        End Get
+        Set(value As Integer)
+            _Codigo = value
+        End Set
+    End Property
     Private Property _CodLocacao As Integer
     Public Property CodLocacao As Integer
         Get
@@ -13,13 +22,21 @@ Public Class clsLocacao
         End Set
     End Property
     Private Property _CodReserva As Integer
-
     Public Property CodReserva As Integer
         Get
             Return _CodReserva
         End Get
         Set(value As Integer)
             _CodReserva = value
+        End Set
+    End Property
+    Private Property _CodProd As Integer
+    Public Property CodProd As Integer
+        Get
+            Return _CodProd
+        End Get
+        Set(value As Integer)
+            _CodProd = value
         End Set
     End Property
     Private Property _Descricao As String
@@ -65,6 +82,24 @@ Public Class clsLocacao
         End Get
         Set(value As Integer)
             _Dias = value
+        End Set
+    End Property
+    Private Property _DataInicial As String
+    Public Property DataInicial As String
+        Get
+            Return _DataInicial
+        End Get
+        Set(value As String)
+            _DataInicial = value
+        End Set
+    End Property
+    Private Property _DataFinal As String
+    Public Property DataFinal As String
+        Get
+            Return _DataFinal
+        End Get
+        Set(value As String)
+            _DataFinal = value
         End Set
     End Property
 #End Region
@@ -163,6 +198,26 @@ Public Class clsLocacao
         End Try
         Return tbLocacaoProd
     End Function
+    Public Sub ObterCodigo(ByRef DadosLocacao As clsLocacao, sql As String)
+        Try
+            Using cn = New SqlConnection(ClasseConexao.connectionString)
+                cn.Open()
+                Using CMD = New SqlCommand(sql, cn)
+
+                    Using RDR As SqlDataReader = CMD.ExecuteReader()
+                        While RDR.Read()
+                            DadosLocacao._Codigo = RDR.Item("Codigo")
+                        End While
+                        RDR.Close()
+                    End Using
+                End Using
+                cn.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Não foi possível realizar obter dados da locação!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Throw
+        End Try
+    End Sub
     Public Sub ObterLocacao(ByRef DadosLocacao As clsLocacao, sql As String)
         Try
             Using cn = New SqlConnection(ClasseConexao.connectionString)
@@ -172,9 +227,9 @@ Public Class clsLocacao
                     Using RDR As SqlDataReader = CMD.ExecuteReader()
                         While RDR.Read()
                             DadosLocacao._CodLocacao = RDR.Item("Codigo")
-                            DadosLocacao._Cliente = RDR.Item("Cliente")
-                            DadosLocacao._Total = RDR.Item("Total")
-                            DadosLocacao._Dias = RDR.Item("Atraso")
+                            'DadosLocacao._Cliente = RDR.Item("Cliente")
+                            'DadosLocacao._Total = RDR.Item("Total")
+                            'DadosLocacao._Dias = RDR.Item("Atraso")
                         End While
                         RDR.Close()
                     End Using
@@ -182,7 +237,7 @@ Public Class clsLocacao
                 cn.Close()
             End Using
         Catch ex As Exception
-            MessageBox.Show("Não foi possível realizar obter orçamento!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Não foi possível realizar obter dados da locação!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Throw
         End Try
     End Sub
@@ -241,27 +296,56 @@ Public Class clsLocacao
             MessageBox.Show("Erro ao atualizar a locação: " & ex.Message)
         End Try
     End Sub
-    Public Sub IncluirReserva(Cliente As String, Produto As String, dtReserva As String, dtDevolucao As String, valor As Decimal)
+    Public Function PesquisaReserva(Codigo As Integer, ReservaIni As String, ReservaFim As String) As DataTable
+        tbReservas.Clear()
         Try
             Using connection As New SqlConnection(ClasseConexao.connectionString)
                 connection.Open()
-                Dim sql As String = "INSERT INTO tbReserva (Cliente, Produto, Dt_Reserva, Dt_Devolucao, Valor) VALUES (@Cliente, @Produto, @DtReserva, @DtDevolucao, @Valor)"
+                Dim sql As New StringBuilder("SELECT * FROM CS_Reservas WHERE 1=1")
 
-                Using command As New SqlCommand(sql, connection)
-                    command.Parameters.AddWithValue("@Cliente", Cliente)
-                    command.Parameters.AddWithValue("@Produto", Produto)
-                    command.Parameters.AddWithValue("@DtReserva", dtReserva)
-                    command.Parameters.AddWithValue("@DtDevolucao", dtDevolucao)
-                    command.Parameters.AddWithValue("@Valor", valor)
-                    command.ExecuteNonQuery()
-                    MessageBox.Show("Reserva incluída com sucesso!")
+                'Pesquisa por código da reserva
+                If Codigo <> 0 Then
+                    sql.AppendLine("AND Codigo = @Codigo")
+                Else
+                    sql.AppendLine("AND Codigo IS NOT NULL")
+                End If
+
+                'Pesquisa pela data de reserva
+                If Not String.IsNullOrEmpty(ReservaIni) And Not String.IsNullOrEmpty(ReservaFim) Then
+                    sql.AppendLine("AND DataInicial BETWEEN @ReservaIni AND @ReservaFim")
+                ElseIf Not String.IsNullOrEmpty(ReservaIni) And String.IsNullOrEmpty(ReservaFim) Then
+                    sql.AppendLine("AND DataInicial >= @ReservaIni")
+                ElseIf String.IsNullOrEmpty(ReservaIni) And Not String.IsNullOrEmpty(ReservaFim) Then
+                    sql.AppendLine("AND DataFinal <= @ReservaFim")
+                End If
+
+                sql.AppendLine("ORDER BY Codigo")
+
+                Using command As New SqlCommand(sql.ToString(), connection)
+
+                    If Codigo <> 0 Then
+                        command.Parameters.AddWithValue("@Codigo", Codigo)
+                    End If
+
+                    If Not String.IsNullOrEmpty(ReservaIni) Then
+                        command.Parameters.AddWithValue("@ReservaIni", ReservaIni)
+                    End If
+
+                    If Not String.IsNullOrEmpty(ReservaFim) Then
+                        command.Parameters.AddWithValue("@ReservaFim", ReservaFim)
+                    End If
+
+                    Dim adapter As New SqlDataAdapter(command)
+                    adapter.Fill(tbReservas)
+
                 End Using
                 connection.Close()
             End Using
         Catch ex As Exception
-            MessageBox.Show("Erro ao incluir a reserva: " & ex.Message)
+            MessageBox.Show("Erro ao consultar a locação: " & ex.Message)
         End Try
-    End Sub
+        Return tbReservas
+    End Function
     Public Sub ObterReserva(ByRef DadosLocacao As clsLocacao, sql As String)
         Try
             Using cn = New SqlConnection(ClasseConexao.connectionString)
@@ -270,6 +354,10 @@ Public Class clsLocacao
                     Using RDR As SqlDataReader = CMD.ExecuteReader()
                         While RDR.Read()
                             DadosLocacao._CodReserva = RDR.Item("Codigo")
+                            DadosLocacao._Cliente = RDR.Item("Cliente")
+                            DadosLocacao._DataInicial = RDR.Item("Datainicial")
+                            DadosLocacao._DataFinal = RDR.Item("Datafinal")
+                            DadosLocacao._CodProd = RDR.Item("CodProd")
                         End While
                         RDR.Close()
                     End Using
@@ -281,5 +369,76 @@ Public Class clsLocacao
             Throw
         End Try
     End Sub
+    Public Function ObterReservaProd(lstgrade As ListView, CodReserva As Integer) As DataTable
+        tbReservaProd.Clear()
+        Try
+            Using connection As New SqlConnection(ClasseConexao.connectionString)
+                connection.Open()
+                Dim sql As String = "SELECT * FROM CS_ReservasProd WHERE Codigo = @CodReserva"
+                Using command As New SqlCommand(sql, connection)
+                    command.Parameters.AddWithValue("@CodReserva", CodReserva)
+                    Dim adapter As New SqlDataAdapter(command)
+                    adapter.Fill(tbReservaProd)
+                    Dim x As Integer = 0
+
+                    If tbReservaProd.Rows.Count > 0 Then
+                        For Each row As DataRow In tbReservaProd.Rows
+                            ' Adiciona o código (assumindo que nunca é nulo)
+                            lstgrade.Items.Add(row("CodProd").ToString())
+
+                            ' Adiciona os subitens, verificando se cada valor é nulo
+                            lstgrade.Items(x).SubItems.Add(If(IsDBNull(row("Titulo")), String.Empty, row("Titulo").ToString()))
+                            x += 1
+                        Next
+                    Else
+                        MessageBox.Show("Essa locação não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+
+                End Using
+                connection.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Erro ao consultar a locação: " & ex.Message)
+        End Try
+        Return tbReservaProd
+    End Function
+    Public Sub IncluirReserva(Cliente As String, DataInicial As String, DataFinal As String)
+        Try
+            Using connection As New SqlConnection(ClasseConexao.connectionString)
+                connection.Open()
+                Dim sql As String = "INSERT INTO tbReservas (Cliente, DataInicial,DataFinal,DataReserva) VALUES (@Cliente, @DataInicial,@DataFinal,GETDATE())"
+
+                Using command As New SqlCommand(sql, connection)
+                    command.Parameters.AddWithValue("@Cliente", Cliente)
+                    command.Parameters.AddWithValue("@DataInicial", DataInicial)
+                    command.Parameters.AddWithValue("@DataFinal", DataFinal)
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Reserva incluída com sucesso!")
+                End Using
+                connection.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Erro ao incluir a reserva: " & ex.Message)
+        End Try
+    End Sub
+    Public Sub IncluirReservaProd(CodReserva As Integer, Produto As Integer)
+        Try
+            Using connection As New SqlConnection(ClasseConexao.connectionString)
+                connection.Open()
+                Dim sql As String = "INSERT INTO tbReservaProd (CodReserva, CodProd) VALUES (@CodReserva, @Produto)"
+
+                Using command As New SqlCommand(sql, connection)
+                    command.Parameters.AddWithValue("@CodReserva", CodReserva)
+                    command.Parameters.AddWithValue("@Produto", Produto)
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Reserva incluída com sucesso!")
+                End Using
+                connection.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Erro ao incluir a reserva: " & ex.Message)
+        End Try
+    End Sub
+
 #End Region
 End Class
