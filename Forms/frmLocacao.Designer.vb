@@ -67,6 +67,8 @@ Partial Class frmLocacao
         Me.AjudaToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.tcLocacao = New System.Windows.Forms.TabControl()
         Me.tpListagem = New System.Windows.Forms.TabPage()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.dtpDevolucaoFim = New System.Windows.Forms.DateTimePicker()
         Me.lstConsulta = New System.Windows.Forms.ListView()
         Me.Codigo = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Funcionario = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -79,14 +81,12 @@ Partial Class frmLocacao
         Me.Devolucao = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.tpLocacao = New System.Windows.Forms.TabPage()
         Me.dtpDevolucaoIni = New System.Windows.Forms.DateTimePicker()
-        Me.dtpDevolucaoFim = New System.Windows.Forms.DateTimePicker()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.ER, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.tcLocacao.SuspendLayout()
         Me.tpListagem.SuspendLayout()
-        Me.tpLocacao.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.tpLocacao.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -487,6 +487,28 @@ Partial Class frmLocacao
         Me.tpListagem.Text = "Listagem"
         Me.tpListagem.UseVisualStyleBackColor = True
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.dtpDevolucaoIni)
+        Me.GroupBox1.Controls.Add(Me.dtpDevolucaoFim)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(219, 51)
+        Me.GroupBox1.TabIndex = 79
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Devolução"
+        '
+        'dtpDevolucaoFim
+        '
+        Me.dtpDevolucaoFim.CalendarTitleBackColor = System.Drawing.Color.DarkRed
+        Me.dtpDevolucaoFim.Checked = False
+        Me.dtpDevolucaoFim.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpDevolucaoFim.Location = New System.Drawing.Point(110, 19)
+        Me.dtpDevolucaoFim.Name = "dtpDevolucaoFim"
+        Me.dtpDevolucaoFim.ShowCheckBox = True
+        Me.dtpDevolucaoFim.Size = New System.Drawing.Size(98, 20)
+        Me.dtpDevolucaoFim.TabIndex = 77
+        '
         'lstConsulta
         '
         Me.lstConsulta.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Codigo, Me.Funcionario, Me.Cliente, Me.Quantidade, Me.Total, Me.Multa, Me.Pago, Me.Locacao, Me.Devolucao})
@@ -584,28 +606,6 @@ Partial Class frmLocacao
         Me.dtpDevolucaoIni.Size = New System.Drawing.Size(98, 20)
         Me.dtpDevolucaoIni.TabIndex = 78
         '
-        'dtpDevolucaoFim
-        '
-        Me.dtpDevolucaoFim.CalendarTitleBackColor = System.Drawing.Color.DarkRed
-        Me.dtpDevolucaoFim.Checked = False
-        Me.dtpDevolucaoFim.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDevolucaoFim.Location = New System.Drawing.Point(110, 19)
-        Me.dtpDevolucaoFim.Name = "dtpDevolucaoFim"
-        Me.dtpDevolucaoFim.ShowCheckBox = True
-        Me.dtpDevolucaoFim.Size = New System.Drawing.Size(98, 20)
-        Me.dtpDevolucaoFim.TabIndex = 77
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.dtpDevolucaoIni)
-        Me.GroupBox1.Controls.Add(Me.dtpDevolucaoFim)
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(219, 51)
-        Me.GroupBox1.TabIndex = 79
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Devolução"
-        '
         'frmLocacao
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -624,9 +624,9 @@ Partial Class frmLocacao
         Me.ToolStrip1.PerformLayout()
         Me.tcLocacao.ResumeLayout(False)
         Me.tpListagem.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
         Me.tpLocacao.ResumeLayout(False)
         Me.tpLocacao.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -689,6 +689,6 @@ Partial Class frmLocacao
     Friend WithEvents Quantidade As ColumnHeader
     Friend WithEvents Pago As ColumnHeader
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents dtpDevolucaoIni As DateTimePicker
     Friend WithEvents dtpDevolucaoFim As DateTimePicker
+    Friend WithEvents dtpDevolucaoIni As DateTimePicker
 End Class

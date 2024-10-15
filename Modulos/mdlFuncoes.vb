@@ -51,20 +51,6 @@ Module mdlFuncoes
         muncripto = wvRETORNA
 
     End Function
-    Public Function carregalista(ByVal lista As CheckedListBox, ByVal sql As String, ByVal campo As String, Optional ByVal checa As Boolean = False) As Boolean
-        Dim rs As ADODB.Recordset
-        rs = ClasseCombo.Listar(sql)
-        If rs.RecordCount = 0 Then
-            carregalista = False
-        End If
-        rs.MoveFirst()
-
-        While rs.EOF = False
-            lista.Items.Add(rs.Fields(campo).Value)
-            'lista.Select()
-            rs.MoveNext()
-        End While
-    End Function
 
     Public Function ProcessFile(ByVal cxTexto As ListBox, ByVal strFile As String)
         'DECLARA UM OBJETO PARA A CLASSE STREAMREADER

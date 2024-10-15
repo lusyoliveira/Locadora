@@ -22,8 +22,8 @@ Partial Class frmGerarFinanceiro
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.btnGerarParcelas = New System.Windows.Forms.Button()
@@ -41,7 +41,7 @@ Partial Class frmGerarFinanceiro
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cboFormaPgto = New System.Windows.Forms.ComboBox()
         Me.cboCobranca = New System.Windows.Forms.ComboBox()
-        Me.txtFrete = New System.Windows.Forms.TextBox()
+        Me.txtAcrescimo = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtTaxas = New System.Windows.Forms.TextBox()
@@ -138,9 +138,9 @@ Partial Class frmGerarFinanceiro
         '
         'Vencimento
         '
-        DataGridViewCellStyle1.Format = "d"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.Vencimento.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Format = "d"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Vencimento.DefaultCellStyle = DataGridViewCellStyle5
         Me.Vencimento.HeaderText = "Vencimento"
         Me.Vencimento.MinimumWidth = 6
         Me.Vencimento.Name = "Vencimento"
@@ -148,9 +148,9 @@ Partial Class frmGerarFinanceiro
         '
         'vlrParcela
         '
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.vlrParcela.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.vlrParcela.DefaultCellStyle = DataGridViewCellStyle6
         Me.vlrParcela.HeaderText = "Valor da Parcela"
         Me.vlrParcela.MinimumWidth = 6
         Me.vlrParcela.Name = "vlrParcela"
@@ -227,15 +227,15 @@ Partial Class frmGerarFinanceiro
         Me.cboCobranca.TabIndex = 152
         Me.cboCobranca.ValueMember = "Codigo"
         '
-        'txtFrete
+        'txtAcrescimo
         '
-        Me.txtFrete.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFrete.Location = New System.Drawing.Point(254, 153)
-        Me.txtFrete.Name = "txtFrete"
-        Me.txtFrete.Size = New System.Drawing.Size(76, 21)
-        Me.txtFrete.TabIndex = 210
-        Me.txtFrete.Text = "0,00"
-        Me.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtAcrescimo.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAcrescimo.Location = New System.Drawing.Point(254, 153)
+        Me.txtAcrescimo.Name = "txtAcrescimo"
+        Me.txtAcrescimo.Size = New System.Drawing.Size(76, 21)
+        Me.txtAcrescimo.TabIndex = 210
+        Me.txtAcrescimo.Text = "0,00"
+        Me.txtAcrescimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label16
         '
@@ -243,9 +243,9 @@ Partial Class frmGerarFinanceiro
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(252, 136)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(35, 15)
+        Me.Label16.Size = New System.Drawing.Size(64, 15)
         Me.Label16.TabIndex = 214
-        Me.Label16.Text = "Frete"
+        Me.Label16.Text = "Acréscimo"
         '
         'Label1
         '
@@ -274,7 +274,7 @@ Partial Class frmGerarFinanceiro
         Me.txtMulta.Name = "txtMulta"
         Me.txtMulta.Size = New System.Drawing.Size(76, 22)
         Me.txtMulta.TabIndex = 208
-        Me.txtMulta.Text = "2,00"
+        Me.txtMulta.Text = "0,00"
         Me.txtMulta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txtDesconto
@@ -358,7 +358,7 @@ Partial Class frmGerarFinanceiro
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblAtraso)
         Me.Controls.Add(Me.cboEntidade)
-        Me.Controls.Add(Me.txtFrete)
+        Me.Controls.Add(Me.txtAcrescimo)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtTaxas)
@@ -408,7 +408,7 @@ Partial Class frmGerarFinanceiro
     Friend WithEvents vlrParcela As DataGridViewTextBoxColumn
     Friend WithEvents cboFormaPgto As ComboBox
     Friend WithEvents cboCobranca As ComboBox
-    Friend WithEvents txtFrete As TextBox
+    Friend WithEvents txtAcrescimo As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents txtTaxas As TextBox

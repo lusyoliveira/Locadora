@@ -1,5 +1,6 @@
 
 Imports System.Net.WebRequestMethods
+Imports System.Reflection.Emit
 
 Public Class frmLocacao
     Dim imagem As Image, wcpagina, X, Y, z As Integer, sql As String, tbclientes, tbProdutos, tbLocacao, tbFuncionarios As DataTable,
@@ -103,7 +104,7 @@ Public Class frmLocacao
             DevolucaoFim = ""
         End If
 
-        tbLocacao = ClasseLocacao.PesquisaLocacao(Val(lblCodigo.Text), "TODOS", DevolucaoIni, DevolucaoFim)
+        Dim tbLocacao As DataTable = ClasseLocacao.PesquisaLocacao(Val(lblCodigo.Text), "TODOS", DevolucaoIni, DevolucaoFim)
         ' Limpar ListView
         lstConsulta.Items.Clear()
 
@@ -131,9 +132,9 @@ Public Class frmLocacao
 
     End Sub
     Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
-        ClasseLocacao.ObterCodigo(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbLocacao') IS NULL THEN 1 ELSE IDENT_CURRENT('tbLocacao')+1 END AS Codigo")
+        Dim tbLocacao As DataTable = ClasseLocacao.ConsultaLocacao("SELECT CASE WHEN IDENT_CURRENT('tbLocacao') IS NULL THEN 1 ELSE IDENT_CURRENT('tbLocacao')+1 END AS Codigo")
+        txtCodLocacao.Text = tbLocacao.Rows(0)("Codigo").ToString()
         CalculaDevolucao(Val(txtQuantidade.Text))
-        txtCodLocacao.Text = ClasseLocacao.Codigo
         Habilitar()
         SalvarToolStripButton.Enabled = True
         NovoToolStripButton.Enabled = False
@@ -166,7 +167,23 @@ Public Class frmLocacao
             dtpDevolucao.Text = lstConsulta.SelectedItems(0).SubItems(8).Text
         End If
         lstgrade.Items.Clear()
-        ClasseLocacao.ObterLocacaoProd(lstgrade, Val(txtCodLocacao.Text))
+        Dim tbLocacaoProd As DataTable = ClasseLocacao.ConsultaLocacao("SELECT * FROM CS_LocacaoProd WHERE CodLocacao = @CodLocacao", Val(txtCodLocacao.Text))
+        Dim x As Integer = 0
+
+        If tbLocacaoProd IsNot Nothing AndAlso tbLocacaoProd.Rows.Count > 0 Then
+            For Each row As DataRow In tbLocacaoProd.Rows
+                ' Adiciona o código (assumindo que nunca é nulo)
+                lstgrade.Items.Add(row("CodProd").ToString())
+
+                ' Adiciona os subitens, verificando se cada valor é nulo
+                lstgrade.Items(x).SubItems.Add(If(IsDBNull(row("Titulo")), String.Empty, row("Titulo").ToString()))
+                lstgrade.Items(x).SubItems.Add(If(IsDBNull(row("Valor")), String.Empty, row("Valor").ToString()))
+                lstgrade.Items(x).SubItems.Add(If(IsDBNull(row("Total")), String.Empty, row("Total").ToString()))
+                x += 1
+            Next
+        Else
+            MessageBox.Show("Não existe filmes nessa locação!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
         tcLocacao.SelectTab(1)
         AlterarToolStripButton.Enabled = True
         ExcluirToolStripButton.Enabled = True
@@ -191,16 +208,10 @@ Public Class frmLocacao
             For Each item As ListViewItem In lstgrade.Items
                 ClasseLocacao.SalvarDetLocacao(Val(txtCodLocacao.Text), item.SubItems(0).Text, item.SubItems(2).Text, item.SubItems(3).Text)
             Next
-            ''Peguntar se deseja pagar agora se sim abrir pagamento
-            'Using frmAbreContasPagar As New frmGerarFinanceiro()
-            '    frmAbreContasPagar.CarragaCombos()
-            '    frmAbreContasPagar.cboEntidade.Text = cboclientes.Text
-            '    frmAbreContasPagar.lblCodigo.Text = txtCodLocacao.Text
-            '    frmAbreContasPagar.lblTotal.Text = txtTotal.Text
-            '    frmAbreContasPagar.lblDescEntidade.Text = "Cliente"
-            '    frmAbreContasPagar.Text = "Geração do Contas a Pagar"
-            '    frmAbreContasPagar.ShowDialog()
-            'End Using
+            'Peguntar se deseja pagar agora se sim abrir pagamento
+            Using frmAbreContasPagar As New frmGerarFinanceiro(Val(txtCodLocacao.Text), 0, lblTotalPg.Text)
+                frmAbreContasPagar.ShowDialog()
+            End Using
             Limpar()
             Desabilitar()
             SalvarToolStripButton.Enabled = False
@@ -212,13 +223,13 @@ Public Class frmLocacao
         End If
     End Sub
     Private Sub ImprimirToolStripButton_Click(sender As Object, e As EventArgs) Handles ImprimirToolStripButton.Click
-        Dim sql As String = "SELECT * FROM TBLOCACAO"
-        tbLocacao = ClasseCombo.Listar(sql)
-        If tbLocacao.Rows.Count = 0 Then
-            MsgBox("Nenhuma Locação Selecionada!", MsgBoxStyle.Information)
-            Exit Sub
-        End If
-        PrintPreviewDialog1.ShowDialog()
+        'Dim sql As String = "SELECT * FROM TBLOCACAO"
+        'tbLocacao = ClasseCombo.Listar(sql)
+        'If tbLocacao.Rows.Count = 0 Then
+        '    MsgBox("Nenhuma Locação Selecionada!", MsgBoxStyle.Information)
+        '    Exit Sub
+        'End If
+        'PrintPreviewDialog1.ShowDialog()
     End Sub
 
     Private Sub txtQuantidade_Leave(sender As Object, e As EventArgs) Handles txtQuantidade.Leave
@@ -235,8 +246,10 @@ Public Class frmLocacao
     End Sub
 
     Private Sub cboProduto_Leave(sender As Object, e As EventArgs) Handles cboProduto.Leave
-        ClasseProdutos.ObterProduto(ClasseProdutos, cboProduto.SelectedValue, cboProduto.Text)
-        txtValorUnit.Text = ClasseProdutos.ValorUnit
+        Dim tbProduto As DataTable = ClasseProdutos.ConsultaProduto("SELECT * FROM tbProdutos WHERE Codigo = @Codigo", cboProduto.SelectedValue, Nothing)
+        If tbProduto IsNot Nothing AndAlso tbProduto.Rows.Count > 0 Then
+            txtValorUnit.Text = tbProduto.Rows(0)("Valor").ToString()
+        End If
     End Sub
     Private Sub cboProduto_Enter(sender As Object, e As EventArgs) Handles cboProduto.Enter
         Dim ListaProduto = ClasseCombo.PreencherComboBox("SELECT * FROM tbProdutos ORDER BY titulo", "codigo", "titulo")
@@ -270,35 +283,35 @@ Public Class frmLocacao
     End Sub
 
     Private Sub btnAdicionar_Click(sender As Object, e As EventArgs) Handles btnAdicionar.Click
-        Dim CodProd As Integer = cboProduto.SelectedValue
         If cboProduto.SelectedValue = 0 OrElse txtValorUnit.Text.Trim() = "" Then
             MessageBox.Show("Por favor, preencha todos os campos.")
             Exit Sub
         Else
             'fazer if para verificar se o título já foi reservado pelo mesmo cliente ou por outro cliente
-            ClasseLocacao.ObterReserva(ClasseLocacao, "SELECT * FROM CS_ReservasDetalhes WHERE CodProd = '" & CodProd & "'")
-            If ClasseLocacao.CodProd > 0 Then
-                MessageBox.Show("O título informado já está reservado!")
-                Exit Sub
-            Else
-                ' Cria um novo item para o ListView com o código do produto.
-                Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
+            Dim tbReserva As DataTable = ClasseLocacao.ConsultaReserva("SELECT * FROM CS_ReservasDetalhes WHERE CodProd = @CodProd", 0, cboProduto.SelectedValue)
+            If tbReserva IsNot Nothing AndAlso tbReserva.Rows.Count > 0 Then
+                If tbReserva.Rows(0)("CodProd").ToString() > 0 Then
+                    MessageBox.Show("O título informado já está reservado!")
+                    Exit Sub
+                Else
+                    ' Cria um novo item para o ListView com o código do produto.
+                    Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
 
-                ' Adiciona o nome do produto como subitem na segunda coluna.
-                item.SubItems.Add(cboProduto.Text)
-                item.SubItems.Add(txtValorUnit.Text)
-                item.SubItems.Add(txtTotal.Text)
+                    ' Adiciona o nome do produto como subitem na segunda coluna.
+                    item.SubItems.Add(cboProduto.Text)
+                    item.SubItems.Add(txtValorUnit.Text)
+                    item.SubItems.Add(txtTotal.Text)
 
-                ' Adiciona o item ao ListView.
-                lstgrade.Items.Add(item)
+                    ' Adiciona o item ao ListView.
+                    lstgrade.Items.Add(item)
+                End If
+                cboProduto.Text = ""
+                txtValorUnit.Text = ""
+                txtTotal.Text = ""
+                AtualizaValor()
             End If
-            cboProduto.Text = ""
-            txtValorUnit.Text = ""
-            txtTotal.Text = ""
-            AtualizaValor()
         End If
     End Sub
-
     Private Sub PrintPreviewDialog1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintPreviewDialog1.Load
         wcpagina = 1
     End Sub

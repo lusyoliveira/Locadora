@@ -6,15 +6,20 @@
         InitializeComponent()
 
     End Sub
-    Public Sub New(CodLocacao As Integer)
+    Public Sub New(CodLocacao As Integer, DiasAtraso As Integer, Optional total As Decimal = 0)
 
         ' Esta chamada é requerida pelo designer.
         InitializeComponent()
-        ClasseLocacao.ObterLocacao(ClasseLocacao, "SELECT * FROM cs_Locacao WHERE Codigo = '" & CodLocacao & "'")
-        lblCodigo.Text = ClasseLocacao.CodLocacao
-        lblAtraso.Text = ClasseLocacao.Dias
-        cboEntidade.Text = ClasseLocacao.Cliente
-        lblTotal.Text = ClasseLocacao.Total
+        CarragaCombos()
+        Dim tbLocacao As DataTable = ClasseLocacao.ConsultaLocacao("SELECT * FROM cs_Locacao WHERE Codigo = @CodLocacao")
+        lblCodigo.Text = tbLocacao.Rows(0)("Codigo").ToString()
+        lblAtraso.Text = DiasAtraso
+        cboEntidade.Text = tbLocacao.Rows(0)("Cliente").ToString()
+        lblTotal.Text = total
+        If DiasAtraso > 0 Then
+            Dim tbTaxa As DataTable = ClasseFinanceiro.ConsultaTaxas("SELECT * FROM tbTaxas WHERE Codigo = 1", 1)
+            txtMulta.Text = ClasseFinanceiro.Multa * DiasAtraso
+        End If
     End Sub
     Public Sub CarragaCombos()
         Dim ListaClientes = ClasseCombo.PreencherComboBox("SELECT * FROM tbEntidades WHERE Tipo = 'C' ORDER BY NomeFantasia", "Codigo", "NomeFantasia")
@@ -63,8 +68,10 @@
         Return result
     End Function
     Private Sub frmGerarPagamento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ClasseFinanceiro.ListaNParcelas(cboFormaPgto.Text, ClasseFinanceiro)
-        lblNrPacelas.Text = ClasseFinanceiro.NParcelas
+        Dim tbFormaPagto As DataTable = ClasseFinanceiro.ConsultaFormaPagto("SELECT * FROM tbFormaPgto WHERE Codigo = @CodFormaPagto", cboFormaPgto.Text)
+        If tbFormaPagto IsNot Nothing AndAlso tbFormaPagto.Rows.Count > 0 Then
+            lblNrPacelas.Text = tbFormaPagto.Rows(0)("NParcelas").ToString()
+        End If
     End Sub
     Private Sub btnGerarParcelas_Click(sender As Object, e As EventArgs) Handles btnGerarParcelas.Click
         If dgvParcelas.Rows.Count = lblNrPacelas.Text Then
@@ -78,21 +85,20 @@
         Try
             If ValidarForm() Then
                 For Each row As DataGridViewRow In dgvParcelas.Rows
-                    ClasseFinanceiro.GerarPagamento(0,
-                                                        lblCodigo.Text,
-                                                        row.Cells("Vencimento").Value,
-                                                        row.Cells("Parcela").Value,
-                                                        Date.Now.Date,
-                                                        row.Cells("vlrParcela").Value, lblTotal.Text,
-                                                        "DEVOLUÇÃO " + lblCodigo.Text + " - " + cboEntidade.Text,
-                                                        txtDesconto.Text,
-                                                        txtFrete.Text,
-                                                        txtTaxas.Text,
-                                                        txtMulta.Text,
-                                                        cboEntidade.SelectedValue,
-                                                        cboCobranca.SelectedValue,
-                                                        cboFormaPgto.SelectedValue
-                                                        )
+                    ClasseFinanceiro.GerarPagamento(Val(lblCodigo.Text),
+                                                    cboEntidade.SelectedValue,
+                                                    row.Cells("Vencimento").Value,
+                                                    Val(lblNrPacelas.Text),
+                                                    Date.Now.Date,
+                                                    row.Cells("vlrParcela").Value,
+                                                    lblTotal.Text,
+                                                    "DEVOLUÇÃO " + lblCodigo.Text + " - " + cboEntidade.Text,
+                                                    txtDesconto.Text,
+                                                    txtMulta.Text,
+                                                    txtAcrescimo.Text,
+                                                    cboCobranca.SelectedValue,
+                                                    cboFormaPgto.SelectedValue
+                                                    )
                 Next
                 MessageBox.Show("Pagamento gerado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close()
@@ -100,11 +106,13 @@
                 MessageBox.Show("Não foi possível gerar o pagamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
-            MessageBox.Show("Não foi possível gerar o pagamento ou recebimento!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Não foi possível gerar o pagamento!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub cboFormaPgto_Leave(sender As Object, e As EventArgs) Handles cboFormaPgto.Leave
-        ClasseFinanceiro.ListaNParcelas(cboFormaPgto.Text, ClasseFinanceiro)
-        lblNrPacelas.Text = ClasseFinanceiro.NParcelas
+        Dim tbFormaPagto As DataTable = ClasseFinanceiro.ConsultaFormaPagto("SELECT * FROM tbFormaPgto WHERE Codigo = @CodFormaPagto", cboFormaPgto.Text)
+        If tbFormaPagto IsNot Nothing AndAlso tbFormaPagto.Rows.Count > 0 Then
+            lblNrPacelas.Text = tbFormaPagto.Rows(0)("NParcelas").ToString()
+        End If
     End Sub
 End Class

@@ -88,11 +88,26 @@ Public Class frmReserva
         If lstConsulta.SelectedItems.Count > 0 Then
             txtCodReserva.Text = Val(lstConsulta.SelectedItems(0).SubItems(0).Text)
             cboCliente.Text = lstConsulta.SelectedItems(0).SubItems(1).Text
-            dtpReservaIni.Text = lstConsulta.SelectedItems(0).SubItems(2).Text
-            dtpReservaFim.Text = lstConsulta.SelectedItems(0).SubItems(3).Text
+            dtpInicio.Text = lstConsulta.SelectedItems(0).SubItems(2).Text
+            dtpFim.Text = lstConsulta.SelectedItems(0).SubItems(3).Text
         End If
         lstgrade.Items.Clear()
-        ClasseLocacao.ObterReservaProd(lstgrade, Val(txtCodReserva.Text))
+        Dim tbReservaDet As DataTable = ClasseLocacao.ConsultaReserva("SELECT * FROM CS_ReservasProd WHERE Codigo = @CodReserva", Val(txtCodReserva.Text))
+        Dim x As Integer = 0
+
+        If tbReservaDet.Rows.Count > 0 Then
+            For Each row As DataRow In tbReservaDet.Rows
+                ' Adiciona o código (assumindo que nunca é nulo)
+                lstgrade.Items.Add(row("CodProd").ToString())
+
+                ' Adiciona os subitens, verificando se cada valor é nulo
+                lstgrade.Items(x).SubItems.Add(If(IsDBNull(row("Titulo")), String.Empty, row("Titulo").ToString()))
+                x += 1
+            Next
+        Else
+            MessageBox.Show("Essa locação não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
         tcReserva.SelectTab(1)
         AlterarToolStripButton.Enabled = True
         ExcluirToolStripButton.Enabled = True
@@ -121,10 +136,9 @@ Public Class frmReserva
             Exit Sub
         End If
     End Sub
-
     Private Sub NovoToolStripButton_Click(sender As Object, e As EventArgs) Handles NovoToolStripButton.Click
-        ClasseLocacao.ObterCodigo(ClasseLocacao, "SELECT CASE WHEN IDENT_CURRENT('tbReservas') IS NULL THEN 1 ELSE IDENT_CURRENT('tbReservas')+1 END AS Codigo")
-        txtCodReserva.Text = ClasseLocacao.Codigo
+        Dim tbLocacao As DataTable = ClasseLocacao.ConsultaLocacao("SELECT CASE WHEN IDENT_CURRENT('tbReservas') IS NULL THEN 1 ELSE IDENT_CURRENT('tbReservas')+1 END AS Codigo")
+        txtCodReserva.Text = tbLocacao.Rows(0)("Codigo").ToString()
         Habilitar()
         SalvarToolStripButton.Enabled = True
         NovoToolStripButton.Enabled = False

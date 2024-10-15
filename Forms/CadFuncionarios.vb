@@ -1,5 +1,3 @@
-Imports System.Data.SqlClient
-Imports System.Net.Sockets
 Public Class frmCadFuncionarios
     Dim tbFuncionarios As DataTable, ClasseFuncionario As New clsEntidades, ClasseCombo As New clsCombo
     Private Sub limpar()
@@ -28,8 +26,37 @@ Public Class frmCadFuncionarios
         txtObs.Text = ""
         lstEntidade.Items.Clear()
     End Sub
+    Private Sub PreencherGridFunc()
+        Dim tbFunc As DataTable = ClasseFuncionario.PesquisaEntidade(Val(lblCodigo.Text), txtNome.Text, "FU")
+        Dim x As Integer = 0
+        If tbFunc.Rows.Count > 0 Then
+            For Each row As DataRow In tbFunc.Rows
+                lstEntidade.Items.Add(row("Codigo").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("NomeFantasia").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("RazaoSocial").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataNasc").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("EstadoCivil").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("endereco").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Complemento").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("bairro").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Cidade").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Uf").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Cep").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Sexo").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Rg").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Documento").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("obs").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataCadastro").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataAlteracao").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataInativacao").ToString())
+                x += 1
+            Next
+        Else
+            MessageBox.Show("Essa entidade não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
     Private Sub frmCadFuncionarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+        PreencherGridFunc()
     End Sub
 
     Private Sub lstEntidade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEntidade.SelectedIndexChanged
@@ -43,16 +70,16 @@ Public Class frmCadFuncionarios
             mskCep.Text = lstEntidade.SelectedItems(0).SubItems(10).Text
             mskRG.Text = lstEntidade.SelectedItems(0).SubItems(12).Text
             mskCpf.Text = lstEntidade.SelectedItems(0).SubItems(13).Text
-            ClasseFuncionario.ObterContato(Val(lblCodigo.Text), ClasseFuncionario)
-            mskTel1.Text = ClasseFuncionario.Telefone1
-            mskTel2.Text = ClasseFuncionario.Telefone2
-            mskCel.Text = ClasseFuncionario.Celular
-            txtEmail.Text = ClasseFuncionario.Email
-            ClasseFuncionario.ObterCargo(Val(lblCodigo.Text), ClasseFuncionario)
-            txtMatricula.Text = ClasseFuncionario.Matricula
-            mskCartprof.Text = ClasseFuncionario.CarteiraProfissional
-            cboCargo.Text = ClasseFuncionario.Cargo
-            txtSalario.Text = ClasseFuncionario.Salario
+            Dim tbContato As DataTable = ClasseFuncionario.ConsultaEntidade("SELECT * FROM tbEntidadeContatos WHERE CodEntidade = @CodEntidade", Val(lblCodigo.Text))
+            mskTel1.Text = tbContato.Rows(0)("Telefone1").ToString()
+            mskTel2.Text = tbContato.Rows(0)("Telefone2").ToString()
+            mskCel.Text = tbContato.Rows(0)("Celular").ToString()
+            txtEmail.Text = tbContato.Rows(0)("Email").ToString()
+            Dim tbCargo As DataTable = ClasseFuncionario.ConsultaEntidade("SELECT * FROM tbEntidadeCargo WHERE CodEntidade = @CodEntidade", Val(lblCodigo.Text))
+            txtMatricula.Text = tbCargo.Rows(0)("Matricula").ToString()
+            mskCartprof.Text = tbCargo.Rows(0)("CarteiraProfissional").ToString()
+            cboCargo.Text = tbCargo.Rows(0)("Cargo").ToString()
+            txtSalario.Text = tbCargo.Rows(0)("Salario").ToString()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = True
             ExcluirToolStripButton.Enabled = True
@@ -79,7 +106,7 @@ Public Class frmCadFuncionarios
             ClasseFuncionario.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
             ClasseFuncionario.SalvarCargo(Val(lblCodigo.Text), txtMatricula.Text, mskCartprof.Text, cboCargo.Text, txtSalario.Text, "")
             limpar()
-            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+            PreencherGridFunc()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = False
             ExcluirToolStripButton.Enabled = False
@@ -98,7 +125,7 @@ Public Class frmCadFuncionarios
                                            mskCep.Text, "", mskRG.Text, mskCpf.Text, txtObs.Text)
             ClasseFuncionario.AlterarContato(Val(lblCodigo.Text), ClasseFuncionario.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
             limpar()
-            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            PreencherGridFunc()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = False
             ExcluirToolStripButton.Enabled = False
@@ -116,7 +143,7 @@ Public Class frmCadFuncionarios
             ClasseFuncionario.ExcluirContato(Val(lblCodigo.Text))
             ClasseFuncionario.ExcluirEntidade(Val(lblCodigo.Text))
             limpar()
-            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
+            PreencherGridFunc()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = False
             ExcluirToolStripButton.Enabled = False
@@ -127,8 +154,7 @@ Public Class frmCadFuncionarios
     End Sub
 
     Private Sub ConsultarToolStripButton_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripButton.Click
-        ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
-
+        PreencherGridFunc()
     End Sub
 
     Private Sub cboEstadoCivil_Enter(sender As Object, e As EventArgs) Handles cboEstadoCivil.Enter
@@ -143,8 +169,7 @@ Public Class frmCadFuncionarios
 
     Private Sub txtMatricula_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
-            ClasseFuncionario.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "FU")
-
+            PreencherGridFunc()
         End If
     End Sub
 End Class

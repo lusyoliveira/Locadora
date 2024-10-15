@@ -2,12 +2,106 @@
 Imports System.Data.SqlClient
 Imports System.Text
 Public Class clsConexao
-    Private database = "dbLocadora"
-    Private user = "sa"
-    Private password = "123456"
-    Private server = GetNomeSQLServer()
-    Public connectionString As String = $"Data Source={server};Initial Catalog={database};User ID={user};Password={password}"
+#Region "PROPRIEDADES"
+    Private pServidor = GetNomeSQLServer()
+    Public Property Servidor() As String
+        Get
+            Return pServidor
+        End Get
+        Set(value As String)
+            pServidor = value
+        End Set
+    End Property
+    Private pDataBase = "dbLocadora"
+    Public Property DataBase() As String
+        Get
+            Return pDataBase
+        End Get
+        Set(value As String)
+            pDataBase = value
+        End Set
+    End Property
+    Private pUser = "sa"
+    Public Property user() As String
+        Get
+            Return pUser
+        End Get
+        Set(value As String)
+            pUser = value
+        End Set
+    End Property
 
+    Private pPassword = "123456"
+    Public Property password() As String
+        Get
+            Return pPassword
+        End Get
+        Set(value As String)
+            pPassword = value
+        End Set
+    End Property
+    Private _connectionString As String = $"Data Source={pServidor};Initial Catalog={pDataBase};User ID={pUser};Password={pPassword}"
+    Public Property connectionString As String
+        Get
+            Return _connectionString
+        End Get
+        Set(value As String)
+            _connectionString = value
+        End Set
+    End Property
+#End Region
+#Region "METODOS"
+    ''' <summary>
+    ''' Este método realiza operações de inserção, alteração e exclusão numa tabela do banco de dados.
+    ''' </summary>
+    ''' <param name="sql">Representa a string sql para realizar uma inserção, alteração ou exclusão numa tabela do banco de dados.</param>
+    Public Sub Operar(ByVal sql As String, ByVal parameters As SqlParameter())
+        Try
+            Using cn As New SqlConnection(_connectionString)
+                cn.Open()
+                Using cmd As New SqlCommand(sql, cn)
+                    ' Adiciona parâmetros ao comando, se houver
+                    If parameters IsNot Nothing Then
+                        cmd.Parameters.AddRange(parameters)
+                    End If
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception '
+            MessageBox.Show("Não foi possível realizar a operação" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Throw
+        End Try
+    End Sub
+
+#End Region
+#Region "FUNCOES"
+    ''' <summary>
+    ''' Esta função realiza uma consulta no banco de dados e retorna a lista dos dados.
+    ''' </summary>
+    ''' <param name="sql">Representa a string sql para realizar a consulta.</param>
+    ''' <returns>Retorna a tabela consultada.</returns>
+    Public Function Consultar(ByVal sql As String, ByVal parameters As SqlParameter()) As DataTable
+        Dim dt As New DataTable()
+
+        Try
+            Using cn As New SqlConnection(_connectionString)
+                Using cmd As New SqlCommand(sql, cn)
+                    ' Adiciona parâmetros ao comando, se houver
+                    If parameters IsNot Nothing Then
+                        cmd.Parameters.AddRange(parameters)
+                    End If
+
+                    Using adpt As New SqlDataAdapter(cmd)
+                        adpt.Fill(dt)
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Não foi possível consultar os dados!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ' Opcional: log do erro ou tratamento adicional
+        End Try
+        Return dt
+    End Function
     Public Function GetNomeSQLServer() As String
         'Nome do PC local
         Dim strPCname As String = Environment.MachineName
@@ -34,6 +128,7 @@ Public Class clsConexao
         End If
         Return strNomeSQLServer
     End Function
+#End Region
     Public Sub CarregaLista(ByVal tabela As String, ByRef lstGrade As ListView, ByVal nome As String, ByVal codigo As String, Optional ByVal filtro As String = "", Optional ByVal Campos As String = "*")
         lstGrade.Visible = False
         Using conn As New SqlConnection(connectionString)

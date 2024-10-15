@@ -80,16 +80,22 @@ Public Class frmDevolucao
 
         If MsgResult = DialogResult.Yes Then
             ''Peguntar se deseja pagar agora se sim abrir pagamento
-
-            If lblPago.Text = "NÃO" Or lblPago.Text = "SIM" And Val(txtAtraso.Text) > 0 Then
-                Using frmAbreContasPagar As New frmGerarFinanceiro(Val(txtCodigo.Text))
-                    frmAbreContasPagar.CarragaCombos()
-                    frmAbreContasPagar.ShowDialog()
-                End Using
+            If txtCodigo.Text Is Nothing Or txtCodigo.Text = "" Then
+                MessageBox.Show("Favor informar a locação!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Exit Sub
+            Else
+                If lblPago.Text = "NÃO" Then
+                    Using frmAbreContasPagar As New frmGerarFinanceiro(Val(txtCodigo.Text), Val(txtAtraso.Text), lblTotal.Text)
+                        frmAbreContasPagar.ShowDialog()
+                    End Using
+                    ClasseLocacao.DevolverLocacao(Val(txtCodigo.Text))
+                ElseIf lblPago.Text = "SIM" And Val(txtAtraso.Text) > 0 Then
+                    Using frmAbreContasPagar As New frmGerarFinanceiro(Val(txtCodigo.Text), Val(txtAtraso.Text), 0)
+                        frmAbreContasPagar.ShowDialog()
+                    End Using
+                    ClasseLocacao.DevolverLocacao(Val(txtCodigo.Text))
+                End If
             End If
-            ClasseLocacao.DevolverLocacao(Val(txtCodigo.Text))
-        Else
-            Exit Sub
         End If
     End Sub
 End Class

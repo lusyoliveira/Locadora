@@ -24,7 +24,7 @@ Partial Class frmCadProdutos
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCadProdutos))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblCodigo = New System.Windows.Forms.Label()
+        Me.label3 = New System.Windows.Forms.Label()
         Me.lblProduto = New System.Windows.Forms.Label()
         Me.cboProduto = New System.Windows.Forms.ComboBox()
         Me.lblTitulo = New System.Windows.Forms.Label()
@@ -60,7 +60,7 @@ Partial Class frmCadProdutos
         Me.txtoriginal = New System.Windows.Forms.TextBox()
         Me.lbloriginal = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblCodigo = New System.Windows.Forms.Label()
         Me.tcProduto = New System.Windows.Forms.TabControl()
         Me.tpListagem = New System.Windows.Forms.TabPage()
         Me.tpCadastro = New System.Windows.Forms.TabPage()
@@ -92,15 +92,15 @@ Partial Class frmCadProdutos
         Me.Panel1.Size = New System.Drawing.Size(943, 75)
         Me.Panel1.TabIndex = 0
         '
-        'lblCodigo
+        'label3
         '
-        Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Location = New System.Drawing.Point(6, 13)
-        Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(40, 13)
-        Me.lblCodigo.TabIndex = 1
-        Me.lblCodigo.Text = "Codigo"
-        Me.lblCodigo.Visible = False
+        Me.label3.AutoSize = True
+        Me.label3.Location = New System.Drawing.Point(6, 13)
+        Me.label3.Name = "label3"
+        Me.label3.Size = New System.Drawing.Size(40, 13)
+        Me.label3.TabIndex = 1
+        Me.label3.Text = "Codigo"
+        Me.label3.Visible = False
         '
         'lblProduto
         '
@@ -367,14 +367,14 @@ Partial Class frmCadProdutos
         Me.Label2.Size = New System.Drawing.Size(0, 13)
         Me.Label2.TabIndex = 50
         '
-        'Label3
+        'lblCodigo
         '
-        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label3.Location = New System.Drawing.Point(9, 34)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(55, 20)
-        Me.Label3.TabIndex = 90
+        Me.lblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblCodigo.Location = New System.Drawing.Point(9, 34)
+        Me.lblCodigo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblCodigo.Name = "lblCodigo"
+        Me.lblCodigo.Size = New System.Drawing.Size(55, 20)
+        Me.lblCodigo.TabIndex = 90
         '
         'tcProduto
         '
@@ -399,8 +399,8 @@ Partial Class frmCadProdutos
         '
         'tpCadastro
         '
+        Me.tpCadastro.Controls.Add(Me.label3)
         Me.tpCadastro.Controls.Add(Me.lblCodigo)
-        Me.tpCadastro.Controls.Add(Me.Label3)
         Me.tpCadastro.Controls.Add(Me.lblProduto)
         Me.tpCadastro.Controls.Add(Me.Label2)
         Me.tpCadastro.Controls.Add(Me.cboProduto)
@@ -567,7 +567,7 @@ Partial Class frmCadProdutos
 
     End Sub
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents lblCodigo As System.Windows.Forms.Label
+    Friend WithEvents label3 As System.Windows.Forms.Label
     Friend WithEvents lblProduto As System.Windows.Forms.Label
     Friend WithEvents cboProduto As System.Windows.Forms.ComboBox
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
@@ -598,7 +598,7 @@ Partial Class frmCadProdutos
     Friend WithEvents txtoriginal As System.Windows.Forms.TextBox
     Friend WithEvents lbloriginal As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents lblCodigo As Label
     Friend WithEvents ColumnHeader4 As ColumnHeader
     Friend WithEvents ColumnHeader7 As ColumnHeader
     Friend WithEvents ColumnHeader8 As ColumnHeader

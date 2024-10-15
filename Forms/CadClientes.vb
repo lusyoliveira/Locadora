@@ -31,9 +31,37 @@ Public Class frmCadClientes
         lstEntidade.Items.Clear()
         lstDependente.Items.Clear()
     End Sub
-
+    Private Sub PreencherGridClientes()
+        Dim tbClientes As DataTable = ClasseClientes.PesquisaEntidade(Val(lblCodigo.Text), txtNome.Text, "C")
+        Dim x As Integer = 0
+        If tbClientes.Rows.Count > 0 Then
+            For Each row As DataRow In tbClientes.Rows
+                lstEntidade.Items.Add(row("Codigo").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("NomeFantasia").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("RazaoSocial").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataNasc").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("EstadoCivil").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("endereco").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Complemento").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("bairro").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Cidade").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Uf").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Cep").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Sexo").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Rg").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("Documento").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("obs").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataCadastro").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataAlteracao").ToString())
+                lstEntidade.Items(x).SubItems.Add(row("DataInativacao").ToString())
+                x += 1
+            Next
+        Else
+            MessageBox.Show("Essa entidade não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
     Private Sub frmCadClientes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+
     End Sub
 
     Private Sub lstEntidade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstEntidade.SelectedIndexChanged
@@ -54,12 +82,30 @@ Public Class frmCadClientes
             '    rbdFeminino.Checked = True
             'End If
         End If
-        ClasseDependentes.ConsultaDependente(lstDependente, Val(lblCodigo.Text))
-        ClasseClientes.ObterContato(Val(lblCodigo.Text), ClasseClientes)
-        mskTel1.Text = ClasseClientes.Telefone1
-        mskTel2.Text = ClasseClientes.Telefone2
-        mskCel.Text = ClasseClientes.Celular
-        txtEmail.Text = ClasseClientes.Email
+        Dim tbDependentes As DataTable = ClasseDependentes.ConsultaDependente("SELECT * FROM tbEntidadeDependente WHERE CodEntidade = @CodEntidade", Val(lblCodigo.Text))
+
+        Dim x As Integer = 0
+        For Each row As DataRow In TbDependentes.Rows
+            lstDependente.Items.Add(row("Codigo").ToString())
+            lstDependente.Items(x).SubItems.Add(row("NomeDependente").ToString())
+            lstDependente.Items(x).SubItems.Add(row("DataNasc").ToString())
+            lstDependente.Items(x).SubItems.Add(row("Documento").ToString())
+            lstDependente.Items(x).SubItems.Add(row("Parentesco").ToString())
+
+            If x Mod 2 = 0 Then
+                lstDependente.Items(x).ForeColor = Color.Black
+                lstDependente.Items(x).BackColor = Color.LightGray
+            Else
+                lstDependente.Items(x).ForeColor = Color.Black
+                lstDependente.Items(x).BackColor = Color.White
+            End If
+            x += 1
+        Next
+        Dim tbContato As DataTable = ClasseClientes.ConsultaEntidade("SELECT * FROM tbEntidadeContatos WHERE CodEntidade = @CodEntidade", Val(lblCodigo.Text))
+        mskTel1.Text = tbContato.Rows(0)("Telefone1").ToString()
+        mskTel2.Text = tbContato.Rows(0)("Telefone2").ToString()
+        mskCel.Text = tbContato.Rows(0)("Celular").ToString()
+        txtEmail.Text = tbContato.Rows(0)("Email").ToString()
         SalvarToolStripButton.Enabled = False
         AlterarToolStripButton.Enabled = True
         ExcluirToolStripButton.Enabled = True
@@ -94,7 +140,7 @@ Public Class frmCadClientes
             ClasseClientes.SalvarEntidade(txtNome.Text, txtRazaoSocial.Text, mskDnascimento.Text, cboEstadoCivil.Text, txtEndereco.Text, txtComplemento.Text, txtBairro.Text, txtCidade.Text, cboUf.Text, mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text, "C")
             ClasseClientes.SalvarContato(Val(lblCodigo.Text), mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
             Limpar()
-            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            PreencherGridClientes()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = False
             ExcluirToolStripButton.Enabled = False
@@ -105,11 +151,7 @@ Public Class frmCadClientes
     End Sub
 
     Private Sub ConsultarToolStripButton_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripButton.Click
-        ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
-    End Sub
-
-    Private Sub DevolverToolStripButton_Click(sender As Object, e As EventArgs)
-
+        PreencherGridClientes()
     End Sub
 
     Private Sub ExcluirToolStripButton_Click(sender As Object, e As EventArgs) Handles ExcluirToolStripButton.Click
@@ -119,7 +161,7 @@ Public Class frmCadClientes
             ClasseClientes.ExcluirContato(Val(lblCodigo.Text))
             ClasseClientes.ExcluirEntidade(Val(lblCodigo.Text))
             Limpar()
-            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            PreencherGridClientes()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = False
             ExcluirToolStripButton.Enabled = False
@@ -138,7 +180,7 @@ Public Class frmCadClientes
                                            mskCep.Text, "", mskrg.Text, mskcpf.Text, txtObs.Text)
             ClasseClientes.AlterarContato(Val(lblCodigo.Text), ClasseClientes.CodContato, mskTel1.Text, mskTel2.Text, mskCel.Text, txtEmail.Text)
             Limpar()
-            ClasseClientes.PesquisaEntidade(lstEntidade, Val(lblCodigo.Text), txtNome.Text, "C")
+            PreencherGridClientes()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = False
             ExcluirToolStripButton.Enabled = False

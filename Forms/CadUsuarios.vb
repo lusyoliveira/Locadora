@@ -8,7 +8,24 @@ Public Class frmCadUsuarios
         cboPermissao.Text = ""
         lstgrade.Items.Clear()
     End Sub
+    Private Sub PreencherGridUsuario()
+        Dim tbUsuario As DataTable = ClasseUsuario.PesquisaUsuario(Val(lblCodigo.Text), txtNome.Text)
+        Dim x As Integer = 0
+        If tbUsuario IsNot Nothing AndAlso tbUsuario.Rows.Count > 0 Then
+            For Each row As DataRow In tbUsuario.Rows
+                Dim item As New ListViewItem(row("codigo").ToString())
+                item.SubItems.Add(row("nome").ToString())
+                item.SubItems.Add(row("permissao").ToString())
+                item.SubItems.Add(row("senha").ToString())
+                item.SubItems.Add(row("confsenha").ToString())
 
+                lstgrade.Items.Add(item)
+                x += 1
+            Next
+        Else
+            MessageBox.Show("Essa entidade não Existe!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
     Private Sub lstgrade_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstgrade.SelectedIndexChanged
         If lstgrade.SelectedItems.Count > 0 Then
             txtNome.Text = lstgrade.SelectedItems(0).SubItems(1).Text
@@ -40,7 +57,7 @@ Public Class frmCadUsuarios
 
         If MsgResult = DialogResult.Yes Then
             ClasseUsuario.SalvarUsuario(txtNome.Text, cboPermissao.Text, txtSenha.Text, txtConfSenha.Text)
-            ClasseUsuario.PesquisaUsuario(lstgrade, Val(lblCodigo.Text), txtNome.Text)
+            PreencherGridUsuario()
             limpar()
             SalvarToolStripButton.Enabled = False
             AlterarToolStripButton.Enabled = False
@@ -56,7 +73,7 @@ Public Class frmCadUsuarios
 
         If MsgResult = DialogResult.Yes Then
             ClasseUsuario.AlterarUsuario(Val(lblCodigo.Text), txtNome.Text, cboPermissao.Text, txtSenha.Text, txtConfSenha.Text)
-            ClasseUsuario.PesquisaUsuario(lstgrade, Val(lblCodigo.Text), txtNome.Text)
+            PreencherGridUsuario()
             limpar()
         Else
             Exit Sub
@@ -72,14 +89,14 @@ Public Class frmCadUsuarios
 
         If MsgResult = DialogResult.Yes Then
             ClasseUsuario.ExcluirUsuario(Val(lblCodigo.Text))
-            ClasseUsuario.PesquisaUsuario(lstgrade, Val(lblCodigo.Text), txtNome.Text)
+            PreencherGridUsuario()
         Else
             Exit Sub
         End If
     End Sub
 
     Private Sub ConsultarToolStripButton_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripButton.Click
-        ClasseUsuario.PesquisaUsuario(lstgrade, Val(lblCodigo.Text), txtNome.Text)
+        PreencherGridUsuario()
     End Sub
 
     Private Sub frmCadUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
