@@ -1,23 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6FB93766-862C-4159-A1CD-7CA064794552}</ProjectGuid>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <StartupObject>ProjetoLocadora.My.MyApplication</StartupObject>
     <RootNamespace>ProjetoLocadora</RootNamespace>
-    <AssemblyName>Projeto Locadora</AssemblyName>
     <MyType>WindowsForms</MyType>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -33,215 +20,85 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <AssemblyTitle>Projeto Locadora</AssemblyTitle>
+    <Company>GGS%2aKG</Company>
+    <Product>Projeto Locadora</Product>
+    <Copyright>Copyright © GGS%2aKG 2009</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>Projeto Locadora.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>Projeto Locadora.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Messaging" />
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Import Include="Microsoft.VisualBasic" />
-    <Import Include="System" />
-    <Import Include="System.Collections" />
-    <Import Include="System.Collections.Generic" />
-    <Import Include="System.Data" />
     <Import Include="System.Drawing" />
-    <Import Include="System.Diagnostics" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\clsConexao.vb" />
-    <Compile Include="Classes\clsDependente.vb" />
-    <Compile Include="Classes\clsEntidades.vb" />
-    <Compile Include="Classes\clsFinanceiro.vb" />
-    <Compile Include="Classes\clsProdutos.vb" />
-    <Compile Include="Classes\clsUsuario.vb" />
-    <Compile Include="Forms\CadProdutos.designer.vb">
+    <Compile Update="Forms\CadProdutos.designer.vb">
       <DependentUpon>CadProdutos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadProdutos.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CadFornecedores.designer.vb">
+    <Compile Update="Forms\CadFornecedores.designer.vb">
       <DependentUpon>CadFornecedores.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadFornecedores.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CadUsuarios.designer.vb">
+    <Compile Update="Forms\CadUsuarios.designer.vb">
       <DependentUpon>CadUsuarios.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadUsuarios.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Classes\clsCombo.vb" />
-    <Compile Include="Classes\clsLocacao.vb" />
-    <Compile Include="Forms\frmGerarFinanceiro.Designer.vb">
+    <Compile Update="Forms\frmGerarFinanceiro.Designer.vb">
       <DependentUpon>frmGerarFinanceiro.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmGerarFinanceiro.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmLocalizar.designer.vb">
+    <Compile Update="Forms\frmLocalizar.designer.vb">
       <DependentUpon>frmLocalizar.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLocalizar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmLogin.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmLogin.Designer.vb">
-      <DependentUpon>frmLogin.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CadClientes.Designer.vb">
+    <Compile Update="Forms\CadClientes.Designer.vb">
       <DependentUpon>CadClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadClientes.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CadFuncionarios.Designer.vb">
+    <Compile Update="Forms\CadFuncionarios.Designer.vb">
       <DependentUpon>CadFuncionarios.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadFuncionarios.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmLocacao.Designer.vb">
+    <Compile Update="Forms\frmLocacao.Designer.vb">
       <DependentUpon>frmLocacao.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLocacao.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modulos\mdlFuncoes.vb" />
-    <Compile Include="Forms\frmPrincipal.Designer.vb">
+    <Compile Update="Forms\frmPrincipal.Designer.vb">
       <DependentUpon>frmPrincipal.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmPrincipal.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
+    <Compile Update="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
+    <Compile Update="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Settings.Designer.vb">
+    <Compile Update="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Forms\frmReserva.designer.vb">
+    <Compile Update="Forms\frmReserva.designer.vb">
       <DependentUpon>frmReserva.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmReserva.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmDevolucao.Designer.vb">
+    <Compile Update="Forms\frmDevolucao.Designer.vb">
       <DependentUpon>frmDevolucao.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmDevolucao.vb">
-      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\CadProdutos.resx">
-      <DependentUpon>CadProdutos.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadFornecedores.resx">
-      <DependentUpon>CadFornecedores.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadUsuarios.resx">
-      <DependentUpon>CadUsuarios.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmDevolucao.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmDevolucao.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmGerarFinanceiro.resx">
-      <DependentUpon>frmGerarFinanceiro.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLocalizar.resx">
-      <DependentUpon>frmLocalizar.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmLogin.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadClientes.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>CadClientes.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadFuncionarios.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>CadFuncionarios.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLocacao.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmLocacao.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmPrincipal.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>frmPrincipal.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmReserva.resx">
-      <DependentUpon>frmReserva.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="My Project\Application.myapp">
+    <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="My Project\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <CustomToolNamespace>My</CustomToolNamespace>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -272,84 +129,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\paste.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\people.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\basket.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\guy_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ftp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\agenda.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tools.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\warning.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ball_stop.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder_open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder_clock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\print view.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\binoculars.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\external hd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\trash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\doc_info.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ok.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\halfencrypted.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shell32.033.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\card machine.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FIND.ICO" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
@@ -357,20 +136,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Alterar.png" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Consultar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Devolver.png" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
