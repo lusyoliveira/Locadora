@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmDevolucao
     Dim ClasseLocacao As New clsLocacao, ClasseFinanceiro As New clsFinanceiro, tbLocacao As DataTable
     Dim x As Integer

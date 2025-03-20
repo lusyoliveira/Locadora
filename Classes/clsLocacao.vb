@@ -1,6 +1,8 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports Microsoft.Data.SqlClient
 Imports System.Text
-Imports ADODB
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class clsLocacao
     Dim ClasseConexao As New clsConexao, tbLocacao, tbLocacaoProd, tbReservas, tbReservaProd As New DataTable()
 #Region "PROPRIEDADES"

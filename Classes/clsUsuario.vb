@@ -1,5 +1,8 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports Microsoft.Data.SqlClient
 Imports System.Text
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class clsUsuario
     Dim ClasseConexao As New clsConexao
 #Region "PROPRIEDADES"

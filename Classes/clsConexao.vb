@@ -1,6 +1,8 @@
 ﻿Imports System.ServiceProcess
-Imports System.Data.SqlClient
-Imports System.Text
+Imports System.Data
+Imports Microsoft.Data.SqlClient
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class clsConexao
 #Region "PROPRIEDADES"
     Private pServidor = GetNomeSQLServer()
@@ -40,7 +42,7 @@ Public Class clsConexao
             pPassword = value
         End Set
     End Property
-    Private _connectionString As String = $"Data Source={pServidor};Initial Catalog={pDataBase};User ID={pUser};Password={pPassword}"
+    Private _connectionString As String = $"Data Source={pServidor};Initial Catalog={pDataBase};User ID={pUser};Password={pPassword};TrustServerCertificate=True"
     Public Property connectionString As String
         Get
             Return _connectionString
@@ -97,6 +99,7 @@ Public Class clsConexao
                 End Using
             End Using
         Catch ex As Exception
+            Throw
             MessageBox.Show("Não foi possível consultar os dados!" & vbCrLf & ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error)
             ' Opcional: log do erro ou tratamento adicional
         End Try

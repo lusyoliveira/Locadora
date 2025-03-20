@@ -1,5 +1,9 @@
-﻿Imports System.Data.SqlClient
+﻿
+Imports System.Data
+Imports Microsoft.Data.SqlClient
 Imports System.Text
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class clsEntidades
     Dim ClasseConexao As New clsConexao
 #Region "CONSTRUTORES"
@@ -169,25 +173,24 @@ Public Class clsEntidades
                                                            @Obs,
                                                            GETDATE(),
                                                            @Tipo)"
-
-                Dim parameters As SqlParameter() = {
-                        New SqlParameter("@NomeFantasia", NomeFantasia),
-                        New SqlParameter("@RazaoSocial", RazaoSocial),
-                        New SqlParameter("@Datanasc", Datanasc),
-                        New SqlParameter("@Estadocivil", Estadocivil),
-                        New SqlParameter("@Endereco", Endereco),
-                        New SqlParameter("@Complemento", Complemento),
-                        New SqlParameter("@Bairro", Bairro),
-                        New SqlParameter("@Cidade", Cidade),
-                        New SqlParameter("@Uf", Uf),
-                        New SqlParameter("@Cep", Cep),
-                        New SqlParameter("@sexo", sexo),
-                        New SqlParameter("@Rg", Rg),
-                        New SqlParameter("@Documento", Documento),
+        Dim parameters As SqlParameter() = {
+New SqlParameter("@NomeFantasia", NomeFantasia),
+New SqlParameter("@RazaoSocial", RazaoSocial),
+New SqlParameter("@Datanasc", Datanasc),
+New SqlParameter("@Estadocivil", Estadocivil),
+New SqlParameter("@Endereco", Endereco),
+New SqlParameter("@Complemento", Complemento),
+New SqlParameter("@Bairro", Bairro),
+New SqlParameter("@Cidade", Cidade),
+New SqlParameter("@Uf", Uf),
+New SqlParameter("@Cep", Cep),
+New SqlParameter("@sexo", sexo),
+New SqlParameter("@Rg", Rg),
+New SqlParameter("@Documento", Documento),
                         New SqlParameter("@Obs", Obs),
                         New SqlParameter("@Tipo", Tipo)
                       }
-                ClasseConexao.Operar(sql, parameters)
+        ClasseConexao.Operar(sql, parameters)
 
                 MessageBox.Show("Entidade salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub

@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmCadClientes
     Dim ClasseClientes As New clsEntidades, ClasseDependentes As New clsDependente, ClasseCombo As New clsCombo, tbClientes As DataTable
 
@@ -85,7 +88,7 @@ Public Class frmCadClientes
         Dim tbDependentes As DataTable = ClasseDependentes.ConsultaDependente("SELECT * FROM tbEntidadeDependente WHERE CodEntidade = @CodEntidade", Val(lblCodigo.Text))
 
         Dim x As Integer = 0
-        For Each row As DataRow In TbDependentes.Rows
+        For Each row As DataRow In tbDependentes.Rows
             lstDependente.Items.Add(row("Codigo").ToString())
             lstDependente.Items(x).SubItems.Add(row("NomeDependente").ToString())
             lstDependente.Items(x).SubItems.Add(row("DataNasc").ToString())

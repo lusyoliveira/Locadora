@@ -1,4 +1,6 @@
-
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmReserva
     Dim ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo, ClasseProdutos As New clsProdutos,
         tbClientes, tbProdutos, tbReserva As DataTable

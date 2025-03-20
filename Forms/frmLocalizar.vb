@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmLocalizar
     Dim ClasseCombos As New clsCombo, tbClientes, tbProdutos As DataTable, sql As String, x As Integer
 

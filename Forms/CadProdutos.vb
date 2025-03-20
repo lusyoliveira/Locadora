@@ -1,5 +1,6 @@
-Imports System.Net.Sockets
-
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmCadProdutos
     Dim tbProdutos As DataTable, ClasseProdutos As New clsProdutos, ClasseCombo As New clsCombo
     Private Sub Limpar()

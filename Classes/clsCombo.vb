@@ -1,5 +1,7 @@
-﻿Imports System.Data.SqlClient
-
+﻿Imports Microsoft.Data.SqlClient
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class clsCombo
     Dim ClasseConexao As New clsConexao
 

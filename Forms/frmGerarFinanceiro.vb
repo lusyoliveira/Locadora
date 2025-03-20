@@ -1,4 +1,8 @@
-﻿Public Class frmGerarFinanceiro
+﻿Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
+Public Class frmGerarFinanceiro
+
     Dim ClasseFinanceiro As New clsFinanceiro, ClasseEntidades As New clsEntidades, ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo
     Public Sub New()
 

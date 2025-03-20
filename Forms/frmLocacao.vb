@@ -1,7 +1,6 @@
-
-Imports System.Net.WebRequestMethods
-Imports System.Reflection.Emit
-
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmLocacao
     Dim imagem As Image, wcpagina, X, Y, z As Integer, sql As String, tbclientes, tbProdutos, tbLocacao, tbFuncionarios As DataTable,
         ClasseLocacao As New clsLocacao, ClasseCombo As New clsCombo, ClasseProdutos As New clsProdutos
@@ -287,24 +286,40 @@ Public Class frmLocacao
             MessageBox.Show("Por favor, preencha todos os campos.")
             Exit Sub
         Else
-            'fazer if para verificar se o título já foi reservado pelo mesmo cliente ou por outro cliente
+            'verificar se o título já foi reservado pelo mesmo cliente ou por outro cliente
             Dim tbReserva As DataTable = ClasseLocacao.ConsultaReserva("SELECT * FROM CS_ReservasDetalhes WHERE CodProd = @CodProd", 0, cboProduto.SelectedValue)
             If tbReserva IsNot Nothing AndAlso tbReserva.Rows.Count > 0 Then
-                If tbReserva.Rows(0)("CodProd").ToString() > 0 Then
-                    MessageBox.Show("O título informado já está reservado!")
-                    Exit Sub
-                Else
-                    ' Cria um novo item para o ListView com o código do produto.
-                    Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
+                For Each row As DataRow In tbReserva.Rows
+                    If tbReserva.Rows(0)("CodProd").ToString() = cboProduto.SelectedValue Then
 
-                    ' Adiciona o nome do produto como subitem na segunda coluna.
-                    item.SubItems.Add(cboProduto.Text)
-                    item.SubItems.Add(txtValorUnit.Text)
-                    item.SubItems.Add(txtTotal.Text)
+                        If tbReserva.Rows(0)("Cliente").ToString() = cboclientes.Text Then
+                            ' Cria um novo item para o ListView com o código do produto.
+                            Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
 
-                    ' Adiciona o item ao ListView.
-                    lstgrade.Items.Add(item)
-                End If
+                            ' Adiciona o nome do produto como subitem na segunda coluna.
+                            item.SubItems.Add(cboProduto.Text)
+                            item.SubItems.Add(txtValorUnit.Text)
+                            item.SubItems.Add(txtTotal.Text)
+
+                            ' Adiciona o item ao ListView.
+                            lstgrade.Items.Add(item)
+                        Else
+                            MessageBox.Show("O título informado já está reservado para outro cliente!")
+                            Exit Sub
+                        End If
+                    Else
+                        ' Cria um novo item para o ListView com o código do produto.
+                        Dim item As New ListViewItem(cboProduto.SelectedValue.ToString())
+
+                        ' Adiciona o nome do produto como subitem na segunda coluna.
+                        item.SubItems.Add(cboProduto.Text)
+                        item.SubItems.Add(txtValorUnit.Text)
+                        item.SubItems.Add(txtTotal.Text)
+
+                        ' Adiciona o item ao ListView.
+                        lstgrade.Items.Add(item)
+                    End If
+                Next
                 cboProduto.Text = ""
                 txtValorUnit.Text = ""
                 txtTotal.Text = ""

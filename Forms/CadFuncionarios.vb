@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmCadFuncionarios
     Dim tbFuncionarios As DataTable, ClasseFuncionario As New clsEntidades, ClasseCombo As New clsCombo
     Private Sub limpar()

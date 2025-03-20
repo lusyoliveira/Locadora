@@ -1,6 +1,8 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.Data
+Imports Microsoft.Data.SqlClient
 Imports System.Text
-Imports ADODB
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class clsProdutos
     Dim ClasseConexao As New clsConexao, tbProdutos As New DataTable()
 
@@ -68,9 +70,9 @@ Public Class clsProdutos
                     New SqlParameter("@valor", Valor),
                     New SqlParameter("@dtcad", dtcad),
                     New SqlParameter("@legenda", Legenda)
-                    }
-                ClasseConexao.Operar(sql, parameters)
-                MessageBox.Show("Produto alterado com sucesso!")
+}
+        ClasseConexao.Operar(sql, parameters)
+        MessageBox.Show("Produto alterado com sucesso!")
     End Sub
     Public Sub ExcluirProduto(Codigo As Integer)
         Dim sql As String = "DELETE FROM tbProdutos WHERE Codigo = @Codigo"

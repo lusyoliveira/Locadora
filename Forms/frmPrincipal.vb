@@ -1,3 +1,6 @@
+Imports System.Runtime.Versioning
+
+<SupportedOSPlatform("windows")>
 Public Class frmPrincipal
     Dim ClasseCombo As New clsCombo
     Private Sub FuncionáriosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FuncionáriosToolStripMenuItem.Click

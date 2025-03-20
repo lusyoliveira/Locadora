@@ -1,4 +1,6 @@
-Imports System.Data.SqlClient
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmCadFornecedores
     Dim tbFornecedores As DataTable
     Dim ClasseFornecedor As New clsEntidades

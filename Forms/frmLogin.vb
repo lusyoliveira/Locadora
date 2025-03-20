@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmLogin
     Dim ClasseCombo As New clsCombo, ClasseUsuario As New clsUsuario, tbaux, tbUsuarios As DataTable, sql, Tentativas As String
     Private Sub btnacesso_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnacesso.Click

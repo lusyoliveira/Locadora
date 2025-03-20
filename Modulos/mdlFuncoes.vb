@@ -1,5 +1,6 @@
 ﻿Imports System.IO
-
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Module mdlFuncoes
     'Public meuServidor As String = "SJFPA008\DEV"
     Dim ClasseCombo As New clsCombo

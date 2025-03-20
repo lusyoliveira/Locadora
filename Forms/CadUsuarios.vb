@@ -1,3 +1,6 @@
+Imports System.Data
+Imports System.Runtime.Versioning
+<SupportedOSPlatform("windows")>
 Public Class frmCadUsuarios
     Dim ClasseUsuario As New clsUsuario, tbUsuarios As DataTable
     Private Sub limpar()
